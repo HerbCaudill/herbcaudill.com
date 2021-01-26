@@ -7,7 +7,7 @@ import { Posts } from '../components/Posts'
 
 export default function Home({ allPosts }: { allPosts: PostData[] }) {
   return (
-    <Layout home>
+    <Layout>
       <Head>
         <title>{siteTitle}</title>
       </Head>
