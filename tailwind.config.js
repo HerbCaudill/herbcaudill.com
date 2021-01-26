@@ -5,7 +5,7 @@ const { splat } = require('./theme/splat')
 const { condensed, emoji, mono, sans, serif } = fonts
 
 module.exports = {
-  purge: ['./pages/**/*.js', './components/**/*.js'],
+  purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
   plugins: [require('@savvywombat/tailwindcss-grid-areas')],
   theme: {
     extend: {
