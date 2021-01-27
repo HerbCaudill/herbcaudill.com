@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const items = ['Words', 'Pictures', 'Projects', 'Facts']
+const items = ['Words', 'Pictures', 'Facts']
 
 export const Nav: React.FC = () => {
   return (
@@ -10,10 +10,7 @@ export const Nav: React.FC = () => {
           return (
             <li className="my-6 group cursor-pointer" key={item}>
               <Link href={`/`}>
-                <a
-                  className="py-2 uppercase font-mono tracking-widest text-xs"
-                  href={`/`}
-                >
+                <a className="py-2 uppercase font-mono tracking-widest text-xs splat-underline">
                   {item}
                 </a>
               </Link>

@@ -1,9 +1,9 @@
 ---
 title: 'Data types for humans'
-subtitle: ''
-description: 'Today’s databases force us to think about data in terms of what’s important to the computer. We can do better.'
+subtitle: 'Something something '
+description: 'Today’s databases force us to think about data in terms of what’s important to the computer. What if we had systems that really understand things that are important to people - things like timespans, birthdays, weights and lengths, names, addresses, and countries?'
 date: '2018-12-23'
-image: 'https://miro.medium.com/max/3818/1*ywYwvB-aydv0Ovx7K-5P3g.jpeg'
+image: '/images/thumbnails/datatypes.png'
 ---
 
 A key difference between a table in a **spreadsheet** and a table in a **database** is that **database columns are typed:** If you’re storing dates in a column, all the values in that column have to be dates.
@@ -14,7 +14,7 @@ But, [as we’ve seen](https://medium.com/all-the-things/a-single-infinitely-cus
 
 To get the best of both worlds, we want to avoid being heavy-handed: We don’t want to force Celeste to lay out her table schema in advance, but we do want to be smart and try to figure out her intentions. So if she types in a date, we’ll assume this is a date column. We’ll pick up the date format from the way she’s typed it in. And if she changes her mind and needs to change a column from one type to another, we want to make that as effortless as possible.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/3844/1\*OZBN\_m-HIuntmyIsHJfPyQ.png" width="1922" height="654" srcSet="https://miro.medium.com/max/552/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 276w, https://miro.medium.com/max/1104/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 552w, https://miro.medium.com/max/1280/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 640w, https://miro.medium.com/max/1456/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 728w, https://miro.medium.com/max/1632/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 816w, https://miro.medium.com/max/1808/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 904w, https://miro.medium.com/max/1984/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 992w, https://miro.medium.com/max/2000/1\*OZBN\_m-HIuntmyIsHJfPyQ.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/3844/1*OZBN_m-HIuntmyIsHJfPyQ.png)
 
 We want a column to pick up the date format from the way it’s typed in — just as it would in Excel.
 
@@ -26,7 +26,7 @@ I propose that the friction here doesn’t necessarily all come from having to c
 
 You only have a few fundamental types to choose from (text, number, date, boolean) and within those categories you have to make some commitments about how much space the computer should set aside. So for example, if you’re going the store numbers in a column, the system really wants you to make a lot of decisions in advance about size, precision, and so on.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/5002/1\*8GaD1XKAYTfiyZ8MLwaaBg.png" width="2501" height="931" srcSet="https://miro.medium.com/max/552/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 276w, https://miro.medium.com/max/1104/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 552w, https://miro.medium.com/max/1280/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 640w, https://miro.medium.com/max/1456/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 728w, https://miro.medium.com/max/1632/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 816w, https://miro.medium.com/max/1808/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 904w, https://miro.medium.com/max/1984/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 992w, https://miro.medium.com/max/2000/1\*8GaD1XKAYTfiyZ8MLwaaBg.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/5002/1*8GaD1XKAYTfiyZ8MLwaaBg.png)
 
 SQL Server’s datatypes. Do you want **int** or **bigint**? Any programmer worth her salt can tell you a story about making the wrong choice and coming to regret it.
 
@@ -103,7 +103,7 @@ If you’ve ever created a table of contacts in Excel, the first thing you’ve 
 
 Perhaps you started with a single “**name**” column. Then, you realized you wanted to sort by last names, so you figured out how to automatically split a full name into a **first name** and a **last name**:
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/1260/0\*Uny5s1vCSrUEtHCE.png" width="630" height="441" srcSet="https://miro.medium.com/max/552/0\*Uny5s1vCSrUEtHCE.png 276w, https://miro.medium.com/max/1104/0\*Uny5s1vCSrUEtHCE.png 552w, https://miro.medium.com/max/1260/0\*Uny5s1vCSrUEtHCE.png 630w" sizes="630px"/>
+![](https://miro.medium.com/max/1260/0*Uny5s1vCSrUEtHCE.png)
 
 But then start seeing names like these…
 
@@ -121,7 +121,7 @@ What would the “**pretend it’s magic**” solution for handling names and ad
 
 What I’d like would be to just paste them in, as-is — but have the computer figure out their component parts. That way I’d still be able to sort people by last name, or pull out their initials or their preferred given names. And I’d be able to display addresses in a standard format, or group them by zip code or by country.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/5496/1\*G9H2sL8gsDaKF-TjgKIrgg.png" width="2748" height="802" srcSet="https://miro.medium.com/max/552/1\*G9H2sL8gsDaKF-TjgKIrgg.png 276w, https://miro.medium.com/max/1104/1\*G9H2sL8gsDaKF-TjgKIrgg.png 552w, https://miro.medium.com/max/1280/1\*G9H2sL8gsDaKF-TjgKIrgg.png 640w, https://miro.medium.com/max/1456/1\*G9H2sL8gsDaKF-TjgKIrgg.png 728w, https://miro.medium.com/max/1632/1\*G9H2sL8gsDaKF-TjgKIrgg.png 816w, https://miro.medium.com/max/1808/1\*G9H2sL8gsDaKF-TjgKIrgg.png 904w, https://miro.medium.com/max/1984/1\*G9H2sL8gsDaKF-TjgKIrgg.png 992w, https://miro.medium.com/max/2000/1\*G9H2sL8gsDaKF-TjgKIrgg.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/5496/1*G9H2sL8gsDaKF-TjgKIrgg.png)
 
 The good news is that we don’t need magic in this case, neither do we need to write a lot of code. Parsing and normalizing human names is hard, but it’s mostly a [solved problem](https://www.google.es/search?q=parse+human+names). Same for [addresses](https://github.com/openvenues/libpostal) .
 
@@ -133,11 +133,11 @@ Another hassle you might have dealt with in your contact spreadsheet is the prob
 
 If you’re given this data and you want to do anything at all with these columns, you have to go through and make them consistent by hand.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/2784/1\*O\_msxV9aPmK-hM47iyux7Q.gif" width="1392" height="978" srcSet="https://miro.medium.com/max/552/1\*O\_msxV9aPmK-hM47iyux7Q.gif 276w, https://miro.medium.com/max/1104/1\*O\_msxV9aPmK-hM47iyux7Q.gif 552w, https://miro.medium.com/max/1280/1\*O\_msxV9aPmK-hM47iyux7Q.gif 640w, https://miro.medium.com/max/1456/1\*O\_msxV9aPmK-hM47iyux7Q.gif 728w, https://miro.medium.com/max/1632/1\*O\_msxV9aPmK-hM47iyux7Q.gif 816w, https://miro.medium.com/max/1808/1\*O\_msxV9aPmK-hM47iyux7Q.gif 904w, https://miro.medium.com/max/1984/1\*O\_msxV9aPmK-hM47iyux7Q.gif 992w, https://miro.medium.com/max/2000/1\*O\_msxV9aPmK-hM47iyux7Q.gif 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/2784/1*O_msxV9aPmK-hM47iyux7Q.gif)
 
 And if you want to make a spreadsheet that forces people to choose from as set of options so that it stays clean, you have some hoops to jump through.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/2768/1\*yd9gk-MNC8I7UQRBORrCyQ.png" width="1384" height="527" srcSet="https://miro.medium.com/max/552/1\*yd9gk-MNC8I7UQRBORrCyQ.png 276w, https://miro.medium.com/max/1104/1\*yd9gk-MNC8I7UQRBORrCyQ.png 552w, https://miro.medium.com/max/1280/1\*yd9gk-MNC8I7UQRBORrCyQ.png 640w, https://miro.medium.com/max/1456/1\*yd9gk-MNC8I7UQRBORrCyQ.png 728w, https://miro.medium.com/max/1632/1\*yd9gk-MNC8I7UQRBORrCyQ.png 816w, https://miro.medium.com/max/1808/1\*yd9gk-MNC8I7UQRBORrCyQ.png 904w, https://miro.medium.com/max/1984/1\*yd9gk-MNC8I7UQRBORrCyQ.png 992w, https://miro.medium.com/max/2000/1\*yd9gk-MNC8I7UQRBORrCyQ.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/2768/1*yd9gk-MNC8I7UQRBORrCyQ.png)
 
 If you know how to make this happen, you’re in the elite 1% of spreadsheet power users.
 
@@ -199,7 +199,7 @@ It’s our job, as programmers, to offer up these facilities in a way that maps 
 
 I’m going to stop there for now. Hopefully we’re a bit closer to having a tangible idea of what this tool might look like.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/3844/1\*9d8mCVO-6fPfawXnPRXzTA.png" width="1922" height="1508" srcSet="https://miro.medium.com/max/552/1\*9d8mCVO-6fPfawXnPRXzTA.png 276w, https://miro.medium.com/max/1104/1\*9d8mCVO-6fPfawXnPRXzTA.png 552w, https://miro.medium.com/max/1280/1\*9d8mCVO-6fPfawXnPRXzTA.png 640w, https://miro.medium.com/max/1456/1\*9d8mCVO-6fPfawXnPRXzTA.png 728w, https://miro.medium.com/max/1632/1\*9d8mCVO-6fPfawXnPRXzTA.png 816w, https://miro.medium.com/max/1808/1\*9d8mCVO-6fPfawXnPRXzTA.png 904w, https://miro.medium.com/max/1984/1\*9d8mCVO-6fPfawXnPRXzTA.png 992w, https://miro.medium.com/max/2000/1\*9d8mCVO-6fPfawXnPRXzTA.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/3844/1*9d8mCVO-6fPfawXnPRXzTA.png)
 
 One possible way of presenting data types.
 

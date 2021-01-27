@@ -6,7 +6,9 @@ const { condensed, emoji, mono, sans, serif } = fonts
 
 module.exports = {
   purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
+
   plugins: [require('@savvywombat/tailwindcss-grid-areas')],
+
   theme: {
     extend: {
       fontFamily: {
@@ -45,7 +47,7 @@ module.exports = {
       gridTemplateColumns: {
         sm: '100%',
         md: '100px 1fr',
-        posts: '100px 100px .4fr .6fr 100px',
+        posts: '100px .4fr .6fr 100px',
       },
       gridTemplateRows: {
         md: '150px minmax(950px, 1fr) 70px',
@@ -57,12 +59,15 @@ module.exports = {
       },
     },
   },
+
   variants: {
     opacity: ({ after }) => after(['group-hover', 'group-focus']),
     textColor: ({ after }) => after(['group-hover', 'group-focus']),
     boxShadow: ({ after }) => after(['group-hover', 'group-focus']),
-    backgroundImage: ({ after }) => after(['group-hover', 'group-focus']),
+    backgroundImage: ({ after }) =>
+      after(['group-hover', 'hover', 'group-focus']),
   },
+
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,

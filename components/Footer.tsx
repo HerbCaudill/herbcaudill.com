@@ -9,7 +9,7 @@ const links = [
     icon: 'twitter',
     label: '@herbcaudill',
   },
-  { url: 'mailto:h@hc3.me', icon: 'envelope', label: 'h@hc3.me' },
+  { url: 'mailto:h@hc3.me', icon: 'envelope', label: 'herb@hc3.me' },
 ]
 
 export const Footer: React.FC = () => {

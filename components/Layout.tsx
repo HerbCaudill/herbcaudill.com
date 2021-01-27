@@ -1,12 +1,10 @@
 import Head from 'next/head'
 import { Nav } from './Nav'
 import { Footer } from './Footer'
+import Link from 'next/link'
+import { name, siteTitle } from './constants'
 
-export const name = 'Herb Caudill'
-export const siteTitle = 'Herb Caudill | Blog'
-export const year = new Date().getFullYear()
-
-export default function Layout({ children }: { children: React.ReactNode }) {
+export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
   return (
     <>
       <Head>
@@ -18,22 +16,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
       <div className="container mx-auto h-screen grid grid-cols-md grid-rows-md grid-areas-md gap-x-24 gap-y-4">
         {/* Avatar */}
-        <header className="grid-in-logo ">
-          <img
-            className="grid-in-logo h-36 w-36 rounded-full object-cover"
-            src="/images/avatar/glasses-head-sat-transp.png"
-            alt={name}
-          />
+        <header className="grid-in-logo  ">
+          <Link href="/">
+            <img
+              className="grid-in-logo h-36 w-36 rounded-full object-cover"
+              src="/images/avatar/glasses-head-sat-transp.png"
+              alt={name}
+            />
+          </Link>
         </header>
 
-        {/* Header */}
-        <header className="grid-in-header flex items-center ">
-          <h1 className="text-4xl font-serif tracking-tight">
-            <span className="font-light">{name}</span>
-            <span className="font-thin ml-3">/</span>
-            <span className="font-bold font-sans text-2xl">Words</span>
-          </h1>
-        </header>
+        <header className="grid-in-header flex items-center ">{header}</header>
 
         <Nav />
 
@@ -43,4 +36,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
     </>
   )
+}
+
+interface LayoutProps {
+  header: React.ReactNode
 }

@@ -1,4 +1,4 @@
-import Layout from '../../components/Layout'
+import { Layout } from '../../components/Layout'
 import { getAllPostIdParams, post } from '../../lib/posts'
 import Head from 'next/head'
 import Date from '../../components/Date'
@@ -7,7 +7,7 @@ import { PostData } from '../../lib/types'
 import { markdownToHtml } from '../../lib/markdownToHtml'
 
 const Post = ({ postData }: { postData: PostData }) => (
-  <Layout>
+  <Layout header={<></>}>
     <Head>
       <title>{postData.title}</title>
     </Head>

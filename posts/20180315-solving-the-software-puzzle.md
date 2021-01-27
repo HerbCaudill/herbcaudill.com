@@ -1,9 +1,9 @@
 ---
-title: 'Solving the software puzzle for teams'
-subtitle: ''
-description: 'Putting together a software toolset for a team is harder than it looks. Why is that?'
+title: Solving the software puzzle
+subtitle: Assembling a collaboration toolset shouldn't be so hard
+description: No matter what applications we choose, there's lots of duplication and overlap between them. We're paying for lots of stuff we don't need or use. And there are still gaps that we have to cover with home-made systems. Surely there's a better way?
 date: '2018-03-15'
-image: 'https://miro.medium.com/max/3818/1*ywYwvB-aydv0Ovx7K-5P3g.jpeg'
+image: '/images/thumbnails/puzzle.png'
 ---
 
 **I’m a huge fan of the software-as-a-service (SaaS) model**, both as a software creator and as a software consumer.
@@ -14,11 +14,11 @@ And SaaS is how my team is able to collaborate closely even though we’re scatt
 
 **But our toolset still falls frustratingly short**. We have too many different tools that, for the most part, don’t talk to each other. Every tool comes with its own implicit worldview, which you can either adopt or spend your life fighting against. And we have needs that aren’t met at all, because they’re too specific to our situation.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4802/1\*vFTSIL9W7SJqpUKS-dlHJQ.png" width="2401" height="1600" srcSet="https://miro.medium.com/max/552/1\*vFTSIL9W7SJqpUKS-dlHJQ.png 276w, https://miro.medium.com/max/1002/1\*vFTSIL9W7SJqpUKS-dlHJQ.png 501w" sizes="501px"/>
+![](https://miro.medium.com/max/4802/1*vFTSIL9W7SJqpUKS-dlHJQ.png)
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4800/1\*DHyPsI0mfDoDUL-u-4RxMg.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*DHyPsI0mfDoDUL-u-4RxMg.png 276w, https://miro.medium.com/max/1000/1\*DHyPsI0mfDoDUL-u-4RxMg.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/4800/1*DHyPsI0mfDoDUL-u-4RxMg.png)
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4800/1\*LV3KKwIRh96g7t8615K5Kg.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*LV3KKwIRh96g7t8615K5Kg.png 276w, https://miro.medium.com/max/1104/1\*LV3KKwIRh96g7t8615K5Kg.png 552w, https://miro.medium.com/max/1280/1\*LV3KKwIRh96g7t8615K5Kg.png 640w, https://miro.medium.com/max/1456/1\*LV3KKwIRh96g7t8615K5Kg.png 728w, https://miro.medium.com/max/1632/1\*LV3KKwIRh96g7t8615K5Kg.png 816w, https://miro.medium.com/max/1808/1\*LV3KKwIRh96g7t8615K5Kg.png 904w, https://miro.medium.com/max/1984/1\*LV3KKwIRh96g7t8615K5Kg.png 992w, https://miro.medium.com/max/2000/1\*LV3KKwIRh96g7t8615K5Kg.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/4800/1*LV3KKwIRh96g7t8615K5Kg.png)
 
 So this is how we work. Lots of different tools that kind of fit our needs, but not really; and big areas where we just make do.
 
@@ -48,7 +48,7 @@ Sometimes it feels like my team uses a ridiculous number of products with overla
 
 This duplication is a problem: For one thing, we’re paying twice (or three or four times) for these features.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4800/1\*CMz-o605JpQjsqh0cjn-lA.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*CMz-o605JpQjsqh0cjn-lA.png 276w, https://miro.medium.com/max/1104/1\*CMz-o605JpQjsqh0cjn-lA.png 552w, https://miro.medium.com/max/1280/1\*CMz-o605JpQjsqh0cjn-lA.png 640w, https://miro.medium.com/max/1400/1\*CMz-o605JpQjsqh0cjn-lA.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/4800/1*CMz-o605JpQjsqh0cjn-lA.png)
 
 It’s not just the expense: Duplicate features add to everyone’s **cognitive burden**. It’s not clear where some things belong. Do software development tasks go in Asana, which is what we use for managing other projects and tasks? Or do they go in GitHub Issues, which is optimized for that purpose? Either way we have to make rules.
 
@@ -62,7 +62,7 @@ There are big areas of unused functionality in every tool that we just ignore. F
 - Asana: Conversations, progress dashboards
 - FreshDesk: Forums
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4800/1\*Qj\_PKiA4re0ElOCF3UEc2A.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*Qj\_PKiA4re0ElOCF3UEc2A.png 276w, https://miro.medium.com/max/1104/1\*Qj\_PKiA4re0ElOCF3UEc2A.png 552w, https://miro.medium.com/max/1280/1\*Qj\_PKiA4re0ElOCF3UEc2A.png 640w, https://miro.medium.com/max/1400/1\*Qj\_PKiA4re0ElOCF3UEc2A.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/4800/1*Qj_PKiA4re0ElOCF3UEc2A.png)
 
 These are often great features in their own right, that a bunch of smart people spent a lot of time building. But for whatever reason, we don’t need them: Maybe we don’t have the problem they solve. Maybe we’ve solved those problems some other way. Either way we’re paying for something that we don’t use.
 
@@ -70,7 +70,7 @@ These are often great features in their own right, that a bunch of smart people 
 
 Finally, there are still important gaps — parts of our team model that aren’t represented by any of these tools.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4800/1\*iO3mnIrThKY4YbyKXFMcyw.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*iO3mnIrThKY4YbyKXFMcyw.png 276w, https://miro.medium.com/max/1104/1\*iO3mnIrThKY4YbyKXFMcyw.png 552w, https://miro.medium.com/max/1280/1\*iO3mnIrThKY4YbyKXFMcyw.png 640w, https://miro.medium.com/max/1400/1\*iO3mnIrThKY4YbyKXFMcyw.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/4800/1*iO3mnIrThKY4YbyKXFMcyw.png)
 
 So for example we don’t have a definitive list of ongoing projects or teams anywhere.
 
@@ -82,7 +82,7 @@ I could go on. We have a spreadsheet for cash planning and another to keep track
 
 We’ve pieced together a bunch of apps to try and capture all of our work, and it’s simultaneously **too much** and **not enough**.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4800/1\*tdua45fBEeTGf78KLMb\_wg.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*tdua45fBEeTGf78KLMb\_wg.png 276w, https://miro.medium.com/max/1104/1\*tdua45fBEeTGf78KLMb\_wg.png 552w, https://miro.medium.com/max/1280/1\*tdua45fBEeTGf78KLMb\_wg.png 640w, https://miro.medium.com/max/1456/1\*tdua45fBEeTGf78KLMb\_wg.png 728w, https://miro.medium.com/max/1632/1\*tdua45fBEeTGf78KLMb\_wg.png 816w, https://miro.medium.com/max/1808/1\*tdua45fBEeTGf78KLMb\_wg.png 904w, https://miro.medium.com/max/1984/1\*tdua45fBEeTGf78KLMb\_wg.png 992w, https://miro.medium.com/max/2000/1\*tdua45fBEeTGf78KLMb\_wg.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/4800/1*tdua45fBEeTGf78KLMb_wg.png)
 
 It’s a lot for a new employee to figure out: I recently spent a couple of days just documenting on our wiki how everything fits together. Even people who have been here a long time aren’t always sure where to start a conversation, where to share a document, or where to record an important fact about a customer.
 
@@ -92,7 +92,7 @@ Any time anyone suggests a new tool to the team (usually me!) there’s an audib
 
 The SaaS ecosystem is amazing — if you think of a problem, you can almost certainly find a product out there that addresses it, for $1 or $25 or $100 per user per month. But realistically you can only have so many different systems. Not just because those subscription costs start adding up, but also because the indirect costs — the staff time required to administer them and the cognitive burden of learning and thinking about them — start adding up.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/2090/1\*rCuUAsNcs33HvQSH8JbzSw.png" width="1045" height="987" srcSet="https://miro.medium.com/max/552/1\*rCuUAsNcs33HvQSH8JbzSw.png 276w, https://miro.medium.com/max/1000/1\*rCuUAsNcs33HvQSH8JbzSw.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/2090/1*rCuUAsNcs33HvQSH8JbzSw.png)
 
 iDoneThis does one thing well. But is it worth $1200/year, plus the cognitive and administrative burden of having Yet Another System?
 
@@ -102,7 +102,7 @@ It’s such a simple thing, but makes our weekly meetings a lot shorter because 
 
 ## We’re part of the problem too!
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4260/1\*TcudaQWJiuXQna1av6eEsg.png" width="2130" height="1152" srcSet="https://miro.medium.com/max/552/1\*TcudaQWJiuXQna1av6eEsg.png 276w, https://miro.medium.com/max/1104/1\*TcudaQWJiuXQna1av6eEsg.png 552w, https://miro.medium.com/max/1280/1\*TcudaQWJiuXQna1av6eEsg.png 640w, https://miro.medium.com/max/1400/1\*TcudaQWJiuXQna1av6eEsg.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/4260/1*TcudaQWJiuXQna1av6eEsg.png)
 
 Our customers’ experience with our SaaS product gives another perspective on the same set of problems. I see our customers struggling with DevResults in the same ways we struggle with our toolset:
 
@@ -130,7 +130,7 @@ If you go the second route and try to use the best system for each need, you end
 
 Some systems have built-in integrations. Slack, for example, advertises hundreds of integrations. In practice, this mostly just means that you can send an app’s notifications to Slack channels.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/1418/1\*hGJOrxpZtIelPA6RHwo-Dw.gif" width="709" height="321" srcSet="https://miro.medium.com/max/552/1\*hGJOrxpZtIelPA6RHwo-Dw.gif 276w, https://miro.medium.com/max/1000/1\*hGJOrxpZtIelPA6RHwo-Dw.gif 500w" sizes="500px"/>
+![](https://miro.medium.com/max/1418/1*hGJOrxpZtIelPA6RHwo-Dw.gif)
 
 Slack “integration” with Google Drive: 🙄 Meh.
 
@@ -177,7 +177,7 @@ This is where an app captures its understanding of a domain.
 - **DevResults** models an **international development** program: activities, indicators, results frameworks, locations.
 - **Asana** models an organization’s **work**: people, teams, tasks, projects.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/2560/1\*QQ2u8N4S2820mDgOek9oWQ.gif" width="1280" height="625" srcSet="https://miro.medium.com/max/552/1\*QQ2u8N4S2820mDgOek9oWQ.gif 276w, https://miro.medium.com/max/1104/1\*QQ2u8N4S2820mDgOek9oWQ.gif 552w, https://miro.medium.com/max/1280/1\*QQ2u8N4S2820mDgOek9oWQ.gif 640w, https://miro.medium.com/max/1400/1\*QQ2u8N4S2820mDgOek9oWQ.gif 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2560/1*QQ2u8N4S2820mDgOek9oWQ.gif)
 
 FreshSales has a data model that captures a “typical” real-world sales process. A **deal** (shown here) has a name, a dollar amount, an expected close date, and a probability. It lives in one **stage** of several that I can define. It’s associated with one **account**, one **sales rep**, and one or more **contacts**. This model may or may not exactly match the way we work; either way it’s not rocket science.
 
@@ -198,7 +198,7 @@ These are the non-trivial skills that set the app apart.
 - For Dropbox and Google Drive, it’s document storage and syncing.
 - For Slack, it’s team chat.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/2876/1\*q1qIyPEkuoUL5oP8VpWJOA.gif" width="1438" height="768" srcSet="https://miro.medium.com/max/552/1\*q1qIyPEkuoUL5oP8VpWJOA.gif 276w, https://miro.medium.com/max/1104/1\*q1qIyPEkuoUL5oP8VpWJOA.gif 552w, https://miro.medium.com/max/1280/1\*q1qIyPEkuoUL5oP8VpWJOA.gif 640w, https://miro.medium.com/max/1400/1\*q1qIyPEkuoUL5oP8VpWJOA.gif 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2876/1*q1qIyPEkuoUL5oP8VpWJOA.gif)
 
 Expensify‘s superpower is called “SmartScan”. Drag and drop an invoice or a receipt, and it magically pulls out the vendor, date, and amount. I don’t know if they do it with people or with machines, but either way it would be pretty hard to reproduce this feature!
 
@@ -212,7 +212,7 @@ These are things that go outside of an app’s core strengths.
 - GitHub and Asana (and DevResults) have discussions.
 - Slack, Asana, FreshSales, and FreshDesk (and DevResults) have document storage.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/6000/1\*2po7WQb7Iy-ZRV2BrfjrRQ.jpeg" width="3000" height="1505" srcSet="https://miro.medium.com/max/552/1\*2po7WQb7Iy-ZRV2BrfjrRQ.jpeg 276w, https://miro.medium.com/max/1104/1\*2po7WQb7Iy-ZRV2BrfjrRQ.jpeg 552w, https://miro.medium.com/max/1280/1\*2po7WQb7Iy-ZRV2BrfjrRQ.jpeg 640w, https://miro.medium.com/max/1400/1\*2po7WQb7Iy-ZRV2BrfjrRQ.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/6000/1*2po7WQb7Iy-ZRV2BrfjrRQ.jpeg)
 
 Asana’s “Conversations” is a classic me-too feature: In principle it kind of makes sense to have discussions alongside your task lists. In practice, it doesn’t make sense to have lots of different venues for conversation, so we use Slack instead.
 
@@ -224,7 +224,7 @@ These are the things that every app has to have: User management, provisioning, 
 
 Again, some products nail the fundamentals better than others, but these are all problems that have been solved many times.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/2594/1\*DJEyElt\_x36V98nKQhh9WQ.png" width="1297" height="976" srcSet="https://miro.medium.com/max/552/1\*DJEyElt\_x36V98nKQhh9WQ.png 276w, https://miro.medium.com/max/1104/1\*DJEyElt\_x36V98nKQhh9WQ.png 552w, https://miro.medium.com/max/1280/1\*DJEyElt\_x36V98nKQhh9WQ.png 640w, https://miro.medium.com/max/1400/1\*DJEyElt\_x36V98nKQhh9WQ.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2594/1*DJEyElt_x36V98nKQhh9WQ.png)
 
 N apps = N user lists to maintain.
 
@@ -240,7 +240,7 @@ As we’ve already seen, if we get these at all, they’re implemented in a half
 
 This framework gives us a way of thinking about what we’re getting from various apps in our toolset, and what an ideal arrangement would look like.
 
-<img alt="Image for post" class="t u v jc ak" src="https://miro.medium.com/max/4800/1\*Lee0d9ylJi56lp9AOIFanw.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*Lee0d9ylJi56lp9AOIFanw.png 276w, https://miro.medium.com/max/1104/1\*Lee0d9ylJi56lp9AOIFanw.png 552w, https://miro.medium.com/max/1280/1\*Lee0d9ylJi56lp9AOIFanw.png 640w, https://miro.medium.com/max/1400/1\*Lee0d9ylJi56lp9AOIFanw.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/4800/1*Lee0d9ylJi56lp9AOIFanw.png)
 
 This is what I want. This turns the above model on its head:
 
@@ -252,15 +252,3 @@ This is what I want. This turns the above model on its head:
 I’ve thought a lot about what this application might look like. I’ll go into the details in a follow-up post.
 
 I’ve also spent some time scouring the landscape for an existing app that fits the bill. (Spoiler: I haven’t found one.) In another post, I’ll take a look at some products in existing software categories that come close.
-
-## Next:
-
-[
-
-## Excel Hell: A cautionary tale
-
-### Before we create a "single infinitely-customizable app for everything else", we need to understand why we use spreadsheets for everything.
-
-#### medium.com
-
-](https://medium.com/all-the-things/a-single-infinitely-customizable-app-for-everything-else-9abed7c5b5e7)

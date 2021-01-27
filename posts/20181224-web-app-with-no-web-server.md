@@ -1,16 +1,16 @@
 ---
 title: 'A web app with no web server?'
-subtitle: ''
+subtitle: 'Rethinking the stack'
 description: 'In a traditional client/server/database web app, so much effort goes into transferring and translating data between layers. Can we eliminate unnecessary complexity with a peer-to-peer design?'
 date: '2018-12-24'
-image: 'https://miro.medium.com/max/3818/1*ywYwvB-aydv0Ovx7K-5P3g.jpeg'
+image: '/images/thumbnails/serverless.png'
 ---
 
 Things have changed a lot in the decade since the last time I built a web application from the ground up. It used to be you picked a framework (ASP.NET, Rails, etc.) and learned it inside out. Now, as a result of the open source explosion in the JavaScript ecosystem, it’s your job to put together a mosaic of frameworks.
 
 On the one hand, we’ve finally arrived at the promised land of code reuse. If you’re into programming productivity, no Agile methodology or VS Code extension compares to a technique I like to call **“importing code that someone else wrote.”** What a time to be alive!
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/2788/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg" width="1394" height="606" srcSet="https://miro.medium.com/max/552/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 276w, https://miro.medium.com/max/1104/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 552w, https://miro.medium.com/max/1280/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 640w, https://miro.medium.com/max/1456/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 728w, https://miro.medium.com/max/1632/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 816w, https://miro.medium.com/max/1808/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 904w, https://miro.medium.com/max/1984/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 992w, https://miro.medium.com/max/2000/1\*gaBkIuIaga8YOm4uajxEdQ.jpeg 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/2788/1*gaBkIuIaga8YOm4uajxEdQ.jpeg)
 
 Used with permission. Original [here](http://www.commitstrip.com/en/2015/09/16/how-to-choose-the-right-javascript-framework/).
 
@@ -24,7 +24,7 @@ At some point, though, you have to stop thinking and start coding. I’ve spent 
 
 My starting point is the way [DevResults](http://www.devresults.com) works, so even though that’s a decade-old codebase, let’s take a look at its architecture. It’s a server application written in C#, a SQL database, and an Angular front end. So something like this:
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*1X5LcMfZJSSrHidOJ9kkBQ.jpeg" width="2732" height="1553" srcSet="https://miro.medium.com/max/552/1\*1X5LcMfZJSSrHidOJ9kkBQ.jpeg 276w, https://miro.medium.com/max/1104/1\*1X5LcMfZJSSrHidOJ9kkBQ.jpeg 552w, https://miro.medium.com/max/1280/1\*1X5LcMfZJSSrHidOJ9kkBQ.jpeg 640w, https://miro.medium.com/max/1400/1\*1X5LcMfZJSSrHidOJ9kkBQ.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*1X5LcMfZJSSrHidOJ9kkBQ.jpeg)
 
 Nothing surprising here — this is a very standard architecture for web apps of a certain age.
 
@@ -34,7 +34,7 @@ There are several sources of inefficiency here:
 - Our **data model has to be restated repeatedly** in multiple different formats.
 - Each of these layers includes some logic, and it’s **hard to avoid duplicating some logic** across more than one layer.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*zPg5iHnSZObybNYs8YwJRg.jpeg" width="2732" height="1562" srcSet="https://miro.medium.com/max/552/1\*zPg5iHnSZObybNYs8YwJRg.jpeg 276w, https://miro.medium.com/max/1104/1\*zPg5iHnSZObybNYs8YwJRg.jpeg 552w, https://miro.medium.com/max/1280/1\*zPg5iHnSZObybNYs8YwJRg.jpeg 640w, https://miro.medium.com/max/1400/1\*zPg5iHnSZObybNYs8YwJRg.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*zPg5iHnSZObybNYs8YwJRg.jpeg)
 
 **Kind of a mess:** Logic expressed in 3 languages, data model expressed lots of different ways.
 
@@ -44,7 +44,7 @@ Now, DevResults was first written in 2009, and changes to the code since then ha
 
 The first step to simplify this is to use a single language for the codebase. In 2018, the only reasonable choice is JavaScript. We can use Node.js on the back end, and that way bits of logic that are shared between the client and the server only have to be written once.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*YgjqMrYPSpoclgBttxLEJw.png" width="2732" height="2048" srcSet="https://miro.medium.com/max/552/1\*YgjqMrYPSpoclgBttxLEJw.png 276w, https://miro.medium.com/max/1104/1\*YgjqMrYPSpoclgBttxLEJw.png 552w, https://miro.medium.com/max/1280/1\*YgjqMrYPSpoclgBttxLEJw.png 640w, https://miro.medium.com/max/1400/1\*YgjqMrYPSpoclgBttxLEJw.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*YgjqMrYPSpoclgBttxLEJw.png)
 
 **Better**: Server-side JavaScript lets us write code around the data model just once, and run in both places.
 
@@ -52,7 +52,7 @@ The first step to simplify this is to use a single language for the codebase. In
 
 We can also use a NoSQL database like MongoDB, which accepts and returns JSON data. So our data can move from client to server to database without having to be translated.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*xL9jtG1E\_mmS4K5QtZv1mQ.png" width="2732" height="2048" srcSet="https://miro.medium.com/max/552/1\*xL9jtG1E\_mmS4K5QtZv1mQ.png 276w, https://miro.medium.com/max/1104/1\*xL9jtG1E\_mmS4K5QtZv1mQ.png 552w, https://miro.medium.com/max/1280/1\*xL9jtG1E\_mmS4K5QtZv1mQ.png 640w, https://miro.medium.com/max/1400/1\*xL9jtG1E\_mmS4K5QtZv1mQ.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*xL9jtG1E_mmS4K5QtZv1mQ.png)
 
 **Better**: GraphQL for requesting data, JSON for representing data.
 
@@ -67,7 +67,7 @@ But when I started playing with this in a couple of toy apps, I was **still frus
 - Data **storage** is provided by the database. But since the client needs to work offline, it needs to provide storage also. That means you need to write two data layers — one for the client to work with local data, the other for the server to work with the database.
 - Application **logic** traditionally lives on the server. But if the client needs to work offline, some or all of that logic needs to be on the client as well.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*G9qSOV9Vz\_joyz3O2fDn7Q.png" width="2732" height="2048" srcSet="https://miro.medium.com/max/552/1\*G9qSOV9Vz\_joyz3O2fDn7Q.png 276w, https://miro.medium.com/max/1104/1\*G9qSOV9Vz\_joyz3O2fDn7Q.png 552w, https://miro.medium.com/max/1280/1\*G9qSOV9Vz\_joyz3O2fDn7Q.png 640w, https://miro.medium.com/max/1400/1\*G9qSOV9Vz\_joyz3O2fDn7Q.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*G9qSOV9Vz_joyz3O2fDn7Q.png)
 
 Is there a good reason for all of this duplication?
 
@@ -86,7 +86,7 @@ There are two big challenges with building an app that works offline:
 - It has to work when no server is available (duh), which means that it needs to have a **full local copy of the data** that it needs.
 - When the app does go back online, it needs to **reconcile changes** that have been made locally with changes that have been made elsewhere.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*o5VhyhnRcla29wn92m6eBg.png" width="2732" height="2048" srcSet="https://miro.medium.com/max/552/1\*o5VhyhnRcla29wn92m6eBg.png 276w, https://miro.medium.com/max/1104/1\*o5VhyhnRcla29wn92m6eBg.png 552w, https://miro.medium.com/max/1280/1\*o5VhyhnRcla29wn92m6eBg.png 640w, https://miro.medium.com/max/1400/1\*o5VhyhnRcla29wn92m6eBg.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*o5VhyhnRcla29wn92m6eBg.png)
 
 The standard browser/server/database model isn’t well-suited to offline scenarios.
 
@@ -108,13 +108,13 @@ More than a decade later, you can do pretty much anything you want within a brow
 
 Let’s take a step back and think about what a “web application” with no web server would look like.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*aFIQS24R8OEoKxavyqhG-w.png" width="2732" height="2048" srcSet="https://miro.medium.com/max/552/1\*aFIQS24R8OEoKxavyqhG-w.png 276w, https://miro.medium.com/max/1104/1\*aFIQS24R8OEoKxavyqhG-w.png 552w, https://miro.medium.com/max/1280/1\*aFIQS24R8OEoKxavyqhG-w.png 640w, https://miro.medium.com/max/1400/1\*aFIQS24R8OEoKxavyqhG-w.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*aFIQS24R8OEoKxavyqhG-w.png)
 
 The most obvious answer is that **we need the server to collaborate with others**. If you’re the only one involved in whatever you’re working on, you may not need a web app. But if you’re working with a team of two or more people, you want some way of keeping everyone on the same page, and centralizing the data on a server is an obvious way of doing that.
 
 So, yes, this would be a very simple architecture:
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*Z6G6L-F5JwF5Tb\_GfgMZWw.jpeg" width="2732" height="1394" srcSet="https://miro.medium.com/max/552/1\*Z6G6L-F5JwF5Tb\_GfgMZWw.jpeg 276w, https://miro.medium.com/max/1104/1\*Z6G6L-F5JwF5Tb\_GfgMZWw.jpeg 552w, https://miro.medium.com/max/1280/1\*Z6G6L-F5JwF5Tb\_GfgMZWw.jpeg 640w, https://miro.medium.com/max/1400/1\*Z6G6L-F5JwF5Tb\_GfgMZWw.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*Z6G6L-F5JwF5Tb_GfgMZWw.jpeg)
 
 Simple, but not very useful.
 
@@ -124,7 +124,7 @@ So let’s put on our “[pretend it’s magic](https://books.google.es/books?id
 
 Let’s just imagine for the moment that we had a magical way of automatically and instantaneously synchronizing Alice’s data with Bob’s data, so that when they’re both online, they’re both always looking at the same thing.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*7OAbR5BxeEOk2kLRLfR-cg.gif" width="2732" height="1862" srcSet="https://miro.medium.com/max/552/1\*7OAbR5BxeEOk2kLRLfR-cg.gif 276w, https://miro.medium.com/max/1104/1\*7OAbR5BxeEOk2kLRLfR-cg.gif 552w, https://miro.medium.com/max/1280/1\*7OAbR5BxeEOk2kLRLfR-cg.gif 640w, https://miro.medium.com/max/1400/1\*7OAbR5BxeEOk2kLRLfR-cg.gif 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*7OAbR5BxeEOk2kLRLfR-cg.gif)
 
 Simple, but you have to believe in magic.
 
@@ -134,7 +134,7 @@ But wait, you say! This peer-to-peer setup requires Alice and Bob to be online a
 
 OK, no problem — we can just fire up a client on a computer that no one uses, and leave it running all the time.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*ocuzV2m7CD651kyAU-TgGQ.png" width="2732" height="2048" srcSet="https://miro.medium.com/max/552/1\*ocuzV2m7CD651kyAU-TgGQ.png 276w, https://miro.medium.com/max/1104/1\*ocuzV2m7CD651kyAU-TgGQ.png 552w, https://miro.medium.com/max/1280/1\*ocuzV2m7CD651kyAU-TgGQ.png 640w, https://miro.medium.com/max/1400/1\*ocuzV2m7CD651kyAU-TgGQ.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*ocuzV2m7CD651kyAU-TgGQ.png)
 
 ## **Congratulations, we’ve just re-invented the server!**
 
@@ -152,7 +152,7 @@ The solution hinges on a different conception of data from the one I’ve always
 
 The databases I’ve always worked with treat data as **mutable**: If you need to update data, you replace what was there with something new. So when I moved from Washington DC to Barcelona, some database might have reflected the change by replacing a value in the `City` column for my record:
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*Rnrif27ZBSRpjrrwdnStIA.gif" width="2732" height="1193" srcSet="https://miro.medium.com/max/552/1\*Rnrif27ZBSRpjrrwdnStIA.gif 276w, https://miro.medium.com/max/1104/1\*Rnrif27ZBSRpjrrwdnStIA.gif 552w, https://miro.medium.com/max/1280/1\*Rnrif27ZBSRpjrrwdnStIA.gif 640w, https://miro.medium.com/max/1400/1\*Rnrif27ZBSRpjrrwdnStIA.gif 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*Rnrif27ZBSRpjrrwdnStIA.gif)
 
 In this case, you could go back and look at the **log** of changes to see, for example, that an entry was made in 2012 stating that I lived in Washington DC, and that in 2016 that entry was updated to Barcelona.
 
@@ -173,7 +173,7 @@ The event log shows these two facts:
 
 Both of these statements are true facts, and we can easily query them to derive a picture of the state of the world at any given moment `t`. Now we can see that the _current_ state of the world is just a special case, where `t` = **now**.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*LmJojjeU8Paq84-UXrIwVQ.gif" width="2732" height="1568" srcSet="https://miro.medium.com/max/552/1\*LmJojjeU8Paq84-UXrIwVQ.gif 276w, https://miro.medium.com/max/1104/1\*LmJojjeU8Paq84-UXrIwVQ.gif 552w, https://miro.medium.com/max/1280/1\*LmJojjeU8Paq84-UXrIwVQ.gif 640w, https://miro.medium.com/max/1400/1\*LmJojjeU8Paq84-UXrIwVQ.gif 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5464/1*LmJojjeU8Paq84-UXrIwVQ.gif)
 
 With this perspective, much of the complexity around replication and synchronization just disappears. **CRUD** (create/read/update/delete) is now just **CR**, because updates and deletes are just another kind of new information. It’s much easier to merge two event streams than it is to merge two conflicting point-in-time snapshots.
 
@@ -189,7 +189,7 @@ I’m going to focus on the next-to-the-last item in that list — CRDTs — bec
 
 ## CRDTs and Automerge: Indistinguishable from magic
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/1492/1\*lfktB\_rBOlQN-vR0vcT\_mA.png" width="746" height="449" srcSet="https://miro.medium.com/max/552/1\*lfktB\_rBOlQN-vR0vcT\_mA.png 276w, https://miro.medium.com/max/1000/1\*lfktB\_rBOlQN-vR0vcT\_mA.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/1492/1*lfktB_rBOlQN-vR0vcT_mA.png)
 
 [Automerge](https://github.com/automerge/automerge), a JavaScript implementation of a CRDT, promises to be the magical automatic synchronization and conflict resolution layer we’re looking for.
 
@@ -217,7 +217,7 @@ So the overall idea starts to look like this:
 - **Real-time background synchronization** is provided automatically and unobtrusively by **Automerge**.
 - **Instead of a server, we have an always-available headless peer** living in a lambda function. If we define a “team” as our permissions boundary, it might make sense to just spin up one lambda per team.
 
-<img alt="Image for post" class="t u v iz ak" src="https://miro.medium.com/max/5464/1\*I\_E1eXQgcFwiGrllvm4NhQ.png" width="2732" height="2048" srcSet="https://miro.medium.com/max/552/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 276w, https://miro.medium.com/max/1104/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 552w, https://miro.medium.com/max/1280/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 640w, https://miro.medium.com/max/1456/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 728w, https://miro.medium.com/max/1632/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 816w, https://miro.medium.com/max/1808/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 904w, https://miro.medium.com/max/1984/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 992w, https://miro.medium.com/max/2000/1\*I\_E1eXQgcFwiGrllvm4NhQ.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/5464/1*I_E1eXQgcFwiGrllvm4NhQ.png)
 
 This is a very different design from the ones I’ve worked with in the past. It’s not the way most software is being written today. But I’m convinced that many applications will be architected this way in the future. The advantages are hard to ignore:
 

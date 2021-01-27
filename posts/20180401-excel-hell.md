@@ -3,16 +3,16 @@ title: 'Excel hell'
 subtitle: 'A cautionary tale'
 description: 'Before we create a “single infinitely-customizable app for everything else”, we need to understand why we’re currently using spreadsheets for everything.'
 date: '2018-04-01'
-image: 'https://miro.medium.com/max/3818/1*ywYwvB-aydv0Ovx7K-5P3g.jpeg'
+image: '/images/thumbnails/excel.png'
 ---
 
 After writing [many words about the challenges of building a SaaS toolset for a team](https://medium.com/@herbcaudill/the-trouble-with-saas-279694551b25), I concluded that the holy grail would look like this:
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/4800/1\*Lee0d9ylJi56lp9AOIFanw.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*Lee0d9ylJi56lp9AOIFanw.png 276w, https://miro.medium.com/max/1104/1\*Lee0d9ylJi56lp9AOIFanw.png 552w, https://miro.medium.com/max/1280/1\*Lee0d9ylJi56lp9AOIFanw.png 640w, https://miro.medium.com/max/1400/1\*Lee0d9ylJi56lp9AOIFanw.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/4800/1*Lee0d9ylJi56lp9AOIFanw.png)
 
 I’d mentioned to some people on my team that I was thinking over a new product idea. When I published that post, this was the first reaction:
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/1850/1\*0OaQA7Z\_ix38OSCOXowm8A.png" width="925" height="303" srcSet="https://miro.medium.com/max/552/1\*0OaQA7Z\_ix38OSCOXowm8A.png 276w, https://miro.medium.com/max/1104/1\*0OaQA7Z\_ix38OSCOXowm8A.png 552w, https://miro.medium.com/max/1280/1\*0OaQA7Z\_ix38OSCOXowm8A.png 640w, https://miro.medium.com/max/1400/1\*0OaQA7Z\_ix38OSCOXowm8A.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1850/1*0OaQA7Z_ix38OSCOXowm8A.png)
 
 The conventional wisdom in the software business is to **do one thing well.** In general that’s good advice, and that thinking has brought us some terrific, tightly-focused tools.
 
@@ -24,9 +24,9 @@ On the other hand, there’s clearly enormous demand for an extremely malleable 
 
 The reality of most teams, including mine, is this: We use purpose-built software for some stuff, and for the rest we use Excel.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/4800/1\*iO3mnIrThKY4YbyKXFMcyw.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*iO3mnIrThKY4YbyKXFMcyw.png 276w, https://miro.medium.com/max/1000/1\*iO3mnIrThKY4YbyKXFMcyw.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/4800/1*iO3mnIrThKY4YbyKXFMcyw.png)
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/4800/1\*cRFVHw3W-NWgGrKobKN3ag.png" width="2400" height="1600" srcSet="https://miro.medium.com/max/552/1\*cRFVHw3W-NWgGrKobKN3ag.png 276w, https://miro.medium.com/max/1000/1\*cRFVHw3W-NWgGrKobKN3ag.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/4800/1*cRFVHw3W-NWgGrKobKN3ag.png)
 
 In most cases, Excel is not up to the demands we put on it — but that doesn’t stop us. There are other tools out there that might be more appropriate, but we don’t use them.
 
@@ -38,7 +38,7 @@ Let’s take a little detour to think about this.
 
 It goes without saying that Microsoft Excel is the world’s most-used **spreadsheet** software. What is surprising, and of interest to us, is that Microsoft Excel is the world’s most used **database** software as well.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/2556/1\*fvc7jScClAFghBeOUmGfrQ.png" width="1278" height="865" srcSet="https://miro.medium.com/max/552/1\*fvc7jScClAFghBeOUmGfrQ.png 276w, https://miro.medium.com/max/1000/1\*fvc7jScClAFghBeOUmGfrQ.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/2556/1*fvc7jScClAFghBeOUmGfrQ.png)
 
 VisiCalc was the original [killer app](https://en.wikipedia.org/wiki/Killer_application) — software compelling enough to sell the hardware it ran on.
 
@@ -52,7 +52,7 @@ Joel Spolsky, who worked on the Excel team at the time, [describes the moment](h
 
 Realizing this, Microsoft belatedly started to add data-management features to Excel. The biggest single improvement was a feature tried in 2003 called, aptly, “Tables”. I suspect that 95% of Excel users don’t know it’s there. Microsoft is still retrofitting Excel with database functionality. Deep in the bowels of the “Data” tab you’ll find hardcore data manipulation tools that approximately no one has ever used.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/4160/1\*vs9R3aQnpVfdkTWNmnbjdg.png" width="2080" height="977" srcSet="https://miro.medium.com/max/552/1\*vs9R3aQnpVfdkTWNmnbjdg.png 276w, https://miro.medium.com/max/1104/1\*vs9R3aQnpVfdkTWNmnbjdg.png 552w, https://miro.medium.com/max/1280/1\*vs9R3aQnpVfdkTWNmnbjdg.png 640w, https://miro.medium.com/max/1400/1\*vs9R3aQnpVfdkTWNmnbjdg.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/4160/1*vs9R3aQnpVfdkTWNmnbjdg.png)
 
 Did you know you could create queries within an Excel spreadsheet to filter, project, transform, pivot or unpivot data from an existing table?
 
@@ -68,9 +68,9 @@ My wife, Lynne, is the prototype of the intelligent non-programmer. (She is also
 
 Search Quora or StackOverflow and you’ll find dozens of variations of the question “[Is it possible to store multiple values in an Excel cell?](https://stackoverflow.com/questions/32060804/is-it-possible-to-store-multiple-values-in-an-excel-cell)” or “[Can I insert a table into an Excel cell?](https://stackoverflow.com/questions/2852755/insert-table-into-cell-excel)”
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/1940/1\*D2koZntZElhSOH8rL\_QKpw.png" width="970" height="337" srcSet="https://miro.medium.com/max/552/1\*D2koZntZElhSOH8rL\_QKpw.png 276w, https://miro.medium.com/max/1104/1\*D2koZntZElhSOH8rL\_QKpw.png 552w, https://miro.medium.com/max/1280/1\*D2koZntZElhSOH8rL\_QKpw.png 640w, https://miro.medium.com/max/1316/1\*D2koZntZElhSOH8rL\_QKpw.png 658w" sizes="658px"/>
+![](https://miro.medium.com/max/1940/1*D2koZntZElhSOH8rL_QKpw.png)
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/700/0\*AdEtt\_-nOeLmxOAh.gif" width="350" height="233" srcSet="https://miro.medium.com/max/552/0\*AdEtt\_-nOeLmxOAh.gif 276w, https://miro.medium.com/max/686/0\*AdEtt\_-nOeLmxOAh.gif 343w" sizes="343px"/>
+![](https://miro.medium.com/max/700/0*AdEtt_-nOeLmxOAh.gif)
 
 Listen closely, and you can hear the sound of someone’s brain about to melt.
 
@@ -78,7 +78,7 @@ If you have a certain type of background, you look at a situation like this and 
 
 But _most people’s_ brains don’t go naturally to a relational-tables model, and _most people_ have never used those functions.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/3776/1\*sqy2iq8MybBSGixKcV4WMQ.png" width="1888" height="1343" srcSet="https://miro.medium.com/max/552/1\*sqy2iq8MybBSGixKcV4WMQ.png 276w, https://miro.medium.com/max/1104/1\*sqy2iq8MybBSGixKcV4WMQ.png 552w, https://miro.medium.com/max/1280/1\*sqy2iq8MybBSGixKcV4WMQ.png 640w, https://miro.medium.com/max/1456/1\*sqy2iq8MybBSGixKcV4WMQ.png 728w, https://miro.medium.com/max/1632/1\*sqy2iq8MybBSGixKcV4WMQ.png 816w, https://miro.medium.com/max/1808/1\*sqy2iq8MybBSGixKcV4WMQ.png 904w, https://miro.medium.com/max/1984/1\*sqy2iq8MybBSGixKcV4WMQ.png 992w, https://miro.medium.com/max/2000/1\*sqy2iq8MybBSGixKcV4WMQ.png 1000w" sizes="1000px"/>
+![](https://miro.medium.com/max/3776/1*sqy2iq8MybBSGixKcV4WMQ.png)
 
 Two signs that you’ve outgrown Excel: (1) Repeating the same data over, and (2) a series of numbered columns.
 
@@ -92,15 +92,15 @@ That’s because in Excel, **data and presentation are hopelessly commingled**. 
 
 So people are naturally tempted to do things like this — manually grouping and subtotaling different categories, with blank rows and brightly colored labels:
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/3936/1\*-dgXuTPTQGXMQNrvgVa5UA.png" width="1968" height="1632" srcSet="https://miro.medium.com/max/552/1\*-dgXuTPTQGXMQNrvgVa5UA.png 276w, https://miro.medium.com/max/1104/1\*-dgXuTPTQGXMQNrvgVa5UA.png 552w, https://miro.medium.com/max/1280/1\*-dgXuTPTQGXMQNrvgVa5UA.png 640w, https://miro.medium.com/max/1400/1\*-dgXuTPTQGXMQNrvgVa5UA.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/3936/1*-dgXuTPTQGXMQNrvgVa5UA.png)
 
 This is an official template provided by the Microsoft Corporation. It’s pretty, but of all people, they should know better than to offer this up as a good practice!
 
 If you know spreadsheets, you know that this spreadsheet would be a nightmare to work with. You can’t get numbers into it or out of it without repetitive copying or pasting, or retyping. And it’s brittle — look at it wrong and you’ll break something. Just picture in your head what’s involved if you want to add a new expense category, or remove an existing one.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/2010/1\*RJ3X49HrZdbx7FUqBjU7Gw.png" width="1005" height="417" srcSet="https://miro.medium.com/max/552/1\*RJ3X49HrZdbx7FUqBjU7Gw.png 276w, https://miro.medium.com/max/1104/1\*RJ3X49HrZdbx7FUqBjU7Gw.png 552w, https://miro.medium.com/max/1166/1\*RJ3X49HrZdbx7FUqBjU7Gw.png 583w" sizes="583px"/>
+![](https://miro.medium.com/max/2010/1*RJ3X49HrZdbx7FUqBjU7Gw.png)
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/2676/1\*UXziB1V3\_kiad5aFc6LvGw.png" width="1338" height="773" srcSet="https://miro.medium.com/max/552/1\*UXziB1V3\_kiad5aFc6LvGw.png 276w, https://miro.medium.com/max/836/1\*UXziB1V3\_kiad5aFc6LvGw.png 418w" sizes="418px"/>
+![](https://miro.medium.com/max/2676/1*UXziB1V3_kiad5aFc6LvGw.png)
 
 Even if you’ve done everything right, you can’t create these kinds of views on your data in Excel.
 
@@ -110,7 +110,7 @@ There’s no way to create a natural view of data with one-to-many or many-to-ma
 
 The downside of Excel’s flexibility is that it’s really, really easy to do the wrong thing. You can enter text into a numeric column. You can type something that looks like a date but isn’t.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/1962/1\*Alqve5M5YApvJXEoQGAqMg.png" width="981" height="219" srcSet="https://miro.medium.com/max/552/1\*Alqve5M5YApvJXEoQGAqMg.png 276w, https://miro.medium.com/max/1104/1\*Alqve5M5YApvJXEoQGAqMg.png 552w, https://miro.medium.com/max/1280/1\*Alqve5M5YApvJXEoQGAqMg.png 640w, https://miro.medium.com/max/1400/1\*Alqve5M5YApvJXEoQGAqMg.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1962/1*Alqve5M5YApvJXEoQGAqMg.png)
 
 Some of these were entered as M/D/Y and some as D/M/Y. Can you tell which is which?
 
@@ -122,7 +122,7 @@ As a result, the internet is littered with Excel horror stories, from the [$25-m
 
 Twelve years after Google Sheets was introduced, and ten years after Microsoft launched Excel Online, most spreadsheet “systems” are still files that live on a server or on someone’s hard drive somewhere.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/1446/0\*\_38KqRfN-vzJ4HT5.png" width="723" height="562" srcSet="https://miro.medium.com/max/552/0\*\_38KqRfN-vzJ4HT5.png 276w, https://miro.medium.com/max/1104/0\*\_38KqRfN-vzJ4HT5.png 552w, https://miro.medium.com/max/1280/0\*\_38KqRfN-vzJ4HT5.png 640w, https://miro.medium.com/max/1400/0\*\_38KqRfN-vzJ4HT5.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1446/0*_38KqRfN-vzJ4HT5.png)
 
 As a result:
 
@@ -145,7 +145,7 @@ So let’s talk about **Microsoft Access**, which _is_ database software, and wh
 
 **So why don’t more people use Access?** It’s not because they’re too dumb to figure it out. My team includes four data scientists and five programmers. We can all write SQL in our sleep. We use spreadsheets _a lot_ and we don’t use Access _at all_.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/3260/1\*S5Ra3-Opvn6PZMozaCMRpg.png" width="1630" height="1067" srcSet="https://miro.medium.com/max/552/1\*S5Ra3-Opvn6PZMozaCMRpg.png 276w, https://miro.medium.com/max/1104/1\*S5Ra3-Opvn6PZMozaCMRpg.png 552w, https://miro.medium.com/max/1280/1\*S5Ra3-Opvn6PZMozaCMRpg.png 640w, https://miro.medium.com/max/1400/1\*S5Ra3-Opvn6PZMozaCMRpg.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/3260/1*S5Ra3-Opvn6PZMozaCMRpg.png)
 
 The reason, I think, is best summarized in Venkatesh Rao’s answer on Quora to the question “[Why do many people still use Excel as a pseudo database?](https://www.quora.com/Why-do-many-people-still-use-Excel-as-a-pseudo-database)”:
 
@@ -161,9 +161,9 @@ This tension between spreadsheets and databases gives us a starting point for wh
 
 It has to let me easily create lists and tables like Excel. But in the long run it has to give my data a more solid structure like Access does.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/5546/1\*QDBoBf5Bs8tmj4qrDBxHIg.png" width="2773" height="1945" srcSet="https://miro.medium.com/max/552/1\*QDBoBf5Bs8tmj4qrDBxHIg.png 276w, https://miro.medium.com/max/1000/1\*QDBoBf5Bs8tmj4qrDBxHIg.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/5546/1*QDBoBf5Bs8tmj4qrDBxHIg.png)
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/5546/1\*eT\_cGSvdFOmb0W0qibufDw.png" width="2773" height="1945" srcSet="https://miro.medium.com/max/552/1\*eT\_cGSvdFOmb0W0qibufDw.png 276w, https://miro.medium.com/max/1000/1\*eT\_cGSvdFOmb0W0qibufDw.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/5546/1*eT_cGSvdFOmb0W0qibufDw.png)
 
 Fieldbook (left) and Airtable both advertise the simplicity of spreadsheets combined with the power of a database.
 
@@ -187,13 +187,13 @@ The relational data model is wonderful; but it was invented to make things easy 
 
 I have a theory that **a loosely-typed object-oriented model**, like JavaScript objects or JSON documents in a NoSQL database, is **a more natural fit for most people’s mental models** than a strictly-typed relational table structure.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/2048/1\*lOivo4SeIXZMtplwYdmLKw.jpeg" width="1024" height="768" srcSet="https://miro.medium.com/max/552/1\*lOivo4SeIXZMtplwYdmLKw.jpeg 276w, https://miro.medium.com/max/1104/1\*lOivo4SeIXZMtplwYdmLKw.jpeg 552w, https://miro.medium.com/max/1280/1\*lOivo4SeIXZMtplwYdmLKw.jpeg 640w, https://miro.medium.com/max/1400/1\*lOivo4SeIXZMtplwYdmLKw.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2048/1*lOivo4SeIXZMtplwYdmLKw.jpeg)
 
 Photo © 2011 by Simon Bramwell
 
 I was recently talking with a DevResults customer who was managing data from an educational project that works in several developing countries. Since this scenario is fresh on my mind, let’s consider a simple data model for a school.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/1226/1\*jVAqZZL5d8mqgfSDHylLSw.png" width="613" height="352" srcSet="https://miro.medium.com/max/552/1\*jVAqZZL5d8mqgfSDHylLSw.png 276w, https://miro.medium.com/max/1104/1\*jVAqZZL5d8mqgfSDHylLSw.png 552w, https://miro.medium.com/max/1226/1\*jVAqZZL5d8mqgfSDHylLSw.png 613w" sizes="613px"/>
+![](https://miro.medium.com/max/1226/1*jVAqZZL5d8mqgfSDHylLSw.png)
 
 In this model, a **school** “has” a **name**, a **region**, a **type**, and a list of **classes**. It’s not unreasonable to think of each of these things as a _field_ or a _property_ of a school, even though one of them is a list.
 
@@ -233,7 +233,7 @@ We can capture this information in a JavaScript object or a JSON file in a succi
 
 In contrast, the relational model of the same data introduces a weird layer of abstraction and indirection.
 
-<img alt="Image for post" class="t u v ja ak" src="https://miro.medium.com/max/2030/1\*T-bojAiwLBaC3ZjwQQMZFw.png" width="1015" height="424" srcSet="https://miro.medium.com/max/552/1\*T-bojAiwLBaC3ZjwQQMZFw.png 276w, https://miro.medium.com/max/1104/1\*T-bojAiwLBaC3ZjwQQMZFw.png 552w, https://miro.medium.com/max/1280/1\*T-bojAiwLBaC3ZjwQQMZFw.png 640w, https://miro.medium.com/max/1400/1\*T-bojAiwLBaC3ZjwQQMZFw.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2030/1*T-bojAiwLBaC3ZjwQQMZFw.png)
 
 This is weird for a couple of reasons.
 

@@ -3,7 +3,7 @@ title: 'Rewrite, refactor, or reinvent?'
 subtitle: 'Lessons from 6 software rewrite stories'
 description: 'A new take on the age-old question: Should you rewrite your application from scratch, or is that “the single worst strategic mistake that any software company can make”? Turns out there are more than two options for dealing with a mature codebase.'
 date: '2019-02-19'
-image: 'https://miro.medium.com/max/3818/1*ywYwvB-aydv0Ovx7K-5P3g.jpeg'
+image: '/images/thumbnails/rewrite.png'
 ---
 
 > “As if source code **rusted**!” — _Joel Spolsky_
@@ -29,11 +29,11 @@ The correct answer, of course, is that **it depends** a lot on the circumstances
 
 _(Bonus: ASCII art summaries of each story!)_
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2048/1*VM8ZUQpZjXwT2kv2LiMa2A.png" width="1024" height="742" srcSet="https://miro.medium.com/max/552/1*VM8ZUQpZjXwT2kv2LiMa2A.png 276w, https://miro.medium.com/max/1104/1*VM8ZUQpZjXwT2kv2LiMa2A.png 552w, https://miro.medium.com/max/1280/1*VM8ZUQpZjXwT2kv2LiMa2A.png 640w, https://miro.medium.com/max/1400/1*VM8ZUQpZjXwT2kv2LiMa2A.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2048/1*VM8ZUQpZjXwT2kv2LiMa2A.png)
 
 # 1\. Netscape
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2046/1*CcOcjs6ob6xk3Yc3BvajYQ.png" width="1023" height="160" srcSet="https://miro.medium.com/max/552/1*CcOcjs6ob6xk3Yc3BvajYQ.png 276w, https://miro.medium.com/max/1104/1*CcOcjs6ob6xk3Yc3BvajYQ.png 552w, https://miro.medium.com/max/1280/1*CcOcjs6ob6xk3Yc3BvajYQ.png 640w, https://miro.medium.com/max/1400/1*CcOcjs6ob6xk3Yc3BvajYQ.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2046/1*CcOcjs6ob6xk3Yc3BvajYQ.png)
 
 **Key:** 📝= rewrite, 💀 = dead end
 
@@ -45,7 +45,7 @@ Netscape’s first serious competition came from Microsoft’s Internet Explorer
 
 At the beginning of 1998, Netscape was still the leading browser, but just barely. Netscape’s retail price was $49; Microsoft was giving IE away for free and shipping it with Windows as the default browser.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1600/1*xK0A1DvccTAfcLbpfjqKuQ.jpeg" width="800" height="576" srcSet="https://miro.medium.com/max/552/1*xK0A1DvccTAfcLbpfjqKuQ.jpeg 276w, https://miro.medium.com/max/1104/1*xK0A1DvccTAfcLbpfjqKuQ.jpeg 552w, https://miro.medium.com/max/1280/1*xK0A1DvccTAfcLbpfjqKuQ.jpeg 640w, https://miro.medium.com/max/1400/1*xK0A1DvccTAfcLbpfjqKuQ.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1600/1*xK0A1DvccTAfcLbpfjqKuQ.jpeg)
 
 After version 4.0 of Netscape was released, the company [announced](https://www.cnet.com/news/netscape-sets-source-code-free/) that version 5.0 would be given away for free, and developed by an open source community created and funded by the company, called Mozilla.
 
@@ -67,7 +67,7 @@ Another two years went by before Netscape 6.0 was finally released; and even aft
 
 Not that it mattered. In the three years that Netscape stood still, Internet Explorer had taken all of its remaining market share:
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1600/1*2AJ0RM43DGspNNuRYSOtVA.png" width="800" height="367" srcSet="https://miro.medium.com/max/552/1*2AJ0RM43DGspNNuRYSOtVA.png 276w, https://miro.medium.com/max/1104/1*2AJ0RM43DGspNNuRYSOtVA.png 552w, https://miro.medium.com/max/1280/1*2AJ0RM43DGspNNuRYSOtVA.png 640w, https://miro.medium.com/max/1400/1*2AJ0RM43DGspNNuRYSOtVA.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1600/1*2AJ0RM43DGspNNuRYSOtVA.png)
 
 When the rewrite began, Netscape was losing ground quickly to Microsoft’s Internet Explorer. When the new browser was finally released three years later, it was buggy and slow; meanwhile Netscape’s market share had dwindled to practically nothing. (Chart adapted from [Wikipedia](<https://en.wikipedia.org/wiki/Usage_share_of_web_browsers#/media/File:Usage_Share_of_browsers_(updated_August_2018).png>).)
 
@@ -91,19 +91,19 @@ And anyway, the question at hand isn’t whether the rewrite was good for the we
 
 But the rewrite was certainly a contributing factor, and the end result was the destruction of a company worth billions of dollars and thousands of layoffs. So I’m going to agree with Joel that **the net consequences of this rewrite were disastrous**.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2006/1*lpbusnOGpf4TMdwY\_hgbIA.png" width="1003" height="664" srcSet="https://miro.medium.com/max/552/1*lpbusnOGpf4TMdwY\_hgbIA.png 276w, https://miro.medium.com/max/1104/1*lpbusnOGpf4TMdwY\_hgbIA.png 552w, https://miro.medium.com/max/1280/1*lpbusnOGpf4TMdwY\_hgbIA.png 640w, https://miro.medium.com/max/1400/1*lpbusnOGpf4TMdwY\_hgbIA.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2006/1*lpbusnOGpf4TMdwY_hgbIA.png)
 
 # 2\. Basecamp
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2046/1*O4-zINabnPY7bWJ3ezX63Q.png" width="1023" height="157" srcSet="https://miro.medium.com/max/552/1*O4-zINabnPY7bWJ3ezX63Q.png 276w, https://miro.medium.com/max/1104/1*O4-zINabnPY7bWJ3ezX63Q.png 552w, https://miro.medium.com/max/1280/1*O4-zINabnPY7bWJ3ezX63Q.png 640w, https://miro.medium.com/max/1400/1*O4-zINabnPY7bWJ3ezX63Q.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2046/1*O4-zINabnPY7bWJ3ezX63Q.png)
 
 In the early 2000s, a Chicago web design company called **37signals** had built a following around founders [Jason Fried](https://medium.com/u/c030228809f2?source=post_page-----635e4c8f7c22--------------------------------) and [DHH](https://medium.com/u/54bcbf647830?source=post_page-----635e4c8f7c22--------------------------------)’s influential and often contrarian [blog](https://m.signalvnoise.com).
 
 They originally caught my attention when I was just starting out as a web designer, with a series of unsolicited redesigns of sites like Google and PayPal, called [37better](https://web.archive.org/web/20050206094649/http://www.37signals.com/better).
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2672/1*phyGgSr6L8JtjNimcL-cZA.png" width="1336" height="1549" srcSet="https://miro.medium.com/max/552/1*phyGgSr6L8JtjNimcL-cZA.png 276w, https://miro.medium.com/max/1104/1*phyGgSr6L8JtjNimcL-cZA.png 552w, https://miro.medium.com/max/1166/1*phyGgSr6L8JtjNimcL-cZA.png 583w" sizes="583px"/>
+![](https://miro.medium.com/max/2672/1*phyGgSr6L8JtjNimcL-cZA.png)
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2336/1*KExCbBFnKKpQ7dU119jdNw.png" width="1168" height="1891" srcSet="https://miro.medium.com/max/552/1*KExCbBFnKKpQ7dU119jdNw.png 276w, https://miro.medium.com/max/836/1*KExCbBFnKKpQ7dU119jdNw.png 418w" sizes="418px"/>
+![](https://miro.medium.com/max/2336/1*KExCbBFnKKpQ7dU119jdNw.png)
 
 37signals’ [redesign of FedEx’s shipping form](https://web.archive.org/web/20050207174211/http://www.37signals.com/better/fedex/after.html) (left) is still better than [the real thing](https://www.fedex.com/shipping/shipEntryAction.do?method=doEntry&link=1&locale=en_US&urlparams=us&sType=F), nearly two decades later.
 
@@ -139,7 +139,7 @@ They started to see their profitable product as a set of golden handcuffs:
 
 > The number one thing is just to make sure all the users you already have are still happy. The money just keeps coming in every month, new check, new check, new check. Great. But, you have to stick your arms forward and say, “Okay, I will never change my software again.”
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1400/1*SqYBDomffzQ2ClJIsQMi7Q.jpeg" width="700" height="460" srcSet="https://miro.medium.com/max/552/1*SqYBDomffzQ2ClJIsQMi7Q.jpeg 276w, https://miro.medium.com/max/1104/1*SqYBDomffzQ2ClJIsQMi7Q.jpeg 552w, https://miro.medium.com/max/1280/1*SqYBDomffzQ2ClJIsQMi7Q.jpeg 640w, https://miro.medium.com/max/1400/1*SqYBDomffzQ2ClJIsQMi7Q.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1400/1*SqYBDomffzQ2ClJIsQMi7Q.jpeg)
 
 Spoiler alert: They rewrote Basecamp from scratch and it turned out great. It took around a year, and new signups doubled immediately following the release of Basecamp 2.
 
@@ -171,7 +171,7 @@ He points out that when you force users to pack up and move, _that’s_ when you
 
 > “Is Basecamp even actually the thing I want anymore? If we have to move all our crap over anyway, maybe I can just move it somewhere else. If I have to pack it all up into boxes and load it on the truck, I can just send that truck across town instead. That’s not a big hassle. The big hassle is to pack up all my shit. Whether it goes to Basecamp again or it goes somewhere else, that’s not the big decision.”
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/6552/1*ldSpa13ejf7TZfXjyr5XMg.jpeg" width="3276" height="2176" srcSet="https://miro.medium.com/max/552/1*ldSpa13ejf7TZfXjyr5XMg.jpeg 276w, https://miro.medium.com/max/1000/1*ldSpa13ejf7TZfXjyr5XMg.jpeg 500w" sizes="500px"/>
+![](https://miro.medium.com/max/6552/1*ldSpa13ejf7TZfXjyr5XMg.jpeg)
 
 David compares Basecamp Classic to a Leica M3: It hasn’t been manufactured since 1967, but Leica is still committed to supporting it and repairing it for as long as they’re in business. (Photo [Dnalor 01](https://commons.wikimedia.org/w/index.php?curid=27903569))
 
@@ -183,7 +183,7 @@ The kicker is that, four years later, they did it all over again: [Basecamp 3 wa
 >
 > But, but, but isn’t that expensive? Isn’t that hard? What about security? What about legacy code bases? Yes, what about it? Taking care of customers — even if they’re not interested in upgrading on our schedule — is what we do here.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1628/1*Nd8kwuSdBKDB0AP3-Em-aw.jpeg" width="814" height="583" srcSet="https://miro.medium.com/max/552/1*Nd8kwuSdBKDB0AP3-Em-aw.jpeg 276w, https://miro.medium.com/max/1104/1*Nd8kwuSdBKDB0AP3-Em-aw.jpeg 552w, https://miro.medium.com/max/1280/1*Nd8kwuSdBKDB0AP3-Em-aw.jpeg 640w, https://miro.medium.com/max/1400/1*Nd8kwuSdBKDB0AP3-Em-aw.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1628/1*Nd8kwuSdBKDB0AP3-Em-aw.jpeg)
 
 ## Lessons
 
@@ -197,13 +197,13 @@ Having to maintain multiple versions of product indefinitely doesn’t come with
 
 > It’s not free. Why would you expect it to be free? It’s valuable, so of course it’s not free. But it’s worth doing.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1834/1*l0XU\_5L7LPojxfH-HGtLHg.png" width="917" height="566" srcSet="https://miro.medium.com/max/552/1*l0XU\_5L7LPojxfH-HGtLHg.png 276w, https://miro.medium.com/max/1010/1*l0XU\_5L7LPojxfH-HGtLHg.png 505w" sizes="505px"/>
+![](https://miro.medium.com/max/1834/1*l0XU_5L7LPojxfH-HGtLHg.png)
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2000/1*QqzsJBhAyn\_Q1zb\_CPJSrw.jpeg" width="1000" height="628" srcSet="https://miro.medium.com/max/552/1*QqzsJBhAyn\_Q1zb\_CPJSrw.jpeg 276w, https://miro.medium.com/max/992/1*QqzsJBhAyn\_Q1zb\_CPJSrw.jpeg 496w" sizes="496px"/>
+![](https://miro.medium.com/max/2000/1*QqzsJBhAyn_Q1zb_CPJSrw.jpeg)
 
 # 3\. Visual Studio & VS Code
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2046/1*eKBCiXHivYWRPtom9UqZUg.png" width="1023" height="138" srcSet="https://miro.medium.com/max/552/1*eKBCiXHivYWRPtom9UqZUg.png 276w, https://miro.medium.com/max/1104/1*eKBCiXHivYWRPtom9UqZUg.png 552w, https://miro.medium.com/max/1280/1*eKBCiXHivYWRPtom9UqZUg.png 640w, https://miro.medium.com/max/1400/1*eKBCiXHivYWRPtom9UqZUg.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2046/1*eKBCiXHivYWRPtom9UqZUg.png)
 
 **Key**: 😎 = hipster cred
 
@@ -231,7 +231,7 @@ Not quite from scratch, actually: Microsoft already had some important parts lyi
 
 VS Code is open-source, lightweight, fast, and extensible; and — amazingly for a Microsoft product — it’s become the coding environment of choice for the cool kids.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/3404/0\*7akOMsnPRwJujPUh" width="1702" height="985" srcSet="https://miro.medium.com/max/552/0\*7akOMsnPRwJujPUh 276w, https://miro.medium.com/max/1104/0\*7akOMsnPRwJujPUh 552w, https://miro.medium.com/max/1280/0\*7akOMsnPRwJujPUh 640w, https://miro.medium.com/max/1400/0\*7akOMsnPRwJujPUh 700w" sizes="700px"/>
+![](https://miro.medium.com/max/3404/0*7akOMsnPRwJujPUh)
 
 VS Code has become the text editor of choice for JS hipsters. (Chart from [State of JavaScript Survey, 2018](https://2018.stateofjs.com/other-tools/))
 
@@ -241,7 +241,7 @@ Both products are still actively developed, and there’s no indication that Mic
 
 In stark contrast to Netscape’s experience, Microsoft succeeded in building an **active open source community** around VS Code. This community has multiplied the efforts of the in-house development team.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1800/1*3HbgJZIIKG2ObVdS\_ddjKg.png" width="900" height="362" srcSet="https://miro.medium.com/max/552/1*3HbgJZIIKG2ObVdS\_ddjKg.png 276w, https://miro.medium.com/max/1000/1*3HbgJZIIKG2ObVdS\_ddjKg.png 500w" sizes="500px"/>
+![](https://miro.medium.com/max/1800/1*3HbgJZIIKG2ObVdS_ddjKg.png)
 
 Of all the open source projects on GitHub, Visual Studio Code is ranked thirteenth by number of stars — coincidentally, just below Linux!
 
@@ -255,11 +255,11 @@ One final takeaway from the VS Code story is that things have changed fundamenta
 
 In spite all of the [hand-wringing about the complexity of today’s toolset](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f), the fact is that the JavaScript ecosystem has evolved over the last few years into the long-awaited promised land of reusable, modular open-source code. In that respect, this is a historically unprecedented time.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/5726/1*HsQljVFhzHAB2dg5s1-XKw.jpeg" width="2863" height="1579" srcSet="https://miro.medium.com/max/552/1*HsQljVFhzHAB2dg5s1-XKw.jpeg 276w, https://miro.medium.com/max/1104/1*HsQljVFhzHAB2dg5s1-XKw.jpeg 552w, https://miro.medium.com/max/1280/1*HsQljVFhzHAB2dg5s1-XKw.jpeg 640w, https://miro.medium.com/max/1400/1*HsQljVFhzHAB2dg5s1-XKw.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/5726/1*HsQljVFhzHAB2dg5s1-XKw.jpeg)
 
 # 4\. Gmail & Inbox
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2046/1*eRBm\_cUduNQyBzu-spXhNw.png" width="1023" height="114" srcSet="https://miro.medium.com/max/552/1*eRBm\_cUduNQyBzu-spXhNw.png 276w, https://miro.medium.com/max/1104/1*eRBm\_cUduNQyBzu-spXhNw.png 552w, https://miro.medium.com/max/1280/1*eRBm\_cUduNQyBzu-spXhNw.png 640w, https://miro.medium.com/max/1400/1*eRBm\_cUduNQyBzu-spXhNw.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2046/1*eRBm_cUduNQyBzu-spXhNw.png)
 
 **Key:** 🌇 = sunset
 
@@ -273,7 +273,7 @@ Both Inbox and Gmail used the same back end. They were essentially just differen
 
 After a while, though, Inbox stopped improving, and it became clear that Google was no longer investing any resources in it. Sure enough, four years after it was launched, Google announced that it would be [sunsetting Inbox](https://www.theverge.com/2018/9/12/17848500/google-inbox-shut-down-sunset-snooze-email-march-2019).
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1284/1*HAJTdggR4LBx2dXlBOb6Bw.png" width="642" height="292" srcSet="https://miro.medium.com/max/552/1*HAJTdggR4LBx2dXlBOb6Bw.png 276w, https://miro.medium.com/max/1104/1*HAJTdggR4LBx2dXlBOb6Bw.png 552w, https://miro.medium.com/max/1280/1*HAJTdggR4LBx2dXlBOb6Bw.png 640w, https://miro.medium.com/max/1284/1*HAJTdggR4LBx2dXlBOb6Bw.png 642w" sizes="642px"/>
+![](https://miro.medium.com/max/1284/1*HAJTdggR4LBx2dXlBOb6Bw.png)
 
 I was initially very annoyed, but after spending a little time with the latest version of Gmail, I found that **many of my favorite features from Inbox had been ported to the original product**: Smart Reply, hover actions, and inline attachments and images. Gmail’s multiple inboxes were a good-enough stand-in for Inbox’s bundles.
 
@@ -291,11 +291,11 @@ In this case, Google’s original messaging around Inbox led us to believe that 
 
 I think there would have been less unhappiness if Gmail had gone all the way to feature parity with Inbox before it was shuttered.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2200/1*-Z7XkyKIXuDV-D3Sr1XJIg.png" width="1100" height="566" srcSet="https://miro.medium.com/max/552/1*-Z7XkyKIXuDV-D3Sr1XJIg.png 276w, https://miro.medium.com/max/1104/1*-Z7XkyKIXuDV-D3Sr1XJIg.png 552w, https://miro.medium.com/max/1280/1*-Z7XkyKIXuDV-D3Sr1XJIg.png 640w, https://miro.medium.com/max/1400/1*-Z7XkyKIXuDV-D3Sr1XJIg.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2200/1*-Z7XkyKIXuDV-D3Sr1XJIg.png)
 
 # 5\. FogBugz & Trello
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2046/1*uH34if4XA-\_ikUdjeC5s3g.png" width="1023" height="130" srcSet="https://miro.medium.com/max/552/1*uH34if4XA-\_ikUdjeC5s3g.png 276w, https://miro.medium.com/max/1104/1*uH34if4XA-\_ikUdjeC5s3g.png 552w, https://miro.medium.com/max/1280/1*uH34if4XA-\_ikUdjeC5s3g.png 640w, https://miro.medium.com/max/1400/1*uH34if4XA-\_ikUdjeC5s3g.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2046/1*uH34if4XA-_ikUdjeC5s3g.png)
 
 **Key**: 😟 = sad decline, 🤑 money money money
 
@@ -367,9 +367,9 @@ Joel presented it as a tool for managing work at a higher level than FogBugz all
 
 > Honestly, with all the fancy-schmancy “project management” software out there, I never found a way to keep track of who’s supposed to be working on what. … As the founder of two companies it was starting to get distracting to walk down the hallways seeing dozens of people getting paid to sit at computers … and I had no idea if they were doing the exact right thing, or maybe something they thought was important but which, nevertheless, was not, actually, important.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2048/1*dgfONO\_ojuTUiC1-p8XVZg.jpeg" width="1024" height="768" srcSet="https://miro.medium.com/max/552/1*dgfONO\_ojuTUiC1-p8XVZg.jpeg 276w, https://miro.medium.com/max/866/1*dgfONO\_ojuTUiC1-p8XVZg.jpeg 433w" sizes="433px"/>
+![](https://miro.medium.com/max/2048/1*dgfONO_ojuTUiC1-p8XVZg.jpeg)
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2000/1*fN4ioxLuPStMewVPi8w4OA.png" width="1000" height="571" srcSet="https://miro.medium.com/max/552/1*fN4ioxLuPStMewVPi8w4OA.png 276w, https://miro.medium.com/max/1104/1*fN4ioxLuPStMewVPi8w4OA.png 552w, https://miro.medium.com/max/1136/1*fN4ioxLuPStMewVPi8w4OA.png 568w" sizes="568px"/>
+![](https://miro.medium.com/max/2000/1*fN4ioxLuPStMewVPi8w4OA.png)
 
 In building Trello, Fog Creek’s developers got a chance to use contemporary technologies, for a change:
 
@@ -415,11 +415,11 @@ Clearly all the people involved had bigger fish to fry: Stack Overflow, Trello, 
 
 But the sentimental part of me wishes there had been a better way to “honor the legacy” of all the people who created it and used it over all those years.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/1696/1*ufzuYj4qIXXLDQMS7EqZqQ.png" width="848" height="818" srcSet="https://miro.medium.com/max/552/1*ufzuYj4qIXXLDQMS7EqZqQ.png 276w, https://miro.medium.com/max/1104/1*ufzuYj4qIXXLDQMS7EqZqQ.png 552w, https://miro.medium.com/max/1280/1*ufzuYj4qIXXLDQMS7EqZqQ.png 640w, https://miro.medium.com/max/1400/1*ufzuYj4qIXXLDQMS7EqZqQ.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/1696/1*ufzuYj4qIXXLDQMS7EqZqQ.png)
 
 # 6\. FreshBooks & BillSpring
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/2046/1*sR8NUhzeHPwMft1fcpasww.png" width="1023" height="136" srcSet="https://miro.medium.com/max/552/1*sR8NUhzeHPwMft1fcpasww.png 276w, https://miro.medium.com/max/1104/1*sR8NUhzeHPwMft1fcpasww.png 552w, https://miro.medium.com/max/1280/1*sR8NUhzeHPwMft1fcpasww.png 640w, https://miro.medium.com/max/1400/1*sR8NUhzeHPwMft1fcpasww.png 700w" sizes="700px"/>
+![](https://miro.medium.com/max/2046/1*sR8NUhzeHPwMft1fcpasww.png)
 
 **Key**: 🕵️‍♀️ = undercover operation
 
@@ -471,7 +471,7 @@ Shortly afterwards they lifted the veil of secrecy: They let BillSpring customer
 
 Little by little, “FreshBooks Classic” customers were invited to try the new upgrade — but they didn’t have to, and they could always migrate back to the more familiar version if they wanted.
 
-<img alt="Image for post" class="ff et ep if w" src="https://miro.medium.com/max/3408/1*IujEjnPsnJLwdgaKh-jgog.jpeg" width="1704" height="1235" srcSet="https://miro.medium.com/max/552/1*IujEjnPsnJLwdgaKh-jgog.jpeg 276w, https://miro.medium.com/max/1104/1*IujEjnPsnJLwdgaKh-jgog.jpeg 552w, https://miro.medium.com/max/1280/1*IujEjnPsnJLwdgaKh-jgog.jpeg 640w, https://miro.medium.com/max/1400/1*IujEjnPsnJLwdgaKh-jgog.jpeg 700w" sizes="700px"/>
+![](https://miro.medium.com/max/3408/1*IujEjnPsnJLwdgaKh-jgog.jpeg)
 
 ## Lessons
 

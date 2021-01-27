@@ -13,8 +13,10 @@ export const posts = () =>
 export const post = (id: string) => {
   const fullPath = path.join(postsDir, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const postData = parse(fileContents).data
-  return { id, ...postData } as PostData
+  const postData = { id, ...parse(fileContents).data } as PostData
+  postData.title = postData.title.replace('_', '&nbsp;')
+  postData.subtitle = postData.subtitle.replace('_', '&nbsp;')
+  return postData
 }
 
 export const getAllPostIds = () =>
