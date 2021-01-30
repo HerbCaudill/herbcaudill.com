@@ -15,14 +15,18 @@ export const post = (id: string): PostData => {
   const fullPath = path.join(postsDir, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, 'utf8')
   const parsedContents = parse(fileContents)
-  const postData = parsedContents.data as PostData
+  const postData = parsedContents.data
   return {
     id,
-    ...postData,
+    ...(postData as PostData),
+    thumbnail: postData.thumbnail ?? postData.image,
     title: postData.title.replace('_', '&nbsp;'),
     subtitle: postData.subtitle.replace('_', '&nbsp;'),
     content: parsedContents.content,
     contentHtml: markdownToHtml(parsedContents.content),
+    tags: postData.tags
+      ? postData.tags.split(',').map((t: string) => t.trim())
+      : [],
   }
 }
 
