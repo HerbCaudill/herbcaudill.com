@@ -3,7 +3,8 @@ title: Rewrite, refactor, or reinvent?
 subtitle: Lessons from 6 software rewrite stories
 description: 'A new take on the age-old question: Should you rewrite your application from scratch, or is that “the single worst strategic mistake that any software company can make”? Turns out there are more than two options for dealing with a mature codebase.'
 date: '2019-02-19'
-image: /images/20190219-rewrite-refactor-reinvent/rust.cropped.jpg
+image: /images/posts/rewrite/rust.jpg
+thumbnail: /images/posts/rewrite/thumbnail.jpg
 tags: software
 ---
 
