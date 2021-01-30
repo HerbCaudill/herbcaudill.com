@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   .splat-underline {
     @apply group-hover:bg-splat hover:bg-splat bg-bottom bg-underline bg-no-repeat;
@@ -10,5 +11,21 @@
   }
   .luminosity {
     mix-blend-mode: luminosity;
+  }
+
+  article {
+    @apply font-serif;
+  }
+
+  article p {
+    @apply my-3;
+  }
+
+  article ul {
+    @apply list-disc list-inside mr-2;
+  }
+
+  article blockquote {
+    @apply p-3 border;
   }
 }
