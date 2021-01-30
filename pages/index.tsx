@@ -5,7 +5,7 @@ import { posts } from '../lib/posts'
 import { PostData } from '../lib/types'
 import { Posts } from '../components/Posts'
 import { Header } from '../components/Header'
-import { siteTitle } from '../components/constants'
+import { siteTitle } from '../lib/constants'
 
 export default function Home({ allPosts }: { allPosts: PostData[] }) {
   return (
