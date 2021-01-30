@@ -4,7 +4,7 @@
 
 @layer base {
   .splat-underline {
-    @apply group-hover:bg-splat hover:bg-splat bg-bottom bg-underline bg-no-repeat;
+    @apply group-hover:bg-splat-red hover:bg-splat-red bg-bottom bg-underline bg-no-repeat;
   }
   .multiply {
     mix-blend-mode: multiply;
@@ -12,20 +12,30 @@
   .luminosity {
     mix-blend-mode: luminosity;
   }
+}
 
+@layer base {
   article {
-    @apply font-serif;
+    @apply text-lg font-serif;
   }
 
   article p {
-    @apply my-3;
+    @apply my-5;
+  }
+
+  article a {
+    @apply bg-splat-black bg-bottom bg-underline bg-no-repeat;
+  }
+
+  article a:hover {
+    @apply text-red-700 bg-splat-red;
   }
 
   article ul {
-    @apply list-disc list-inside mr-2;
+    @apply list-square list-outside ml-6;
   }
 
   article blockquote {
-    @apply p-3 border;
+    @apply px-5 border border-black font-sans;
   }
 }
