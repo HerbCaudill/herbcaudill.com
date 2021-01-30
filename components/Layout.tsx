@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { Nav } from './Nav'
 import { Footer } from './Footer'
 import Link from 'next/link'
-import { name, siteTitle } from './constants'
+import { name, siteTitle } from '../lib/constants'
 
 export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
   return (
@@ -18,7 +18,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
         className={`
           container h-screen mx-auto px-4
           sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg 
-          grid grid-cols-md grid-rows-md grid-areas-md gap-x-24 gap-y-4`}
+          grid grid-cols-md grid-rows-md grid-areas-layout-md gap-x-24 gap-y-4`}
       >
         {/* Avatar */}
         <header className="grid-in-logo  ">
