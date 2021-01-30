@@ -14,7 +14,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
-      <div className="container mx-auto h-screen grid grid-cols-md grid-rows-md grid-areas-md gap-x-24 gap-y-4">
+      <div
+        className={`
+          container h-screen mx-auto px-4
+          sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg 
+          grid grid-cols-md grid-rows-md grid-areas-md gap-x-24 gap-y-4`}
+      >
         {/* Avatar */}
         <header className="grid-in-logo  ">
           <Link href="/">
