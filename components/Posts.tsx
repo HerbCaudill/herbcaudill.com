@@ -15,12 +15,9 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
               cursor-pointer`}
           >
             {/* Image, date */}
-            <div className="w-1/12 flex-shrink-0 -mt-2 text-xs tracking-widest font-mono uppercase mr-5">
-              <div className="w-full h-12 mb-2 bg-gray-100 ">
-                <img
-                  className="object-cover w-full h-12 luminosity opacity-50"
-                  src={image}
-                />
+            <div className="w-3/12 flex-shrink-0 -mt-2 text-xs tracking-widest font-mono uppercase mr-5">
+              <div className="w-full h-16 mb-2 bg-gray-100 ">
+                <img className="w-full h-16 object-cover" src={image} />
               </div>
               <Date dateString={date} />
             </div>
