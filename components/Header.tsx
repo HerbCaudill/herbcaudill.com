@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { name } from './constants'
+import { name } from '../lib/constants'
 
 export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
