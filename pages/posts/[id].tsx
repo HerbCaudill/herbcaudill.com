@@ -1,15 +1,12 @@
 import { Layout } from '../../components/Layout'
 import { getAllPostIdParams, post } from '../../lib/posts'
 import Head from 'next/head'
-import Date from '../../components/Date'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { PostData } from '../../lib/types'
+import { Post } from '../../components/Post'
 
-const Post = ({
-  postData: { title, subtitle, image, date, contentHtml },
-}: {
-  postData: PostData
-}) => {
+const PostLayout = ({ postData }: { postData: PostData }) => {
+  const { title, image } = postData
   const header = (
     <div>
       <img src={image} className="w-full h-40 object-cover" />
@@ -21,19 +18,12 @@ const Post = ({
       <Head>
         <title>{title}</title>
       </Head>
-      <article>
-        <h1 className="font-serif font-light text-5xl">{title}</h1>
-        <h2 className="font-bold text-2xl">{subtitle}</h2>
-        <div className="font-mono text-sm tracking-widest mt-12 mb-6">
-          <Date dateString={date} />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-      </article>
+      <Post {...postData} />
     </Layout>
   )
 }
 
-export default Post
+export default PostLayout
 
 export const getStaticProps: GetStaticProps = async ({ params }) => ({
   props: {
