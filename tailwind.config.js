@@ -20,10 +20,15 @@ module.exports = {
       colors,
       fontWeight,
 
+      listStyleType: {
+        square: 'square',
+      },
+
       // hand-drawn underline
 
       backgroundImage: {
-        splat: splat('red'),
+        'splat-black': splat('#666'),
+        'splat-red': splat(colors.red['700']),
       },
       backgroundSize: {
         underline: '100% 4px',
@@ -45,16 +50,16 @@ module.exports = {
       // grids
 
       gridTemplateColumns: {
-        sm: '100%',
-        md: '100px 1fr',
+        'layout-sm': '100%',
+        'layout-md': '100px 1fr',
         posts: '100px .4fr .6fr 100px',
       },
       gridTemplateRows: {
-        md: '150px minmax(950px, 1fr) 70px',
+        'layout-md': '150px minmax(950px, 1fr) 70px',
       },
       gridTemplateAreas: {
-        sm: ['logo', 'header', 'nav', 'content', 'footer'],
-        md: ['logo header', 'nav  content', '.    footer'],
+        'layout-sm': ['logo', 'header', 'nav', 'content', 'footer'],
+        'layout-md': ['logo header', 'nav  content', '.    footer'],
         posts: ['image date title description tags'],
       },
     },
