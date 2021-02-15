@@ -31,6 +31,8 @@ module.exports = {
 
       fontSize: {
         '2xs': '.6rem',
+        xs: '.75rem',
+        sm: '.95rem',
       },
 
       padding: {
