@@ -11,11 +11,8 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
           <Link href={`/posts/${id}`} key={id}>
             <div
               className={`
-                grid grid-cols-4
-                gap-5
-                
-                md:grid-cols-9
-
+                grid gap-5
+                grid-cols-4 md:grid-cols-9
                 border-t border-gray-400
                 pt-2 pb-7
                 hover:bg-gray-400 hover:bg-opacity-5 transition-all duration-500 ease-in-out
@@ -32,28 +29,25 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
                 </div>
                 <Date
                   dateString={date}
-                  className={`
-                    hidden
-                    md:block
-                    text-2xs tracking-widest font-mono uppercase `}
+                  className={`hidden md:block text-2xs tracking-widest font-mono uppercase`}
                 />
               </div>
 
               {/* Title */}
               <div className="col-span-3">
                 <a
-                  className="font-sans font-bold text-xl tracking-tight leading-none splat-underline"
+                  className="font-sans font-bold text-lg tracking-tight leading-none md:leading-none splat-underline"
                   dangerouslySetInnerHTML={{ __html: title }}
                 />
                 <div
-                  className="font-mono leading-none md:leading-tight py-1 text-sm  md:font-serif md:text-base  "
+                  className="font-mono leading-tight md:leading-tight py-1 text-sm  md:font-serif md:text-base  "
                   dangerouslySetInnerHTML={{ __html: subtitle }}
                 />
               </div>
 
               {/* Description */}
               <div
-                className="hidden md:block col-span-4 lg:col-span-3 text-2xs lg:text-xs text-gray-700 font-mono "
+                className="hidden md:block col-span-4 lg:col-span-3 text-xs text-gray-700 font-mono "
                 dangerouslySetInnerHTML={{ __html: description }}
               />
 
