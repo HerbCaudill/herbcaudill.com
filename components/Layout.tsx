@@ -17,10 +17,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
       <div
         className={`
           container 
-          grid grid-cols-4 gap-5
-          md:grid-cols-12 md:max-w-screen-lg md:m-auto
-          lg:max-w-screen-xl
-          w-full
+          grid gap-5
+          grid-cols-4 md:grid-cols-12 
+          w-full md:max-w-screen-lg lg:max-w-screen-xl
+          md:m-auto
           `}
       >
         {/* Avatar */}
