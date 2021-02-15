@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 const items = ['Words', 'Pictures', 'Facts']
 
-export const Nav: React.FC = () => {
+export const Nav: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <nav className="grid-in-nav border-t-8 border-black">
+    <nav className={`${className} border-t-8 border-black`}>
       <ul className="">
         {items.map(item => {
           return (

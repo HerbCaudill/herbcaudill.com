@@ -16,28 +16,40 @@ export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
 
       <div
         className={`
-          container h-screen mx-auto px-4
-          sm:max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg 
-          grid grid-cols-md grid-rows-md grid-areas-layout-md gap-x-24 gap-y-4`}
+          container 
+          grid grid-cols-4 gap-5
+          md:grid-cols-12 md:max-w-screen-lg md:m-auto
+          lg:max-w-screen-xl
+          w-full
+          `}
       >
         {/* Avatar */}
-        <header className="grid-in-logo  ">
+        <header className="-mx-1 md:-mx-0 md:col-span-2 lg:col-span-1 text-center">
           <Link href="/">
             <img
-              className="grid-in-logo h-36 w-36 rounded-full object-cover"
               src="/images/avatar/glasses-head-sat-transp.png"
+              className="w-full inline"
+              style={{ maxWidth: '5rem' }}
               alt={name}
             />
           </Link>
         </header>
 
-        <header className="grid-in-header flex items-center ">{header}</header>
+        {/* Herb Caudill/Words etc. */}
+        <header className="col-start-2 col-span-3 md:col-start-4 md:col-span-9 flex items-center ">
+          {header}
+        </header>
 
-        <Nav />
+        {/* Words / Pictures / Facts */}
+        <Nav className="hidden md:block md:col-span-2 lg:col-span-1" />
 
-        <main className="grid-in-content">{children}</main>
+        {/* Main content area */}
+        <main className="col-span-4 md:col-start-4 md:col-span-9">
+          {children}
+        </main>
 
-        <Footer />
+        {/* github/twitter/email links */}
+        <Footer className="col-span-4 md:col-span-12 " />
       </div>
     </>
   )
