@@ -10,16 +10,22 @@ export const Post: React.FC<PostProps> = ({
 }) => {
   return (
     <div>
-      <p className="mt-0 font-mono text-xs">
+      <p className="mt-2 font-mono text-xs">
         “As if source code <i>rusted!</i>” — <i>Joel Spolsky</i>
       </p>
-      <h1 className="font-serif font-extralight tracking-tighter leading-none text-6xl mt-12">
+      <h1
+        className={`
+          mt-20
+          font-serif font-extralight tracking-tighter leading-none 
+          text-4xl md:text-5xl lg:text-6xl
+          `}
+      >
         {title}
       </h1>
-      <h2 className="font-bold font-sans tracking-tight text-3xl mt-2">
+      <h2 className="font-bold font-sans tracking-tight text-xl mt-2">
         {subtitle}
       </h2>
-      <p className="my-6 font-mono text-left">{description}</p>
+      <p className="my-6 font-mono text-sm text-left">{description}</p>
       <div className="border-t border-gray-400 pt-4 mt-12 mb-6">
         <span className="font-sans font-bold text-sm mr-4">Herb Caudill</span>
         <Date
@@ -27,14 +33,9 @@ export const Post: React.FC<PostProps> = ({
           dateString={date}
         />
       </div>
-      <article dangerouslySetInnerHTML={{ __html: contentHtml }} />
-      {/* 
-      <article className="text-xl font-serif font-regular pr-48">
-        <blockquote>
-          <p>
-            “As if source code <em>rusted!”</em> — <em>Joel Spolsky</em>
-          </p>
-        </blockquote>
+      {/* <article dangerouslySetInnerHTML={{ __html: contentHtml }} /> */}
+
+      <article className="text-xl font-serif font-regular">
         <p>
           Almost two decades ago, Joel Spolsky excoriated Netscape for rewriting
           their codebase in his landmark essay{' '}
@@ -67,12 +68,12 @@ export const Post: React.FC<PostProps> = ({
           Not that it mattered. In the three years that Netscape stood still,
           Internet Explorer had taken all of its remaining market share:
         </p>
-        <div className="Image -ml-48 ">
+        <div className="">
           <img
             src="https://miro.medium.com/1*2AJ0RM43DGspNNuRYSOtVA.png"
             className="border"
           />
-          <caption>
+          <p>
             When the rewrite began, Netscape was losing ground quickly to
             Microsoft’s Internet Explorer. When the new browser was finally
             released three years later, it was buggy and slow; meanwhile
@@ -82,7 +83,7 @@ export const Post: React.FC<PostProps> = ({
               Wikipedia
             </a>
             .)
-          </caption>
+          </p>
         </div>
         <p>
           In 1999, while the rewrite was underway, AOL had acquired Netscape in
@@ -98,7 +99,7 @@ export const Post: React.FC<PostProps> = ({
           ground-up rewrite. Firefox did manage to gain back some market share
           from Microsoft.
         </p>
-      </article> */}
+      </article>
     </div>
   )
 }

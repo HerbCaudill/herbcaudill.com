@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-const items = ['Words', 'Pictures', 'Facts']
+const items = ['Words', 'Pictures', 'Code', 'Facts']
 
 export const Nav: React.FC<{ className?: string }> = ({ className }) => {
   return (
