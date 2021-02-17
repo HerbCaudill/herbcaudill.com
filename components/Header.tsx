@@ -1,34 +1,38 @@
 import Link from 'next/link'
 import { name } from '../lib/constants'
+import cx from 'classnames'
 
 export const Header: React.FC<HeaderProps> = ({ title, size = 'lg' }) => {
+  const lg = size === 'lg'
   return (
-    <h1>
+    <h1
+      className={cx({
+        'text-2xl md:text-3xl lg:text-4xl': lg,
+        'text-lg md:text-xl lg:text-2xl': !lg,
+      })}
+    >
       <Link href="/">
         <>
           <a
-            className={`
-          ${
-            size === 'lg'
-              ? 'text-2xl md:text-3xl lg:text-4xl'
-              : 'text-lg md:text-xl lg:text-2xl'
-          }
-          font-serif font-light tracking-tight
-          splat-underline`}
+            href="/"
+            className={cx(
+              'font-serif font-light tracking-tight',
+              'splat-underline cursor-pointer'
+            )}
           >
             {name}
           </a>
-          <span className="font-thin ml-3">/</span>
+          <span className={cx('font-thin ml-3')}>/</span>
         </>
       </Link>
       <span
-        className={`
-          ${
-            size === 'lg'
-              ? 'text-lg md:text-xl lg:text-2xl'
-              : 'text-sm md:text-base lg:text-lg'
-          }
-        font-sans font-bold `}
+        className={cx(
+          {
+            'text-lg md:text-xl lg:text-2xl': lg,
+            'text-sm md:text-base lg:text-lg': !lg,
+          },
+          'font-sans font-bold'
+        )}
       >
         {title}
       </span>

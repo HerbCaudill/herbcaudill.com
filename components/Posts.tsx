@@ -19,7 +19,7 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
                 cursor-pointer
               `}
             >
-              {/* Image, date */}
+              {/* image, date */}
               <div className="col-span-1 md:col-span-2">
                 <div className="w-full relative overflow-hidden pb-100% md:pb-50% mb-2">
                   <img
@@ -53,7 +53,7 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
 
               <div className="hidden lg:block">
                 {tags.map(tag => (
-                  <Tag>{tag}</Tag>
+                  <Tag key={tag}>{tag}</Tag>
                 ))}
               </div>
             </div>

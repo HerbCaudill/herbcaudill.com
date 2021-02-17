@@ -8,8 +8,6 @@ thumbnail: /images/posts/rewrite/thumbnail.jpg
 tags: software
 ---
 
-<!-- <div class="bg-black h-10" style='width: 2000px'></div> -->
-
 Almost two decades ago, Joel Spolsky excoriated Netscape for rewriting their codebase in his landmark essay [Things You Should Never Do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
 
 He concluded that **a functioning application should never, ever be rewritten from the ground up**. His argument turned on two points:
@@ -33,19 +31,24 @@ _(Bonus: ASCII art summaries of each story!)_
 
 ---
 
+<div class='image image-lg'>
+
 ![](https://miro.medium.com/max/2048/1*VM8ZUQpZjXwT2kv2LiMa2A.png)
 
-# 1\. Netscape
+</div>
 
-```
+## 1\. Netscape
+
+<div class='image'>
+<pre>
 Netscape ... 🡒 4.0 🡒 📝5.0 💀  6.0 🡒 7.0 🡒 💀
                                      ⤷ Mozilla 1.0 🡒 💀
                                            📝Firefox 1.0 ---------- 🡒
-```
+</pre>
 
-<p class='Caption'>
-  Key: 📝= rewrite, 💀 = dead end
-</p>
+**Key:** <span>📝 = rewrite</span> <span>💀 = dead end</span>
+
+</div>
 
 Netscape’s disastrous 5.0/6.0 rewrite is the original poster child for “never rewrite”, thanks to Joel.
 
@@ -67,7 +70,7 @@ The team concluded that one reason outside developers weren’t interested in co
 
 > The code was just too complicated and crufty and hard to modify, which is why people didn’t contribute … which is why we switched to the new layout engine. A cleaner, newly-designed code base, so the theory went, was going to be easier for people to understand and contribute.
 
-## Starting with a clean sheet
+### Starting with a clean sheet
 
 So after a year the group decided to scrap their work on 5.0 without releasing it, and started from scratch on version 6.0.
 
@@ -77,12 +80,13 @@ Another two years went by before Netscape 6.0 was finally released; and even aft
 
 Not that it mattered. In the three years that Netscape stood still, Internet Explorer had taken all of its remaining market share:
 
-<div class="Image">
+<div class="image">
 
 ![](https://miro.medium.com/max/1600/1*2AJ0RM43DGspNNuRYSOtVA.png)
 
-> When the rewrite began, Netscape was losing ground quickly to Microsoft’s Internet Explorer. When the new browser was finally released three years later, it was buggy and slow; meanwhile Netscape’s market share had dwindled to practically nothing. (Chart adapted from [Wikipedia](https://en.wikipedia.org/wiki/Usage_share_of_web_browsers).)
-
+<p class="caption">
+  When the rewrite began, Netscape was losing ground quickly to Microsoft’s Internet Explorer. When the new browser was finally released three years later, it was buggy and slow; meanwhile Netscape’s market share had dwindled to practically nothing. (Chart adapted from <a href='https://en.wikipedia.org/wiki/Usage_share_of_web_browsers'>Wikipedia</a>.)
+</p>
 </div>
 
 In 1999, while the rewrite was underway, AOL had acquired Netscape in a deal valued at $10 billion.
@@ -95,7 +99,7 @@ But Netscape as a business was dead. (In a humiliatingly ironic footnote, Micros
 
 Having won that battle, Microsoft pulled back on its investment in browser technology. Internet Explorer 6.0 was released in 2001 and didn’t get another upgrade for another _five years_, in what some see as a [deliberate strategy](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish) to prevent the web from advancing as platform for applications.
 
-## Lessons
+### Lessons
 
 People have argued that the rewrite wasn’t a disaster in the long term, because the project eventually led to the Gecko engine and the Firefox browser.
 
@@ -107,9 +111,13 @@ But the rewrite was certainly a contributing factor, and the end result was the 
 
 ---
 
+<div class='image image-lg'>
+
 ![](https://miro.medium.com/max/2006/1*lpbusnOGpf4TMdwY_hgbIA.png)
 
-# 2\. Basecamp
+</div>
+
+## 2\. Basecamp
 
 ```
 Basecamp Classic ----------------------------------------- ->
@@ -121,14 +129,13 @@ In the early 2000s, a Chicago web design company called **37signals** had built 
 
 They originally caught my attention when I was just starting out as a web designer, with a series of unsolicited redesigns of sites like Google and PayPal, called [37better](https://web.archive.org/web/20050206094649/http://www.37signals.com/better).
 
-<div class="Image">
+<div class="image">
 
 ![](https://miro.medium.com/max/2672/1*phyGgSr6L8JtjNimcL-cZA.png)
 
-![](https://miro.medium.com/max/2336/1*KExCbBFnKKpQ7dU119jdNw.png)
-
-> 37signals’ [redesign of FedEx’s shipping form](https://web.archive.org/web/20050207174211/http://www.37signals.com/better/fedex/after.html) (left) is still better than [the real thing](https://www.fedex.com/shipping/shipEntryAction.do?method=doEntry&link=1&locale=en_US&urlparams=us&sType=F), nearly two decades later.
-
+<p class='caption'>
+37signals’ <a href="https://web.archive.org/web/20050207174211/http://www.37signals.com/better/fedex/after.html">redesign of FedEx’s shipping form</a> (left) is still better than <a href="https://www.fedex.com/shipping/shipEntryAction.do?method=doEntry&amp;link=1&amp;locale=en_US&amp;urlparams=us&amp;sType=F">the real thing</a>, nearly two decades later.
+</p>
 </div>
 
 In 2004, they took a project-management tool that [they had developed for internal use](https://basecamp.com/about/story), and released it as a software-as-a-service product called [Basecamp](https://signalvnoise.com/archives/000542.php).
@@ -145,7 +152,7 @@ I saw David tell this story at the [Business of Software](http://www.businessofs
 
 After what he calls “seven fat years”, though, they were in a bind — and it had **nothing to do with technical debt**.
 
-## Golden handcuffs
+### Golden handcuffs
 
 They started by noticing _in their gut_ a lack of enthusiasm. Not only were they not motivated to work on their flagship product, but they themselves weren’t _using_ the product as much.
 
@@ -179,7 +186,7 @@ That decision gave them a degree of freedom. Freedom is motivating, and motivate
 
 Not having to support every one of the original product’s use cases also bought them a lot of time. For example, the original Basecamp allowed users to host documents on their own FTP server. Cutting out that feature — and others like it, that might have made business sense at one time, but didn’t any more—made it possible to bring the new product to market in a reasonable amount of time.
 
-## Sunset considered harmful
+### Sunset considered harmful
 
 But what about all those hundreds of thousands of existing users? All those people who complain loudly when their cheese is moved?
 
@@ -195,12 +202,13 @@ He points out that when you force users to pack up and move, _that’s_ when you
 
 > “Is Basecamp even actually the thing I want anymore? If we have to move all our crap over anyway, maybe I can just move it somewhere else. If I have to pack it all up into boxes and load it on the truck, I can just send that truck across town instead. That’s not a big hassle. The big hassle is to pack up all my shit. Whether it goes to Basecamp again or it goes somewhere else, that’s not the big decision.”
 
-<div class='Image'>
+<div class='image'>
 
 ![](https://miro.medium.com/max/6552/1*ldSpa13ejf7TZfXjyr5XMg.jpeg)
 
-> David compares Basecamp Classic to a Leica M3: It hasn’t been manufactured since 1967, but Leica is still committed to supporting it and repairing it for as long as they’re in business. (Photo [Dnalor 01](https://commons.wikimedia.org/w/index.php?curid=27903569))
-
+<p class='caption'>
+David compares Basecamp Classic to a Leica M3: It hasn’t been manufactured since 1967, but Leica is still committed to supporting it and repairing it for as long as they’re in business. (Photo <a href="https://commons.wikimedia.org/w/index.php?curid=27903569">Dnalor 01</a>)
+</p>
 </div>
 
 Instead, Basecamp committed to “**honoring their legacy**”: They made it easy for people to upgrade, but didn’t require them to leave Basecamp Classic. Not only that, but they’ve committed to continuing to host, support, and maintain Basecamp Classic indefinitely.
@@ -213,7 +221,7 @@ The kicker is that, four years later, they did it all over again: [Basecamp 3 wa
 
 ![](https://miro.medium.com/max/1628/1*Nd8kwuSdBKDB0AP3-Em-aw.jpeg)
 
-Lessons
+### Lessons
 
 Personally, I find this model really inspiring.
 
@@ -225,21 +233,31 @@ Having to maintain multiple versions of product indefinitely doesn’t come with
 
 > It’s not free. Why would you expect it to be free? It’s valuable, so of course it’s not free. But it’s worth doing.
 
-![](https://miro.medium.com/max/1834/1*l0XU_5L7LPojxfH-HGtLHg.png)
+---
+
+<div class='image image-lg'>
 
 ![](https://miro.medium.com/max/2000/1*QqzsJBhAyn_Q1zb_CPJSrw.jpeg)
 
-# 3\. Visual Studio & VS Code
+</div>
 
-![](https://miro.medium.com/max/2046/1*eKBCiXHivYWRPtom9UqZUg.png)
+## 3\. Visual Studio & VS Code
 
-**Key**: 😎 = hipster cred
+<div class='image'>
+<pre>
+VS 97 -> 6.0 -> .NET -> ... -> 2015 -> 2017 -> 2019 ------- ->
+                                 📝VS Code ------😎------- ->
+</pre>
+
+**Key:** <span>😎 = hipster cred</span>
+
+</div>
 
 Microsoft made VS Code in order to reach out to developers working on other platforms.
 
 You have to remember that for a long time, working in Microsoft’s world was an all-or-nothing proposition. If you used Visual Studio, you worked in .NET, and vice versa. This split the software community into two big, mostly mutually exclusive camps — to everyone’s detriment.
 
-Reaching out to the cool kids
+### Reaching out to the cool kids
 
 That started to change even in the Steve Ballmer years— remember what a huge deal it was when [the ASP.NET team decided not to reinvent jQuery](https://weblogs.asp.net/scottgu/jquery-and-microsoft)!
 
@@ -259,19 +277,27 @@ Not quite from scratch, actually: Microsoft already had some important parts lyi
 
 VS Code is open-source, lightweight, fast, and extensible; and — amazingly for a Microsoft product — it’s become the coding environment of choice for the cool kids.
 
+<div class='image'>
+
 ![](https://miro.medium.com/max/3404/0*7akOMsnPRwJujPUh)
 
 VS Code has become the text editor of choice for JS hipsters. (Chart from [State of JavaScript Survey, 2018](https://2018.stateofjs.com/other-tools/))
 
+</div>
+
 Both products are still actively developed, and there’s no indication that Microsoft intends to sunset Visual Studio.
 
-**Lessons**
+### Lessons
 
 In stark contrast to Netscape’s experience, Microsoft succeeded in building an **active open source community** around VS Code. This community has multiplied the efforts of the in-house development team.
+
+<div class='image'>
 
 ![](https://miro.medium.com/max/1800/1*3HbgJZIIKG2ObVdS_ddjKg.png)
 
 Of all the open source projects on GitHub, Visual Studio Code is ranked thirteenth by number of stars — coincidentally, just below Linux!
+
+</div>
 
 Of course, not everyone has a business model that will support completely open sourcing their core product.
 
@@ -283,19 +309,32 @@ One final takeaway from the VS Code story is that things have changed fundamenta
 
 In spite all of the [hand-wringing about the complexity of today’s toolset](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f), the fact is that the JavaScript ecosystem has evolved over the last few years into the long-awaited promised land of reusable, modular open-source code. In that respect, this is a historically unprecedented time.
 
+---
+
+<div class='image image-lg'>
+
 ![](https://miro.medium.com/max/5726/1*HsQljVFhzHAB2dg5s1-XKw.jpeg)
 
-# 4\. Gmail & Inbox
+</div>
 
-![](https://miro.medium.com/max/2046/1*eRBm_cUduNQyBzu-spXhNw.png)
+## 4\. Gmail & Inbox
 
-**Key:** 🌇 = sunset
+<div class='image'>
+
+<pre>
+Gmail ----------------------------------------------------- ->
+                    📝Inbox for Gmail ------ ↗ -- ↗ -- ↗  🌇                                                    
+</pre>
+
+**Key:** <span>🌇 = sunset</span>
+
+</div>
 
 Inbox for Gmail was originally introduced as a stripped-down alternative UX for Gmail “designed to focus on what really matters”. It never approached feature parity with the original Gmail, and it introduced new features like bundles, pinned emails, and snoozed messages.
 
 Some people, including me, adopted Inbox enthusiastically. I always assumed that Inbox was a preview of what Gmail would eventually become, and put up with the lack of some of Gmail’s niceties with the expectation that they’d eventually make it over to Inbox.
 
-Two interfaces, one service
+### Two interfaces, one service
 
 Both Inbox and Gmail used the same back end. They were essentially just different user interfaces for the same service, and you could switch back and forth at will. This had advantages and disadvantages: If Inbox was missing a feature (say, vacation autoresponders) you could always go back to Gmail and do what you needed there. But there was some inevitable weirdness when switching back and forth.
 
@@ -307,7 +346,7 @@ I was initially very annoyed, but after spending a little time with the latest v
 
 But not everything made it over: Snoozing, for example, became a critical part of how many people dealt with email; and the demise of Inbox left them high and dry.
 
-Lessons
+### Lessons
 
 Inbox gave the Gmail team a way to **experiment with features without disrupting workflows** for the vast majority of users who didn’t choose to switch over.
 
@@ -319,13 +358,25 @@ In this case, Google’s original messaging around Inbox led us to believe that 
 
 I think there would have been less unhappiness if Gmail had gone all the way to feature parity with Inbox before it was shuttered.
 
+---
+
+<div class='image image-lg'>
+
 ![](https://miro.medium.com/max/2200/1*-Z7XkyKIXuDV-D3Sr1XJIg.png)
 
-# 5\. FogBugz & Trello
+</div>
 
-![](https://miro.medium.com/max/2046/1*uH34if4XA-_ikUdjeC5s3g.png)
+## 5\. FogBugz & Trello
 
-**Key**: 😟 = sad decline, 🤑 money money money
+<div class='image'>
+<pre>
+FogBugz ------------------------------------ 😟
+                     📝Trello --------------------------- -> 🤑
+</pre>
+
+**Key**: <span>😟 = sad decline</span> <span>🤑 = money money money</span>
+
+</div>
 
 FogBugz is a particularly interesting case, since it was Joel Spolsky’s product: It gives us a look at how the never-rewrite principle plays out with a real-world product.
 
@@ -337,7 +388,7 @@ FogBugz was originally written in classic ASP, which ran on Windows servers. Whe
 
 In order to allow people to install FogBugz on Linux servers, an intern wrote a compiler, named Thistle, to convert classic ASP to PHP. By 2006 Thistle had evolved into a private home-grown language called Wasabi that compiled to ASP, PHP, and client-side JavaScript.
 
-The strange story of Wasabi
+### The strange story of Wasabi
 
 Now developing an in-house, proprietary programming language and compiler is — let’s just say it’s an eccentric choice. So bear with me on a brief detour.
 
@@ -357,7 +408,7 @@ At any rate, as Jacob Krall, another former Fog Creek developer, [explains](http
 
 > We hadn’t open-sourced \[Wasabi\], so this meant any investment had to be done by us at the expense of our main revenue-generating products. … It was a huge dependency that required a full-time developer — not cheap for a company of our size. It occasionally barfed on a piece of code that was completely reasonable to humans. It was slow to compile. Visual Studio wasn’t able to easily edit or attach a debugger to FogBugz. … All new hires had an extensive period of learning Wasabi, regardless of their previous experience. … What’s more, we weren’t living in a vacuum. Programming languages were of course improving outside of Fog Creek. … Developers began to feel like their brilliant ideas were being constrained by the limitations of our little Wasabi universe.
 
-An inflection point
+### An inflection point
 
 At this point, a decade in, FogBugz was a mature and stable product. [Joel had created Stack Overflow as a side project with Jeff Atwood](https://blog.codinghorror.com/introducing-stackoverflow-com/) (presumably his exploded head had had time to heal by then).
 
@@ -381,7 +432,7 @@ Second, **build up an enterprise sales force**. Joel confesses that this is some
 
 I don’t know how either of those two plans played out. The last time Joel ever mentioned FogBugz on his blog was a perfunctory announcement of a minor release [a few months later](https://www.joelonsoftware.com/2010/05/18/news-128/).
 
-A new hope
+### A new hope
 
 What did happen was [this](https://www.joelonsoftware.com/2011/09/13/announcing-trello/):
 
@@ -417,7 +468,7 @@ In order to scale up quickly to lots and lots of users, Trello was initially off
 
 In 2014, [Trello was spun out](https://www.joelonsoftware.com/2014/07/24/trello-inc/) into a separate company. Three years later, with over 17 million users, [Trello was sold for $425 million](http://fortune.com/2017/01/09/trello-sold-atlassian/). In an ironic twist, the buyer was Atlassian, Fog Creek’s old nemesis.
 
-Meanwhile back at the ranch…
+### Meanwhile back at the ranch…
 
 Fog Creek went on to develop yet another new product, a collaborative programming environment first called [HyperDev](https://www.joelonsoftware.com/2016/05/31/introducing-hyperdev/), then [GoMix](https://medium.com/@anildash/introducing-gomix-aec205c421cb), and finally renamed to [Glitch](https://medium.com/glitch/welcome-to-glitch-fe161d0fc39b).
 
@@ -425,16 +476,13 @@ In the meantime, FogBugz languished in obscurity. In 2017 someone decided that F
 
 Under CEO [Anil Dash](https://medium.com/u/a75df5e8a16c), Fog Creek became a single-product company and [changed its name to Glitch](https://glitch.com/about/fog-creek-is-now-glitch/).
 
-Lessons
+### Lessons
 
-<div class='Image'>
 I have a lot of feelings about all of this.
 
-> Making a nice place to work was our primary objective. We had private offices, flew first class, worked 40 hour weeks, and bought people lunch,
+> Making a nice place to work was our primary objective. We had private offices, flew first class, worked 40 hour weeks, and bought people lunch, Aeron chairs, and top of the line computers. We shared our ingenious formula with the world: **Great working conditions → Great programmers → Great software → Profit!**
 
-<p>Aeron chairs, and top of the line computers. We shared our ingenious formula with the world: **Great working conditions → Great programmers → The key to understanding this whole story is that Fog Creek was never _about_ bug tracking as much as it was about a [empowering programmers]</div>(https://www.joelonsoftware.com/2009/11/01/
-</p>figuring-out-what-your-company-is-all-about/) — starting with their own:
-Great software → Profit!**
+The key to understanding this whole story is that Fog Creek was never _about_ bug tracking as much as it was about a [empowering programmers](https://www.joelonsoftware.com/2009/11/01/figuring-out-what-your-company-is-all-about/) — starting with their own:
 
 With this “formula” in mind, maybe we can put together a coherent and encouraging narrative: Fog Creek built a business around developer happiness. This was reflected both in the company’s products and its internal “[operating system](https://www.joelonsoftware.com/2014/07/24/trello-inc/)”. Its first product, a bug tracker, provided a foundation for launching a new product that solved a similar problem in a more broadly applicable way.
 
@@ -446,30 +494,36 @@ Clearly all the people involved had bigger fish to fry: Stack Overflow, Trello, 
 
 But the sentimental part of me wishes there had been a better way to “honor the legacy” of all the people who created it and used it over all those years.
 
+---
+
+<div class='image image-lg'>
+
 ![](https://miro.medium.com/max/1696/1*ufzuYj4qIXXLDQMS7EqZqQ.png)
 
-# 6\. FreshBooks & BillSpring
+</div>
 
-![](https://miro.medium.com/max/2046/1*sR8NUhzeHPwMft1fcpasww.png)
+## 6\. FreshBooks & BillSpring
 
-**Key**: 🕵️‍♀️ = undercover operation
+<div class='image'>
+
+```
+FreshBooks ------------------------------------------------ ->
+                   🕵️‍📝BillSpring ------- ↗
+```
+
+**Key**: <span>🕵️‍♀️ = undercover operation</span>
+
+</div>
 
 This has already turned into a much longer article than I ever imagined, but I can’t leave this story out. Stick with me, it has a great twist.
 
-Stop me if you’ve heard this before
+### Stop me if you’ve heard this before
 
 In the early 2000s, [Mike McDerment](https://medium.com/u/ab155ac24cd6) owned a small design agency. He was using Word and Excel to make invoices, having decided that accounting software was too complicated for what he needed.
 
-This system was good enough [until it wasn’t](https://lifehacker.com/
+This system was good enough [until it wasn’t](https://lifehacker.com/im-freshbooks-co-founder-mike-mcderment-and-this-is-ho-1825693501): Mike was a designer, not a programmer, but he and two co-founders managed to cobble together a tool good enough for a few people to pay $10 a month to use it. [It took nearly four years](https://www.forbes.com/sites/boburlingham/2017/05/09/starting-over/#357508b957ce) for the business to make enough for him to move out of his parents’ basement.
 
-<div class='Image'>
-im-freshbooks-co-founder-mike-mcderment-and-this-is-ho-1825693501):
-
-Mike was a designer, not a programmer, but he and two co-founders managed to cobble together a tool good enough for a few people to pay $10 a month
-
-<p>to use it. [It took nearly four years](https://www.forbes.com/sites/boburlingham/2017/05/09/starting-over/#357508b957ce) for the business to > I hit my breaking point one day when I accidentally saved over an important client invoice — I just kinda snapped. I knew there had to be a </div>better way, so I spent the next two weeks coding what would become 
-</p>the foundation of what is now FreshBooks.
-make enough for him to move out of his parents’ basement.
+> I hit my breaking point one day when I accidentally saved over an important client invoice — I just kinda snapped. I knew there had to be a better way, so I spent the next two weeks coding what would become the foundation of what is now FreshBooks.
 
 By the product’s 10-year anniversary (is this starting to sound familiar?) FreshBooks was solidly profitable, with more than 10 million users and 300 employees.
 
@@ -487,7 +541,7 @@ McDerment had [absorbed the conventional wisdom](https://www.cpapracticeadvisor.
 
 So they made a couple of attempts to clean up the mess without starting over; but found it impossible to “change tires on a moving vehicle”.
 
-What happened next may surprise you
+### What happened next may surprise you
 
 The idea that McDerment finally hit on was to secretly create a “competitor” to FreshBooks.
 
@@ -495,19 +549,12 @@ He incorporated a completely new company, named BillSpring, in Delaware. The new
 
 The development team adopted the book [_Lean UX: Designing Great Products with Agile Teams_](https://www.amazon.com/Lean-UX-Designing-Great-Products/dp/1491953608) by [Jeff Gothelf](https://medium.com/u/94a2a063be85) and [Josh Seiden](https://medium.com/u/7f786c230ca9) as their guidebook, and put in place Agile practices like scrum teams and weekly iterations with review sessions with real customers. McDerment told them to think of themselves as a startup and himself as their venture capitalist:
 
-> “You’ve got four and a half months. If you’re i
+> “You’ve got four and a half months. If you’re in the market by then, we’ll give you more money. Otherwise, we’re out.”
 
-<div class='Image'>
-n the market by then, 
-<div class='Image'>
-we’ll give you more money. Otherwise, we’re out.”
+When the first year was up, they started charging BillSpring customers. At one point the new product was [validated in an unexpected way](https://www.inc.com/leigh-buchanan/why-you-should-become-your-own-competitor.html):
 
-When the first year was up, they started charging BillSpring customers. At one point the new product was [validated in an unexpected way](https://www.
+The team managed to come up with an MVP a few days before the deadline. They bought Google AdWords to send traffic to the new site. They offered free accounts for the first year. Before long they had actual users, and they started iterating quickly to polish the product.
 
-<p>inc.com/leigh-buchanan/why-you-should-become-your-own-competitor.html):
-
-</div>The team managed to come up with an MVP a few days before the deadline. They bought Google AdWords to send traffic to the new site. They offered </div>free accounts for the first year. Before long they had 
-</p>actual users, and they started iterating quickly to polish the product.
 > “One person called us to cancel FreshBooks to tell us they were going to this new company,” McDerment says. “That was a good day.”
 
 Shortly afterwards they lifted the veil of secrecy: They let BillSpring customers know that the product was now FreshBooks, and let existing FreshBooks customers know that a new version would soon be available.
@@ -516,7 +563,7 @@ Little by little, “FreshBooks Classic” customers were invited to try the new
 
 ![](https://miro.medium.com/max/3408/1*IujEjnPsnJLwdgaKh-jgog.jpeg)
 
-Lessons
+### Lessons
 
 FreshBooks’ undercover rewrite didn’t come cheap: McDerment estimates that they spent $7 million on the project. After more than a decade of bootstrapped growth, they had just raised $30 million in venture capital; so they had the cash. Not everyone has that much money to spend.
 
@@ -530,7 +577,9 @@ FreshBooks went to extraordinary lengths to insulate themselves from the potenti
 
 It all feels a little extreme, and perhaps it’s not necessary go to the lengths they did. But it’s a reminder of how serious the stakes are.
 
-# Some thoughts for now
+---
+
+## Some thoughts for now
 
 **The conventional wisdom around rewriting software is that you should generally avoid it** and make incremental improvements instead — unless that’s truly impossible for some reason.
 

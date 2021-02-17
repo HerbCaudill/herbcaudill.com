@@ -1,23 +1,37 @@
-import { getAllPostIdParams, post } from '../../lib/posts'
-import Head from 'next/head'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { PostData } from '../../lib/types'
-import { Post } from '../../components/Post'
-import { Nav } from '../../components/Nav'
-import { Date } from '../../components/Date'
+import Head from 'next/head'
+import { Avatar } from '../../components/Avatar'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
-import { siteTitle } from '../../lib/constants'
-import { Avatar } from '../../components/Avatar'
+import { Nav } from '../../components/Nav'
+import { getAllPostIdParams, post } from '../../lib/posts'
+import { PostData } from '../../lib/types'
 
 const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
-  const { title, subtitle, date, description, image } = postData
+  const { title, subtitle, date, description, image, contentHtml } = postData
 
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <title>{title}</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet"
+        />
         <meta name="description" content={description} />
         <meta name="og:title" content={title} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -44,22 +58,27 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
         {/* Herb Caudill/Words */}
         <header
           className={`
-          col-start-2 md:col-start-4
-          col-span-3 md:col-span-9
-          flex items-center `}
+            col-start-2 md:col-start-4
+            col-span-3 md:col-span-9
+            flex items-center `}
         >
           <Header title="Words" size="sm" />
         </header>
 
         {/* Main content area */}
-        <div className="col-span-4 md:col-span-12 grid grid-cols-1 md:grid-cols-12 gap-5">
+        <div
+          className={`
+            grid grid-cols-1 md:grid-cols-12 gap-5
+            col-span-4 md:col-span-12
+        `}
+        >
           {/* Cover image */}
           <div className="-mx-5 md:mx-0 md:col-span-12">
             <img src={image} className="w-full h-48 md:h-64 object-cover" />
           </div>
 
-          {/* Caption */}
-          <p className="Caption md:col-span-3 md:mt-0">
+          {/* caption */}
+          <p className="caption md:col-span-3 md:mt-0 leading-normal">
             “As if source code <i>rusted!</i>” <i>— Joel Spolsky</i>
           </p>
 
@@ -85,10 +104,14 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
               hidden md:block
               md:mt-24 
               md:col-span-2 lg:col-span-1 row-span-2
-              `}
+            `}
           />
 
-          <div className="md:col-span-9 md:col-start-4 md:mt-24 border-t border-gray-400 ">
+          <div
+            className={`
+            md:col-span-9 md:col-start-4 md:mt-24
+            border-t border-gray-400 `}
+          >
             {/* Description */}
             <p className="pt-6 mb-12 font-mono text-sm text-left">
               {description}
@@ -96,10 +119,15 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
           </div>
 
           {/* Article body */}
-          <article className="md:col-span-6 md:col-start-4">
-            {/* <article dangerouslySetInnerHTML={{ __html: contentHtml }} /> */}
+          <article
+            className={`
+            
+              md:col-span-9 md:col-start-4
+              lg:col-start-4 lg:col-span-7`}
+          >
+            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
 
-            <div className="text-xl font-serif font-regular">
+            {/* <div className="text-xl font-serif font-regular">
               <p>
                 Almost two decades ago, Joel Spolsky excoriated Netscape for
                 rewriting their codebase in his landmark essay{' '}
@@ -133,12 +161,14 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
                 still, Internet Explorer had taken all of its remaining market
                 share:
               </p>
-              <div className="Image">
-                <img
-                  src="https://miro.medium.com/1*2AJ0RM43DGspNNuRYSOtVA.png"
-                  className="border"
-                />
-                <p className="Caption">
+              <div className="image">
+                <p className="">
+                  <img
+                    src="https://miro.medium.com/1*2AJ0RM43DGspNNuRYSOtVA.png"
+                    className="border "
+                  />
+                </p>
+                <p className="caption">
                   When the rewrite began, Netscape was losing ground quickly to
                   Microsoft’s Internet Explorer. When the new browser was
                   finally released three years later, it was buggy and slow;
@@ -171,16 +201,15 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
               <p>
                 Mozilla, the open-source community that Netscape had created,
                 would go on to release the Firefox browser in 2002 — after yet{' '}
-                <em>another</em>
-                ground-up rewrite. Firefox did manage to gain back some market
-                share from Microsoft.
+                <em>another</em> ground-up rewrite. Firefox did manage to gain
+                back some market share from Microsoft.
               </p>
-            </div>
+            </div> */}
           </article>
         </div>
 
         {/* github/twitter/email links */}
-        <Footer className="md:col-span-12 " />
+        <Footer className="col-span-4 md:col-span-12 " />
       </div>
     </>
   )
