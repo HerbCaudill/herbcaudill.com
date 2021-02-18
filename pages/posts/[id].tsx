@@ -8,13 +8,23 @@ import { getAllPostIdParams, post } from '../../lib/posts'
 import { PostData } from '../../lib/types'
 
 const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
-  const { title, subtitle, date, description, image, contentHtml } = postData
+  const {
+    id,
+    title,
+    subtitle,
+    date,
+    description,
+    image,
+    caption,
+    contentHtml,
+  } = postData
 
   return (
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <title>{title}</title>
+
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
@@ -33,7 +43,13 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
           rel="stylesheet"
         />
         <meta name="description" content={description} />
+
+        <meta name="og:url" content={`https://hc3.me/posts/${id}`} />
         <meta name="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+        <meta property="og:type" content="blog" />
+
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
@@ -78,9 +94,10 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
           </div>
 
           {/* caption */}
-          <p className="caption md:col-span-3 md:mt-0 leading-normal">
-            “As if source code <i>rusted!</i>” <i>— Joel Spolsky</i>
-          </p>
+          <p
+            className="caption md:col-span-3 md:mt-0 leading-normal"
+            dangerouslySetInnerHTML={{ __html: caption }}
+          />
 
           <div className="md:col-span-9 mt-12 md:mt-0">
             {/* Title */}
@@ -94,9 +111,10 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
             </h1>
 
             {/* Subtitle */}
-            <h2 className="font-bold font-sans tracking-tight text-xl mt-2">
-              {subtitle}
-            </h2>
+            <h2
+              className="font-bold font-sans tracking-tight text-xl mt-2"
+              dangerouslySetInnerHTML={{ __html: subtitle }}
+            />
           </div>
 
           <Nav
@@ -113,9 +131,10 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
             border-t border-gray-400 `}
           >
             {/* Description */}
-            <p className="pt-6 mb-12 font-mono text-sm text-left">
-              {description}
-            </p>
+            <p
+              className="pt-6 mb-12 font-mono text-sm text-left"
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></p>
           </div>
 
           {/* Article body */}
@@ -124,88 +143,8 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
             
               md:col-span-9 md:col-start-4
               lg:col-start-4 lg:col-span-7`}
-          >
-            <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
-
-            {/* <div className="text-xl font-serif font-regular">
-              <p>
-                Almost two decades ago, Joel Spolsky excoriated Netscape for
-                rewriting their codebase in his landmark essay{' '}
-                <a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">
-                  Things You Should Never Do
-                </a>
-                .
-              </p>
-              <p>
-                He concluded that{' '}
-                <strong>
-                  a functioning application should never, ever be rewritten from
-                  the ground up
-                </strong>
-                . His argument turned on two points:
-              </p>
-              <ul>
-                <li>
-                  The crufty-looking parts of the application’s codebase often
-                  embed hard-earned knowledge about corner cases and weird bugs.
-                </li>
-                <li>
-                  A rewrite is a lengthy undertaking that keeps you from
-                  improving on your existing product, during which time the
-                  competition is gaining on you.
-                </li>
-              </ul>
-
-              <p>
-                Not that it mattered. In the three years that Netscape stood
-                still, Internet Explorer had taken all of its remaining market
-                share:
-              </p>
-              <div className="image">
-                <p className="">
-                  <img
-                    src="https://miro.medium.com/1*2AJ0RM43DGspNNuRYSOtVA.png"
-                    className="border "
-                  />
-                </p>
-                <p className="caption">
-                  When the rewrite began, Netscape was losing ground quickly to
-                  Microsoft’s Internet Explorer. When the new browser was
-                  finally released three years later, it was buggy and slow;
-                  meanwhile Netscape’s market share had dwindled to practically
-                  nothing. (Chart adapted from{' '}
-                  <a href="https://en.wikipedia.org/wiki/Usage_share_of_web_browsers">
-                    Wikipedia
-                  </a>
-                  .)
-                </p>
-              </div>
-              <p>
-                In 1999, while the rewrite was underway, AOL had acquired
-                Netscape in a deal valued at $10 billion.
-              </p>
-              <blockquote>
-                "The print-preview feature is gone, as is the ability to drag a
-                Web site’s address-bar icon directly into the Bookmarks menu.
-                You can no longer copy or paste a Web address in the Address bar
-                by right-clicking there, either. And you have to resize the
-                browser window every time you begin surfing; Navigator doesn’t
-                remember how you had it the last time you ran the program. The
-                most alarming flaw, however, is that you can’t highlight the
-                entire Address bar with a single click."
-              </blockquote>
-              <p>
-                Just two years after Netscape 6.0 was released, the Netscape
-                team within AOL was disbanded.
-              </p>
-              <p>
-                Mozilla, the open-source community that Netscape had created,
-                would go on to release the Firefox browser in 2002 — after yet{' '}
-                <em>another</em> ground-up rewrite. Firefox did manage to gain
-                back some market share from Microsoft.
-              </p>
-            </div> */}
-          </article>
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
         </div>
 
         {/* github/twitter/email links */}
@@ -227,10 +166,3 @@ export const getStaticPaths: GetStaticPaths = async () => ({
   paths: getAllPostIdParams(),
   fallback: false,
 })
-
-{
-  /* <Layout header={header}>
-<Head>
-</Head>
-</Layout> */
-}

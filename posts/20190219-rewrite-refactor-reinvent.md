@@ -4,11 +4,12 @@ subtitle: Lessons from 6 software rewrite stories
 description: 'A new take on the age-old question: Should you rewrite your application from scratch, or is that “the single worst strategic mistake that any software company can make”? Turns out there are more than two options for dealing with a mature codebase.'
 date: '2019-02-19'
 image: /images/posts/rewrite/rust.jpg
+caption: '“As if source code <i>rusted!</i>” <i>— Joel Spolsky</i>'
 thumbnail: /images/posts/rewrite/thumbnail.jpg
 tags: software
 ---
 
-Almost two decades ago, Joel Spolsky excoriated Netscape for rewriting their codebase in his landmark essay [Things You Should Never Do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
+<span>A</span>lmost two decades ago, Joel Spolsky excoriated Netscape for rewriting their codebase in his landmark essay [Things You Should Never Do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
 
 He concluded that **a functioning application should never, ever be rewritten from the ground up**. His argument turned on two points:
 
@@ -29,11 +30,9 @@ The correct answer, of course, is that **it depends** a lot on the circumstances
 
 _(Bonus: ASCII art summaries of each story!)_
 
----
-
 <div class='image image-lg'>
 
-![](https://miro.medium.com/max/2048/1*VM8ZUQpZjXwT2kv2LiMa2A.png)
+![](/images/posts/rewrite/netscape6.png)
 
 </div>
 
@@ -109,8 +108,6 @@ And anyway, the question at hand isn’t whether the rewrite was good for the we
 
 But the rewrite was certainly a contributing factor, and the end result was the destruction of a company worth billions of dollars and thousands of layoffs. So I’m going to agree with Joel that **the net consequences of this rewrite were disastrous**.
 
----
-
 <div class='image image-lg'>
 
 ![](https://miro.medium.com/max/2006/1*lpbusnOGpf4TMdwY_hgbIA.png)
@@ -120,9 +117,9 @@ But the rewrite was certainly a contributing factor, and the end result was the 
 ## 2\. Basecamp
 
 ```
-Basecamp Classic ----------------------------------------- ->
-            📝Basecamp 2 --------------------------------- ->
-                        📝Basecamp 3 --------------------- ->
+Basecamp Classic --------------------------------------------- ->
+            📝Basecamp 2 ------------------------------------- ->
+                        📝Basecamp 3 ------------------------- ->
 ```
 
 In the early 2000s, a Chicago web design company called **37signals** had built a following around founders [Jason Fried](https://medium.com/u/c030228809f2) and [DHH](https://medium.com/u/54bcbf647830)’s influential and often contrarian [blog](https://m.signalvnoise.com).
@@ -233,15 +230,13 @@ Having to maintain multiple versions of product indefinitely doesn’t come with
 
 > It’s not free. Why would you expect it to be free? It’s valuable, so of course it’s not free. But it’s worth doing.
 
----
-
 <div class='image image-lg'>
 
 ![](https://miro.medium.com/max/2000/1*QqzsJBhAyn_Q1zb_CPJSrw.jpeg)
 
 </div>
 
-## 3\. Visual Studio & VS Code
+## 3\. Visual Studio and VS Code
 
 <div class='image'>
 <pre>
@@ -309,15 +304,13 @@ One final takeaway from the VS Code story is that things have changed fundamenta
 
 In spite all of the [hand-wringing about the complexity of today’s toolset](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f), the fact is that the JavaScript ecosystem has evolved over the last few years into the long-awaited promised land of reusable, modular open-source code. In that respect, this is a historically unprecedented time.
 
----
-
 <div class='image image-lg'>
 
 ![](https://miro.medium.com/max/5726/1*HsQljVFhzHAB2dg5s1-XKw.jpeg)
 
 </div>
 
-## 4\. Gmail & Inbox
+## 4\. Gmail and Inbox
 
 <div class='image'>
 
@@ -358,15 +351,13 @@ In this case, Google’s original messaging around Inbox led us to believe that 
 
 I think there would have been less unhappiness if Gmail had gone all the way to feature parity with Inbox before it was shuttered.
 
----
-
 <div class='image image-lg'>
 
 ![](https://miro.medium.com/max/2200/1*-Z7XkyKIXuDV-D3Sr1XJIg.png)
 
 </div>
 
-## 5\. FogBugz & Trello
+## 5\. FogBugz and Trello
 
 <div class='image'>
 <pre>
@@ -494,15 +485,13 @@ Clearly all the people involved had bigger fish to fry: Stack Overflow, Trello, 
 
 But the sentimental part of me wishes there had been a better way to “honor the legacy” of all the people who created it and used it over all those years.
 
----
-
 <div class='image image-lg'>
 
 ![](https://miro.medium.com/max/1696/1*ufzuYj4qIXXLDQMS7EqZqQ.png)
 
 </div>
 
-## 6\. FreshBooks & BillSpring
+## 6\. FreshBooks and BillSpring
 
 <div class='image'>
 
@@ -576,8 +565,6 @@ Beyond their stated goals, though, they’ve found that the experience has chang
 FreshBooks went to extraordinary lengths to insulate themselves from the potential downside of a rewrite: By innovating under a throw-away brand, developers felt free to rethink things completely, and to take bigger risks. That way, the worst that could happen was that they’d reach another dead end; at least they wouldn’t damage their existing brand in the process.
 
 It all feels a little extreme, and perhaps it’s not necessary go to the lengths they did. But it’s a reminder of how serious the stakes are.
-
----
 
 ## Some thoughts for now
 

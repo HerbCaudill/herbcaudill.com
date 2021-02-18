@@ -7,6 +7,7 @@
   content: string // markdown
   contentHtml: string
   image: string
+  caption: string
   thumbnail?: string
   tags: string[]
 }

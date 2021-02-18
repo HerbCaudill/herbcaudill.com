@@ -29,10 +29,7 @@ const allFractions = {
 module.exports = {
   purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
 
-  plugins: [
-    require('@tailwindcss/typography'),
-    require('@savvywombat/tailwindcss-grid-areas'),
-  ],
+  plugins: [],
 
   theme: {
     extend: {
