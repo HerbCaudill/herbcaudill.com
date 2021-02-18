@@ -1,36 +1,12 @@
 const { fonts, fontWeight } = require('./theme/fonts')
 const { colors } = require('./theme/colors')
 const { splat } = require('./theme/splat')
-
 const { spacing } = require('tailwindcss/defaultTheme')
+const { allFractions, halfGap } = require('./theme/columnFractions')
 
 const { condensed, emoji, mono, sans, serif, sansText, serifText } = fonts
 
-const gap = spacing['5']
-const halfGap = `(${gap} / 2)`
-
-const columnFractions = (span, cols) => {
-  const result = {}
-  for (let i = 1; i <= cols; i++) {
-    const value = `${(100 * i) / span}%`
-    const offsetValue = `${value} + ${halfGap}`
-
-    result[`${i}/${span}`] = `calc(${offsetValue})`
-  }
-  return result
-}
-
-const allFractions = {
-  ...columnFractions(6, 12),
-  ...columnFractions(7, 12),
-  ...columnFractions(9, 12),
-}
-
 module.exports = {
-  purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
-
-  plugins: [],
-
   theme: {
     extend: {
       screens: {
@@ -140,4 +116,7 @@ module.exports = {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
   },
+
+  purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
+  plugins: [],
 }
