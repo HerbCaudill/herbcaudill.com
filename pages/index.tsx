@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
+import { Head } from '../components/Head'
 import { Avatar } from '../components/Avatar'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Nav } from '../components/Nav'
 import { Posts } from '../components/Posts'
-import { siteTitle } from '../lib/constants'
+import { siteDescription, siteTitle } from '../lib/constants'
 import { posts } from '../lib/posts'
 import { PostData } from '../lib/types'
 
@@ -14,27 +14,9 @@ const IndexLayout: React.FC<{ allPosts: PostData[] }> = ({ allPosts }) => {
     <>
       <Head>
         <title>{siteTitle} | Words</title>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={siteTitle} />
         <meta name="og:title" content={siteTitle} />
+        <meta name="description" content={siteDescription} />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       <div

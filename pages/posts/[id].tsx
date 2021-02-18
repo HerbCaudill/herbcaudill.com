@@ -1,18 +1,18 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { Avatar } from '../../components/Avatar'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
+import { Head } from '../../components/Head'
 import { Nav } from '../../components/Nav'
 import { getAllPostIdParams, post } from '../../lib/posts'
 import { PostData } from '../../lib/types'
+import { siteTitle } from '../../lib/constants'
 
 const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
   const {
     id,
     title,
     subtitle,
-    date,
     description,
     image,
     caption,
@@ -22,35 +22,12 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
   return (
     <>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <title>{title}</title>
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
-          rel="stylesheet"
-        />
+        <title>{`${title} | ${siteTitle}`}</title>
         <meta name="description" content={description} />
-
         <meta name="og:url" content={`https://hc3.me/posts/${id}`} />
         <meta name="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <meta property="og:type" content="blog" />
-
-        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <div
