@@ -15,7 +15,7 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
           return (
             <li className="my-6 group cursor-pointer" key={item}>
               <Link href={`/${item.toLowerCase()}`}>
-                <a className="py-1 uppercase font-mono tracking-widest text-sm splat-underline">
+                <a className="py-1 uppercase font-mono tracking-widest text-xs splat-underline">
                   {item}
                 </a>
               </Link>

@@ -15,6 +15,7 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
                 grid-cols-4 md:grid-cols-9
                 border-t border-gray-400
                 pt-2 pb-7
+                group
                 hover:bg-gray-400 hover:bg-opacity-5 transition-all duration-500 ease-in-out
                 cursor-pointer
               `}

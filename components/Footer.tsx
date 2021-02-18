@@ -35,7 +35,7 @@ export const Footer: React.FC<{ className?: string }> = ({ className }) => {
                   className="w-6 h-6 inline mr-2"
                 />
                 <a
-                  className="pb-1 text-xs font-semibold "
+                  className="pb-1 text-xs font-semibold splat-underline"
                   target="_blank"
                   href={d.url}
                 >

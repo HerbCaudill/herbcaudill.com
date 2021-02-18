@@ -4,7 +4,8 @@
 
 @layer base {
   .splat-underline {
-    @apply group-hover:bg-splat-red hover:bg-splat-red bg-bottom bg-underline bg-no-repeat;
+    @apply group-hover:bg-splat-red hover:bg-splat-red bg-underline bg-no-repeat;
+    background-position: 0 105%;
   }
 
   article {
@@ -50,7 +51,7 @@
     @apply bg-transparent border-t-12 border-black my-16 w-1/6;
   }
 
-  article a {
+  asa {
     @apply text-black bg-splat-black bg-bottom bg-underline bg-no-repeat;
   }
 

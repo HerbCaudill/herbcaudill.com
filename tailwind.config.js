@@ -72,15 +72,15 @@ module.exports = {
 
       backgroundSize: {
         // hand-drawn underline
-        underline: '100% .2em',
+        underline: '100% min(5px, .3em)',
       },
 
       // animation
 
       keyframes: {
         wiggle: {
-          '0%, 100%': { transform: 'rotate7-5d4g)' },
-          '0%, 100%': { transform: 'rotate(-6d4g)' },
+          '0%, 100%': { transform: 'rotate(-5deg)' },
+          '0%, 100%': { transform: 'rotate(-6deg)' },
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
         },
