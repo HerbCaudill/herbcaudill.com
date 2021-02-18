@@ -15,6 +15,14 @@
     @apply my-5 leading-relaxed;
   }
 
+  /* Drop cap */
+  article p:first-child:first-letter {
+    @apply pr-2 font-mono font-bold float-left;
+    font-size: 3.4em;
+    line-height: 0.91;
+    letter-spacing: -0.07em;
+  }
+
   article h2 {
     @apply text-3xl font-sans font-bold mt-16 tracking-tight;
   }
