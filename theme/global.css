@@ -4,18 +4,47 @@
 
 @layer base {
   .splat-underline {
-    @apply group-hover:bg-splat-red hover:bg-splat-red bg-underline bg-no-repeat;
-    background-position: 0 105%;
+    @apply group-hover:bg-splat-red hover:bg-splat-red bg-underline bg-bottom bg-no-repeat;
   }
 
+  /* image captions */
+  .caption {
+    @apply font-mono text-left leading-normal;
+    @apply text-2xs md:text-xs; /* tiny text on tiny screens */
+  }
+
+  /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
+  .caption i {
+    @apply block;
+  }
+}
+
+@layer components {
   article {
     @apply text-gray-700 text-base sm:text-lg font-serif font-regular;
   }
 
   article p {
-    @apply my-5 leading-relaxed;
+    @apply my-4 leading-relaxed;
   }
 
+  /* big headings */
+  article h2 {
+    @apply text-3xl font-sans font-bold mt-16 tracking-tight;
+  }
+
+  /* heavy line above big headings */
+  article h2:before {
+    @apply block border-t-12 border-black mb-G mt-16 w-1/6;
+    content: '';
+  }
+
+  /* small headings */
+  article h3 {
+    @apply text-xl font-sans font-bold mt-12 tracking-tight;
+  }
+
+  /* Drop cap at beginning of first paragraph */
   article > p:first-child::first-letter {
     @apply float-left font-mono font-bold;
     font-size: 3.5em;
@@ -24,34 +53,34 @@
     margin-top: 0.08em;
   }
 
-  article h2 {
-    @apply text-3xl font-sans font-bold mt-16 tracking-tight;
+  /* make inline <code> spans stand out a bit more */
+  article code {
+    @apply font-mono font-medium mx-1;
   }
 
-  /* heavy line above headings */
-  article h2:before {
-    @apply block border-t-12 border-black mb-5 mt-16 w-1/6;
-    content: '';
-  }
-
-  article h3 {
-    @apply text-xl font-sans font-bold mt-12 tracking-tight;
-  }
-
+  /* used for ascii art e.g. in rewrite post */
   article pre {
-    @apply my-5 p-3 border border-gray-300 bg-gray-50;
-    @apply text-2xs md:text-xs font-mono leading-loose tracking-tight md:tracking-normal lg:tracking-wide overflow-x-auto;
+    @apply my-G p-3 border border-gray-300 bg-gray-50;
+    @apply text-2xs md:text-xs font-mono font-medium text-black;
+    @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide overflow-x-auto;
   }
 
+  /* use sans font for <strong> in articles */
   article strong {
-    @apply font-sans text-black font-semibold;
+    @apply font-sans font-semibold text-black;
+  }
+
+  /* exception to the above - strong in captions keeps the mono font */
+  article .caption strong {
+    @apply font-mono;
   }
 
   article hr {
     @apply bg-transparent border-t-12 border-black my-16 w-1/6;
   }
 
-  asa {
+  /* links in articles always show the hand-drawn underline */
+  article a {
     @apply text-black bg-splat-black bg-bottom bg-underline bg-no-repeat;
   }
 
@@ -64,7 +93,8 @@
   }
 
   article blockquote {
-    @apply my-6 p-5 border border-gray-400 text-sm sm:text-base;
+    @apply -mx-1 my-6 p-3 border border-gray-400 text-black;
+    @apply text-sm sm:text-base;
   }
 
   article blockquote p {
@@ -72,60 +102,53 @@
   }
 
   article blockquote p + p {
-    @apply mt-5; /* normal margin between paragraphs inside a blockquote */
+    @apply mt-4; /* normal margin between paragraphs inside a blockquote */
   }
 
   article div:not(.image) > p img {
-    @apply -mx-5 my-7 w-screen max-w-none md:mx-0 md:w-auto md:max-w-full;
+    @apply my-7;
+    @apply -mx-G md:mx-0;
+    @apply w-screen md:w-auto;
+    @apply max-w-none md:max-w-full;
   }
 
-  .caption {
-    @apply font-mono text-2xs md:text-xs text-left leading-normal;
-    @apply px-5;
-    @apply md:px-0 lg:mt-0 lg:col-span-2;
-  }
-
-  .caption i {
-    @apply whitespace-nowrap;
-  }
-
-  article .caption strong {
-    @apply font-mono;
-  }
-
+  /* container for image followed by caption */
   article .image {
-    @apply my-7 -mx-5;
-    @apply md:mx-0;
-    @apply lg:grid lg:grid-cols-9 lg:gap-5 lg:w-9/7;
+    @apply my-10;
+    /* on large screens, caption is positioned to right of image (the enclosing width is 7 columns) */
+    @apply lg:grid lg:grid-cols-9 lg:gap-G; /* This becomes a grid with 9 columns - 7 for image, 2 for caption  */
+    @apply lg:w-9/7; /* extend two columns beyond the enclosing width */
   }
 
-  article .image-lg {
-    @apply mt-16;
-    @apply md:mx-0 md:grid md:grid-cols-12 md:gap-5;
-    @apply md:-ml-3/9 md:w-12/9;
-    @apply lg:-ml-3/7 lg:w-12/7;
+  article .image img {
+    @apply -mx-G md:mx-0; /* on small screens, image takes full horizontal space */
+    @apply w-full;
   }
 
+  /* first element, typically a <p> containing the image */
   article .image :first-child {
     @apply lg:col-span-7 lg:mt-0;
   }
 
-  article .image pre {
+  /* second element, typically a <p> that we want to treat as a caption */
+  article .image p:nth-child(2) {
+    @apply caption; /* inherit all the caption classes */
+    @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
   }
 
+  /* break spans up on large screens, where the caption is in the sidebar  (e.g. "key" for ascii illustrations in rewrite article */
+  article .image p:nth-child(2) span {
+    @apply inline lg:block;
+  }
+
+  /* variant: images that take up all 12 columns */
+  article .image-lg {
+    @apply mt-16;
+    @apply md:mx-0 md:grid md:grid-cols-12 md:gap-G;
+    @apply md:-ml-3/9 md:w-12/9;
+    @apply lg:-ml-3/7 lg:w-12/7;
+  }
   article .image-lg :first-child {
     @apply md:col-span-12;
-  }
-
-  article .image img {
-    @apply w-full;
-  }
-
-  article .image p:nth-child(2) {
-    @apply caption;
-  }
-
-  article .image p:nth-child(2) span {
-    @apply inline lg:block; /* break spans up in lg, where the caption is in the sidebar */
   }
 }
