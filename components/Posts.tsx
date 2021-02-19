@@ -5,13 +5,13 @@ import { Tag } from './Tag'
 
 export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
   return (
-    <div>
+    <main className="col-span-4 md:col-start-4 md:col-span-9">
       {posts.map(
         ({ id, date, title, subtitle, description, thumbnail, tags }) => (
-          <Link href={`/posts/${id}`} key={id}>
+          <Link href={`/words/${id}`} key={id}>
             <div
               className={`
-                grid gap-5
+                grid gap-G
                 grid-cols-4 md:grid-cols-9
                 border-t border-gray-400
                 pt-2 pb-7
@@ -61,6 +61,6 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
           </Link>
         )
       )}
-    </div>
+    </main>
   )
 }
