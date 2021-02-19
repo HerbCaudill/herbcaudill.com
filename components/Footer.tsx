@@ -16,10 +16,10 @@ export const Footer: React.FC<{ className?: string }> = ({ className }) => {
   return (
     <footer
       className={`${className} 
-        grid grid-cols-4 gap-5
+        grid grid-cols-4 gap-G
         border-t border-gray-400 
-        p-5 py-10 md:p-0 md:py-10
-        mt-5 -mx-5 md:-m-0
+        p-G py-10 md:p-0 md:py-10
+        mt-G -mx-G md:-m-0
         `}
     >
       <>
