@@ -4,9 +4,10 @@ subtitle: Lessons from 6 software rewrite stories
 description: 'A new take on the age-old question: Should you rewrite your application from scratch, or is that “the single worst strategic mistake that any software company can make”? Turns out there are more than two options for dealing with a mature codebase.'
 date: '2019-02-19'
 image: /images/posts/rewrite/rust.jpg
-caption: '“As if source code <i>rusted!</i>” <i>— Joel Spolsky</i>'
+caption: '“As if source code <em>rusted!</em>” <i>— Joel Spolsky</i>'
 thumbnail: /images/posts/rewrite/thumbnail.jpg
 tags: software
+context: "This is by far the most widely-read thing I've ever written."
 ---
 
 <span>A</span>lmost two decades ago, Joel Spolsky excoriated Netscape for rewriting their codebase in his landmark essay [Things You Should Never Do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
@@ -40,12 +41,12 @@ _(Bonus: ASCII art summaries of each story!)_
 
 <div class='image'>
 <pre>
-Netscape ... 🡒 4.0 🡒 📝5.0 💀  6.0 🡒 7.0 🡒 💀
-                                     ⤷ Mozilla 1.0 🡒 💀
+Netscape ... 🡒 4.0 🡒 📝5.0 ☠  6.0 🡒 7.0 🡒 ☠
+                                     ⤷ Mozilla 1.0 🡒 ☠
                                            📝Firefox 1.0 ---------- 🡒
 </pre>
 
-**Key:** <span>📝 = rewrite</span> <span>💀 = dead end</span>
+**Key:** <span>📝 = rewrite</span> <span>☠ = dead end</span>
 
 </div>
 
@@ -572,7 +573,7 @@ It all feels a little extreme, and perhaps it’s not necessary go to the length
 
 I agree with this, as far as it goes.
 
-This advice assumes, though, that the objective is to end up with the original product _plus_ some set of new features*.*
+This advice assumes, though, that the objective is to end up with the original product _plus_ some set of new features.
 
 But what if you want to _remove_ functionality? Or what if you want to solve some use case in a completely _different_ way? What if your experience with the product has given you ideas for a fundamentally new approach?
 

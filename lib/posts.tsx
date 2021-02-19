@@ -22,8 +22,8 @@ export const post = (id: string): PostData => {
     thumbnail: postData.thumbnail ?? postData.image,
     title: postData.title.replace('_', '&nbsp;'),
     subtitle: postData.subtitle.replace('_', '&nbsp;'),
-    content: parsedContents.content,
-    contentHtml: markdownToHtml(parsedContents.content),
+    content: markdownToHtml(parsedContents.content),
+    context: markdownToHtml(postData.context),
     tags: postData.tags
       ? postData.tags.split(',').map((t: string) => t.trim())
       : [],

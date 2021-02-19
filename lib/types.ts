@@ -1,13 +1,18 @@
 ﻿export type PostData = {
   id: string
+
   title: string
   subtitle: string
-  description: string
+
   date: string
-  content: string // markdown
-  contentHtml: string
+
+  description: string
+  context: string
+  content: string
+
   image: string
   caption: string
   thumbnail?: string
+
   tags: string[]
 }
