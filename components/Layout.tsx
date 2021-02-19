@@ -1,60 +1,46 @@
-import Head from 'next/head'
-import { Nav } from './Nav'
+﻿import { Avatar } from './Avatar'
 import { Footer } from './Footer'
-import Link from 'next/link'
-import { name, siteTitle } from '../lib/constants'
-
-export const Layout: React.FC<LayoutProps> = ({ children, header }) => {
+import { Header } from './Header'
+import cx from 'classnames'
+export const Layout: React.FC<LayoutProps> = ({
+  compact = false,
+  children,
+}) => {
   return (
     <>
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="description" content={siteTitle} />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-
       <div
         className={`
-          container 
-          grid gap-5
-          grid-cols-4 md:grid-cols-12 
-          w-full md:max-w-screen-lg lg:max-w-screen-xl
-          md:m-auto
-          `}
+        container 
+        grid gap-G
+        grid-cols-4 md:grid-cols-12 
+        w-full md:max-w-screen-lg lg:max-w-screen-xl
+        md:m-auto`}
       >
-        {/* Avatar */}
-        <header className="-mx-1 md:-mx-0 md:col-span-2 lg:col-span-1 text-center">
-          <Link href="/">
-            <img
-              src="/images/avatar/glasses-head-sat-transp.png"
-              className="w-full inline"
-              style={{ maxWidth: '5rem' }}
-              alt={name}
-            />
-          </Link>
+        <header
+          className={cx(
+            { 'py-12': !compact },
+            'text-center',
+            'md:col-span-2 lg:col-span-1'
+          )}
+        >
+          <Avatar size={compact ? 'sm' : 'lg'} />
         </header>
 
-        {/* Herb Caudill/Words etc. */}
-        <header className="col-start-2 col-span-3 md:col-start-4 md:col-span-9 flex items-center ">
-          {header}
+        <header
+          className={`
+          col-start-2 md:col-start-4 
+          col-span-3 md:col-span-9
+          flex items-center `}
+        >
+          <Header title="Words" size={compact ? 'sm' : 'lg'} />
         </header>
+        {children}
 
-        {/* Words / Pictures / Facts */}
-        <Nav className="hidden md:block md:col-span-2 lg:col-span-1" />
-
-        {/* Main content area */}
-        <main className="col-span-4 md:col-start-4 md:col-span-9">
-          {children}
-        </main>
-
-        {/* github/twitter/email links */}
         <Footer className="col-span-4 md:col-span-12 " />
       </div>
     </>
   )
 }
-
 interface LayoutProps {
-  header: React.ReactNode
+  compact?: boolean
 }
