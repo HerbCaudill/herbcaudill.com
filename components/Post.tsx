@@ -1,105 +1,85 @@
-import { Date } from './Date'
+import { Nav } from './Nav'
 import { PostData } from '../lib/types'
 
 export const Post: React.FC<PostProps> = ({
   title,
   subtitle,
   description,
-  date,
-  contentHtml,
+  image,
+  caption,
+  content,
+  context,
 }) => {
   return (
-    <div>
-      <p className="mt-2 font-mono text-xs">
-        “As if source code <i>rusted!</i>” — <i>Joel Spolsky</i>
-      </p>
-      <h1
-        className={`
-          mt-20
-          font-serif font-extralight tracking-tighter leading-none 
-          text-4xl md:text-5xl lg:text-6xl
-          `}
-      >
-        {title}
-      </h1>
-      <h2 className="font-bold font-sans tracking-tight text-xl mt-2">
-        {subtitle}
-      </h2>
-      <p className="my-6 font-mono text-sm text-left">{description}</p>
-      <div className="border-t border-gray-400 pt-4 mt-12 mb-6">
-        <span className="font-sans font-bold text-sm mr-4">Herb Caudill</span>
-        <Date
-          className="font-sans text-xs tracking-extrawide "
-          dateString={date}
+    <div
+      className={`
+            grid grid-cols-1 md:grid-cols-12 gap-G 
+            col-span-4 md:col-span-12
+        `}
+    >
+      {/* Cover image */}
+      <div className="-mx-G md:mx-0 md:col-span-12">
+        <img src={image} className="w-full h-48 md:h-64 object-cover" />
+      </div>
+
+      {/* caption */}
+      <p
+        className="caption md:col-span-3 md:mt-0 leading-normal"
+        dangerouslySetInnerHTML={{ __html: caption }}
+      />
+
+      <div className="md:col-span-9 mt-12 md:mt-0">
+        {/* Title */}
+        <h1
+          className={`
+                font-serif font-extralight tracking-tighter leading-none
+                md:mt-0
+                text-4xl md:text-5xl lg:text-6xl`}
+        >
+          {title}
+        </h1>
+
+        {/* Subtitle */}
+        <h2
+          className="font-bold font-sans tracking-tight text-xl mt-2"
+          dangerouslySetInnerHTML={{ __html: subtitle }}
         />
       </div>
-      {/* <article dangerouslySetInnerHTML={{ __html: contentHtml }} /> */}
 
-      <article className="text-xl font-serif font-regular">
-        <p>
-          Almost two decades ago, Joel Spolsky excoriated Netscape for rewriting
-          their codebase in his landmark essay{' '}
-          <a href="https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/">
-            Things You Should Never Do
-          </a>
-          .
-        </p>
-        <p>
-          He concluded that{' '}
-          <strong>
-            a functioning application should never, ever be rewritten from the
-            ground up
-          </strong>
-          . His argument turned on two points:
-        </p>
-        <ul>
-          <li>
-            The crufty-looking parts of the application’s codebase often embed
-            hard-earned knowledge about corner cases and weird bugs.
-          </li>
-          <li>
-            A rewrite is a lengthy undertaking that keeps you from improving on
-            your existing product, during which time the competition is gaining
-            on you.
-          </li>
-        </ul>
+      <Nav
+        className={`
+              hidden md:block
+              md:mt-24 
+              md:col-span-2 lg:col-span-1 row-span-2
+            `}
+      />
 
-        <p>
-          Not that it mattered. In the three years that Netscape stood still,
-          Internet Explorer had taken all of its remaining market share:
-        </p>
-        <div className="">
-          <img
-            src="https://miro.medium.com/1*2AJ0RM43DGspNNuRYSOtVA.png"
-            className="border"
-          />
-          <p>
-            When the rewrite began, Netscape was losing ground quickly to
-            Microsoft’s Internet Explorer. When the new browser was finally
-            released three years later, it was buggy and slow; meanwhile
-            Netscape’s market share had dwindled to practically nothing. (Chart
-            adapted from{' '}
-            <a href="https://en.wikipedia.org/wiki/Usage_share_of_web_browsers">
-              Wikipedia
-            </a>
-            .)
-          </p>
-        </div>
-        <p>
-          In 1999, while the rewrite was underway, AOL had acquired Netscape in
-          a deal valued at $10 billion.
-        </p>
-        <p>
-          Just two years after Netscape 6.0 was released, the Netscape team
-          within AOL was disbanded.
-        </p>
-        <p>
-          Mozilla, the open-source community that Netscape had created, would go
-          on to release the Firefox browser in 2002 — after yet <em>another</em>
-          ground-up rewrite. Firefox did manage to gain back some market share
-          from Microsoft.
-        </p>
-      </article>
+      <div
+        className={`
+            md:col-span-9 md:col-start-4 md:mt-24
+            border-t border-gray-400 `}
+      >
+        {/* Description */}
+        <p
+          className="pt-6 mb-12 font-mono text-sm text-left"
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></p>
+      </div>
+
+      {/* Article body */}
+      <article
+        className={`
+          text-gray-700 text-base sm:text-lg font-serif font-regular;
+          md:col-span-9 md:col-start-4
+          lg:col-start-4 lg:col-span-7`}
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
+      <aside className="md:col-span-3 md:relative">
+        <p
+          className="md:absolute md:bottom-G mb-G font-sans font-semibold text-xs"
+          dangerouslySetInnerHTML={{ __html: context }}
+        ></p>
+      </aside>
     </div>
   )
 }
