@@ -3,8 +3,7 @@
 export const Head: React.FC<HeadProps> = ({ children }) => {
   return (
     <_Head>
-      <link rel="icon" href="/favicon.ico" />
-
+      <link rel="icon" href="/images/avatar/glasses-head-sat-transp.png" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href={GoogleFont('IBM Plex Sans')} rel="stylesheet" />
       <link href={GoogleFont('IBM Plex Serif')} rel="stylesheet" />
@@ -22,7 +21,7 @@ export const Head: React.FC<HeadProps> = ({ children }) => {
 
 interface HeadProps {}
 
-// https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;1,100;1,200&display=swap');
+// returns a url like https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;1,100;1,200&display=swap
 export const GoogleFont = (
   family: string,
   styles: (0 | 1)[] = [0, 1],
@@ -39,5 +38,10 @@ export const GoogleFont = (
     )
     .join(';')
 
-  return `https://fonts.googleapis.com/css2?family=${family}:ital,wght@${variants}&display=swap`
+  return [
+    `https://fonts.googleapis.com/css2`,
+    `?family=${family}`,
+    `:ital,wght@${variants}`,
+    `&display=swap`,
+  ].join('')
 }
