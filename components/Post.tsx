@@ -71,14 +71,14 @@ export const Post: React.FC<PostProps> = ({
         className={`
           text-gray-700 text-base sm:text-lg font-serif font-regular;
           md:col-span-9 md:col-start-4
-          lg:col-start-4 lg:col-span-7`}
+          lg:col-start-4 lg:co  l-span-7`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
       <aside className="md:col-span-3 md:relative">
-        <p
-          className="md:absolute md:bottom-G mb-G font-sans font-semibold text-xs"
+        <div
+          className="context md:absolute md:bottom-G mb-G "
           dangerouslySetInnerHTML={{ __html: context }}
-        ></p>
+        ></div>
       </aside>
     </div>
   )

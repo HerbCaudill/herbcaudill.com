@@ -1,13 +1,24 @@
 ---
 title: Rewrite, refactor, or reinvent?
 subtitle: Lessons from 6 software rewrite stories
-description: 'A new take on the age-old question: Should you rewrite your application from scratch, or is that “the single worst strategic mistake that any software company can make”? Turns out there are more than two options for dealing with a mature codebase.'
+description: |
+  A new take on the age-old question: Should you rewrite your application from scratch, 
+  or is that “the single worst strategic mistake that any software company can make”? 
+  Turns out there are more than two options for dealing with a mature codebase.
+context: |
+  I originally wrote this on [Medium](http://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22). 
+  Just minutes after I hit publish, DHH himself [tweeted it out approvingly](https://twitter.com/dhh/status/1097937474003685376):
+
+  ![](/images/posts/rewrite/dhh-tweet.png)
+
+  As a result, this is by far the most widely-read thing I've ever written. According to Medium,
+  it's been read from beginning to end by nearly 40,000 people -- not bad for a half-hour read!
+
 date: '2019-02-19'
 image: /images/posts/rewrite/rust.jpg
 caption: '“As if source code <em>rusted!</em>” <i>— Joel Spolsky</i>'
 thumbnail: /images/posts/rewrite/thumbnail.jpg
 tags: software
-context: "This is by far the most widely-read thing I've ever written."
 ---
 
 <span>A</span>lmost two decades ago, Joel Spolsky excoriated Netscape for rewriting their codebase in his landmark essay [Things You Should Never Do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).

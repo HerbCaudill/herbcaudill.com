@@ -151,4 +151,23 @@
   article .image-lg :first-child {
     @apply md:col-span-12;
   }
+
+  .context {
+    @apply font-mono text-xs leading-normal;
+  }
+  .context p {
+    @apply mt-5;
+  }
+
+  .context img {
+    @apply mt-5 border;
+  }
+
+  .context a {
+    @apply text-black bg-splat-black bg-bottom bg-underline bg-no-repeat;
+  }
+
+  .context a:hover {
+    @apply text-red-700 bg-splat-red;
+  }
 }
