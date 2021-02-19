@@ -11,7 +11,7 @@ const columnFractions = (span, cols) => {
   return result
 }
 
-const gap = spacing['5']
+const gap = spacing['7']
 const halfGap = `(${gap} / 2)`
 
 const allFractions = {

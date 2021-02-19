@@ -2,7 +2,7 @@ const { fonts, fontWeight } = require('./theme/fonts')
 const { colors } = require('./theme/colors')
 const { splat } = require('./theme/splat')
 const { spacing } = require('tailwindcss/defaultTheme')
-const { allFractions, halfGap } = require('./theme/columnFractions')
+const { allFractions, gap, halfGap } = require('./theme/columnFractions')
 
 const { condensed, emoji, mono, sans, serif, sansText, serifText } = fonts
 
@@ -18,6 +18,7 @@ module.exports = {
       spacing: (theme, { negative }) => ({
         ...allFractions,
         ...negative(allFractions),
+        G: gap,
       }),
 
       width: (theme, { negative }) => ({
@@ -25,6 +26,7 @@ module.exports = {
         '3/2': `calc(${(100 * 3) / 2}% + ${halfGap})`,
         ...allFractions,
         ...negative(allFractions),
+        G: gap,
       }),
 
       colors,
