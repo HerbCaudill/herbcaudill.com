@@ -74,7 +74,7 @@ module.exports = {
 
       backgroundSize: {
         // hand-drawn underline
-        underline: '100% min(5px, .3em)',
+        underline: '100% min(5px, .25em)',
       },
 
       // animation

@@ -10,7 +10,7 @@ Things have changed a lot in the decade since the last time I built a web applic
 
 On the one hand, we’ve finally arrived at the promised land of code reuse. If you’re into programming productivity, no Agile methodology or VS Code extension compares to a technique I like to call **“importing code that someone else wrote.”** What a time to be alive!
 
-<div class='image '>
+<div class='image image-lg'>
 
 ![](/images/posts/serverless/cartoon.jpeg)
 
@@ -52,7 +52,7 @@ There are several sources of inefficiency here:
 
 Now, DevResults was first written in 2009, and changes to the code since then have had to be made in a cautious and incremental way in order to avoid disrupting people who actively use the software. We’re starting with a clean slate now, so what should we do differently?
 
-### JavaScript everywhere
+### Improvement 1: JavaScript everywhere
 
 The first step to simplify this is to use a single language for the codebase. In 2018, the only reasonable choice is JavaScript. We can use Node.js on the back end, and that way bits of logic that are shared between the client and the server only have to be written once.
 
@@ -64,7 +64,7 @@ The first step to simplify this is to use a single language for the codebase. In
 
 </div>
 
-### JSON everywhere
+### Improvement 2: JSON everywhere
 
 We can also use a NoSQL database like MongoDB, which accepts and returns JSON data. So our data can move from client to server to database without having to be translated.
 
@@ -142,7 +142,7 @@ The most obvious answer is that **we need the server to collaborate with others*
 
 So, yes, this would be a very simple architecture:
 
-<div class='image'>
+<div class='image image-b'>
 
 ![](/images/posts/serverless/08.jpeg)
 
@@ -156,7 +156,7 @@ So let’s put on our “[pretend it’s magic](https://books.google.es/books?id
 
 Let’s just imagine for the moment that we had a magical way of automatically and instantaneously synchronizing Alice’s data with Bob’s data, so that when they’re both online, they’re both always looking at the same thing.
 
-<div class='image'>
+<div class='image image-b'>
 
 ![](/images/posts/serverless/09.gif)
 
@@ -170,7 +170,7 @@ But wait, you say! This peer-to-peer setup requires Alice and Bob to be online a
 
 OK, no problem — we can just fire up a client on a computer that no one uses, and leave it running all the time.
 
-<div class='image '>
+<div class='image image-b'>
 
 ![](/images/posts/serverless/10.png)
 
@@ -186,7 +186,7 @@ OK, that’s great, but at some point we’re going to have to have to come up w
 
 As you might suspect, data replication and synchronization is a problem that a lot of smart people have been thinking about for many years; so not only do we not have to rely on magic, but we don’t have to invent anything new.
 
-### Mutable data, immutable data, and the meaning of truth
+## Mutable data, immutable data, and the meaning of truth
 
 The solution hinges on a different conception of data from the one I’ve always worked with.
 
@@ -202,7 +202,7 @@ But suppose you have two replicas of this database, and they’re both intermitt
 
 **This perspective is what makes replication and synchronization complicated.** Our source of truth is a moving target.
 
-## The inside-out database
+### The inside-out database
 
 What if we reverse our perspective, though, and think of the _change log_ as our _primary_ data source? In that case a snapshot of the data at any point in time is just a **pure function** of the event log.
 
@@ -286,6 +286,8 @@ Is this insane? Has it been done before? Let me know what you think!
 
 ## Further exploration
 
+<div class='endmatter'>
+
 In [Distributed Systems and the End of the API](https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/) (2014), Chas Emerick points out that network API models — whether RPC, SOAP, REST (or now, GraphQL) — are fundamentally unsuited to distributed systems, and that many API use cases can be solved using CRDTs instead.
 
 The earliest and clearest explanation of the advantages of immutable event logs I found is in the article [How to beat the CAP theorem](http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html) (2011) by Nathan Marz. Martin Kleppman takes a very similar line in the talk [Turning the database inside-out with Apache Samza](https://martin.kleppmann.com/2015/03/04/turning-the-database-inside-out.html) (2015).
@@ -299,3 +301,5 @@ Ink and Switch has also created a series of proof-of-concept apps using Automerg
 - [**Trellis**](https://github.com/automerge/trellis), a peer-to-peer Trello clone
 - [**Pixelpusher**](https://github.com/automerge/pixelpusher), a collaborative drawing tool
 - [**Pushpin**](https://github.com/inkandswitch/pushpin), a collaborative corkboard app
+
+</div>

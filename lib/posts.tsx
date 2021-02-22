@@ -27,6 +27,21 @@ export const post = (id: string): PostData => {
   }
 }
 
+export const relatedPosts = (id: string): PostData[] => {
+  // for now the related posts are just the previous and following posts in order
+
+  // find current post
+  const allPosts = posts()
+  const thisIndex = allPosts.findIndex(post => post.id === id)
+  const lastIndex = allPosts.length - 1
+
+  // wrap around if we're at the beginning or end of the list
+  const prevIndex = thisIndex > 0 ? thisIndex - 1 : lastIndex
+  const nextIndex = thisIndex < lastIndex ? thisIndex + 1 : 0
+
+  return [prevIndex, nextIndex].map(i => allPosts[i])
+}
+
 export const getAllPostIds = () =>
   fs.readdirSync(postsDir).map(fileName => fileName.replace(/\.md$/, ''))
 

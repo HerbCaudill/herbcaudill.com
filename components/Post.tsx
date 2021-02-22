@@ -1,6 +1,7 @@
 import { Nav } from 'components/Nav'
 import { PostData } from 'lib/types'
 import { Date } from 'components/Date'
+import { PostLink } from 'components/PostLink'
 
 export const Post: React.FC<PostProps> = ({
   title,
@@ -13,6 +14,7 @@ export const Post: React.FC<PostProps> = ({
   originalPublication,
   originalUrl,
   context,
+  relatedPosts,
 }) => {
   return (
     <div
@@ -99,7 +101,18 @@ export const Post: React.FC<PostProps> = ({
           dangerouslySetInnerHTML={{ __html: context }}
         />
       </aside>
+
+      {/* Related */}
+      <div className="md:col-span-9 md:col-start-4">
+        <h3 className="mb-G">Related</h3>
+        {relatedPosts.map(postData => (
+          <PostLink {...postData} />
+        ))}
+      </div>
     </div>
   )
 }
-interface PostProps extends PostData {}
+
+export interface PostProps extends PostData {
+  relatedPosts: PostData[]
+}

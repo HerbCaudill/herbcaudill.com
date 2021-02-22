@@ -1,12 +1,13 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
 import { Head } from 'components/Head'
 import { Layout } from 'components/Layout'
-import { Post } from 'components/Post'
+import { Post, PostProps } from 'components/Post'
 import { siteTitle } from 'lib/constants'
-import { getAllPostIdParams, post } from 'lib/posts'
-import { PostData } from 'lib/types'
+import { getAllPostIdParams, post, relatedPosts } from 'lib/posts'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
-const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
+const PostLayout: React.FC<{
+  postData: PostProps
+}> = ({ postData }) => {
   const { id, title, description, image } = postData
 
   return (
@@ -26,9 +27,17 @@ const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
 
 export default PostLayout
 
-export const getStaticProps: GetStaticProps = async ({ params }) => ({
-  props: { postData: post(params.id as string) },
-})
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params.id as string
+  return {
+    props: {
+      postData: {
+        ...post(id),
+        relatedPosts: relatedPosts(id),
+      },
+    },
+  }
+}
 
 export const getStaticPaths: GetStaticPaths = async () => ({
   paths: getAllPostIdParams(),
