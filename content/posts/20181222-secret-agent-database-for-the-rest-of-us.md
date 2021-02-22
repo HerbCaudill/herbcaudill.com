@@ -3,50 +3,49 @@ title: Computer, enhance
 subtitle: A secret agent database for_the rest of us
 description: Why shouldn’t our tools for organizing information be as cool as the ones in the movies?
 date: '2018-12-22'
-image: '/images/thumbnails/secretagent.png'
+image: '/images/posts/secretagent/1.png'
+thumbnail: '/images/thumbnails/secretagent.png'
 ---
-
-![](https://miro.medium.com/max/2880/1*jrxpw3vsHQx7XjjRDBZiuw.png)
 
 I have a long-standing love-hate relationship with the way computer interfaces are portrayed in films.
 
 On the one hand, they’re so unrealistic! Lynne has patiently sat through any number of post-movie rants about this kind of thing:
 
-![](https://miro.medium.com/max/1000/1*XNLlC7LKlxZVAeCx4lqGMw.gif)
+![](/images/posts/secretagent/2.gif)
 
-![](https://miro.medium.com/max/1000/1*4R2cJaZYjv4BlMn30lZVLA.gif)
+![](/images/posts/secretagent/3.gif)
 
 On the other hand, they’re kind of awesome! At their best, film UIs capture the way we _wish_ computers worked:
 
-![](https://miro.medium.com/max/1070/0*jgOMevZ-deY9tv6J.gif)
+![](/images/posts/secretagent/4.gif)
 
-![](https://miro.medium.com/max/1000/1*tJ6kqhv0ieacUiGoWucz4Q.gif)
+![](/images/posts/secretagent/5.gif)
 
 In the movies, no one ever spends five minutes looking for a file. In the movies, no one struggles to print something from their laptop.
 
 In the movies, when you type someone’s name into the computer, you’re immediately presented with everything you need to know about them:
 
-![](https://miro.medium.com/max/2560/1*kZJBq15ke6bvrCJKpX3rbA.png)
+![](/images/posts/secretagent/6.png)
 
-![](https://miro.medium.com/max/1980/1*OA2TQV2tq1BxbKpCmI_NvA.png)
+![](/images/posts/secretagent/7.png)
 
-![](https://miro.medium.com/max/1554/1*auDTNgXZH1n-wRHR4jZkHw.jpeg)
+![](/images/posts/secretagent/8.jpeg)
 
-![](https://miro.medium.com/max/1240/1*-PEeinnSNlWcVa1AV_SRTQ.jpeg)
+![](/images/posts/secretagent/9.jpeg)
 
-![](https://miro.medium.com/max/3840/1*SSnpTNu5UHNg7_Bso9RNZw.jpeg)
+![](/images/posts/secretagent/10.jpeg)
 
-![](https://miro.medium.com/max/1440/1*dMgO11mIbmZetB9Wp0FwdA.jpeg)
+![](/images/posts/secretagent/11.jpeg)
 
-![](https://miro.medium.com/max/1980/1*izI_o-sAyrgVWigdBQHcVA.png)
+![](/images/posts/secretagent/12.png)
 
-![](https://miro.medium.com/max/1600/1*t510GzPVN1OQzP9XykbT6w.png)
+![](/images/posts/secretagent/13.png)
 
-![](https://miro.medium.com/max/1110/1*lrje37x5BVTWpozSWwVOaA.jpeg)
+![](/images/posts/secretagent/14.jpeg)
 
-![](https://miro.medium.com/max/1800/1*mEf-TLOjkEKjsIHiUNFJ3g.jpeg)
+![](/images/posts/secretagent/15.jpeg)
 
-![](https://miro.medium.com/max/872/1*Vliol4v-N_st1_AWQEl_xA.jpeg)
+![](/images/posts/secretagent/16.jpeg)
 
 Mugshots, surveillance photos, maps, scans of paper records, ID cards, maps, fingerprints, 3D body scans: It’s all there, in one place, when you need it.
 
@@ -56,11 +55,15 @@ When I see the computer systems used by spy organizations in the movies, I alway
 
 **Thought #2:** I’d love to just get a glimpse at the systems real-world spies use. Going by the Agency databases I _have_ seen, I’m guessing they’re not all that:
 
-![](https://miro.medium.com/max/3508/1*LRM7XjMqYghV48mN7YBUsw.png)
+<div class='image-2up'>
 
-![](https://miro.medium.com/max/2872/1*8l9H_ZWUT2PXjhLj4rSH6w.png)
+![](/images/posts/secretagent/17.png)
 
-On the other hand, maybe the CIA saves all the good software contractors for their internally-facing systems — who knows!
+![](/images/posts/secretagent/18.png)
+
+Maybe the CIA saves all the good software contractors for their internally-facing systems — who knows!
+
+</div>
 
 **Thought #3:** It sure would be nice if, at _my_ job, I could type in, say, a customer’s name — and see everything I need to know about them, in once place.
 
@@ -68,7 +71,11 @@ So let’s take the secret agent use-case as a way of anchoring our thinking. **
 
 Specifically, Celeste wants to be able to type in an agent’s name _(klackety-klackety-klack)_ and see something like this:
 
-![](https://miro.medium.com/max/4384/1*aoyXMzKHOk3MnHh6La2UfQ.png)
+<div class='image-xl'>
+
+![](/images/posts/secretagent/19.png)
+
+</div>
 
 This shouldn't be rocket science, should it?
 

@@ -55,7 +55,8 @@
 
   /* make inline <code> spans stand out a bit more */
   article code {
-    @apply font-mono font-medium mx-1;
+    @apply font-mono mx-1;
+    font-size: 0.95em;
   }
 
   article pre code {
@@ -184,11 +185,11 @@
   /* medium variant: images that span 5 columns */
 
   article .image-md {
-    @apply md:mx-0 md:grid md:grid-cols-7 md:gap-G;
+    @apply md:mx-0 md:grid md:grid-cols-9 md:gap-G;
   }
 
   article .image-md :nth-child(1) {
-    @apply md:col-span-5;
+    @apply md:col-span-7 lg:col-span-5;
   }
 
   article .image-md :nth-child(2) {

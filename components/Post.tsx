@@ -104,7 +104,7 @@ export const Post: React.FC<PostProps> = ({
 
       {/* Related */}
       <div className="md:col-span-9 md:col-start-4">
-        <h3 className="mb-G">Related</h3>
+        <h3 className="mb-G text-2xl font-sans font-bold">Related</h3>
         {relatedPosts.map(postData => (
           <PostLink key={postData.id} {...postData} />
         ))}
