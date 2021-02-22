@@ -13,6 +13,8 @@ export const Head: React.FC<HeadProps> = ({ children }) => {
       <meta property="og:type" content="blog" />
 
       <meta name="twitter:card" content="summary_large_image" />
+      <link href="/prism.css" rel="stylesheet" />
+      <script src="/prism.js" />
 
       {children}
     </_Head>

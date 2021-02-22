@@ -17,27 +17,27 @@
   .caption i {
     @apply block;
   }
-
-  /* big headings */
-  h2 {
-    @apply text-3xl font-sans font-bold mt-16 tracking-tight text-black mb-G;
-  }
-
-  /* heavy line above big headings */
-  h2:before {
-    @apply block border-t-12 border-black mb-G mt-16 w-1/6;
-    content: '';
-  }
-
-  /* small headings */
-  h3 {
-    @apply text-xl font-sans font-bold mt-12 tracking-tight text-black;
-  }
 }
 
 @layer components {
   article {
     @apply relative text-gray-700 text-base sm:text-lg font-serif font-regular;
+  }
+
+  /* big headings */
+  article h2 {
+    @apply text-3xl font-sans font-bold mt-16 tracking-tight text-black mb-G;
+  }
+
+  /* heavy line above big headings */
+  article h2:before {
+    @apply block border-t-12 border-black mb-G mt-16 w-1/6;
+    content: '';
+  }
+
+  /* small headings */
+  article h3 {
+    @apply text-xl font-sans font-bold mt-12 tracking-tight text-black;
   }
 
   article p {
@@ -50,7 +50,7 @@
     font-size: 3.5em;
     letter-spacing: 0.1em;
     line-height: 0.73;
-    margin-to: 0.08em;
+    margin-top: 0.08em;
   }
 
   /* make inline <code> spans stand out a bit more */
@@ -58,11 +58,16 @@
     @apply font-mono font-medium mx-1;
   }
 
-  /* used for ascii art e.g. in rewrite post */
+  article pre code {
+  }
+
   article pre {
-    @apply my-G p-3 border border-gray-300 bg-gray-50;
+  }
+
+  /* used for ascii art e.g. in rewrite post */
+  article .image pre {
     @apply text-2xs md:text-xs font-mono font-medium text-black;
-    @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide overflow-x-auto;
+    @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide;
   }
 
   /* use sans font for <strong> in articles */
@@ -206,6 +211,26 @@
   /* border variant: apply thin border + some padding to images*/
   article .image-b img {
     @apply border border-gray-300 p-4;
+  }
+
+  /* 2-up variant */
+
+  article .image-2up {
+    @apply my-G;
+    @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-x-G;
+    @apply md:-ml-3/9 md:w-12/9;
+    @apply lg:-ml-3/7 lg:w-12/7;
+  }
+
+  article .image-2up > :nth-child(1),
+  article .image-2up > :nth-child(2) {
+    @apply lg:my-0;
+    @apply lg:col-span-5;
+  }
+
+  article .image-2up > :nth-child(3) {
+    @apply caption; /* inherit all the caption classes */
+    @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
   }
 
   /* context blurb at bottom of article */

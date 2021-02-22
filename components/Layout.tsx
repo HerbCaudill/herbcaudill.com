@@ -3,19 +3,21 @@ import { Footer } from './Footer'
 import { Header } from './Header'
 import cx from 'classnames'
 export const Layout: React.FC<LayoutProps> = ({
+  children,
   label,
   compact = false,
-  children,
 }) => {
   return (
     <>
       <div
         className={`
-        container 
-        grid gap-G
-        grid-cols-4 md:grid-cols-12 
-        w-full md:max-w-screen-lg lg:max-w-screen-xl
-        md:m-auto`}
+          container 
+          grid gap-G
+          grid-cols-4 md:grid-cols-12 
+          w-full max-w-full md:max-w-screen-lg lg:max-w-screen-xl
+          md:m-auto`}
+        // smaller than this & we just shrink to fit
+        style={{ minWidth: 300 }}
       >
         <header
           className={cx(

@@ -3,16 +3,16 @@ title: 'Excel hell'
 subtitle: 'A cautionary tale'
 description: 'Before we create a “single infinitely-customizable app for everything else”, we need to understand why we’re currently using spreadsheets for everything.'
 date: '2018-04-01'
-image: '/images/thumbnails/excel.png'
+thumbnail: '/images/thumbnails/excel.jpg'
 ---
 
 After writing [many words about the challenges of building a SaaS toolset for a team](https://medium.com/@herbcaudill/the-trouble-with-saas-279694551b25), I concluded that the holy grail would look like this:
 
-![](https://miro.medium.com/max/4800/1*Lee0d9ylJi56lp9AOIFanw.png)
+![](/images/posts/excel/1.png)
 
 I’d mentioned to some people on my team that I was thinking over a new product idea. When I published that post, this was the first reaction:
 
-![](https://miro.medium.com/max/1850/1*0OaQA7Z_ix38OSCOXowm8A.png)
+![](/images/posts/excel/2.png)
 
 The conventional wisdom in the software business is to **do one thing well.** In general that’s good advice, and that thinking has brought us some terrific, tightly-focused tools.
 
@@ -20,13 +20,17 @@ So it seems a little crazy to talk about building a multipurpose SaaS product in
 
 On the other hand, there’s clearly enormous demand for an extremely malleable general-purpose application. Exhibit A for that demand is Microsoft Excel.
 
-# The curious case of Microsoft Excel
+## The curious case of Microsoft Excel
 
 The reality of most teams, including mine, is this: We use purpose-built software for some stuff, and for the rest we use Excel.
 
-![](https://miro.medium.com/max/4800/1*iO3mnIrThKY4YbyKXFMcyw.png)
+<div class='image-2up'>
 
-![](https://miro.medium.com/max/4800/1*cRFVHw3W-NWgGrKobKN3ag.png)
+![](/images/posts/excel/3.png)
+
+![](/images/posts/excel/4.png)
+
+</div>
 
 In most cases, Excel is not up to the demands we put on it — but that doesn’t stop us. There are other tools out there that might be more appropriate, but we don’t use them.
 
@@ -34,13 +38,17 @@ In most cases, Excel is not up to the demands we put on it — but that doesn’
 
 Let’s take a little detour to think about this.
 
-## Excel is the world’s most widely-used “database”
+### Excel is the world’s most widely-used “database”
 
 It goes without saying that Microsoft Excel is the world’s most-used **spreadsheet** software. What is surprising, and of interest to us, is that Microsoft Excel is the world’s most used **database** software as well.
 
-![](https://miro.medium.com/max/2556/1*fvc7jScClAFghBeOUmGfrQ.png)
+<div class='image'>
 
-VisiCalc was the original [killer app](https://en.wikipedia.org/wiki/Killer_application) — software compelling enough to sell the hardware it ran on.
+![](/images/posts/excel/5.png)
+
+VisiCalc was the original [killer app](https://en.wikipedia.org/wiki/Killer_application) — software compelling enough to fuel sales of the hardware it ran on.
+
+</div>
 
 This isn’t what spreadsheets were made to do. This software category was introduced on the Apple II by VisiCalc — short for “Visible Calculator” — to do financial modeling. Bob Frankston, one of its creators, described it as “a magic sheet of paper that can perform calculations and recalculations”.
 
@@ -52,13 +60,17 @@ Joel Spolsky, who worked on the Excel team at the time, [describes the moment](h
 
 Realizing this, Microsoft belatedly started to add data-management features to Excel. The biggest single improvement was a feature tried in 2003 called, aptly, “Tables”. I suspect that 95% of Excel users don’t know it’s there. Microsoft is still retrofitting Excel with database functionality. Deep in the bowels of the “Data” tab you’ll find hardcore data manipulation tools that approximately no one has ever used.
 
-![](https://miro.medium.com/max/4160/1*vs9R3aQnpVfdkTWNmnbjdg.png)
+<div class='image image-lg'>
+
+![](/images/posts/excel/6.png)
 
 Did you know you could create queries within an Excel spreadsheet to filter, project, transform, pivot or unpivot data from an existing table?
 
+</div>
+
 In spite of all that effort and all of the data-centric features that have been piled onto the product, it’s still an exercise in frustration to use Excel to manage data. Why is that?
 
-## **Trapped in flatland**
+### **Trapped in flatland**
 
 Excel’s most obvious limitation has to do with its very nature. There’s no getting around the metaphor of sheets of paper: a two-dimensional grid of rows and columns.
 
@@ -68,23 +80,31 @@ My wife, Lynne, is the prototype of the intelligent non-programmer. (She is also
 
 Search Quora or StackOverflow and you’ll find dozens of variations of the question “[Is it possible to store multiple values in an Excel cell?](https://stackoverflow.com/questions/32060804/is-it-possible-to-store-multiple-values-in-an-excel-cell)” or “[Can I insert a table into an Excel cell?](https://stackoverflow.com/questions/2852755/insert-table-into-cell-excel)”
 
-![](https://miro.medium.com/max/1940/1*D2koZntZElhSOH8rL_QKpw.png)
+<div class='image-2up'>
 
-![](https://miro.medium.com/max/700/0*AdEtt_-nOeLmxOAh.gif)
+![](/images/posts/excel/7.png)
+
+![](/images/posts/excel/8.gif)
 
 Listen closely, and you can hear the sound of someone’s brain about to melt.
 
-If you have a certain type of background, you look at a situation like this and you immediately see **one-to-many** or **many-to-many** relationships, and you know the solution involves multiple tables, which you can link together `VLOOKUP` or `INDEX/MATCH`.
+</div>
+
+If you have a certain type of background, you look at a situation like this and you immediately see **one-to-many** or **many-to-many** relationships, and you know the solution involves multiple tables, which you can link together with `vlookup` or `index/match`.
 
 But _most people’s_ brains don’t go naturally to a relational-tables model, and _most people_ have never used those functions.
 
-![](https://miro.medium.com/max/3776/1*sqy2iq8MybBSGixKcV4WMQ.png)
+<div class='image'>
+
+![](/images/posts/excel/9.png)
 
 Two signs that you’ve outgrown Excel: (1) Repeating the same data over, and (2) a series of numbered columns.
 
-So in the best-case scenario, you get around Excel’s two-dimensionality with multiple tables and `VLOOKUP` hacks. More likely, you limp along with error-prone, labor-intensive horror shows like the one shown above — with information duplicated all over the place, and maybe with repetitive sets of numbered columns to spice things up.
+</div>
 
-## No separation between data and presentation
+So in the best-case scenario, you get around Excel’s two-dimensionality with multiple tables and `vlookup` hacks. More likely, you limp along with error-prone, labor-intensive horror shows like the one shown above — with information duplicated all over the place, and maybe with repetitive sets of numbered columns to spice things up.
+
+### No separation between data and presentation
 
 Even if you’ve organized your data into strictly normalized relational tables, you’re very limited in terms of your ability to _view the data_.
 
@@ -92,37 +112,49 @@ That’s because in Excel, **data and presentation are hopelessly commingled**. 
 
 So people are naturally tempted to do things like this — manually grouping and subtotaling different categories, with blank rows and brightly colored labels:
 
-![](https://miro.medium.com/max/3936/1*-dgXuTPTQGXMQNrvgVa5UA.png)
+<div class='image'>
+
+![](/images/posts/excel/10.png)
 
 This is an official template provided by the Microsoft Corporation. It’s pretty, but of all people, they should know better than to offer this up as a good practice!
 
+</div>
+
 If you know spreadsheets, you know that this spreadsheet would be a nightmare to work with. You can’t get numbers into it or out of it without repetitive copying or pasting, or retyping. And it’s brittle — look at it wrong and you’ll break something. Just picture in your head what’s involved if you want to add a new expense category, or remove an existing one.
 
-![](https://miro.medium.com/max/2010/1*RJ3X49HrZdbx7FUqBjU7Gw.png)
+<div class='image-2up'>
 
-![](https://miro.medium.com/max/2676/1*UXziB1V3_kiad5aFc6LvGw.png)
+![](/images/posts/excel/11.png)
+
+![](/images/posts/excel/12.png)
 
 Even if you’ve done everything right, you can’t create these kinds of views on your data in Excel.
 
+</div>
+
 There’s no way to create a natural view of data with one-to-many or many-to-many relationships — for example a form or report like these, that draws from tables of data that are stored elsewhere.
 
-## Error-prone
+### Error-prone
 
 The downside of Excel’s flexibility is that it’s really, really easy to do the wrong thing. You can enter text into a numeric column. You can type something that looks like a date but isn’t.
 
-![](https://miro.medium.com/max/1962/1*Alqve5M5YApvJXEoQGAqMg.png)
+<div class='image'>
+
+![](/images/posts/excel/13.png)
 
 Some of these were entered as M/D/Y and some as D/M/Y. Can you tell which is which?
+
+</div>
 
 You can inadvertently delete rows, type over a formula, omit cells from a calculation, or worse. Mistakes in Excel formulas are easy to make, hard to notice, and hard to debug.
 
 As a result, the internet is littered with Excel horror stories, from the [$25-million budget shortfall](https://www.heraldextra.com/error-causes-million-shortfall-in-education-budget/article_ef3a6db0-8400-11e1-99e9-001a4bcf887a.html) to the [$6-_billion_ trading loss](http://www.businessinsider.com/excel-partly-to-blame-for-trading-loss-2013-2) to the [incorrect policy advice that deepened a recession](https://www.nytimes.com/2013/04/19/opinion/krugman-the-excel-depression.html).
 
-## File-based
+### File-based
 
 Twelve years after Google Sheets was introduced, and ten years after Microsoft launched Excel Online, most spreadsheet “systems” are still files that live on a server or on someone’s hard drive somewhere.
 
-![](https://miro.medium.com/max/1446/0*_38KqRfN-vzJ4HT5.png)
+![](/images/posts/excel/14.png)
 
 As a result:
 
@@ -130,7 +162,7 @@ As a result:
 - They get emailed around, which is insecure.
 - You end up with multiple versions with cryptic names like “_Budget v3 (FINAL) modified HC Feb2018 (clean).xlsx_”.
 
-# So why don’t people use database software instead?
+### So why don’t people use database software instead?
 
 So: We’re agreed that Excel isn’t a great tool for managing a database. If you Google “[Why do people use Excel as a database](https://www.google.com/search?q=why+do+people+use+excel+as+a+database)” you’ll turn up page after page of rants, making the not-unreasonable two-part argument that:
 
@@ -145,7 +177,7 @@ So let’s talk about **Microsoft Access**, which _is_ database software, and wh
 
 **So why don’t more people use Access?** It’s not because they’re too dumb to figure it out. My team includes four data scientists and five programmers. We can all write SQL in our sleep. We use spreadsheets _a lot_ and we don’t use Access _at all_.
 
-![](https://miro.medium.com/max/3260/1*S5Ra3-Opvn6PZMozaCMRpg.png)
+![](/images/posts/excel/15.png)
 
 The reason, I think, is best summarized in Venkatesh Rao’s answer on Quora to the question “[Why do many people still use Excel as a pseudo database?](https://www.quora.com/Why-do-many-people-still-use-Excel-as-a-pseudo-database)”:
 
@@ -155,19 +187,23 @@ The reason, I think, is best summarized in Venkatesh Rao’s answer on Quora to 
 
 **Access, on the other hand, forces you to do a certain amount of upfront thinking about the structure of your data**. Once you’ve defined that structure and started filling it up with data, it gets harder and harder to make changes to it.
 
-# Excel is no good for data. Access is no good for humans.
+## Excel is no good for data. Access is no good for humans.
 
 This tension between spreadsheets and databases gives us a starting point for what A Single Infinitely-Customizable Tool For Everything Else might look like.
 
 It has to let me easily create lists and tables like Excel. But in the long run it has to give my data a more solid structure like Access does.
 
-![](https://miro.medium.com/max/5546/1*QDBoBf5Bs8tmj4qrDBxHIg.png)
+<div class='image-2up'>
 
-![](https://miro.medium.com/max/5546/1*eT_cGSvdFOmb0W0qibufDw.png)
+![](/images/posts/excel/16.png)
+
+![](/images/posts/excel/17.png)
 
 Fieldbook (left) and Airtable both advertise the simplicity of spreadsheets combined with the power of a database.
 
-As a product idea, “Spreadsheet meets Database” is not new. [Airtable](http://www.airtable.com) (“_Looks like a spreadsheet, acts like a database_”) and [Fieldbook](http://www.fieldbook.com) (“_As simple as a spreadsheet, as powerful as a database_”) beat me to it. They’re good products, and a step in the right direction. And there are dozens more products in this vein.
+</div>
+
+As a product idea, “Spreadsheet meets Database” is not new. [Airtable](http://www.airtable.com) (_“Looks like a spreadsheet, acts like a database”_) and [Fieldbook](http://www.fieldbook.com) (_“As simple as a spreadsheet, as powerful as a database”_) beat me to it. They’re good products, and a step in the right direction. And there are dozens more products in this vein.
 
 But I think we can go a step farther than just mashing up two existing product categories.
 
@@ -187,13 +223,21 @@ The relational data model is wonderful; but it was invented to make things easy 
 
 I have a theory that **a loosely-typed object-oriented model**, like JavaScript objects or JSON documents in a NoSQL database, is **a more natural fit for most people’s mental models** than a strictly-typed relational table structure.
 
-![](https://miro.medium.com/max/2048/1*lOivo4SeIXZMtplwYdmLKw.jpeg)
+<div class='image image-md'>
+
+![](/images/posts/excel/18.jpeg)
 
 Photo © 2011 by Simon Bramwell
 
+</div>
+
 I was recently talking with a DevResults customer who was managing data from an educational project that works in several developing countries. Since this scenario is fresh on my mind, let’s consider a simple data model for a school.
 
-![](https://miro.medium.com/max/1226/1*jVAqZZL5d8mqgfSDHylLSw.png)
+<div class='image image-md'>
+
+![](/images/posts/excel/19.png)
+
+</div>
 
 In this model, a **school** “has” a **name**, a **region**, a **type**, and a list of **classes**. It’s not unreasonable to think of each of these things as a _field_ or a _property_ of a school, even though one of them is a list.
 
@@ -201,39 +245,39 @@ Likewise, a **class** “has” a **grade**, a **section**, a **teacher**, and a
 
 We can capture this information in a JavaScript object or a JSON file in a succinct way that aligns nicely with our mental model.
 
-```
+```js
 {
-  name: '**EP de Mali-Ville**',
-  region: '**Labé**',
-  type: '**Public**',
-  classes: \[
+  name: 'EP de Mali-Ville',
+  region: 'Labé',
+  type: 'Public',
+  classes: [
     {
-      grade: **3**,
-      section: '**A**',
-      teacher: { first: '**Ousmane**', last: '**Kamara**'},
-      students: \[
-        { first: '**Amadou**', last: '**Diallo**'},
-        { first: '**Ouri**', last: '**Sow**'},
-        { first: '**Jariatou**', last: '**Balde**'},
-        { first: '**Mariama**', last: '**Ba**'},
-      \]
+      grade: 3,
+      section: 'A',
+      teacher: { first: 'Ousmane', last: 'Kamara' },
+      students: [
+        { first: 'Amadou', last: 'Diallo' },
+        { first: 'Ouri', last: 'Sow' },
+        { first: 'Jariatou', last: 'Balde' },
+        { first: 'Mariama', last: 'Ba' },
+      ],
     },
     {
-      grade: **3**,
-      section: '**B**',
-      teacher: { first: '**Mamadou Aliou**', last: '**Diallo**'},
-      students: \[
-        { first: '**Mamadou**', last: '**Balde**'},
-        { first: '**Kadiatou**', last: '**Diallo**'},
-      \]
+      grade: 3,
+      section: 'B',
+      teacher: { first: 'Mamadou Aliou', last: 'Diallo' },
+      students: [
+        { first: 'Mamadou', last: 'Balde' },
+        { first: 'Kadiatou', last: 'Diallo' },
+      ],
     },
-  \]
+  ],
 }
 ```
 
 In contrast, the relational model of the same data introduces a weird layer of abstraction and indirection.
 
-![](https://miro.medium.com/max/2030/1*T-bojAiwLBaC3ZjwQQMZFw.png)
+![](/images/posts/excel/20.png)
 
 This is weird for a couple of reasons.
 
@@ -259,25 +303,25 @@ But the schema should know its place. Its job is to serve, not to run the show. 
 
 To be clear, **the notion of relations _isn’t_ a cognitive obstacle**. In the JSON snippet above, I’ve embedded the teachers’ information directly in the class. In this scenario, perhaps it’s a good idea to store a list of **teachers** separately, and just store references to them; that way if we misspell a teacher’s name we only have to fix it in one place. I’m guessing that our intelligent civilian can probably handle that just fine, and transition easily from the model described above to something like this:
 
-```
+```js
 {
-  name: '**EP de Mali-Ville**',
-  region: '**Labé**',
-  type: '**Public**',
-  classes: \[
+  name: 'EP de Mali-Ville',
+  region: 'Labé',
+  type: 'Public',
+  classes: [
     {
-      grade: **3**,
-      section: '**A**',
-      teacher: **101**,
-      students: \[ **1**, **2**, **3**, **4** \],
+      grade: 3,
+      section: 'A',
+      teacher: 101,
+      students: [1, 2, 3, 4],
     },
     {
-      grade: **3**,
-      section: '**B**',
-      teacher: **102**,
-      students: \[ **5, 6** \]
+      grade: 3,
+      section: 'B',
+      teacher: 102,
+      students: [5, 6],
     },
-  \]
+  ],
 }
 ```
 
@@ -294,5 +338,3 @@ OK. So our product description is starting to take a _little_ more shape:
 - And of course, it’s all **delivered in the browser**, so it supports real time collaboration; and the app and the data live in the cloud, so it’s highly available and scalable and all that.
 
 This is probably still a little hard to picture. I have many thoughts about what the user interface would look like, but I’ll stop now and share some sketches and mockups in a subsequent post.
-
-I also have many thoughts about how to do integration right; that will probably need to be its own post as well. And I’ve promised to share what I’ve found while searching for an existing product like this.

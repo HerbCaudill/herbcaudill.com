@@ -27,13 +27,13 @@ export const PostLink: React.FC<PostLinkProps> = ({
       <div className="col-span-1 md:col-span-2">
         <div className="w-full relative overflow-hidden pb-100% md:pb-50% mb-2">
           <img
-            className="absolute w-full h-full object-cover border "
+            className="absolute w-full h-full object-cover border"
             src={thumbnail}
           />
         </div>
         <Date
           dateString={date}
-          className={`hidden md:block text-2xs tracking-widest font-mono uppercase`}
+          className="hidden md:block text-2xs tracking-widest font-mono uppercase"
         />
       </div>
 
@@ -43,21 +43,21 @@ export const PostLink: React.FC<PostLinkProps> = ({
           dangerouslySetInnerHTML={{ __html: title }}
         />
         <div
-          className="font-mono leading-tight md:leading-tight py-1 text-xs md:font-serif md:text-base  "
+          className="font-mono leading-tight md:leading-tight py-1 text-xs md:font-serif md:text-base"
           dangerouslySetInnerHTML={{ __html: subtitle }}
         />
       </div>
 
       <div
-        className="hidden md:block col-span-4 lg:col-span-3 text-xs text-gray-700 font-mono "
+        className="hidden md:block col-span-4 text-xs text-gray-700 font-mono"
         dangerouslySetInnerHTML={{ __html: description }}
       />
 
-      <div className="hidden lg:block">
+      {/* <div className="hidden lg:block">
         {tags.map(tag => (
           <Tag key={tag}>{tag}</Tag>
         ))}
-      </div>
+      </div> */}
     </div>
   </Link>
 )

@@ -29,6 +29,10 @@ module.exports = {
         G: gap,
       }),
 
+      minWidth: (theme, { breakpoints }) => ({
+        ...breakpoints(theme('screens')),
+      }),
+
       colors,
       fontWeight,
 

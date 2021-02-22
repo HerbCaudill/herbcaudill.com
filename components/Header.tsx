@@ -7,7 +7,7 @@ export const Header: React.FC<HeaderProps> = ({ title, size = 'lg' }) => {
   return (
     <h1
       className={cx({
-        'text-2xl md:text-3xl lg:text-4xl': lg,
+        'text-xl sm:text-2xl md:text-3xl lg:text-4xl': lg,
         'text-lg md:text-xl lg:text-2xl': !lg,
       })}
     >
@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ title, size = 'lg' }) => {
             href="/"
             className={cx(
               'font-serif font-light tracking-tight',
-              'splat-underline cursor-pointer'
+              'splat-underline cursor-pointer whitespace-nowrap'
             )}
           >
             {name}
@@ -28,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({ title, size = 'lg' }) => {
       <span
         className={cx(
           {
-            'text-lg md:text-xl lg:text-2xl': lg,
+            'text-base sm:text-lg md:text-xl lg:text-2xl': lg,
             'text-sm md:text-base lg:text-lg': !lg,
           },
           'font-sans font-bold'

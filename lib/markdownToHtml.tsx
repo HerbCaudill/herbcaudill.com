@@ -7,5 +7,4 @@ marked.setOptions({
   smartypants: true,
 })
 
-export const markdownToHtml = (markdown: string) =>
-  markdown ? marked(markdown) : ''
+export const markdownToHtml = (input: string) => (input ? marked(input) : '')

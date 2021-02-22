@@ -29,7 +29,7 @@ export const Post: React.FC<PostProps> = ({
           <img src={image} className="w-full h-48 md:h-64 object-cover" />
         </div>
       ) : (
-        <div className="-mx-G md:mx-0 md:mb-24 lg:mb-48 md:col-span-12 " />
+        <div className="-mx-G md:mx-0 md:mb-16 lg:mb-48 md:col-span-12 " />
       )}
 
       {/* caption */}
@@ -106,7 +106,7 @@ export const Post: React.FC<PostProps> = ({
       <div className="md:col-span-9 md:col-start-4">
         <h3 className="mb-G">Related</h3>
         {relatedPosts.map(postData => (
-          <PostLink {...postData} />
+          <PostLink key={postData.id} {...postData} />
         ))}
       </div>
     </div>
