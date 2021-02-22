@@ -1,5 +1,5 @@
 ﻿import Link from 'next/link'
-import { name } from '../lib/constants'
+import { name } from 'lib/constants'
 
 export const Avatar: React.FC<AvatarProps> = ({ size = 'lg' }) => {
   return (

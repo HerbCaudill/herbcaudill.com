@@ -3,6 +3,7 @@ import { Footer } from './Footer'
 import { Header } from './Header'
 import cx from 'classnames'
 export const Layout: React.FC<LayoutProps> = ({
+  label,
   compact = false,
   children,
 }) => {
@@ -32,7 +33,7 @@ export const Layout: React.FC<LayoutProps> = ({
           col-span-3 md:col-span-9
           flex items-center `}
         >
-          <Header title="Words" size={compact ? 'sm' : 'lg'} />
+          <Header title={label} size={compact ? 'sm' : 'lg'} />
         </header>
         {children}
 
@@ -42,5 +43,6 @@ export const Layout: React.FC<LayoutProps> = ({
   )
 }
 interface LayoutProps {
+  label: string
   compact?: boolean
 }

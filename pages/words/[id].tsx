@@ -1,16 +1,16 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { Head } from '../../components/Head'
-import { Layout } from '../../components/Layout'
-import { Post } from '../../components/Post'
-import { siteTitle } from '../../lib/constants'
-import { getAllPostIdParams, post } from '../../lib/posts'
-import { PostData } from '../../lib/types'
+import { Head } from 'components/Head'
+import { Layout } from 'components/Layout'
+import { Post } from 'components/Post'
+import { siteTitle } from 'lib/constants'
+import { getAllPostIdParams, post } from 'lib/posts'
+import { PostData } from 'lib/types'
 
 const PostLayout: React.FC<{ postData: PostData }> = ({ postData }) => {
   const { id, title, description, image } = postData
 
   return (
-    <Layout compact>
+    <Layout compact label="Words">
       <Head>
         <title>{`${title} | ${siteTitle}`}</title>
         <meta name="description" content={description} />

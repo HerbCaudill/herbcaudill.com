@@ -1,5 +1,6 @@
-import { Nav } from './Nav'
-import { PostData } from '../lib/types'
+import { Nav } from 'components/Nav'
+import { PostData } from 'lib/types'
+import { Date } from 'components/Date'
 
 export const Post: React.FC<PostProps> = ({
   title,
@@ -8,6 +9,9 @@ export const Post: React.FC<PostProps> = ({
   image,
   caption,
   content,
+  date,
+  originalPublication,
+  originalUrl,
   context,
 }) => {
   return (
@@ -18,9 +22,13 @@ export const Post: React.FC<PostProps> = ({
         `}
     >
       {/* Cover image */}
-      <div className="-mx-G md:mx-0 md:col-span-12">
-        <img src={image} className="w-full h-48 md:h-64 object-cover" />
-      </div>
+      {image ? (
+        <div className="-mx-G md:mx-0 md:col-span-12">
+          <img src={image} className="w-full h-48 md:h-64 object-cover" />
+        </div>
+      ) : (
+        <div className="-mx-G md:mx-0 md:mb-24 lg:mb-48 md:col-span-12 " />
+      )}
 
       {/* caption */}
       <p
@@ -71,14 +79,25 @@ export const Post: React.FC<PostProps> = ({
         className={`
           text-gray-700 text-base sm:text-lg font-serif font-regular;
           md:col-span-9 md:col-start-4
-          lg:col-start-4 lg:co  l-span-7`}
+          lg:col-start-4 lg:col-span-7`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
-      <aside className="md:col-span-3 md:relative">
+
+      {/* Context */}
+      <aside className="md:col-start-4 md:col-span-5 text-xs font-sans context mb-G ">
+        <p className="font-mono tracking-extrawide">
+          <Date dateString={date} />
+        </p>
+        {originalPublication && originalUrl ? (
+          <p className="font-bold">
+            Originally published on{' '}
+            <a href={originalUrl}>{originalPublication}</a>.
+          </p>
+        ) : null}
         <div
-          className="context md:absolute md:bottom-G mb-G "
+          className="leading-normal"
           dangerouslySetInnerHTML={{ __html: context }}
-        ></div>
+        />
       </aside>
     </div>
   )

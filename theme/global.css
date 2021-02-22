@@ -21,7 +21,7 @@
 
 @layer components {
   article {
-    @apply text-gray-700 text-base sm:text-lg font-serif font-regular;
+    @apply relative text-gray-700 text-base sm:text-lg font-serif font-regular;
   }
 
   article p {
@@ -30,7 +30,7 @@
 
   /* big headings */
   article h2 {
-    @apply text-3xl font-sans font-bold mt-16 tracking-tight;
+    @apply text-3xl font-sans font-bold mt-16 tracking-tight text-black;
   }
 
   /* heavy line above big headings */
@@ -41,11 +41,11 @@
 
   /* small headings */
   article h3 {
-    @apply text-xl font-sans font-bold mt-12 tracking-tight;
+    @apply text-xl font-sans font-bold mt-12 tracking-tight text-black;
   }
 
   /* Drop cap at beginning of first paragraph */
-  article > p:first-child::first-letter {
+  article > p:nth-child(1)::first-letter {
     @apply float-left font-mono font-bold;
     font-size: 3.5em;
     letter-spacing: 0.1em;
@@ -93,7 +93,7 @@
   }
 
   article blockquote {
-    @apply -mx-1 my-6 p-3 border border-gray-400 text-black;
+    @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
     @apply text-sm sm:text-base;
   }
 
@@ -105,14 +105,15 @@
     @apply mt-4; /* normal margin between paragraphs inside a blockquote */
   }
 
-  article div:not(.image) > p img {
-    @apply my-7;
+  article > p img {
+    @apply my-10;
     @apply -mx-G md:mx-0;
     @apply w-screen md:w-auto;
     @apply max-w-none md:max-w-full;
   }
 
   /* container for image followed by caption */
+
   article .image {
     @apply my-10;
     /* on large screens, caption is positioned to right of image (the enclosing width is 7 columns) */
@@ -122,11 +123,11 @@
 
   article .image img {
     @apply -mx-G md:mx-0; /* on small screens, image takes full horizontal space */
-    @apply w-full;
+    @apply w-auto;
   }
 
   /* first element, typically a <p> containing the image */
-  article .image :first-child {
+  article .image p:nth-child(1) {
     @apply lg:col-span-7 lg:mt-0;
   }
 
@@ -141,20 +142,67 @@
     @apply inline lg:block;
   }
 
-  /* variant: images that take up all 12 columns */
-  article .image-lg {
+  article .image-b img {
+    @apply border border-gray-300;
+  }
+
+  /* xl variant: images that span all 12 columns */
+
+  article .image-xl {
     @apply mt-16;
     @apply md:mx-0 md:grid md:grid-cols-12 md:gap-G;
     @apply md:-ml-3/9 md:w-12/9;
     @apply lg:-ml-3/7 lg:w-12/7;
   }
-  article .image-lg :first-child {
-    @apply md:col-span-12;
+
+  article .image-xl p:nth-child(1) {
   }
 
-  .context {
-    @apply font-mono text-xs leading-normal;
+  /* large variant: images that span 10 columns */
+
+  article .image-lg {
+    @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-G;
+    @apply md:-ml-3/9 md:w-12/9;
+    @apply lg:-ml-3/7 lg:w-12/7;
   }
+
+  article .image-lg p:nth-child(1) {
+    @apply md:w-full md:my-0;
+    @apply lg:col-span-10;
+  }
+
+  article .image-lg p:nth-child(2) {
+    @apply md:absolute md:w-3/9 md:-left-3/9 md:my-0;
+    @apply lg:relative lg:w-full lg:left-0 lg:col-span-2;
+  }
+
+  /* medium variant: images that span 5 columns */
+
+  article .image-md {
+    @apply md:mx-0 md:grid md:grid-cols-7 md:gap-G;
+  }
+
+  article .image-md p:nth-child(1) {
+    @apply md:col-span-5;
+  }
+
+  article .image-md p:nth-child(2) {
+    @apply md:col-span-2;
+  }
+
+  /* xs variant: images in the left sidebar */
+
+  article .image-xs {
+    @apply md:mx-0 md:absolute;
+    @apply md:-left-3/9 md:w-3/9;
+    @apply lg:-left-3/7 lg:w-3/7;
+  }
+
+  article .image-xs p {
+  }
+
+  /* context blurb at bottom of article */
+
   .context p {
     @apply mt-5;
   }
@@ -165,6 +213,7 @@
 
   .context a {
     @apply text-black bg-splat-black bg-bottom bg-underline bg-no-repeat;
+    background-position: 0 105%;
   }
 
   .context a:hover {

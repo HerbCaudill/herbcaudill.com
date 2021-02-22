@@ -7,12 +7,15 @@
   date: string
 
   description: string
-  context: string
   content: string
 
-  image: string
-  caption: string
-  thumbnail?: string
+  image?: string
+  caption?: string
+  thumbnail: string
 
   tags: string[]
+
+  originalPublication: string
+  originalUrl: string
+  context: string
 }

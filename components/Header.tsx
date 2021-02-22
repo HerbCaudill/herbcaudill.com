@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { name } from '../lib/constants'
+import { name } from 'lib/constants'
 import cx from 'classnames'
 
 export const Header: React.FC<HeaderProps> = ({ title, size = 'lg' }) => {

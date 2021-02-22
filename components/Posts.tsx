@@ -1,11 +1,11 @@
 import Link from 'next/link'
 import { Date } from './Date'
-import { PostData } from '../lib/types'
+import { PostData } from 'lib/types'
 import { Tag } from './Tag'
 
 export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
   return (
-    <main className="col-span-4 md:col-start-4 md:col-span-9">
+    <>
       {posts.map(
         ({ id, date, title, subtitle, description, thumbnail, tags }) => (
           <Link href={`/words/${id}`} key={id}>
@@ -61,6 +61,6 @@ export const Posts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
           </Link>
         )
       )}
-    </main>
+    </>
   )
 }

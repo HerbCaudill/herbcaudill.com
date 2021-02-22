@@ -1,23 +1,23 @@
 ---
 title: Rewrite, refactor, or reinvent?
 subtitle: Lessons from 6 software rewrite stories
+
 description: |
   A new take on the age-old question: Should you rewrite your application from scratch, 
   or is that “the single worst strategic mistake that any software company can make”? 
   Turns out there are more than two options for dealing with a mature codebase.
 context: |
-  I originally wrote this on [Medium](http://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22). 
-  Just minutes after I hit publish, DHH himself [tweeted it out approvingly](https://twitter.com/dhh/status/1097937474003685376):
-
-  ![](/images/posts/rewrite/dhh-tweet.png)
-
+  Less than an hour after I hit publish on this, DHH himself [tweeted it out approvingly](https://twitter.com/dhh/status/1097937474003685376). 
   As a result, this is by far the most widely-read thing I've ever written. According to Medium,
   it's been read from beginning to end by nearly 40,000 people -- not bad for a half-hour read!
 
+originalPublication: Medium
+originalUrl: http://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22
 date: '2019-02-19'
+
+thumbnail: /images/posts/rewrite/thumbnail.jpg
 image: /images/posts/rewrite/rust.jpg
 caption: '“As if source code <em>rusted!</em>” <i>— Joel Spolsky</i>'
-thumbnail: /images/posts/rewrite/thumbnail.jpg
 tags: software
 ---
 
@@ -42,7 +42,7 @@ The correct answer, of course, is that **it depends** a lot on the circumstances
 
 _(Bonus: ASCII art summaries of each story!)_
 
-<div class='image image-lg'>
+<div class='image image-xl'>
 
 ![](/images/posts/rewrite/netscape6.png)
 
@@ -120,7 +120,7 @@ And anyway, the question at hand isn’t whether the rewrite was good for the we
 
 But the rewrite was certainly a contributing factor, and the end result was the destruction of a company worth billions of dollars and thousands of layoffs. So I’m going to agree with Joel that **the net consequences of this rewrite were disastrous**.
 
-<div class='image image-lg'>
+<div class='image image-xl'>
 
 ![](https://miro.medium.com/max/2006/1*lpbusnOGpf4TMdwY_hgbIA.png)
 
@@ -242,7 +242,7 @@ Having to maintain multiple versions of product indefinitely doesn’t come with
 
 > It’s not free. Why would you expect it to be free? It’s valuable, so of course it’s not free. But it’s worth doing.
 
-<div class='image image-lg'>
+<div class='image image-xl'>
 
 ![](https://miro.medium.com/max/2000/1*QqzsJBhAyn_Q1zb_CPJSrw.jpeg)
 
@@ -316,7 +316,7 @@ One final takeaway from the VS Code story is that things have changed fundamenta
 
 In spite all of the [hand-wringing about the complexity of today’s toolset](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f), the fact is that the JavaScript ecosystem has evolved over the last few years into the long-awaited promised land of reusable, modular open-source code. In that respect, this is a historically unprecedented time.
 
-<div class='image image-lg'>
+<div class='image image-xl'>
 
 ![](https://miro.medium.com/max/5726/1*HsQljVFhzHAB2dg5s1-XKw.jpeg)
 
@@ -363,7 +363,7 @@ In this case, Google’s original messaging around Inbox led us to believe that 
 
 I think there would have been less unhappiness if Gmail had gone all the way to feature parity with Inbox before it was shuttered.
 
-<div class='image image-lg'>
+<div class='image image-xl'>
 
 ![](https://miro.medium.com/max/2200/1*-Z7XkyKIXuDV-D3Sr1XJIg.png)
 
@@ -497,7 +497,7 @@ Clearly all the people involved had bigger fish to fry: Stack Overflow, Trello, 
 
 But the sentimental part of me wishes there had been a better way to “honor the legacy” of all the people who created it and used it over all those years.
 
-<div class='image image-lg'>
+<div class='image image-xl'>
 
 ![](https://miro.medium.com/max/1696/1*ufzuYj4qIXXLDQMS7EqZqQ.png)
 

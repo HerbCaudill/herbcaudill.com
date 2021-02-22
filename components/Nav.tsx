@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 const items = [
   'Words', //
   'Pictures',
-  'Code',
+  'Projects',
   'Facts',
 ]
 
@@ -23,7 +23,8 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
               <Link href={url}>
                 <a
                   className={cx(
-                    'py-1 uppercase font-mono tracking-widest text-xs splat-underline',
+                    'py-1',
+                    'uppercase font-mono tracking-widest text-xs splat-underline',
                     { 'font-bold': isActive }
                   )}
                 >

@@ -3,16 +3,20 @@ title: 'A web app with no web server?'
 subtitle: 'Rethinking the stack'
 description: 'In a traditional client/server/database web app, so much effort goes into transferring and translating data between layers. Can we eliminate unnecessary complexity with a peer-to-peer design?'
 date: '2018-12-24'
-image: '/images/thumbnails/serverless.png'
+thumbnail: '/images/thumbnails/serverless.png'
 ---
 
 Things have changed a lot in the decade since the last time I built a web application from the ground up. It used to be you picked a framework (ASP.NET, Rails, etc.) and learned it inside out. Now, as a result of the open source explosion in the JavaScript ecosystem, it’s your job to put together a mosaic of frameworks.
 
 On the one hand, we’ve finally arrived at the promised land of code reuse. If you’re into programming productivity, no Agile methodology or VS Code extension compares to a technique I like to call **“importing code that someone else wrote.”** What a time to be alive!
 
-![](https://miro.medium.com/max/2788/1*gaBkIuIaga8YOm4uajxEdQ.jpeg)
+<div class='image '>
+
+![](/images/posts/serverless/cartoon.jpeg)
 
 Used with permission. Original [here](http://www.commitstrip.com/en/2015/09/16/how-to-choose-the-right-javascript-framework/).
+
+</div>
 
 On the other hand, the framework anxiety depicted in [this CommitStrip cartoon](http://www.commitstrip.com/en/2015/09/16/how-to-choose-the-right-javascript-framework/) has multiplied into a fractal landscape of decisions both big and small.
 
@@ -24,9 +28,13 @@ At some point, though, you have to stop thinking and start coding. I’ve spent 
 
 My starting point is the way [DevResults](http://www.devresults.com) works, so even though that’s a decade-old codebase, let’s take a look at its architecture. It’s a server application written in C#, a SQL database, and an Angular front end. So something like this:
 
-![](https://miro.medium.com/max/5464/1*1X5LcMfZJSSrHidOJ9kkBQ.jpeg)
+<div class='image image-lg image-b'>
+
+![](/images/posts/serverless/01.jpeg)
 
 Nothing surprising here — this is a very standard architecture for web apps of a certain age.
+
+</div>
 
 There are several sources of inefficiency here:
 
@@ -34,48 +42,64 @@ There are several sources of inefficiency here:
 - Our **data model has to be restated repeatedly** in multiple different formats.
 - Each of these layers includes some logic, and it’s **hard to avoid duplicating some logic** across more than one layer.
 
-![](https://miro.medium.com/max/5464/1*zPg5iHnSZObybNYs8YwJRg.jpeg)
+<div class='image image-lg image-b'>
+
+![](/images/posts/serverless/02.jpeg)
 
 **Kind of a mess:** Logic expressed in 3 languages, data model expressed lots of different ways.
 
+</div>
+
 Now, DevResults was first written in 2009, and changes to the code since then have had to be made in a cautious and incremental way in order to avoid disrupting people who actively use the software. We’re starting with a clean slate now, so what should we do differently?
 
-## JavaScript everywhere
+### JavaScript everywhere
 
 The first step to simplify this is to use a single language for the codebase. In 2018, the only reasonable choice is JavaScript. We can use Node.js on the back end, and that way bits of logic that are shared between the client and the server only have to be written once.
 
-![](https://miro.medium.com/max/5464/1*YgjqMrYPSpoclgBttxLEJw.png)
+<div class='image image-lg image-b'>
+
+![](/images/posts/serverless/03.png)
 
 **Better**: Server-side JavaScript lets us write code around the data model just once, and run in both places.
 
-## JSON everywhere
+</div>
+
+### JSON everywhere
 
 We can also use a NoSQL database like MongoDB, which accepts and returns JSON data. So our data can move from client to server to database without having to be translated.
 
-![](https://miro.medium.com/max/5464/1*xL9jtG1E_mmS4K5QtZv1mQ.png)
+<div class='image image-lg image-b'>
+
+![](/images/posts/serverless/04.png)
 
 **Better**: GraphQL for requesting data, JSON for representing data.
+
+</div>
 
 Another simplification is to use GraphQL instead of REST to communicate requests for data. In fact, if we use [Apollo’s client framework](https://www.apollographql.com/docs/react/essentials/local-state.html#queries), we can use GraphQL to query local state and locally cached data in addition to server data. That leaves us with just two representations of the data model, which is a big improvement.
 
 So far, so good. There’s nothing revolutionary here; in fact something like this architecture is rapidly becoming the norm for new projects.
 
-## And yet…
+### And yet…
 
 But when I started playing with this in a couple of toy apps, I was **still frustrated by the number of moving parts**, and the consequent amount of ceremony required just to do simple things.
 
 - Data **storage** is provided by the database. But since the client needs to work offline, it needs to provide storage also. That means you need to write two data layers — one for the client to work with local data, the other for the server to work with the database.
 - Application **logic** traditionally lives on the server. But if the client needs to work offline, some or all of that logic needs to be on the client as well.
 
-![](https://miro.medium.com/max/5464/1*G9qSOV9Vz_joyz3O2fDn7Q.png)
+<div class='image image-lg image-b'>
+
+![](/images/posts/serverless/05.png)
 
 Is there a good reason for all of this duplication?
+
+</div>
 
 So we’re duplicating logic between the server and the client, and duplicating storage between the database and the client.
 
 But when I really ground to a halt was when I started thinking about how to support a user who is disconnected from the server.
 
-## Thinking offline-first
+### Thinking offline-first
 
 We all spend a certain amount of our time offline or on spotty networks. For those of us who live in bandwidth-saturated cities in the rich world, that’s primarily when we’re traveling. For many DevResults customers, who are trying to get things done in remote corners of some of the poorest countries on earth, working offline is a fundamental necessity.
 
@@ -86,15 +110,19 @@ There are two big challenges with building an app that works offline:
 - It has to work when no server is available (duh), which means that it needs to have a **full local copy of the data** that it needs.
 - When the app does go back online, it needs to **reconcile changes** that have been made locally with changes that have been made elsewhere.
 
-![](https://miro.medium.com/max/5464/1*o5VhyhnRcla29wn92m6eBg.png)
+<div class='image image-lg image-b'>
+
+![](/images/posts/serverless/06.png)
 
 The standard browser/server/database model isn’t well-suited to offline scenarios.
+
+</div>
 
 Long story short, this isn’t the architecture you would start with if offline usage is a priority. It might be possible to bolt on offline capabilities after the fact, but it wouldn’t be easy and it wouldn’t be pretty.
 
 **Since we are starting from scratch, we can do better.** But we’ll have to rethink things at a more fundamental level.
 
-## How did we get here?
+### How did we get here?
 
 This is the sort of kludge that you get when you’re at a very specific and awkward juncture in the history of technology.
 
@@ -108,15 +136,19 @@ More than a decade later, you can do pretty much anything you want within a brow
 
 Let’s take a step back and think about what a “web application” with no web server would look like.
 
-![](https://miro.medium.com/max/5464/1*aFIQS24R8OEoKxavyqhG-w.png)
+![](/images/posts/serverless/07.png)
 
 The most obvious answer is that **we need the server to collaborate with others**. If you’re the only one involved in whatever you’re working on, you may not need a web app. But if you’re working with a team of two or more people, you want some way of keeping everyone on the same page, and centralizing the data on a server is an obvious way of doing that.
 
 So, yes, this would be a very simple architecture:
 
-![](https://miro.medium.com/max/5464/1*Z6G6L-F5JwF5Tb_GfgMZWw.jpeg)
+<div class='image'>
+
+![](/images/posts/serverless/08.jpeg)
 
 Simple, but not very useful.
+
+</div>
 
 But Herb, I hear you saying: This is of no use to us if Client A (Alice) and Client B (Bob) need to collaborate.
 
@@ -124,9 +156,13 @@ So let’s put on our “[pretend it’s magic](https://books.google.es/books?id
 
 Let’s just imagine for the moment that we had a magical way of automatically and instantaneously synchronizing Alice’s data with Bob’s data, so that when they’re both online, they’re both always looking at the same thing.
 
-![](https://miro.medium.com/max/5464/1*7OAbR5BxeEOk2kLRLfR-cg.gif)
+<div class='image'>
+
+![](/images/posts/serverless/09.gif)
 
 Simple, but you have to believe in magic.
+
+</div>
 
 If we had that magical piece, then we’d truly be able to eliminate duplication in our codebase.
 
@@ -134,9 +170,13 @@ But wait, you say! This peer-to-peer setup requires Alice and Bob to be online a
 
 OK, no problem — we can just fire up a client on a computer that no one uses, and leave it running all the time.
 
-![](https://miro.medium.com/max/5464/1*ocuzV2m7CD651kyAU-TgGQ.png)
+<div class='image '>
 
-## **Congratulations, we’ve just re-invented the server!**
+![](/images/posts/serverless/10.png)
+
+</div>
+
+**Congratulations, we’ve just re-invented the server!** 😆
 
 Except this server is really just a special instance of our client — one that no one uses directly, and that lives on high-availability infrastructure.
 
@@ -146,13 +186,13 @@ OK, that’s great, but at some point we’re going to have to have to come up w
 
 As you might suspect, data replication and synchronization is a problem that a lot of smart people have been thinking about for many years; so not only do we not have to rely on magic, but we don’t have to invent anything new.
 
-## Mutable data, immutable data, and the meaning of truth
+### Mutable data, immutable data, and the meaning of truth
 
 The solution hinges on a different conception of data from the one I’ve always worked with.
 
 The databases I’ve always worked with treat data as **mutable**: If you need to update data, you replace what was there with something new. So when I moved from Washington DC to Barcelona, some database might have reflected the change by replacing a value in the `City` column for my record:
 
-![](https://miro.medium.com/max/5464/1*Rnrif27ZBSRpjrrwdnStIA.gif)
+![](/images/posts/serverless/11.gif)
 
 In this case, you could go back and look at the **log** of changes to see, for example, that an entry was made in 2012 stating that I lived in Washington DC, and that in 2016 that entry was updated to Barcelona.
 
@@ -173,7 +213,7 @@ The event log shows these two facts:
 
 Both of these statements are true facts, and we can easily query them to derive a picture of the state of the world at any given moment `t`. Now we can see that the _current_ state of the world is just a special case, where `t` = **now**.
 
-![](https://miro.medium.com/max/5464/1*LmJojjeU8Paq84-UXrIwVQ.gif)
+![](/images/posts/serverless/12.gif)
 
 With this perspective, much of the complexity around replication and synchronization just disappears. **CRUD** (create/read/update/delete) is now just **CR**, because updates and deletes are just another kind of new information. It’s much easier to merge two event streams than it is to merge two conflicting point-in-time snapshots.
 
@@ -187,9 +227,13 @@ Now, this all just clicked for me, and I’m super excited about it. But it’s 
 
 I’m going to focus on the next-to-the-last item in that list — CRDTs — because they abstract away the problem of reconciling conflicting changes.
 
-## CRDTs and Automerge: Indistinguishable from magic
+### CRDTs and Automerge: Indistinguishable from magic
 
-![](https://miro.medium.com/max/1492/1*lfktB_rBOlQN-vR0vcT_mA.png)
+<div class='image image-xs'>
+
+![](/images/posts/serverless/13.png)
+
+</div>
 
 [Automerge](https://github.com/automerge/automerge), a JavaScript implementation of a CRDT, promises to be the magical automatic synchronization and conflict resolution layer we’re looking for.
 
@@ -217,7 +261,11 @@ So the overall idea starts to look like this:
 - **Real-time background synchronization** is provided automatically and unobtrusively by **Automerge**.
 - **Instead of a server, we have an always-available headless peer** living in a lambda function. If we define a “team” as our permissions boundary, it might make sense to just spin up one lambda per team.
 
-![](https://miro.medium.com/max/5464/1*I_E1eXQgcFwiGrllvm4NhQ.png)
+<div class='image image-xl'>
+
+![](/images/posts/serverless/14.png)
+
+</div>
 
 This is a very different design from the ones I’ve worked with in the past. It’s not the way most software is being written today. But I’m convinced that many applications will be architected this way in the future. The advantages are hard to ignore:
 
@@ -236,7 +284,7 @@ Also, I haven’t mentioned authentication and permissions. Unlike a traditional
 
 Is this insane? Has it been done before? Let me know what you think!
 
-# Further exploration
+## Further exploration
 
 In [Distributed Systems and the End of the API](https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/) (2014), Chas Emerick points out that network API models — whether RPC, SOAP, REST (or now, GraphQL) — are fundamentally unsuited to distributed systems, and that many API use cases can be solved using CRDTs instead.
 

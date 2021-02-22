@@ -1,10 +1,10 @@
 import fs from 'fs'
 import path from 'path'
-import parse from 'gray-matter'
-import { PostData } from './types'
+import { loadMarkdownFile } from './loadMarkdownFile'
 import { markdownToHtml } from './markdownToHtml'
+import { PostData } from './types'
 
-const postsDir = path.join(process.cwd(), '/posts')
+const postsDir = path.join(process.cwd(), '/content/posts')
 
 export const posts = () =>
   getAllPostIds()
@@ -13,20 +13,17 @@ export const posts = () =>
 
 export const post = (id: string): PostData => {
   const fullPath = path.join(postsDir, `${id}.md`)
-  const fileContents = fs.readFileSync(fullPath, 'utf8')
-  const parsedContents = parse(fileContents)
-  const postData = parsedContents.data
+  const { content, metadata } = loadMarkdownFile(fullPath)
   return {
     id,
-    ...(postData as PostData),
-    thumbnail: postData.thumbnail ?? postData.image,
-    title: postData.title.replace('_', '&nbsp;'),
-    subtitle: postData.subtitle.replace('_', '&nbsp;'),
-    content: markdownToHtml(parsedContents.content),
-    context: markdownToHtml(postData.context),
-    tags: postData.tags
-      ? postData.tags.split(',').map((t: string) => t.trim())
+    ...(metadata as PostData),
+    title: metadata.title.replace('_', '&nbsp;'),
+    subtitle: metadata.subtitle.replace('_', '&nbsp;'),
+    content: content,
+    tags: metadata.tags
+      ? metadata.tags.split(',').map((t: string) => t.trim())
       : [],
+    context: markdownToHtml(metadata.context),
   }
 }
 
