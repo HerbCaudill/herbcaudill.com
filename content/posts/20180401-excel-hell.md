@@ -1,8 +1,14 @@
 ---
-title: 'Excel hell'
-subtitle: 'A cautionary tale'
-description: 'Before we create a “single infinitely-customizable app for everything else”, we need to understand why we’re currently using spreadsheets for everything.'
+title: 'Excel hell: A cautionary tale'
+subtitle: Thinking outside the grid
+description: |
+  Before we create a “single infinitely-customizable app for everything else”, we need to understand
+  why we’re currently using spreadsheets for everything.
+
+originalPublication: Medium
+originalUrl: https://medium.com/all-the-things/a-single-infinitely-customizable-app-for-everything-else-9abed7c5b5e7
 date: '2018-04-01'
+
 thumbnail: '/images/thumbnails/excel.jpg'
 ---
 

@@ -79,25 +79,39 @@ export const Post: React.FC<PostProps> = ({
       {/* Article body */}
       <article
         className={`
-          text-gray-700 text-base sm:text-lg font-serif font-regular;
-          md:col-span-9 md:col-start-4
+          text-gray-700 text-base sm:text-lg font-serif 
+          md:col-start-4 md:col-span-9 
           lg:col-start-4 lg:col-span-7`}
         dangerouslySetInnerHTML={{ __html: content }}
       />
 
       {/* Context */}
-      <aside className="md:col-start-4 md:col-span-5 text-xs font-sans context mb-G ">
-        <p className="font-mono tracking-extrawide">
-          <Date dateString={date} />
-        </p>
-        {originalPublication && originalUrl ? (
-          <p className="font-bold">
-            Originally published on{' '}
-            <a href={originalUrl}>{originalPublication}</a>.
+      <aside
+        className={`
+          text-xs font-sans context mb-G 
+          md:col-start-4 md:col-span-9 
+          lg:col-start-4 lg:col-span-7
+          
+          md:grid md:gap-G
+          md:grid-cols-9
+          lg:grid-cols-7
+
+          border-t-4 border-black        
+      `}
+      >
+        <div className="col-span-3 pr-G">
+          <p className="font-mono tracking-extrawide">
+            <Date dateString={date} />
           </p>
-        ) : null}
+          {originalPublication && originalUrl ? (
+            <p className="font-bold">
+              Originally published on{' '}
+              <a href={originalUrl}>{originalPublication}</a>.
+            </p>
+          ) : null}
+        </div>
         <div
-          className="leading-normal"
+          className="leading-normal col-start-4 md:col-span-6 lg:col-span-4"
           dangerouslySetInnerHTML={{ __html: context }}
         />
       </aside>

@@ -2,7 +2,11 @@
 title: 'A web app with no web server?'
 subtitle: 'Rethinking the stack'
 description: 'In a traditional client/server/database web app, so much effort goes into transferring and translating data between layers. Can we eliminate unnecessary complexity with a peer-to-peer design?'
+
+originalPublication: Medium
+originalUrl: https://medium.com/all-the-things/a-web-application-with-no-web-server-61000a6aed8f
 date: '2018-12-24'
+
 thumbnail: '/images/thumbnails/serverless.png'
 ---
 

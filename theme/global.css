@@ -59,16 +59,11 @@
     font-size: 0.95em;
   }
 
-  article pre code {
-  }
-
-  article pre {
-  }
-
   /* used for ascii art e.g. in rewrite post */
   article .image pre {
+    @apply my-G p-3 border border-gray-300 bg-gray-50;
     @apply text-2xs md:text-xs font-mono font-medium text-black;
-    @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide;
+    @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide overflow-x-auto;
   }
 
   /* use sans font for <strong> in articles */

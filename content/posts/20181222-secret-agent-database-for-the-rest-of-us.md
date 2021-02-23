@@ -2,7 +2,11 @@
 title: Computer, enhance
 subtitle: A secret agent database for_the rest of us
 description: Why shouldn’t our tools for organizing information be as cool as the ones in the movies?
+
 date: '2018-12-22'
+originalPublication: Medium
+originalUrl: https://medium.com/all-the-things/a-secret-agent-database-for-the-rest-of-us-de39abfb2a08
+
 image: '/images/posts/secretagent/1.png'
 thumbnail: '/images/thumbnails/secretagent.png'
 ---

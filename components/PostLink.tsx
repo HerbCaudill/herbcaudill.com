@@ -24,17 +24,13 @@ export const PostLink: React.FC<PostLinkProps> = ({
         cursor-pointer
       `}
     >
-      <div className="col-span-1 md:col-span-2">
+      <div className="col-span-1 md:col-span-3">
         <div className="w-full relative overflow-hidden pb-100% md:pb-50% mb-2">
           <img
             className="absolute w-full h-full object-cover border"
             src={thumbnail}
           />
         </div>
-        <Date
-          dateString={date}
-          className="hidden md:block text-2xs tracking-widest font-mono uppercase"
-        />
       </div>
 
       <div className="col-span-3">
@@ -46,10 +42,14 @@ export const PostLink: React.FC<PostLinkProps> = ({
           className="font-mono leading-tight md:leading-tight py-1 text-xs md:font-serif md:text-base"
           dangerouslySetInnerHTML={{ __html: subtitle }}
         />
+        <Date
+          dateString={date}
+          className="hidden mt-3 md:block text-2xs tracking-widest font-mono uppercase"
+        />
       </div>
 
       <div
-        className="hidden md:block col-span-4 text-xs text-gray-700 font-mono"
+        className="hidden md:block col-span-3 text-2xs lg:text-xs text-gray-700 font-mono"
         dangerouslySetInnerHTML={{ __html: description }}
       />
 

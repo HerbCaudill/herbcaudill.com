@@ -19,7 +19,7 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
           const url = '/' + item.toLowerCase()
           const isActive = router.pathname.startsWith(url)
           return (
-            <li className="my-6 group cursor-pointer" key={item}>
+            <li className="my-7 group cursor-pointer" key={item}>
               <Link href={url}>
                 <a
                   className={cx(

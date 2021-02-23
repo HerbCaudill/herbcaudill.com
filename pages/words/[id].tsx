@@ -19,8 +19,10 @@ const PostLayout: React.FC<{
         <meta name="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
+        <link href="/prism.css" rel="stylesheet" />
       </Head>
       <Post {...postData} />
+      <script src="/prism.js" />
     </Layout>
   )
 }

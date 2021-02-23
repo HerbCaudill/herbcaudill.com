@@ -2,7 +2,11 @@
 title: 'Data types for humans'
 subtitle: 'Software should know what kinds of information matter to people'
 description: 'Today’s databases force us to think about data in terms of what’s important to the computer. What if we had systems that started with things that are important in human society - things like timespans, birthdays, weights and lengths, names, addresses, and countries?'
+
 date: '2018-12-23'
+originalPublication: Medium
+originalUrl: https://medium.com/all-the-things/data-types-for-humans-ea2dd63a19db
+
 image: '/images/thumbnails/datatypes-banner.jpg'
 thumbnail: '/images/thumbnails/datatypes.jpg'
 ---
