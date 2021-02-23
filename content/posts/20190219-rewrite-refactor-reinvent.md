@@ -128,11 +128,13 @@ But the rewrite was certainly a contributing factor, and the end result was the 
 
 ## 2\. Basecamp
 
-```
+<div class='image'>
+<pre>
 Basecamp Classic --------------------------------------------- ->
             📝Basecamp 2 ------------------------------------- ->
                         📝Basecamp 3 ------------------------- ->
-```
+</pre>
+</div>
 
 In the early 2000s, a Chicago web design company called **37signals** had built a following around founders [Jason Fried](https://medium.com/u/c030228809f2) and [DHH](https://medium.com/u/54bcbf647830)’s influential and often contrarian [blog](https://m.signalvnoise.com).
 
