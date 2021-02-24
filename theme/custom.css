@@ -89,6 +89,10 @@
     @apply text-red-700 bg-splat-red;
   }
 
+  article ol li {
+    @apply list-decimal list-outside ml-6 leading-relaxed;
+  }
+
   article ul li {
     @apply list-square list-outside ml-6 leading-relaxed;
   }
