@@ -3,9 +3,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 const items = [
-  'Words', //
-  'Pictures',
-  'Projects',
+  'Words',
+  // 'Pictures',
+  // 'Projects',
   'Facts',
 ]
 

@@ -44,8 +44,12 @@
     @apply my-4 leading-relaxed;
   }
 
+  article > :nth-child(1) {
+    @apply mt-0;
+  }
+
   /* drop cap at beginning of first paragraph */
-  article > :nth-child(1)::first-letter {
+  article > p:nth-child(1)::first-letter {
     @apply float-left font-mono font-bold;
     font-size: 3.5em;
     letter-spacing: 0.1em;
@@ -250,5 +254,30 @@
 
   article .endmatter {
     @apply text-sm font-sans;
+  }
+
+  article dl {
+    @apply grid grid-cols-9 text-xs;
+  }
+
+  article dl:first-child {
+    @apply border-t border-black border-solid;
+  }
+
+  article dd,
+  article dt {
+    @apply border-b border-dotted border-gray-400 py-1;
+  }
+
+  article dt {
+    @apply col-span-2 font-sans font-bold;
+  }
+
+  article dd {
+    @apply col-span-7 font-mono;
+  }
+
+  article dl p {
+    @apply my-0;
   }
 }
