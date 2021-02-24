@@ -19,13 +19,13 @@ But, [as we’ve seen](https://medium.com/all-the-things/a-single-infinitely-cus
 
 To get the best of both worlds, we want to avoid being heavy-handed: We don’t want to force Celeste to lay out her table schema in advance, but we do want to be smart and try to figure out her intentions. So if she types in a date, we’ll assume this is a date column. We’ll pick up the date format from the way she’s typed it in. And if she changes her mind and needs to change a column from one type to another, we want to make that as effortless as possible.
 
-<div class='image'>
+<figure>
 
 ![](https://miro.medium.com/max/3844/1*OZBN_m-HIuntmyIsHJfPyQ.png)
 
 We want a column to pick up the date format from the way it’s typed in — just as it would in Excel.
 
-</div>
+</figure>
 
 Before we go any further with this, though, let’s talk about data types.
 
@@ -35,13 +35,13 @@ I propose that the friction here doesn’t necessarily all come from having to c
 
 You only have a few fundamental types to choose from (text, number, date, boolean) and within those categories you have to make some commitments about how much space the computer should set aside. So for example, if you’re going the store numbers in a column, the system really wants you to make a lot of decisions in advance about size, precision, and so on.
 
-<div class='image image-lg'>
+<figure class='figure-lg'>
 
 ![](https://miro.medium.com/max/5002/1*8GaD1XKAYTfiyZ8MLwaaBg.png)
 
 SQL Server’s datatypes. Do you want **int** or **bigint**? Any programmer worth her salt can tell you a story about making the wrong choice and coming to regret it.
 
-</div>
+</figure>
 
 Human beings have different concerns. Does this number represent an amount in Euros or in Dollars? Or is it a measure of weight, or length, or area? What if it’s a distance in kilometers, but I want to show it in miles to some users? Does this text represent phone numbers or RGB colors?
 
@@ -134,11 +134,11 @@ What would the “**pretend it’s magic**” solution for handling names and ad
 
 What I’d like would be to just paste them in, as-is — but have the computer figure out their component parts. That way I’d still be able to sort people by last name, or pull out their initials or their preferred given names. And I’d be able to display addresses in a standard format, or group them by zip code or by country.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](https://miro.medium.com/max/5496/1*G9H2sL8gsDaKF-TjgKIrgg.png)
 
-</div>
+</figure>
 
 The good news is that we don’t need magic in this case, neither do we need to write a lot of code. Parsing and normalizing human names is hard, but it’s mostly a [solved problem](https://www.google.es/search?q=parse+human+names). Same for [addresses](https://github.com/openvenues/libpostal) .
 
@@ -150,21 +150,21 @@ Another hassle you might have dealt with in your contact spreadsheet is the prob
 
 If you’re given this data and you want to do anything at all with these columns, you have to go through and make them consistent by hand.
 
-<div class='image image-lg'>
+<figure class='figure-lg'>
 
 ![](https://miro.medium.com/max/2784/1*O_msxV9aPmK-hM47iyux7Q.gif)
 
-</div>
+</figure>
 
 And if you want to make a spreadsheet that forces people to choose from as set of options so that it stays clean, you have some hoops to jump through.
 
-<div class='image image-lg'>
+<figure class='figure-lg'>
 
 ![](https://miro.medium.com/max/2768/1*yd9gk-MNC8I7UQRBORrCyQ.png)
 
 If you know how to make this happen, you’re in the elite 1% of spreadsheet power users.
 
-</div>
+</figure>
 
 A humane system would take into account that (a) _this is a really common scenario!_ and (b) _we have standard lists for these things!_ — and make it easy to create a column with a datatype of `Country` or `US State` (or `Canadian Province`, or `Kyrgyz Oblast`, or what have you). Same goes for `Currency` and `Language`.
 
@@ -224,11 +224,11 @@ It’s our job, as programmers, to offer up these facilities in a way that maps 
 
 I’m going to stop there for now. Hopefully we’re a bit closer to having a tangible idea of what this tool might look like.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](https://miro.medium.com/max/3844/1*9d8mCVO-6fPfawXnPRXzTA.png)
 
-</div>
+</figure>
 
 One possible way of presenting data types.
 

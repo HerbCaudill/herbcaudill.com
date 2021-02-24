@@ -59,7 +59,7 @@ When I see the computer systems used by spy organizations in the movies, I alway
 
 **Thought #2:** I’d love to just get a glimpse at the systems real-world spies use. Going by the Agency databases I _have_ seen, I’m guessing they’re not all that:
 
-<div class='image-2up'>
+<figure class='figure-2up'>
 
 ![](/images/posts/secretagent/17.png)
 
@@ -67,7 +67,7 @@ When I see the computer systems used by spy organizations in the movies, I alway
 
 Maybe the CIA saves all the good software contractors for their internally-facing systems — who knows!
 
-</div>
+</figure>
 
 **Thought #3:** It sure would be nice if, at _my_ job, I could type in, say, a customer’s name — and see everything I need to know about them, in once place.
 
@@ -75,11 +75,11 @@ So let’s take the secret agent use-case as a way of anchoring our thinking. **
 
 Specifically, Celeste wants to be able to type in an agent’s name _(klackety-klackety-klack)_ and see something like this:
 
-<div class='image-xl'>
+<figure class='-xl'>
 
 ![](/images/posts/secretagent/19.png)
 
-</div>
+</figure>
 
 This shouldn't be rocket science, should it?
 

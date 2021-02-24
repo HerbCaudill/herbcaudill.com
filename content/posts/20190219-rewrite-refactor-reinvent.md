@@ -56,15 +56,15 @@ The correct answer, of course, is that **it depends** a lot on the circumstances
 
 _(Bonus: ASCII art summaries of each story!)_
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](/images/posts/rewrite/netscape6.png)
 
-</div>
+</figure>
 
 ## 1\. Netscape
 
-<div class='image'>
+<figure>
 <pre>
 Netscape ... 🡒 4.0 🡒 📝5.0 ☠  6.0 🡒 7.0 🡒 ☠
                                      ⤷ Mozilla 1.0 🡒 ☠
@@ -73,7 +73,7 @@ Netscape ... 🡒 4.0 🡒 📝5.0 ☠  6.0 🡒 7.0 🡒 ☠
 
 **Key:** <span>📝 = rewrite</span> <span>☠ = dead end</span>
 
-</div>
+</figure>
 
 Netscape’s disastrous 5.0/6.0 rewrite is the original poster child for “never rewrite”, thanks to Joel.
 
@@ -112,7 +112,7 @@ Not that it mattered. In the three years that Netscape stood still, Internet Exp
 <p class="caption">
   When the rewrite began, Netscape was losing ground quickly to Microsoft’s Internet Explorer. When the new browser was finally released three years later, it was buggy and slow; meanwhile Netscape’s market share had dwindled to practically nothing. (Chart adapted from <a href='https://en.wikipedia.org/wiki/Usage_share_of_web_browsers'>Wikipedia</a>.)
 </p>
-</div>
+</figure>
 
 In 1999, while the rewrite was underway, AOL had acquired Netscape in a deal valued at $10 billion.
 
@@ -134,21 +134,21 @@ And anyway, the question at hand isn’t whether the rewrite was good for the we
 
 But the rewrite was certainly a contributing factor, and the end result was the destruction of a company worth billions of dollars and thousands of layoffs. So I’m going to agree with Joel that **the net consequences of this rewrite were disastrous**.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](/images/posts/rewrite/1.png)
 
-</div>
+</figure>
 
 ## 2\. Basecamp
 
-<div class='image'>
+<figure>
 <pre>
 Basecamp Classic --------------------------------------------- ->
             📝Basecamp 2 ------------------------------------- ->
                         📝Basecamp 3 ------------------------- ->
 </pre>
-</div>
+</figure>
 
 In the early 2000s, a Chicago web design company called **37signals** had built a following around founders [Jason Fried](https://medium.com/u/c030228809f2) and [DHH](https://medium.com/u/54bcbf647830)’s influential and often contrarian [blog](https://m.signalvnoise.com).
 
@@ -162,7 +162,7 @@ They originally caught my attention when I was just starting out as a web design
 
 37signals’ <a href="https://web.archive.org/web/20050207174211/http://www.37signals.com/better/fedex/after.html">redesign of FedEx’s shipping form</a> (left) is still better than <a href="https://www.fedex.com/shipping/shipEntryAction.do?method=doEntry&amp;link=1&amp;locale=en_US&amp;urlparams=us&amp;sType=F">the real thing</a>, nearly two decades later.
 
-</div>
+</figure>
 
 In 2004, they took a project-management tool that [they had developed for internal use](https://basecamp.com/about/story), and released it as a software-as-a-service product called [Basecamp](https://signalvnoise.com/archives/000542.php).
 
@@ -228,14 +228,14 @@ He points out that when you force users to pack up and move, _that’s_ when you
 
 > “Is Basecamp even actually the thing I want anymore? If we have to move all our crap over anyway, maybe I can just move it somewhere else. If I have to pack it all up into boxes and load it on the truck, I can just send that truck across town instead. That’s not a big hassle. The big hassle is to pack up all my shit. Whether it goes to Basecamp again or it goes somewhere else, that’s not the big decision.”
 
-<div class='image'>
+<figure>
 
 ![](/images/posts/rewrite/5.jpeg)
 
 <p class='caption'>
 David compares Basecamp Classic to a Leica M3: It hasn’t been manufactured since 1967, but Leica is still committed to supporting it and repairing it for as long as they’re in business. (Photo <a href="https://commons.wikimedia.org/w/index.php?curid=27903569">Dnalor 01</a>)
 </p>
-</div>
+</figure>
 
 Instead, Basecamp committed to “**honoring their legacy**”: They made it easy for people to upgrade, but didn’t require them to leave Basecamp Classic. Not only that, but they’ve committed to continuing to host, support, and maintain Basecamp Classic indefinitely.
 
@@ -259,15 +259,15 @@ Having to maintain multiple versions of product indefinitely doesn’t come with
 
 > It’s not free. Why would you expect it to be free? It’s valuable, so of course it’s not free. But it’s worth doing.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](/images/posts/rewrite/7.jpeg)
 
-</div>
+</figure>
 
 ## 3\. Visual Studio and VS Code
 
-<div class='image'>
+<figure>
 <pre>
 VS 97 -> 6.0 -> .NET -> ... -> 2015 -> 2017 -> 2019 ------- ->
                                  📝VS Code ------😎------- ->
@@ -275,7 +275,7 @@ VS 97 -> 6.0 -> .NET -> ... -> 2015 -> 2017 -> 2019 ------- ->
 
 **Key:** <span>😎 = street cred</span>
 
-</div>
+</figure>
 
 Microsoft made VS Code in order to reach out to developers working on other platforms.
 
@@ -301,13 +301,13 @@ Not quite from scratch, actually: Microsoft already had some important parts lyi
 
 VS Code is open-source, lightweight, fast, and extensible; and — amazingly for a Microsoft product — it’s become the coding environment of choice for the cool kids.
 
-<div class='image'>
+<figure>
 
 ![](/images/posts/rewrite/8.jfif)
 
 VS Code has become the text editor of choice for JS hipsters. (Chart from [State of JavaScript Survey, 2018](https://2018.stateofjs.com/other-tools/))
 
-</div>
+</figure>
 
 Both products are still actively developed, and there’s no indication that Microsoft intends to sunset Visual Studio.
 
@@ -315,13 +315,13 @@ Both products are still actively developed, and there’s no indication that Mic
 
 In stark contrast to Netscape’s experience, Microsoft succeeded in building an **active open source community** around VS Code. This community has multiplied the efforts of the in-house development team.
 
-<div class='image'>
+<figure>
 
 ![](/images/posts/rewrite/9.png)
 
 Of all the open source projects on GitHub, Visual Studio Code is ranked thirteenth by number of stars — coincidentally, just below Linux!
 
-</div>
+</figure>
 
 Of course, not everyone has a business model that will support completely open sourcing their core product.
 
@@ -333,15 +333,15 @@ One final takeaway from the VS Code story is that things have changed fundamenta
 
 In spite all of the [hand-wringing about the complexity of today’s toolset](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f), the fact is that the JavaScript ecosystem has evolved over the last few years into the long-awaited promised land of reusable, modular open-source code. In that respect, this is a historically unprecedented time.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](/images/posts/rewrite/10.jpeg)
 
-</div>
+</figure>
 
 ## 4\. Gmail and Inbox
 
-<div class='image'>
+<figure>
 
 <pre>
 Gmail ----------------------------------------------------- ->
@@ -350,7 +350,7 @@ Gmail ----------------------------------------------------- ->
 
 **Key:** <span>🌇 = sunset</span>
 
-</div>
+</figure>
 
 Inbox for Gmail was originally introduced as a stripped-down alternative UX for Gmail “designed to focus on what really matters”. It never approached feature parity with the original Gmail, and it introduced new features like bundles, pinned emails, and snoozed messages.
 
@@ -380,15 +380,15 @@ In this case, Google’s original messaging around Inbox led us to believe that 
 
 I think there would have been less unhappiness if Gmail had gone all the way to feature parity with Inbox before it was shuttered.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](/images/posts/rewrite/12.png)
 
-</div>
+</figure>
 
 ## 5\. FogBugz and Trello
 
-<div class='image'>
+<figure>
 <pre>
 FogBugz ------------------------------------ 😟
                      📝Trello --------------------------- -> 🤑
@@ -396,7 +396,7 @@ FogBugz ------------------------------------ 😟
 
 **Key**: <span>😟 = sad decline</span> <span>🤑 = money money money</span>
 
-</div>
+</figure>
 
 FogBugz is a particularly interesting case, since it was Joel Spolsky’s product: It gives us a look at how the never-rewrite principle plays out with a real-world product.
 
@@ -466,13 +466,13 @@ Joel presented it as a tool for managing work at a higher level than FogBugz all
 
 > Honestly, with all the fancy-schmancy “project management” software out there, I never found a way to keep track of who’s supposed to be working on what. … As the founder of two companies it was starting to get distracting to walk down the hallways seeing dozens of people getting paid to sit at computers … and I had no idea if they were doing the exact right thing, or maybe something they thought was important but which, nevertheless, was not, actually, important.
 
-<div class='image-2up'>
+<figure class='figure-2up'>
 
 ![](/images/posts/rewrite/14.png)
 
 ![](/images/posts/rewrite/13.jpeg)
 
-</div>
+</figure>
 
 In building Trello, Fog Creek’s developers got a chance to use contemporary technologies, for a change:
 
@@ -518,15 +518,15 @@ Clearly all the people involved had bigger fish to fry: Stack Overflow, Trello, 
 
 But the sentimental part of me wishes there had been a better way to “honor the legacy” of all the people who created it and used it over all those years.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](/images/posts/rewrite/15.png)
 
-</div>
+</figure>
 
 ## 6\. FreshBooks and BillSpring
 
-<div class='image'>
+<figure>
 
 ```
 FreshBooks ------------------------------------------------ ->
@@ -535,7 +535,7 @@ FreshBooks ------------------------------------------------ ->
 
 **Key**: <span>🕵️‍♀️ = undercover operation</span>
 
-</div>
+</figure>
 
 This has already turned into a much longer article than I ever imagined, but I can’t leave this story out. Stick with me, it has a great twist.
 

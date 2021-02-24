@@ -14,13 +14,13 @@ Things have changed a lot in the decade since the last time I built a web applic
 
 On the one hand, we’ve finally arrived at the promised land of code reuse. If you’re into programming productivity, no Agile methodology or VS Code extension compares to a technique I like to call **“importing code that someone else wrote.”** What a time to be alive!
 
-<div class='image image-lg'>
+<figure class='figure-lg'>
 
 ![](/images/posts/serverless/cartoon.jpeg)
 
 Used with permission. Original [here](http://www.commitstrip.com/en/2015/09/16/how-to-choose-the-right-javascript-framework/).
 
-</div>
+</figure>
 
 On the other hand, the framework anxiety depicted in [this CommitStrip cartoon](http://www.commitstrip.com/en/2015/09/16/how-to-choose-the-right-javascript-framework/) has multiplied into a fractal landscape of decisions both big and small.
 
@@ -32,13 +32,13 @@ At some point, though, you have to stop thinking and start coding. I’ve spent 
 
 My starting point is the way [DevResults](http://www.devresults.com) works, so even though that’s a decade-old codebase, let’s take a look at its architecture. It’s a server application written in C#, a SQL database, and an Angular front end. So something like this:
 
-<div class='image image-lg image-b'>
+<figure class='figure-lg image-b'>
 
 ![](/images/posts/serverless/01.jpeg)
 
 Nothing surprising here — this is a very standard architecture for web apps of a certain age.
 
-</div>
+</figure>
 
 There are several sources of inefficiency here:
 
@@ -46,13 +46,13 @@ There are several sources of inefficiency here:
 - Our **data model has to be restated repeatedly** in multiple different formats.
 - Each of these layers includes some logic, and it’s **hard to avoid duplicating some logic** across more than one layer.
 
-<div class='image image-lg image-b'>
+<figure class='figure-lg image-b'>
 
 ![](/images/posts/serverless/02.jpeg)
 
 **Kind of a mess:** Logic expressed in 3 languages, data model expressed lots of different ways.
 
-</div>
+</figure>
 
 Now, DevResults was first written in 2009, and changes to the code since then have had to be made in a cautious and incremental way in order to avoid disrupting people who actively use the software. We’re starting with a clean slate now, so what should we do differently?
 
@@ -60,25 +60,25 @@ Now, DevResults was first written in 2009, and changes to the code since then ha
 
 The first step to simplify this is to use a single language for the codebase. In 2018, the only reasonable choice is JavaScript. We can use Node.js on the back end, and that way bits of logic that are shared between the client and the server only have to be written once.
 
-<div class='image image-lg image-b'>
+<figure class='figure-lg image-b'>
 
 ![](/images/posts/serverless/03.png)
 
 **Better**: Server-side JavaScript lets us write code around the data model just once, and run in both places.
 
-</div>
+</figure>
 
 ### Improvement 2: JSON everywhere
 
 We can also use a NoSQL database like MongoDB, which accepts and returns JSON data. So our data can move from client to server to database without having to be translated.
 
-<div class='image image-lg image-b'>
+<figure class='figure-lg image-b'>
 
 ![](/images/posts/serverless/04.png)
 
 **Better**: GraphQL for requesting data, JSON for representing data.
 
-</div>
+</figure>
 
 Another simplification is to use GraphQL instead of REST to communicate requests for data. In fact, if we use [Apollo’s client framework](https://www.apollographql.com/docs/react/essentials/local-state.html#queries), we can use GraphQL to query local state and locally cached data in addition to server data. That leaves us with just two representations of the data model, which is a big improvement.
 
@@ -91,13 +91,13 @@ But when I started playing with this in a couple of toy apps, I was **still frus
 - Data **storage** is provided by the database. But since the client needs to work offline, it needs to provide storage also. That means you need to write two data layers — one for the client to work with local data, the other for the server to work with the database.
 - Application **logic** traditionally lives on the server. But if the client needs to work offline, some or all of that logic needs to be on the client as well.
 
-<div class='image image-lg image-b'>
+<figure class='figure-lg image-b'>
 
 ![](/images/posts/serverless/05.png)
 
 Is there a good reason for all of this duplication?
 
-</div>
+</figure>
 
 So we’re duplicating logic between the server and the client, and duplicating storage between the database and the client.
 
@@ -114,13 +114,13 @@ There are two big challenges with building an app that works offline:
 - It has to work when no server is available (duh), which means that it needs to have a **full local copy of the data** that it needs.
 - When the app does go back online, it needs to **reconcile changes** that have been made locally with changes that have been made elsewhere.
 
-<div class='image image-lg image-b'>
+<figure class='figure-lg image-b'>
 
 ![](/images/posts/serverless/06.png)
 
 The standard browser/server/database model isn’t well-suited to offline scenarios.
 
-</div>
+</figure>
 
 Long story short, this isn’t the architecture you would start with if offline usage is a priority. It might be possible to bolt on offline capabilities after the fact, but it wouldn’t be easy and it wouldn’t be pretty.
 
@@ -146,13 +146,13 @@ The most obvious answer is that **we need the server to collaborate with others*
 
 So, yes, this would be a very simple architecture:
 
-<div class='image image-b'>
+<figure class='image-b'>
 
 ![](/images/posts/serverless/08.jpeg)
 
 Simple, but not very useful.
 
-</div>
+</figure>
 
 But Herb, I hear you saying: This is of no use to us if Client A (Alice) and Client B (Bob) need to collaborate.
 
@@ -160,13 +160,13 @@ So let’s put on our “[pretend it’s magic](https://books.google.es/books?id
 
 Let’s just imagine for the moment that we had a magical way of automatically and instantaneously synchronizing Alice’s data with Bob’s data, so that when they’re both online, they’re both always looking at the same thing.
 
-<div class='image image-b'>
+<figure class='image-b'>
 
 ![](/images/posts/serverless/09.gif)
 
 Simple, but you have to believe in magic.
 
-</div>
+</figure>
 
 If we had that magical piece, then we’d truly be able to eliminate duplication in our codebase.
 
@@ -174,11 +174,11 @@ But wait, you say! This peer-to-peer setup requires Alice and Bob to be online a
 
 OK, no problem — we can just fire up a client on a computer that no one uses, and leave it running all the time.
 
-<div class='image image-b'>
+<figure class='image-b'>
 
 ![](/images/posts/serverless/10.png)
 
-</div>
+</figure>
 
 **Congratulations, we’ve just re-invented the server!** 😆
 
@@ -233,11 +233,11 @@ I’m going to focus on the next-to-the-last item in that list — CRDTs — bec
 
 ### CRDTs and Automerge: Indistinguishable from magic
 
-<div class='image image-xs'>
+<figure class='figure-xs'>
 
 ![](/images/posts/serverless/13.png)
 
-</div>
+</figure>
 
 [Automerge](https://github.com/automerge/automerge), a JavaScript implementation of a CRDT, promises to be the magical automatic synchronization and conflict resolution layer we’re looking for.
 
@@ -265,11 +265,11 @@ So the overall idea starts to look like this:
 - **Real-time background synchronization** is provided automatically and unobtrusively by **Automerge**.
 - **Instead of a server, we have an always-available headless peer** living in a lambda function. If we define a “team” as our permissions boundary, it might make sense to just spin up one lambda per team.
 
-<div class='image image-xl'>
+<figure class='figure-xl'>
 
 ![](/images/posts/serverless/14.png)
 
-</div>
+</figure>
 
 This is a very different design from the ones I’ve worked with in the past. It’s not the way most software is being written today. But I’m convinced that many applications will be architected this way in the future. The advantages are hard to ignore:
 
@@ -306,4 +306,4 @@ Ink and Switch has also created a series of proof-of-concept apps using Automerg
 - [**Pixelpusher**](https://github.com/automerge/pixelpusher), a collaborative drawing tool
 - [**Pushpin**](https://github.com/inkandswitch/pushpin), a collaborative corkboard app
 
-</div>
+</figure>

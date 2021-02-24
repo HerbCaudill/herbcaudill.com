@@ -18,21 +18,21 @@ And SaaS is how my team is able to collaborate closely even though we’re scatt
 
 **But our toolset still falls frustratingly short**. We have too many different tools that, for the most part, don’t talk to each other. Every tool comes with its own implicit worldview, which you can either adopt or spend your life fighting against. And we have needs that aren’t met at all, because they’re too specific to our situation.
 
-<div class='image-2up'>
+<figure class='figure-2up'>
 
 ![](/images/posts/puzzle/1.png)
 
 ![](/images/posts/puzzle/2.png)
 
-</div>
+</figure>
 
-<div class='image'>
+<figure>
 
 ![](/images/posts/puzzle/3.png)
 
 So this is how we work. Lots of different tools that kind of fit our needs, but not really; and big areas where we just make do.
 
-</div>
+</figure>
 
 Large organizations solve these problems with big, expensive, heavily customized implementations of enterprise software suites. (At least I think they do! I’m not really sure how well that works in practice.)
 
@@ -104,13 +104,13 @@ Any time anyone suggests a new tool to the team (usually me!) there’s an audib
 
 The SaaS ecosystem is amazing — if you think of a problem, you can almost certainly find a product out there that addresses it, for $1 or $25 or $100 per user per month. But realistically you can only have so many different systems. Not just because those subscription costs start adding up, but also because the indirect costs — the staff time required to administer them and the cognitive burden of learning and thinking about them — start adding up.
 
-<div class='image image-md'>
+<figure class='figure-md'>
 
 ![](/images/posts/puzzle/8.png)
 
 iDoneThis does one thing well. But is it worth $1200/year, plus the cognitive and administrative burden of having Yet Another System?
 
-</div>
+</figure>
 
 Consider the case of [iDoneThis](http://www.idonethis.com), a little single-purpose service that provides each team member a place to say what they got done every day.
 
@@ -146,13 +146,13 @@ If you go the second route and try to use the best system for each need, you end
 
 Some systems have built-in integrations. Slack, for example, advertises hundreds of integrations. In practice, this mostly just means that you can send an app’s notifications to Slack channels.
 
-<div class='image image-md image-b'>
+<figure class='figure-md image-b'>
 
 ![](/images/posts/puzzle/10.gif)
 
 Slack “integration” with Google Drive: 🙄 Meh.
 
-</div>
+</figure>
 
 Other built-in integrations turn out to be pretty lame when examined closely. Asana and Slack both “integrate” with file storage services like Dropbox and Google Drive. In practice, this just means that Asana and Slack both have a clumsy built-in file picker for sharing files directly from your cloud storage. It’s easier to just drag and drop files from your local file system.
 
@@ -197,13 +197,13 @@ This is where an app captures its understanding of a domain.
 - **DevResults** models an **international development** program: activities, indicators, results frameworks, locations.
 - **Asana** models an organization’s **work**: people, teams, tasks, projects.
 
-<div class='image image-lg'>
+<figure class='figure-lg'>
 
 ![](/images/posts/puzzle/11.gif)
 
 FreshSales has a data model that captures a “typical” real-world sales process. A **deal** (shown here) has a name, a dollar amount, an expected close date, and a probability. It lives in one **stage** of several that I can define. It’s associated with one **account**, one **sales rep**, and one or more **contacts**. This model may or may not exactly match the way we work; either way it’s not rocket science.
 
-</div>
+</figure>
 
 There’s nothing technically difficult about this part: These are just database tables in a relational schema, plus a web UI for browsing and editing records. The web UI piece is not totally trivial, and some do it better than others. Still, it’s a problem that’s been solved thousands of times over.
 
@@ -222,13 +222,13 @@ These are the non-trivial skills that set the app apart.
 - For Dropbox and Google Drive, it’s document storage and syncing.
 - For Slack, it’s team chat.
 
-<div class='image image-lg'>
+<figure class='figure-lg'>
 
 ![](/images/posts/puzzle/12.gif)
 
 Expensify‘s superpower is called “SmartScan”. Drag and drop an invoice or a receipt, and it magically pulls out the vendor, date, and amount. I don’t know if they do it with people or with machines, but either way it would be pretty hard to reproduce this feature!
 
-</div>
+</figure>
 
 Not every app has a superpower! Some apps’ value is all in the way they’ve successfully modeled their domain’s data.
 
@@ -240,13 +240,13 @@ These are things that go outside of an app’s core strengths.
 - GitHub and Asana (and DevResults) have discussions.
 - Slack, Asana, FreshSales, and FreshDesk (and DevResults) have document storage.
 
-<div class='image image-lg'>
+<figure class='figure-lg'>
 
 ![](/images/posts/puzzle/13.jpeg)
 
 Asana’s “Conversations” is a classic me-too feature: In principle it kind of makes sense to have discussions alongside your task lists. In practice, it doesn’t make sense to have lots of different venues for conversation, so we use Slack instead.
 
-</div>
+</figure>
 
 Their only advantage is that they’re linked to the app’s data model. They often weren’t part of the original product idea, but it’s very appealing to have that set of documents or that to-do list right next to the project or help ticket or whatever it is that it pertains to. That’s why customers asked for them, and that’s why they got built. But they’re almost always built in a half-hearted way, and there are always single-purpose tools that are better at these things.
 
@@ -256,13 +256,13 @@ These are the things that every app has to have: User management, provisioning, 
 
 Again, some products nail the fundamentals better than others, but these are all problems that have been solved many times.
 
-<div class='image image-b'>
+<figure class='image-b'>
 
 ![](/images/posts/puzzle/14.png)
 
 N apps = N user lists to maintain.
 
-</div>
+</figure>
 
 If you use ten SaaS apps, you have ten different lists of users to maintain; ten APIs to learn about; ten places to update your credit card information when the expiration date changes; ten different search UIs.
 
