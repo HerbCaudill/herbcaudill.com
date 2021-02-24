@@ -1,6 +1,6 @@
 ---
 title: 'Excel hell: A cautionary tale'
-subtitle: Thinking outside the grid
+subtitle: What would it take to replace the spreadsheet?
 description: |
   Before we create a “single infinitely-customizable app for everything else”, we need to understand
   why we’re currently using spreadsheets for everything.
