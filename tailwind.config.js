@@ -58,6 +58,7 @@ module.exports = {
         '7xl': ['4.5rem', { lineHeight: '1' }],
         '8xl': ['6rem', { lineHeight: '1' }],
         '9xl': ['8rem', { lineHeight: '1' }],
+        yuge: ['min(25vw,25rem)', { lineHeight: '0.8' }],
       },
 
       padding: {
