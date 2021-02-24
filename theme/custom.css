@@ -17,7 +17,7 @@
 
 @layer components {
   article {
-    @apply relative text-gray-700 text-base sm:text-lg font-serif font-regular;
+    @apply relative text-gray-700 text-base sm:text-lg lg:text-xl font-serif font-regular;
   }
 
   /* big headings */
@@ -257,7 +257,7 @@
   }
 
   article dl {
-    @apply grid grid-cols-7 md:grid-cols-9 text-xs;
+    @apply grid grid-cols-9 text-xs;
   }
 
   article dl:first-child {
@@ -265,15 +265,15 @@
   }
 
   article dt {
-    @apply md:border-b border-dotted border-gray-400;
-    @apply md:py-1;
-    @apply col-span-2 font-sans font-bold;
+    @apply border-b border-dotted border-gray-400;
+    @apply py-1;
+    @apply col-span-3 md:col-span-2 font-sans font-bold;
   }
 
   article dd {
     @apply border-b border-dotted border-gray-400;
-    @apply mb-1 md:mb-0 pb-1 md:pt-1;
-    @apply col-span-7 font-mono;
+    @apply py-1;
+    @apply col-span-6 md:col-span-7 font-mono;
   }
 
   article dl p {
