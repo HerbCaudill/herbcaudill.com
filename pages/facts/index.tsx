@@ -9,10 +9,23 @@ const FactsIndex: React.FC<{
 }> = ({ content, metadata }) => {
   return (
     <IndexLayout label="Facts">
-      <article
-        className="md:w-9/12"
-        dangerouslySetInnerHTML={{ __html: content }}
-      ></article>
+      <div
+        className={`
+                  grid grid-cols-1 md:grid-cols-12 gap-G 
+                  col-span-4 md:col-span-12
+      `}
+      >
+        <div className="md:col-span-12 mt-12 md:mt-0">
+          <article
+            className={`
+        md:col-start-4 md:col-span-9 
+        lg:col-start-4 lg:col-span-7
+        
+        `}
+            dangerouslySetInnerHTML={{ __html: content }}
+          ></article>
+        </div>
+      </div>
     </IndexLayout>
   )
 }
