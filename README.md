@@ -1,1 +1,1 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+The `main` branch is deployed automatically via Vercel: https://vercel.com/herbcaudill/hc3-me
