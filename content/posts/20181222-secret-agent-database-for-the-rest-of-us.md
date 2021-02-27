@@ -57,7 +57,7 @@ When I see the computer systems used by spy organizations in the movies, I alway
 
 **Thought #1:** Why do secret agents type so loudly?
 
-**Thought #2:** I’d love to just get a glimpse at the systems real-world spies use. Going by the Agency databases I _have_ seen, I’m guessing they’re not all that:
+**Thought #2:** I’d love to just get a glimpse at the systems real-world spies use. Going by the Agency databases I _have_ seen, I’m guessing they’re not all that great:
 
 <figure class='figure-2up'>
 
