@@ -13,6 +13,11 @@
   .caption i {
     @apply block;
   }
+
+  /* blockquote wants to make the text bigger */
+  .caption blockquote {
+    @apply text-xs;
+  }
 }
 
 @layer components {
@@ -20,6 +25,9 @@
     @apply relative text-gray-700 text-base sm:text-lg lg:text-xl font-serif font-regular;
   }
 
+  article h2 + h3 {
+    @apply -mt-4;
+  }
   /* big headings */
   article h2 {
     @apply text-3xl font-sans font-bold mt-16 tracking-tight text-black mb-G;
@@ -40,6 +48,7 @@
     @apply my-4 leading-relaxed;
   }
 
+  /* first paragraph -- no top margin */
   article > :nth-child(1) {
     @apply mt-0;
   }
@@ -55,8 +64,8 @@
 
   /* make inline <code> spans stand out a bit more */
   article code {
-    @apply font-mono mx-1;
-    font-size: 0.95em;
+    @apply font-mono font-medium tracking-tight bg-gray-50 rounded-lg px-2 py-1;
+    font-size: 0.85em;
   }
 
   /* used for ascii art e.g. in rewrite post */
@@ -76,6 +85,7 @@
     @apply font-mono;
   }
 
+  /* big chunky left-aligned black bar */
   article hr {
     @apply bg-transparent border-t-12 border-black my-16 w-1/6;
   }
@@ -90,11 +100,23 @@
   }
 
   article ol li {
-    @apply list-decimal list-outside ml-6 leading-relaxed;
+    @apply list-decimal;
   }
 
   article ul li {
-    @apply list-square list-outside ml-6 leading-relaxed;
+    @apply list-square;
+  }
+
+  article li {
+    @apply list-outside ml-6 leading-relaxed mt-2;
+  }
+
+  article li p {
+    @apply m-0;
+  }
+
+  article li p + p {
+    @apply mt-4;
   }
 
   article blockquote {
@@ -138,13 +160,13 @@
   }
 
   /* second element, typically a <p> that we want to treat as a caption */
-  article figure :nth-child(2) {
+  article figure > :nth-child(2) {
     @apply caption; /* inherit all the caption classes */
     @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
   }
 
   /* break spans up on large screens, where the caption is in the sidebar  (e.g. "key" for ascii illustrations in rewrite article */
-  article figure :nth-child(2) span {
+  article figure > :nth-child(2) span {
     @apply inline lg:block;
   }
 
@@ -157,7 +179,7 @@
     @apply lg:-ml-3/7 lg:w-12/7;
   }
 
-  article .figure-xl :nth-child(1) {
+  article .figure-xl > :nth-child(1) {
     @apply md:col-span-12;
   }
 
@@ -169,12 +191,12 @@
     @apply lg:-ml-3/7 lg:w-12/7;
   }
 
-  article .figure-lg :nth-child(1) {
+  article .figure-lg > :nth-child(1) {
     @apply md:w-full md:my-0;
     @apply lg:col-span-10;
   }
 
-  article .figure-lg :nth-child(2) {
+  article .figure-lg > :nth-child(2) {
     /* on md screens we tuck the caption under the left corner of the image */
     @apply md:absolute md:w-3/9 md:-left-3/9 md:pr-G;
     /* on lg screens the caption goes in the right sidebar */
@@ -187,18 +209,18 @@
     @apply md:mx-0 md:grid md:grid-cols-9 md:gap-G;
   }
 
-  article .figure-md :nth-child(1) {
+  article .figure-md > :nth-child(1) {
     @apply md:col-span-7 lg:col-span-5;
   }
 
-  article .figure-md :nth-child(2) {
+  article .figure-md > :nth-child(2) {
     @apply md:col-span-2;
   }
 
   /* extra-small variant: images in the left sidebar */
 
   article .figure-xs {
-    @apply mx-G w-full;
+    @apply mx-G w-full block;
     @apply md:mx-0 md:absolute md:pr-G;
     @apply md:-left-3/9 md:w-3/9;
     @apply lg:-left-3/7 lg:w-3/7;
@@ -206,6 +228,10 @@
 
   article .figure-xs img {
     max-width: 100%;
+  }
+
+  article .figure-xs > :nth-child(2) {
+    @apply md:col-span-2;
   }
 
   /* border variant: apply thin border + some padding to images*/
@@ -256,6 +282,8 @@
     @apply text-sm font-sans;
   }
 
+  /* description lists (used on Facts page) */
+
   article dl {
     @apply grid grid-cols-9 text-xs;
   }
@@ -278,5 +306,46 @@
 
   article dl p {
     @apply my-0;
+  }
+
+  /* tables */
+
+  article table {
+    @apply w-full table-fixed my-G;
+  }
+
+  article table th {
+    @apply font-sans text-base text-left align-bottom;
+    @apply border-b-4 border-black;
+  }
+
+  article table td {
+    @apply font-sans text-sm;
+    @apply align-top py-2 pr-3;
+    @apply border-b border-gray-400;
+  }
+
+  /* asides */
+
+  article aside {
+    @apply pl-G md:pl-0 w-full;
+    @apply md:mx-0 md:absolute md:pr-G;
+    @apply md:-left-3/9 md:w-3/9;
+    @apply lg:-left-3/7 lg:w-2/7;
+  }
+
+  article aside p {
+    @apply caption my-2;
+  }
+
+  /* spoilers */
+  article .spoiler {
+    transition: background 1s, border-color 1s, color 1s;
+    @apply inline-block bg-gray-800 text-sm text-black font-sans mt-2 mb-3 p-3 leading-snug;
+    @apply border border-gray-800;
+  }
+
+  article .spoiler:hover {
+    @apply bg-white text-gray-500 cursor-pointer border-gray-800;
   }
 }

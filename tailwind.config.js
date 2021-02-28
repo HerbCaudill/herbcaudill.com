@@ -30,6 +30,7 @@ module.exports = {
       }),
 
       minWidth: (theme, { breakpoints }) => ({
+        ...allFractions,
         ...breakpoints(theme('screens')),
       }),
 

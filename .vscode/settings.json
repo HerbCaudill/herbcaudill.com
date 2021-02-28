@@ -10,5 +10,9 @@
     "statusBar.background": "#000000",
     "statusBar.foreground": "#e7e7e7",
     "statusBarItem.hoverBackground": "#1a1a1a"
-  }
+  },
+  "pasteImage.basePath": "${projectRoot}",
+  "pasteImage.path": "${projectRoot}/public/images",
+  "pasteImage.prefix": "/images/",
+  "pasteImage.insertPattern": "${imageSyntaxPrefix}/images/${imageFileName}${imageSyntaxSuffix}"
 }
