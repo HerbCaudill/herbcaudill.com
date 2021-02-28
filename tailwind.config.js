@@ -136,6 +136,6 @@ module.exports = {
     purgeLayersByDefault: true,
   },
 
-  purge: ['./pages/**/*.tsx', './components/**/*.tsx'],
+  purge: ['./pages/**/*.tsx', './components/**/*.tsx', './**/*.css'],
   plugins: [],
 }
