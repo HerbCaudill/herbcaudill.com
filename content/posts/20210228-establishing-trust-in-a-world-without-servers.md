@@ -4,9 +4,9 @@ subtitle: Establishing trust in the strange world of peer-to-peer collaboration
 
 description: |
   It's taken me a while to wrap my head around how security might work in a completely
-  decentralized, peer-to-peer application. I'll dig into the big questions around
-  local-first authentication and authorization and explain how I've approached solving
-  these problems in a new library, `@localfirst/auth`.
+  decentralized, peer-to-peer application. I'll dig into the big questions around local-first
+  authentication and authorization and explain how I've approached solving these problems in a new
+  library, <a href='https://github.com/local-first-web/auth'>@localfirst/auth</a>.
 
 date: '2021-02-28'
 
@@ -21,7 +21,7 @@ For a developer, entering the local-first world can be disorienting; our underst
 normally work is often turned upside down.
 
 For me, the question of peer-to-peer **security** in particular at first seemed straightforward; but
-the more I thought about it the tricker it got. Now I feel like I have a pretty good grasp on it
+the more I thought about it the trickier it got. Now I feel like I have a pretty good grasp on it
 again, but I've had to reconsider what we really mean, _like really MEAN_, when we talk about
 "permission" or "trust" or "identity".
 
@@ -66,40 +66,44 @@ specifically, public-key cryptography.
 But the details of how we solve these problems with crypto are still fuzzy. Let's list some of the
 questions that we might have at this stage:
 
-- **Peer authentication:** Without a server to vouch for his identity, how does Alice know it's
-  really Bob at the other end?
+1. **Peer authentication:** Without a server to vouch for his identity, how does Alice know it's
+   really Bob at the other end?
 
-  <aside>
+    <aside>
 
-  If you want to get straight to the point, you can hover to show a brief summary of the solution
-  I'll propose for each of these problems.
+   If you want to get straight to the point, you can hover to show a brief summary of the solution
+   I'll propose for each of these problems.
+    </aside>
 
-  </aside>
+   <span class='spoiler'>**A:** We use a **signature challenge**: Alice creates an identity challenge
+   document for Bob to sign, and checks his signature against his public signature key </span>
 
-  <span class='spoiler'>**A:** We use a **signature challenge**: Alice creates an identity challenge
-  document for Bob to sign, and checks his signature against his public signature key </span>
+1. **Permissions management:** Without a server to keep track of group membership and permissions,
+   how can Alice add and remove team members, and limit what they can and can't do?  
+   <span class='spoiler'>**A:** All changes to the group's membership and permissions are recorded as a
+   sequence of signed and hash-chained changes called a **signature chain**. Every group member keeps
+   a complete replica of the signature chain and can validate other members' actions independently.
+   All authority can be traced back to the group's founding member.</span>
 
-- **Permissions management:** Without a server to keep track of group membership and permissions,
-  how can Alice add and remove team members, and limit what they can and can't do?  
-  <span class='spoiler'>**A:** All changes to the group's membership and permissions are recorded as a
-  sequence of signed and hash-chained changes called a **signature chain**. Every group member keeps
-  a complete replica of the signature chain and can validate other members' actions independently.
-  All authority can be traced back to the group's founding member.</span>
-- **Key management:** To encrypt anything or use digital signatures, you need to know each other's
-  public keys; but how can that happen if you don't have a trusted, centralized key server?  
-  <span class='spoiler'>**A:** New members are invited using a **Seitan token exchange**, which is
-  basically Trust on First Use (TOFU) hardened with the use of an invitation key. </span>
-- **Read authorization:** How can you keep some users from seeing sensitive information if each user
-  has a complete copy of the data?  
-  <span class='spoiler'>**A:** We encrypt sensitive data for multiple users using
-  **lockboxes** (encrypted keys). </span>
-- **Write authorization:** How do you prevent unauthorized users from modifying things they're not
-  allowed to modify?  
-  <span class='spoiler'>**A:** Since all users have the full signature chain and can use it to compute the
-  current state of the group's membership and permissions, each user can independently determine
-  whether or not to accept another member's changes as valid. </span>
-- **Concurrency:** What happens when two admins make concurrent changes to group membership?  
-  <span class='spoiler'>**A:** DAG, Strong remove TODO </span>
+1. **Key management:** To encrypt anything or use digital signatures, you need to know each other's
+   public keys; but how can that happen if you don't have a trusted, centralized key server?  
+   <span class='spoiler'>**A:** New members are invited using a **Seitan token exchange**, which is
+   basically Trust on First Use (TOFU) hardened with the use of an invitation key. </span>
+
+1. **Read authorization:** How can you keep some users from seeing sensitive information if each user
+   has a complete copy of the data?  
+   <span class='spoiler'>**A:** We encrypt sensitive data for multiple users using
+   **lockboxes** (encrypted keys). </span>
+
+1. **Write authorization:** How do you prevent unauthorized users from modifying things they're not
+   allowed to modify?  
+   <span class='spoiler'>**A:** Since all users have the full signature chain and can use it to compute the
+   current state of the group's membership and permissions, each user can independently determine
+   whether or not to accept another member's changes as valid. </span>
+
+1. **Synchronization and concurrency:** How does everyone stay up to date with changes to the group's
+   membership and permissions? What happens when two admins make concurrent changes?  
+   <span class='spoiler'>**A:** </span>
 
 These are all tricky problems. Some of them have fairly well-understood solutions; others are closer
 to the cutting edge of academic research. I’ve spent a lot of time over the last few months trying
@@ -412,7 +416,7 @@ yet we're off to the races with public-key encryption.
 
 ## Write authorization
 
-### "Don't trust the client" and there's nothing but clients
+### "Don't trust the client" when there's nothing but clients
 
 When you're creating a traditional web app, you learn early on that **you can't trust what's coming
 from the user's browser**. You have no control over what happens on the client: A malicious user
@@ -431,9 +435,14 @@ can never let its guard down and has to treat every bit of data it gets as poten
 What happens if a rogue peer sends changes that break the rules? **Everyone else simply ignores
 them**, the same way the server would ignore illegal changes from a rogue client.
 
-This requires us to invert our thinking a bit: Rather than having a central authority enforce your
+### Tired: Permission. Wired: Attention.
+
+This requires another inversion of our usual thinking about **permission**. We can't stop our peers
+from doing whatever they want on their own devices. The software we write might
+
+: Rather than having a central authority enforce your
 rules, and then passively accepting anything blessed by the server, we all have to continuously
 enforce the rules **by choosing who we will listen to and who we will ignore**, and which changes we
 will accept and which ones we will disregard.
 
-## Concurrency
+## Synchronization and concurrency
