@@ -19,8 +19,9 @@ export const Post: React.FC<PostProps> = ({
   return (
     <div
       className={`
-            grid grid-cols-1 md:grid-cols-12 gap-G 
-            col-span-4 md:col-span-12
+          Post
+          grid grid-cols-1 md:grid-cols-12 gap-G 
+          col-span-4 md:col-span-12
         `}
     >
       {/* Cover image */}
@@ -60,20 +61,20 @@ export const Post: React.FC<PostProps> = ({
 
       <Nav
         className={`
-              hidden md:block
-              md:mt-24 
-              md:col-span-2 lg:col-span-1 row-span-2
+          hidden md:block
+          md:mt-24 
+          md:col-span-2 lg:col-span-1 row-span-2
             `}
       />
 
       <div
-        className={`
+        className={`use-splat-underline
             md:col-span-9 md:col-start-4 md:mt-24
             border-t border-gray-400 `}
       >
         {/* Description */}
         <p
-          className="pt-6 mb-12 font-mono text-sm text-left"
+          className=" pt-6 mb-12 font-mono text-sm text-left"
           dangerouslySetInnerHTML={{ __html: description }}
         ></p>
       </div>
