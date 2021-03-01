@@ -85,12 +85,9 @@ module.exports = {
       backgroundImage: {
         // hand-drawn underline
         'splat-black': splat('#444'),
-        'splat-red': splat(colors.red['700']),
-      },
-
-      backgroundSize: {
-        // hand-drawn underline
-        underline: '100% min(5px, .25em)',
+        'splat-red': splat(colors.red['800']),
+        'splat-black-1': splat('#444', 1),
+        'splat-red-1': splat(colors.red['800'], 1),
       },
 
       // animation
