@@ -14,19 +14,17 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
 
   return (
     <nav className={`${className} border-t-8 border-black`}>
-      <ul className="">
+      <ul className="uppercase font-mono tracking-widest text-xs ">
         {items.map((item, i) => {
           const url = '/' + item.toLowerCase()
           const isActive = router.pathname.startsWith(url)
           return (
-            <li className="my-7 group cursor-pointer" key={item}>
+            <li className="my-7 py-1 group cursor-pointer " key={item}>
               <Link href={url}>
                 <a
-                  className={cx(
-                    'py-1',
-                    'uppercase font-mono tracking-widest text-xs splat-underline',
-                    { 'font-bold': isActive }
-                  )}
+                  className={cx('py-1', 'splat-underline-on-hover', {
+                    'font-bold': isActive,
+                  })}
                 >
                   {item}
                 </a>
