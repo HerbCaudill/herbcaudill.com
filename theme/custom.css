@@ -21,469 +21,295 @@
 }
 
 /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
-.attribution {
+.caption i {
   @apply block text-gray-400;
-  & a {
-    @apply text-gray-400;
-  }
 }
 
-.fancy-numbers {
-  /* fancy line number */
-  --num-size: calc(0.8em);
-  --num-p: 0.3em;
-  --num-gap: 0.5em;
-  --num-container: calc(2px + var(--num-size) + var(--num-p) * 2);
-
-  counter-increment: ol;
-  position: relative;
-  margin-left: calc(var(--num-container) + var(--num-gap));
-
-  &:before {
-    @apply text-sm font-mono bg-white text-black border border-black absolute text-center rounded-full;
-    content: counter(ol);
-    font-size: var(--num-size);
-    left: calc(-1 * var(--num-container) - var(--num-gap));
-    line-height: calc(var(--num-container) - 1px);
-    width: var(--num-container);
-    height: var(--num-container);
-    top: calc(1.625em - var(--num-container) + var(--num-p));
-  }
-
-  /* image captions */
-  .caption {
-    @apply font-mono text-left leading-normal;
-    @apply text-2xs md:text-xs; /* tiny text on tiny screens */
-  }
-
-  /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
-  .caption i {
-    @apply block;
-  }
+/* blockquote wants to make the text bigger */
+.caption blockquote {
+  @apply text-xs;
 }
 
-@layer components {
-  article {
-    @apply relative text-gray-700 text-base sm:text-lg lg:text-xl font-serif font-regular;
-  }
-
-  /* big headings */
-  article h2 {
-    @apply text-3xl font-sans font-bold mt-16 tracking-tight text-black mb-G;
-  }
-
-    & > span {
-      counter-increment: h2;
-      --num-size: calc(0.8em);
-      --num-p: 0.3em;
-      --num-gap: 0.5em;
-      --num-container: calc(2px + var(--num-size) + var(--num-p) * 2);
-
-      @apply relative;
-      &:before {
-        @apply absolute inline-block ml-0 text-sm font-mono bg-white text-black border border-black text-center rounded-full;
-        content: counter(h2);
-        font-size: var(--num-size);
-        line-height: calc(var(--num-container) - 1px);
-        width: var(--num-container);
-        height: var(--num-container);
-        top: 0;
-        left: calc(-1 * var(--num-container) - var(--num-gap));
-      }
-    }
-
-    /* heavy line above big headings */
-    &:before {
-      @apply block border-t-12 border-black mt-16 mb-G w-1/6;
-      content: '';
-    }
-  }
-
-  /* small headings */
-  article h3 {
-    @apply text-xl font-sans font-bold mt-12 tracking-tight text-black;
-  }
-
-  article p {
-    @apply my-4 leading-relaxed;
-  }
-
-  article > :nth-child(1) {
-    @apply mt-0;
-  }
-
-  /* drop cap at beginning of first paragraph */
-  & > p:nth-child(1):first-letter {
-    @apply float-left font-condensed font-bold;
-    font-size: 3.5em;
-    letter-spacing: 0.1em;
-    line-height: 0.73;
-    margin-top: 0.08em;
-  }
-
-  /* make inline <code> spans stand out a bit more */
-  & li,
-  & p {
-    & > code {
-      @apply font-mono font-medium text-black rounded-md;
-      background: #00000007;
-      font-size: 0.85em;
-      padding: 0.1em 0.5em;
-    }
-  }
-
-  /* used for ascii art e.g. in rewrite post */
-  article figure pre {
-    @apply my-G p-3 border border-gray-300 bg-gray-50;
-    @apply text-2xs md:text-xs font-mono font-medium text-black;
-    @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide overflow-x-auto;
-  }
-
-  /* use sans font for <strong> in articles */
-  article strong {
-    @apply font-sans font-semibold text-black;
-  }
-
-  /* exception to the above - strong in captions keeps the mono font */
-  article .caption strong {
-    @apply font-mono;
-  }
-
-  article hr {
-    @apply bg-transparent border-t-12 border-black my-16 w-1/6;
-  }
-
-  /* links in articles always show the hand-drawn underline */
-  article a {
-    @apply text-black bg-splat-black bg-bottom bg-underline bg-no-repeat;
-  }
-
-  article a:hover {
-    @apply text-red-700 bg-splat-red;
-  }
-
-  article ol li {
-    @apply list-decimal list-outside ml-6 leading-relaxed;
-  }
-
-  & .exercises {
-    @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
-    @apply text-sm sm:text-base font-sans;
-
-    & h3 {
-      @apply bg-black text-white text-xs tracking-widest uppercase px-7 py-1 -mt-5 -ml-7 border whitespace-nowrap inline;
-    }
-
-    & ol {
-      & > li {
-        @apply mt-6;
-        &:before {
-          /* use ABC for exercise numbers */
-          content: counter(ol, upper-latin);
-          @apply text-white bg-black font-bold;
-          top: 2px;
-        }
-      }
-    }
-  }
-
-  article blockquote {
-    @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
-    @apply text-sm sm:text-base font-sans;
-
-    & > h3:first-child {
-      @apply mt-0 mb-2 text-base;
-    }
-
-    /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
-    & i {
-      @apply attribution;
-    }
-
-  article blockquote p {
-    @apply m-0; /* No additional margin at beginning or end of blockquote  */
-  }
-
-  article blockquote p + p {
-    @apply mt-4; /* normal margin between paragraphs inside a blockquote */
-  }
-
-  article img {
-    /* on small screens, images go from edge to edge */
-    @apply -mx-G md:mx-0;
-    @apply w-screen md:w-full;
-    max-width: 100vw; /* never larger than the visible screen */
-    @apply md:max-w-full; /* on larger screens, never larger than the column */
-  }
-
-  /* images not in an figure block: apply same vertical margins as figure */
-  article > p img {
-    @apply my-10;
-  }
-
-  /* container for image followed by caption */
-
-  article figure {
-    @apply my-10;
-    /* on large screens, caption is positioned to right of image (the enclosing width is 7 columns) */
-    @apply lg:grid lg:grid-cols-9 lg:gap-G; /* This becomes a grid with 9 columns - 7 for image, 2 for caption  */
-    @apply lg:w-9/7; /* extend two columns beyond the enclosing width */
-  }
-
-  /* first element, typically a <p> containing the image */
-  article figure :nth-child(1) {
-    @apply lg:col-span-7 lg:mt-0;
-  }
-
-  /* second element, typically a <p> that we want to treat as a caption */
-  article figure :nth-child(2) {
-    @apply caption; /* inherit all the caption classes */
-    @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
-  }
-
-  /* break spans up on large screens, where the caption is in the sidebar  (e.g. "key" for ascii illustrations in rewrite article */
-  article figure :nth-child(2) span {
-    @apply inline lg:block;
-  }
-
-  /* extra-large variant: images that span all 12 columns */
-
-  article .figure-xl {
-    @apply mt-16; /* Extra top margin for large images, since they often serve to divide article sections */
-    @apply md:mx-0 md:grid md:grid-cols-12 md:gap-G;
-    @apply md:-ml-3/9 md:w-12/9;
-    @apply lg:-ml-3/7 lg:w-12/7;
-  }
-
-  article .figure-xl :nth-child(1) {
-    @apply md:col-span-12;
-  }
-
-  /* large variant: images that span 10 columns */
-
-  article .figure-lg {
-    @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-G;
-    @apply md:-ml-3/9 md:w-12/9;
-    @apply lg:-ml-3/7 lg:w-12/7;
-  }
-
-  article .figure-lg :nth-child(1) {
-    @apply md:w-full md:my-0;
-    @apply lg:col-span-10;
-  }
-
-  article .figure-lg :nth-child(2) {
-    /* on md screens we tuck the caption under the left corner of the image */
-    @apply md:absolute md:w-3/9 md:-left-3/9 md:pr-G;
-    /* on lg screens the caption goes in the right sidebar */
-    @apply lg:relative lg:w-full lg:left-0 lg:col-span-2;
-  }
-
-  /* medium variant: images that span 5 columns */
-
-  article .figure-md {
-    @apply md:mx-0 md:grid md:grid-cols-9 md:gap-G;
-  }
-
-  article .figure-md :nth-child(1) {
-    @apply md:col-span-7 lg:col-span-5;
-  }
-
-  article .figure-md :nth-child(2) {
-    @apply md:col-span-2;
-  }
-
-  /* extra-small variant: images in the left sidebar */
-
-  article .figure-xs {
-    @apply mx-G w-full;
-    @apply md:mx-0 md:absolute md:pr-G;
-    @apply md:-left-3/9 md:w-3/9;
-    @apply lg:-left-3/7 lg:w-3/7;
-  }
-
-  article .figure-xs img {
-    max-width: 100%;
-  }
-
-  /* border variant: apply thin border + some padding to images*/
-  article .figure-b img {
-    @apply border border-gray-300 p-4;
-  }
-
-  /* 2-up variant */
-
-  article .figure-2up {
-    @apply my-G;
-    @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-x-G;
-    @apply md:-ml-3/9 md:w-12/9;
-    @apply lg:-ml-3/7 lg:w-12/7;
-  }
-
-  article .figure-2up > :nth-child(1),
-  article .figure-2up > :nth-child(2) {
-    @apply lg:my-0;
-    @apply lg:col-span-5;
-  }
-
-  article .figure-2up > :nth-child(3) {
-    @apply caption; /* inherit all the caption classes */
-    @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
-  }
-
-  /* context blurb at bottom of article */
-
-  .context p {
-    @apply mt-5;
-  }
-
-  .context img {
-    @apply mt-5 border;
-  }
-
-  .context a {
-    @apply text-black bg-splat-black bg-bottom bg-underline bg-no-repeat;
-    background-position: 0 105%;
-  }
-
-  .context a:hover {
-    @apply text-red-700 bg-splat-red;
-  }
-
-  article .endmatter {
-    @apply text-sm font-sans;
-  }
-
-  article dl {
-    @apply grid grid-cols-9 text-xs;
-  }
-
-  article dl:first-child {
-    @apply border-t border-black border-solid;
-  }
-
-  article dt {
-    @apply border-b border-dotted border-gray-400;
-    @apply py-1;
-    @apply col-span-3 md:col-span-2 font-sans font-bold;
-  }
-
-  article dd {
-    @apply border-b border-dotted border-gray-400;
-    @apply py-1;
-    @apply col-span-6 md:col-span-7 font-mono;
-  }
-
-  article dl p {
-    @apply my-0;
-  }
-
-  /* tables */
-
-  & table {
-    @apply w-full table-fixed my-G;
-  }
-
-  & table th,
-  & table td {
-    @apply p-2;
-  }
-
-  & table th:first-child,
-  & table td:first-child {
-    @apply pl-0;
-  }
-
-  & table th {
-    @apply font-sans text-base text-left align-bottom;
-    @apply border-b-4 border-black;
-  }
-
-  & table td {
-    @apply font-sans text-sm;
-    @apply align-top;
-    @apply border-b border-gray-400;
-  }
-
-  & img {
-    @apply m-0;
-    max-width: 100%;
-  }
-
-  /* asides*/
-
-  & aside {
-    @apply pl-G md:pl-0 md:pr-G lg:pr-12 w-full;
-    @apply my-5 md:mb-0 md:absolute;
-    @apply md:-left-3/9 md:w-3/9;
-    @apply lg:-left-3/7 lg:w-3/7;
-
-    @apply arrow-d md:arrow;
-  }
-
-  & aside p {
-    @apply caption mt-0;
-  }
-
-  /* This makes the background of the text white, without making the background of the whole block white */
-  & aside p:first-line {
-    @apply bg-white;
-  }
-
-  & aside a {
-    @apply ink-underline;
-  }
-
-  /* spoilers */
-
-  & .spoiler {
-    @apply bg-gray-800 text-sm text-black font-sans p-2 mt-1 mb-5;
-    border-radius: 0.5em 1.2em 1.5em 2.3em/1.4em 1.9em 1em 2.3em;
-    transition: all 2s ease;
-  }
-
-  & li:nth-child(odd) .spoiler {
-    border-radius: 0.6em 0.8em 0.3em 0.5em/1em 1.7em 0.5em 1.1em;
-  }
-
-  & li:nth-child(6) .spoiler,
-  & li:nth-child(2) .spoiler {
-    border-radius: 0.5em 3.7em 1.5em 1.1em/1.6em 1.8em 3.3em 1.5em;
-  }
-
-  & .spoiler:hover {
-    @apply bg-gray-200 text-gray-400 cursor-pointer;
-  }
-
-  & .spoiler p {
-    @apply mt-0 mb-1 !important;
-  }
-
-  & .spoiler strong {
-    transition: all 2s;
-  }
-
-  & .spoiler:hover strong {
-    @apply text-gray-600;
-  }
-
-  & .spoiler a {
-    @apply text-2xs ml-2 whitespace-nowrap;
-    color: inherit !important;
-    background-image: none !important;
-  }
-
-  & .spoiler a:hover {
-    @apply underline;
-  }
+article {
+  @apply relative text-gray-700 text-base sm:text-lg lg:text-xl font-serif font-regular;
+}
+
+/* links in articles always show the hand-drawn underline */
+article a {
+  @apply splat-underline;
+}
+
+article a:nth-child(odd) {
+  @apply splat-underline-1;
+}
+
+article h2 + h3 {
+  @apply -mt-4;
+}
+
+/* big headings */
+article h2 {
+  @apply text-3xl font-sans font-bold mt-16 tracking-tight text-black mb-G;
+}
+
+/* heavy line above big headings */
+article h2:before {
+  @apply block border-t-12 border-black mb-G mt-16 w-1/6;
+  content: '';
+}
+
+/* small headings */
+article h3 {
+  @apply text-xl font-sans font-bold mt-12 tracking-tight text-black;
+}
+
+article p {
+  @apply my-4 leading-relaxed;
+}
+
+/* first paragraph -- no top margin */
+article > :nth-child(1) {
+  @apply mt-0;
+}
+
+/* drop cap at beginning of first paragraph */
+article > p:nth-child(1)::first-letter {
+  @apply float-left font-mono font-bold;
+  font-size: 3.5em;
+  letter-spacing: 0.1em;
+  line-height: 0.73;
+  margin-top: 0.08em;
+}
+
+/* make inline <code> spans stand out a bit more */
+article code {
+  @apply font-mono font-medium tracking-tight bg-gray-50 rounded-lg px-2 py-1;
+  font-size: 0.85em;
+}
+
+/* used for ascii art e.g. in rewrite post */
+article figure pre {
+  @apply my-G p-3 border border-gray-300 bg-gray-50;
+  @apply text-2xs md:text-xs font-mono font-medium text-black;
+  @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide overflow-x-auto;
+}
+
+/* use sans font for <strong> in articles */
+article strong {
+  @apply font-sans font-semibold text-black;
+}
+
+/* exception to the above - strong in captions keeps the mono font */
+article figure strong,
+article .caption strong {
+  @apply font-mono;
+}
+
+/* big chunky left-aligned black bar */
+article hr {
+  @apply bg-transparent border-t-12 border-black my-16 w-1/6;
+}
+
+article ol li {
+  @apply list-decimal;
+}
+
+article ul li {
+  @apply list-square;
+}
+
+article li {
+  @apply list-outside ml-6 leading-relaxed mt-2;
+}
+
+article li p {
+  @apply m-0;
+}
+
+article li p + p {
+  @apply mt-4;
+}
+
+article blockquote {
+  @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
+  @apply text-sm sm:text-base;
+}
+
+article blockquote p {
+  @apply m-0; /* No additional margin at beginning or end of blockquote  */
+}
+
+article blockquote p + p {
+  @apply mt-4; /* normal margin between paragraphs inside a blockquote */
+}
+
+article img {
+  /* on small screens, images go from edge to edge */
+  @apply -mx-G md:mx-0;
+  @apply w-screen md:w-full;
+  max-width: 100vw; /* never larger than the visible screen */
+  @apply md:max-w-full; /* on larger screens, never larger than the column */
+}
+
+/* images not in an figure block: apply same vertical margins as figure */
+article > p img {
+  @apply my-10;
+}
+
+/* container for image followed by caption */
+
+article figure {
+  @apply my-10;
+  /* on large screens, caption is positioned to right of image (the enclosing width is 7 columns) */
+  @apply lg:grid lg:grid-cols-9 lg:gap-G; /* This becomes a grid with 9 columns - 7 for image, 2 for caption  */
+  @apply lg:w-9/7; /* extend two columns beyond the enclosing width */
+}
+
+/* first element, typically a <p> containing the image */
+article figure :nth-child(1) {
+  @apply lg:col-span-7 lg:mt-0;
+}
+
+/* second element, typically a <p> that we want to treat as a caption */
+article figure > :nth-child(2) {
+  @apply caption; /* inherit all the caption classes */
+  @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
+}
+
+/* break spans up on large screens, where the caption is in the sidebar  (e.g. "key" for ascii illustrations in rewrite article */
+article figure > :nth-child(2) span {
+  @apply inline lg:block;
+}
+
+/* extra-large variant: images that span all 12 columns */
+
+article .figure-xl {
+  @apply mt-16; /* Extra top margin for large images, since they often serve to divide article sections */
+  @apply md:mx-0 md:grid md:grid-cols-12 md:gap-G;
+  @apply md:-ml-3/9 md:w-12/9;
+  @apply lg:-ml-3/7 lg:w-12/7;
+}
+
+article .figure-xl > :nth-child(1) {
+  @apply md:col-span-12;
+}
+
+/* large variant: images that span 10 columns */
+
+article .figure-lg {
+  @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-G;
+  @apply md:-ml-3/9 md:w-12/9;
+  @apply lg:-ml-3/7 lg:w-12/7;
+}
+
+article .figure-lg > :nth-child(1) {
+  @apply md:w-full md:my-0;
+  @apply lg:col-span-10;
+}
+
+article .figure-lg > :nth-child(2) {
+  /* on md screens we tuck the caption under the left corner of the image */
+  @apply md:absolute md:w-3/9 md:-left-3/9 md:pr-G;
+  /* on lg screens the caption goes in the right sidebar */
+  @apply lg:relative lg:w-full lg:left-0 lg:col-span-2;
+}
+
+/* medium variant: images that span 5 columns */
+
+article .figure-md {
+  @apply md:mx-0 md:grid md:grid-cols-9 md:gap-G;
+}
+
+article .figure-md > :nth-child(1) {
+  @apply md:col-span-7 lg:col-span-5;
+}
+
+article .figure-md > :nth-child(2) {
+  @apply md:col-span-2;
+}
+
+/* extra-small variant: images in the left sidebar */
+
+article .figure-xs {
+  @apply mx-G w-full block my-G;
+  @apply md:mx-0 md:absolute md:pr-G;
+  @apply md:-left-3/9 md:w-3/9;
+  @apply lg:-left-3/7 lg:w-3/7;
+}
+
+article .figure-xs img {
+  max-width: 100%;
+}
+
+article .figure-xs > :nth-child(2) {
+  @apply md:col-span-2;
+}
+
+/* border variant: apply thin border + some padding to images*/
+article .figure-b img {
+  @apply border border-gray-300 p-4;
+}
+
+/* 2-up variant */
+
+article .figure-2up {
+  @apply my-G;
+  @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-x-G;
+  @apply md:-ml-3/9 md:w-12/9;
+  @apply lg:-ml-3/7 lg:w-12/7;
+}
+
+article .figure-2up > :nth-child(1),
+article .figure-2up > :nth-child(2) {
+  @apply lg:my-0;
+  @apply lg:col-span-5;
+}
+
+article .figure-2up > :nth-child(3) {
+  @apply caption; /* inherit all the caption classes */
+  @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
 }
 
 /* context blurb at bottom of article */
 
-.context {
-  & p {
-    @apply mt-5;
-  }
+.context p {
+  @apply mt-5;
+}
+
+.context img {
+  @apply mt-5 border;
+}
+
+.context a {
+  @apply splat-underline;
+}
+
+article .endmatter {
+  @apply text-sm font-sans;
+}
+
+/* description lists (used on Facts page) */
+
+article dl {
+  @apply grid grid-cols-9 text-xs;
+}
+
+article dl:first-child {
+  @apply border-t border-black border-solid;
+}
+
+article dt {
+  @apply border-b border-dotted border-gray-400;
+  @apply py-1;
+  @apply col-span-3 md:col-span-2 font-sans font-bold;
+}
+
+article dd {
+  @apply border-b border-dotted border-gray-400;
+  @apply py-1;
+  @apply col-span-6 md:col-span-7 font-mono;
+}
+
 
   & img {
     @apply mt-5 border;
@@ -496,18 +322,74 @@
 
 /* arrows */
 
-@responsive {
-  .arrow {
-    @apply md:bg-arrow-black;
-    @apply bg-no-repeat;
-    background-position: 0 0.1em;
-    background-size: 90% 0.7em;
-  }
+article dl p {
+  @apply my-0;
+}
 
-  .arrow-d {
-    @apply bg-arrow-black-d;
-    @apply bg-no-repeat;
-    background-position: 0 bottom;
-    background-size: 0.7em 17em;
-  }
+/* tables */
+
+article table {
+  @apply w-full table-fixed my-G;
+}
+
+article table th {
+  @apply font-sans text-base text-left align-bottom;
+  @apply border-b-4 border-black;
+}
+
+article table td {
+  @apply font-sans text-sm;
+  @apply align-top py-2 pr-3;
+  @apply border-b border-gray-400;
+}
+
+/* asides */
+
+article aside {
+  @apply pl-G md:pl-0 w-full;
+  @apply md:mx-0 md:absolute md:pr-G;
+  @apply md:-left-3/9 md:w-3/9;
+  @apply lg:-left-3/7 lg:w-2/7;
+}
+
+article aside p {
+  @apply caption my-2;
+}
+
+article aside a {
+  @apply splat-underline;
+}
+
+/* spoilers */
+article .spoiler {
+  @apply inline-block bg-gray-800 text-sm text-black font-sans mt-2 mb-3 p-3 leading-snug;
+  border-radius: 0.5em 1.2em 0.5em 1.3em/1.4em 1.9em 1em 2.3em;
+  transition: all 2s;
+}
+
+article li:nth-child(odd) .spoiler {
+  border-radius: 0.6em 0.8em 0.3em 0.5em/1em 1.7em 0.5em 1.1em;
+}
+
+article .spoiler:hover {
+  @apply bg-gray-300 text-gray-500 cursor-pointer border-gray-800;
+  transition: all 2s;
+}
+
+article .spoiler strong {
+  transition: all 2s;
+}
+
+article .spoiler:hover strong {
+  @apply text-gray-600;
+}
+
+article .spoiler a {
+  @apply text-2xs ml-2;
+  color: inherit !important;
+  background-image: none !important;
+}
+
+article .spoiler a:hover {
+  @apply underline;
 }
