@@ -26,7 +26,7 @@
 
 /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
 .caption i {
-  @apply block;
+  @apply block text-gray-400;
 }
 
 /* blockquote wants to make the text bigger */
@@ -104,6 +104,7 @@ article strong {
 }
 
 /* exception to the above - strong in captions keeps the mono font */
+article figure strong,
 article .caption strong {
   @apply font-mono;
 }
@@ -234,7 +235,7 @@ article .figure-md > :nth-child(2) {
 /* extra-small variant: images in the left sidebar */
 
 article .figure-xs {
-  @apply mx-G w-full block;
+  @apply mx-G w-full block my-G;
   @apply md:mx-0 md:absolute md:pr-G;
   @apply md:-left-3/9 md:w-3/9;
   @apply lg:-left-3/7 lg:w-3/7;
@@ -283,8 +284,8 @@ article .figure-2up > :nth-child(3) {
   @apply mt-5 border;
 }
 
-.context a:hover {
-  @apply text-red-700 bg-splat-red;
+.context a {
+  @apply splat-underline;
 }
 
 article .endmatter {
@@ -347,13 +348,40 @@ article aside p {
   @apply caption my-2;
 }
 
+article aside a {
+  @apply splat-underline;
+}
+
 /* spoilers */
 article .spoiler {
-  transition: background 1s, border-color 1s, color 1s;
   @apply inline-block bg-gray-800 text-sm text-black font-sans mt-2 mb-3 p-3 leading-snug;
-  @apply border border-gray-800;
+  border-radius: 0.5em 1.2em 0.5em 1.3em/1.4em 1.9em 1em 2.3em;
+  transition: all 2s;
+}
+
+article li:nth-child(odd) .spoiler {
+  border-radius: 0.6em 0.8em 0.3em 0.5em/1em 1.7em 0.5em 1.1em;
 }
 
 article .spoiler:hover {
-  @apply bg-white text-gray-500 cursor-pointer border-gray-800;
+  @apply bg-gray-300 text-gray-500 cursor-pointer border-gray-800;
+  transition: all 2s;
+}
+
+article .spoiler strong {
+  transition: all 2s;
+}
+
+article .spoiler:hover strong {
+  @apply text-gray-600;
+}
+
+article .spoiler a {
+  @apply text-2xs ml-2;
+  color: inherit !important;
+  background-image: none !important;
+}
+
+article .spoiler a:hover {
+  @apply underline;
 }
