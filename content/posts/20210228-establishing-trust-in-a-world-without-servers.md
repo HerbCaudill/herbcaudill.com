@@ -52,14 +52,6 @@ there a way for us to **vouch for ourselves**?
 
 ## Down the rabbit hole
 
-<aside>
-
-If the mere mention of crypto skeeves you out by association with bitcoin bros, I get it. Hear me
-out. I can't promise that I _won't_ say the word "blockchain", but I'll try to keep this grounded
-in reality.
-
-</aside>
-
 When I put it that way, maybe it starts to seem obvious to you that the way forward is going to
 involve cryptography — specifically, public-key cryptography.
 
@@ -69,45 +61,43 @@ questions that we might have at this stage:
 1. **Peer authentication:** Without a server to vouch for his identity, how does Alice know it's
    really Bob at the other end?
 
-    <aside>
-
-   If you want to get straight to the point, you can hover to show a brief summary of the solution
-   I'll propose for each of these problems.
-    </aside>
-
-   <span class='spoiler'>**A:** We use a **signature challenge**: Alice creates an identity
+   <div class='spoiler'>**A:** We use a **signature challenge**: Alice creates an identity
    challenge document for Bob to sign, and checks his signature against his public signature key.
-   [Jump to details](#peer-authentication)</span>
+   [Jump to details](#peer-authentication)</div>
 
 1. **Permissions management:** Without a server to keep track of group membership and permissions,
-   how can Alice add and remove team members, and limit what they can and can't do?  
-   <span class='spoiler'>**A:** All changes to the group's membership and permissions are recorded
+   how can Alice add and remove team members, and limit what they can and can't do?
+
+   <div class='spoiler'>**A:** All changes to the group's membership and permissions are recorded
    as a sequence of signed and hash-chained changes called a **signature chain**. Every group member
    keeps a complete replica of the signature chain and can validate other members' actions
    independently. All authority can be traced back to the group's founding member. [Jump to details](#permissions-management)
 
 1. **Key management:** To encrypt anything or use digital signatures, you need to know each other's
-   public keys; but how can that happen if you don't have a trusted, centralized key server?  
-   <span class='spoiler'>**A:** New members are invited using a **Seitan token exchange**, which is
-   basically Trust on First Use (TOFU) hardened with the use of an invitation key. [Jump to details](#key-management)</span>
+   public keys; but how can that happen if you don't have a trusted, centralized key server?
+
+   <div class='spoiler'>**A:** New members are invited using a **Seitan token exchange**, which is
+   basically Trust on First Use (TOFU) hardened with the use of an invitation key. [Jump to details](#key-management)</div>
 
 1. **Read authorization:** How can you keep some users from seeing sensitive information if each user
-   has a complete copy of the data?  
-   <span class='spoiler'>**A:** We encrypt sensitive data for multiple users using
-   **lockboxes** (encrypted keys). [Jump to details](#read-authorization)</span>
+   has a complete copy of the data?
+
+   <div class='spoiler'>**A:** We encrypt sensitive data for multiple users using
+   **lockboxes** (encrypted keys). [Jump to details](#read-authorization)</div>
 
 1. **Write authorization:** How do you prevent unauthorized users from modifying things they're not
-   allowed to modify?  
-   <span class='spoiler'>**A:** Since all users have the full signature chain and can use it to compute the
+   allowed to modify?
+
+   <div class='spoiler'>**A:** Since all users have the full signature chain and can use it to compute the
    current state of the group's membership and permissions, each user can independently determine
-   whether or not to accept another member's changes as valid. [Jump to details](#write-authorization)</span>
+   whether or not to accept another member's changes as valid. [Jump to details](#write-authorization)</div>
 
 1. **Synchronization and concurrency:** How does everyone stay up to date with changes
    to the group's membership and permissions? What happens when two admins make concurrent changes?
 
-   <span class='spoiler'>**A:** We represent the signature chain as a directed acyclic graph so that
+   <div class='spoiler'>**A:** We represent the signature chain as a directed acyclic graph so that
    we preserve the history of any concurrent changes. Conflicting changes are resolved using
-   "strong-remove" heuristics. [Jump to details](#synchronization-and-concurrency)</span>
+   "strong-remove" heuristics. [Jump to details](#synchronization-and-concurrency)</div>
 
 These are all tricky problems. Some of them have fairly well-understood solutions; others are closer
 to the cutting edge of academic research. I’ve spent a lot of time over the last few months trying
@@ -457,7 +447,7 @@ yet we're off to the races with public-key encryption.
 
 When a server doesn't think you should see a certain bit of data, it simply doesn't let you have it.
 
-In a peer-to-peer application, that's an option - we might have certain documents that we just don't
+In a peer-to-peer application, that's an option --- we might have certain documents that we just don't
 share at all. But the general approach is just to replicate the same database across all users. What
 if there is sensitive data embedded alongside less-sensitive data? For example, suppose you're
 working with a staff database: Along with names and addresses and phone numbers that everyone can
@@ -488,7 +478,7 @@ One solution would be to **encrypt the sensitive data itself multiple times**, o
 who is allowed to read it. But this would be inefficient, especially if we were encrypting a lot of
 data.
 
-A better solution is to encrypt the data itself once, with asingle key, and then encrypt that _key_
+A better solution is to encrypt the data itself once, with a single key, and then encrypt that _key_
 multiple times, once for each reader.
 
 I call an object that contains an encrypted key a **lockbox**, by analogy with the handy device used
@@ -617,8 +607,9 @@ href='https://en.wikipedia.org/wiki/Ninety-ninety_rule'>The ninety/ninety rule</
 
 </aside>
 
-Having solved all of these problems, we now need to make sure that members can connect and sync up
-their signature chains. I figured this would be, as they say, a simple matter of programming.
+Having solved all of these thorny problems, all we need to do now is make sure that members can
+connect and sync up their signature chains. I figured this would be, as they say, a simple matter of
+programming.
 
 As it turned out, I stalled out quickly after I started working on this. I just could not wrap my
 head around these questions:
@@ -629,11 +620,12 @@ head around these questions:
 
 ### Dealing with concurrency
 
-The first thing that I couldn't wrap my head around was how to deal with any sort of concurrent
-changes. If Alice and Bob are both offline and both make changes to the signature chain, then how do
-you merge their two changes to end up in a consistent state? After all, we've gone to a lot of
-trouble to ensure that you _can't_ retroactively modify the chain, what with the hash-chaining and
-the cryptographic signatures and all.
+The first thing that I couldn't figure out was how to deal with concurrent changes. If Alice and Bob
+are both offline and both make changes to the signature chain, then how do you merge their two
+changes to end up in a consistent state?
+
+After all, we've gone to a lot of trouble to ensure that you _can't_ retroactively modify the chain,
+what with the "hash-chaining" and the "cryptographic signatures" and all.
 
 Here I eventually took inspiration from **Git**, which is also a decentralized collaboration system
 build on top of an append-only hash-chained data structure.
@@ -646,8 +638,8 @@ introduce the possibility of branching and merging.
 author, and (2) is hash-chained to two prior commits rather than one. That's why Git commits form a
 graph --- specifically, a directed acyclic graph (DAG) --- rather than a one-dimensional hash chain.
 
-So the **signature chain** needs to become a **signature graph** (although to keep things simple we'll keep
-calling it a chain). This means that multiple links can have the same predecessor:
+So internally the **signature chain** needs to become a **signature graph** (although to keep things
+simple we'll keep calling it a chain). This means that multiple links can have the same predecessor:
 
 <figure class='figure-xl'>
 
@@ -668,23 +660,58 @@ no author and no signature.
 
 ### Resolving conflicts
 
-The figure above illustrates a scenario where there is no conflict between the concurrent actions:
+In the divergence illustrated above, there's no conflict between the concurrent actions. These two
+actions could be applied in any order, and the result would be the same:
 
-- 👨🏻‍🦲 Bob creates a `manager` role
-- 👩🏾 Alice invites 👴 Dwight
+> 👨🏻‍🦲 Bob creates a `manager` role  
+> 👩🏾 Alice invites 👴 Dwight
 
-These two actions could be applied in any order, and the result would be the same. But suppose we
+But suppose we
 had these two concurrent actions:
 
-- 👨🏻‍🦲 Bob invites 👳🏽‍♂️ Charlie
-- 👩🏾 Alice removes 👨🏻‍🦲 Bob
+> 👨🏻‍🦲 Bob invites 👳🏽‍♂️ Charlie  
+> 👩🏾 Alice removes 👨🏻‍🦲 Bob
 
-If we apply these two actions in the order they're shown, there's not a problem. But if we apply them
-in the opposite order? Problem. Bob can't invite Charlie if he's been removed from the group.
+If we apply these two actions in the order they're shown, there's no problem. But if we apply them
+in the opposite order? **Problem**. Bob can't invite Charlie if he's been removed from the group.
 
-As luck would have it, right around this time Martin Kleppmann (the author of
-[Automerge](https://github.com/automerge/automerge) and co-author of [Ink & Switch's local-first
-manifesto](http://inkandswitch.com/local-first.html)) sent me a pre-publication draft of a
+As luck would have it, right around the time I was struggling with this, Martin Kleppmann sent me a
+pre-publication draft of a paper he was working on with Matthew Weidner et al. that formalized a way
+of dealing with this very problem: "[Key Agreement for Decentralized Secure Group Messaging with
+Strong Security Guarantees](https://eprint.iacr.org/2020/1281.pdf)"
+
+This paper contains a great deal that goes over my head. However, the scenarios they consider jumped
+out as being exactly the sort of thing I was wrestling with:
+
+> 1. Two group members A and B concurrently remove each other. Do the removals both take effect,
+>    cancel out, or something else?
+> 2. While group member A removes B, B concurrently adds a new group member C. Should C be in the
+>    group?
+> 3. A group member A is concurrently added and removed. This can happen if A is initially in the
+>    group, one member removes and then re-adds A, while concurrently another member only removes A.
+>    Should A be in the group?
+
+Weidner et al. describe the general concept of a **decentralized group membership (DGM)** scheme,
+which defines how these sort of conflicts are resolved; and they propose a particular one that they
+call the **strong-remove DGM** scheme, reasoning as follows:
+
+> It is easy to re-add a group member who has been inadvertently removed, but it is impossible
+> to reverse a leak of confidential information that has occurred because a user believed to be
+> removed was, in fact, still a group member. ...
+>
+> In the design of our DGM scheme we are guided by one observation: a user who is being removed from a
+> group should not be able to circumvent their removal.
+
+<aside>
+
+Throughout this discussion, "removed" can mean removed from the group, or it can mean "demoted",
+that is, removed from the admin role --- since admins are the only ones who can make changes to
+group membership and roles.
+
+</aside>
+
+In general, then, **removals always win** in the case of conflict. I've interpreted this broadly to
+mean that if Bob is being removed from the group, any actions he takes concurrently are disregarded.
 
 <figure class='figure-xl'>
 
@@ -692,16 +719,221 @@ manifesto](http://inkandswitch.com/local-first.html)) sent me a pre-publication 
 
 </figure>
 
+That leaves **mutual removals** (scenario 1 above):
+
+> 👩🏾 Alice removes 👨🏻‍🦲 Bob  
+> 👨🏻‍🦲 Bob removes 👩🏾 Alice
+
+Alice is offline on a plane, and she removes Bob from the group. Down on the ground, Bob removes
+Alice from the group. When Alice lands and gets back online, who's still in the group?
+
+Mutual removals are actually a special case of **circular removals**, with _N_ of 2. We also need to
+consider situations with _N_ of 3 or more --- for example:
+
+> 👩🏾 Alice removes 👨🏻‍🦲 Bob  
+> 👨🏻‍🦲 Bob removes 👳🏽‍♂️ Charlie  
+> 👳🏽‍♂️ Charlie removes 👩🏾 Alice
+
+Here the paper's ruling is to throw _all_ the bums out: Everyone involved in this kind of circular
+firing squad ends up dead.
+
+<aside>
+
+These hypothetical edge cases are very unlikely to occur in practice, of course, and any predictable
+way of resolving them is probably fine.
+
+</aside>
+
+Of course, this way you can easily end up with a group with no members. While that might very well be the
+correct outcome in this bizarre scenario, I chose to avoid it by taking **seniority** into account
+to resolve mutual removals. If Alice and Bob concurrently remove each other, and Alice was added to
+the group before Bob, then Alice stays and Bob is out. (And of course if Alice created the group,
+she always wins.)
+
 ### Flattening the graph
+
+When we resolve logical conflicts like this, we don't actually _remove_ any actions from the graph;
+and when we merge two concurrent branches, we don't actually move the individual actions around.
+They all need to be there, in their original positions relative to each other, to preserve the
+verifiable integrity of the whole thing.
+
+When you add a link to the signature chain, it's checked for validity _based on the known state of
+the group at that time_. For example, if Bob removes Charlie, Bob needs to be an admin at that
+time. If he isn't, the action of removing Charlie is never added to the chain. If he is, it's added
+and will remain on the chain forever.
+
+In order to calculate the current state of the group, we first need to come up with what's called a
+**topological sort** of the signature graph --- meaning, we need to flatten the graph back into a
+one-dimensional sequence.
+
+To do this, we'll need to recursively resolve each pair of branches into a single sequence, until
+the whole graph has been flattened. To do that, we need to decide how to **order** the concurrent
+actions, and we might also need to **filter** out actions that are ruled out by our strong-remove
+logic. Importantly, anyone doing the calculation needs to be able to independently come up with the
+same answer.
+
+<figure class='figure-lg'>
+
+![](/images/posts/trust/sigchain.merge.1.png)
+
+Note that when you merge two branches, what you end up with is no longer a hash chain, and
+that's fine. Before we flatten it, we'll have checked the integrity of the _whole graph_ by
+verifying its hashes and signatures. Once that's done, we can choose which nodes, and in what order,
+we'll use to compute the group state.
+
+</figure>
+
+As it turns out, once you've done the filtering, the ordering doesn't much matter for our purposes.
+So we choose one or the other of the two branches to go first in an **arbitrary but deterministic way**,
+to ensure that everyone arrives at the same ordering.
+
+<figure class='figure-lg'>
+
+![](/images/posts/trust/sigchain.merge.2.png)
+
+On the left, we have a graph where actions **c** and **d** take place concurrently. Depending on the
+rules we use for ordering and filtering, this graph might be flattened into any of the sequences shown
+on the right.
+
+</figure>
 
 ### Synchronizing
 
-### Connecting
+Whenever we connect with another peer, we'll want to sync up our signature chains.
 
-When two devices connect, there's a lot that needs to happen:
+Would you believe it, no sooner had I mentioned this to Martin Kleppmann than he sent me _another_
+paper in prepublication that was directly applicable to my problem: "[Byzantine Eventual Consistency
+and the Fundamental Limits of Peer-to-Peer Databases](https://arxiv.org/pdf/2012.00472.pdf)",
+co-written with Heidi Howard.
 
-- If one of the devices belongs to someone trying to join with an invitation, then we need to validate the invitation
-- If both devices belong to members, then each one needs to simultaneously challenge the other's identity _and_ prove their own identity
-- Once everyone has been authenticated, we need to synchronize our signature chains
-- Finally, the two peers needs to agree on an encryption key for the application to use to communicate
-- Once we're connected, we need to watch for any new changes to the signature chain, and update each other
+Conclusion: When you're stuck on a software project, ask Martin to send you whatever research he has
+in the pipeline.
+
+As the title of their paper suggests, Kleppmann & Howard are working on a more difficult overall
+question, the details of which I won't claim to understand. But as it happen they end up needing
+to do exactly the same thing I do, which is to reconcile directed graphs from two peers, over the
+wire, as efficiently as possible.
+
+At this point the data structure containing our signature chain-graph-thing might look something
+like this:
+
+<figure class='figure-md'>
+
+```js
+{
+  root: 'awfLr',
+  head: 'ZDoRu',
+  links: {
+    'awfLr': {...},
+    'GpLPr': {...},
+    //...
+    'ZDoRu': {...}
+  }
+}
+```
+
+The keys here (**`awfLr`** etc.) are the hashes of the corresponding nodes in the signature chain.
+
+</figure>
+
+Our task is for Alice and Bob each to figure out what links the other might be missing, without
+shipping the entire chain.
+
+We can quickly find out if our chains are at all different just by comparing our `head` hashes: Two
+chains with the same heads are guaranteed to be identical.
+
+If our heads are different, we could just progressively exchange the most recent `N` hashes, until
+we figure out where we diverged. But that's a lot of back-and-forth. Kleppmann & Howard propose a
+sexy way of cutting down on the round trips, using a probabilistic device called a [Bloom
+filter](https://en.wikipedia.org/wiki/Bloom_filter).
+
+## Connection protocol
+
+### Nothing is easy
+
+Finally, _finally_, all these pieces need to be tied together into a coherent whole that allows
+people to invite their peers to collaborate, and then connect securely. Surely this piece is
+straightforward, right?
+
+Well.
+
+Let's just say that there are a lot of moving parts here:
+
+- **Handling invitations**: If one of the devices belongs to someone trying to join with an
+  invitation, then we need to validate the invitation.
+- **Mutually authenticating**: If both devices belong to members, then each one needs to
+  simultaneously challenge the other's identity _and_ prove their own identity.
+- **Synchronizing**: Once everyone has been authenticated, we need to update each other's signature
+  chains with the latest actions on either side. Once we're connected, we need to keep watching for
+  any new changes to the signature chain, and update each other as needed.
+- **Key agreement**: Finally, the two peers needs to agree on an encryption key for the application
+  to use to communicate.
+
+I didn't get very far into coding the connection protocol before I realized that the complexity was
+going to outpace my cognitive abilities if I didn't do something to contain it; and that something
+was to finally take a deep breath and learn how to work with a [finite state
+machine](https://en.wikipedia.org/wiki/Finite-state_machine).
+
+It's a good thing, too. The buggiest code you've ever had to work with, that mind-bending inception
+of nested if-thens and switch statements, is probably code that should've been written as a state
+machine but wasn't.
+
+We've all been there, and it's just because things always look simple until you dig in a little bit.
+In my case, at first inspection it seemed like all I would need was this:
+
+<figure class=''>
+
+![](/images/posts/trust/state.1.png)
+
+</figure>
+
+But in reality, this is where I ended up:
+
+<figure class='figure-xl'>
+
+![](/images/posts/trust/state.2.png)
+
+</figure>
+
+As they say, you have a state machine in your code whether you know it or not --- the only question is
+whether you make it explicit or not. And making it explicit is doubly important in this context:
+Some of the most consequential security-related bugs were the consequence of implicit state machines
+that allowed attackers to sneak into states that should have been impossible.
+
+In the end, it seems clear that the time invested in learning to use state machines, and
+[XState](https://xstate.js.org/docs/) specifically, has paid off in the form of code that I'm able
+to reason about even when my brain is weak and foggy.
+
+## Introducing the `@localfirst/auth` library
+
+<figure class='figure-xs'>
+
+![Local First Auth logo](https://raw.githubusercontent.com/local-first-web/branding/main/svg/auth-v.svg)
+
+</figure>
+
+I've been working on this for nearly a year now, and I'm excited to finally have a beta release of
+the `@localfirst/auth` library.
+
+`etc etc TODO`
+
+I'm finishing up work on a simple chat application that demonstrates how this library can be used.
+If you'd like to see that when it's ready, you should follow me on Twitter:
+[@herbcaudill](https://twitter.com/herbcaudill)
+
+## Thanks
+
+<div class='endmatter'>
+
+This project's shape emerged from a series of conversations early on with [Peter Van
+Hardenberg](https://twitter.com/pvh) of [Ink & Switch](https://www.inkandswitch.com). Peter drilled
+into my head the idea that device keys should be generated locally and never leave the device, and
+pointed me towards Keybase's signature chains. The framing of permission vs. attention is his as well.
+
+As the above makes clear, [Martin Kleppmann](https://martin.kleppmann.com/) has been very generous
+with his time and expertise, and has gotten me unstuck more than once. Martin is the creator of
+[Automerge](https://github.com/automerge/automerge) and co-author with Peter of [Ink & Switch's
+local-first manifesto](http://inkandswitch.com/local-first.html). In my experience, 100% of the time
+he has a PDF up his sleeve that solves your exact problem.
+
+</div>

@@ -31,7 +31,7 @@
 
 /* blockquote wants to make the text bigger */
 .caption blockquote {
-  @apply text-xs;
+  @apply text-xs font-mono;
 }
 
 article {
@@ -78,7 +78,7 @@ article > :nth-child(1) {
 
 /* drop cap at beginning of first paragraph */
 article > p:nth-child(1)::first-letter {
-  @apply float-left font-mono font-bold;
+  @apply float-left font-condensed font-bold;
   font-size: 3.5em;
   letter-spacing: 0.1em;
   line-height: 0.73;
@@ -86,9 +86,31 @@ article > p:nth-child(1)::first-letter {
 }
 
 /* make inline <code> spans stand out a bit more */
-article code {
-  @apply font-mono font-medium tracking-tight bg-gray-50 rounded-lg px-2 py-1;
+article li code,
+article p code {
+  @apply font-mono font-medium bg-gray-50 rounded-lg px-1;
   font-size: 0.85em;
+}
+
+/* exceptions to the above for text that's already tiny */
+article aside code,
+article figure code,
+article .caption code {
+  font-size: 1em;
+}
+
+/* don't mess with code spans in headings */
+h1 code,
+h2 code,
+h3 code,
+h4 code {
+  font: inherit;
+}
+
+/* tweak the box surrounding blocks of code (this overrides some of Prism's styling) */
+article pre[class*='language-'] {
+  @apply block font-mono font-medium bg-gray-50 rounded-lg px-1;
+  line-height: 1.4;
 }
 
 /* used for ascii art e.g. in rewrite post */
@@ -104,6 +126,7 @@ article strong {
 }
 
 /* exception to the above - strong in captions keeps the mono font */
+article aside strong,
 article figure strong,
 article .caption strong {
   @apply font-mono;
@@ -136,7 +159,7 @@ article li p + p {
 
 article blockquote {
   @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
-  @apply text-sm sm:text-base;
+  @apply text-sm sm:text-base font-sans;
 }
 
 article blockquote p {
@@ -354,18 +377,26 @@ article aside a {
 
 /* spoilers */
 article .spoiler {
-  @apply inline-block bg-gray-800 text-sm text-black font-sans mt-2 mb-3 p-3 leading-snug;
-  border-radius: 0.5em 1.2em 0.5em 1.3em/1.4em 1.9em 1em 2.3em;
-  transition: all 2s;
+  @apply bg-gray-700 text-sm text-black font-sans p-2 mt-1;
+  border-radius: 0.5em 1.2em 1.5em 2.3em/1.4em 1.9em 1em 2.3em;
+  transition: all 2s ease;
 }
 
 article li:nth-child(odd) .spoiler {
   border-radius: 0.6em 0.8em 0.3em 0.5em/1em 1.7em 0.5em 1.1em;
 }
 
+article li:nth-child(6) .spoiler,
+article li:nth-child(2) .spoiler {
+  border-radius: 0.5em 3.7em 1.5em 1.1em/1.6em 1.8em 3.3em 1.5em;
+}
+
 article .spoiler:hover {
-  @apply bg-gray-300 text-gray-500 cursor-pointer border-gray-800;
-  transition: all 2s;
+  @apply bg-gray-200 text-gray-400 cursor-pointer;
+}
+
+article .spoiler p {
+  @apply mt-0 mb-1 !important;
 }
 
 article .spoiler strong {
