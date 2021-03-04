@@ -148,9 +148,9 @@ a summary of what I've learned on the topic over the last year or two. LINK TODO
 
 </aside> -->
 
-When my web browser is talking to Amazon's, I know it's really Amazon because I typed in `amazon.es`
-(and I trust the DNS system). Amazon's servers knows they're talking to me because I gave them the
-email address and password they have on record for me.
+When my web browser is talking to Amazon's, I know it's really Amazon because I typed in
+`amazon.es`. Amazon's servers knows they're talking to me because I gave them the email address and
+password they have on record for me.
 
 Now imagine someone tries to connect directly to Alice's computer. They say they're Bob. But how
 does Alice know they're not, say, Eve --- impersonating Bob?
@@ -215,13 +215,30 @@ from wielding power tyrannically.
 The key insight here is that **all authority can be traced back to the group's founding member**.
 
 Suppose Alice creates a group. At that point, she is the group's only member and the group's only
-admin. Now she adds Bob, Charlie, and Dwight, and she makes Bob an admin. Bob in turn makes Dwight
-an admin.
+admin. Then:
 
-Now suppose Dwight removes Charlie from the group. How do I know that's a legitimate change? Well,
-if I look back through the history of changes, I can see that Dwight was made an admin by Bob; and I
-can see that Bob was made an admin by Alice. Alice's authority is a given, since she created the
-group. So Dwight's admin rights are legitimate because they can ultimately be traced back to Alice.
+> - 👩🏾 Alice adds 👨🏻‍🦲 Bob and 👳🏽‍♂️ Charlie and 👴🏼 Dwight
+> - 👩🏾 Alice promotes 👨🏻‍🦲 Bob to admin
+> - 👨🏻‍🦲 Bob promotes 👳🏽‍♂️ Charlie to admin
+> - 👩🏾 Alice removes 👨🏻‍🦲 Bob
+> - 👳🏽‍♂️ Charlie removes 👴🏼 Dwight
+
+When Charlie removes Dwight, how do I know that's a legitimate change? Well, if I look back through
+the history of changes, I can see that:
+
+> - 👳🏽‍♂️ Charlie was an admin at the time he removed 👴🏼 Dwight
+> - 👳🏽‍♂️ Charlie was promoted to admin by 👨🏻‍🦲 Bob
+> - 👨🏻‍🦲 Bob was an admin at the time he promoted 👳🏽‍♂️ Charlie
+> - 👨🏻‍🦲 Bob was promoted by 👩🏾 Alice
+> - 👩🏾 Alice was an admin at the time she promoted 👨🏻‍🦲 Bob
+> - 👩🏾 Alice's original admin rights come from having created the group
+
+In this way we can conclude that Charlie's admin rights are legitimate because they can ultimately
+be traced back to Alice.
+
+Note that even though Bob was ultimately removed from the group, he was a member with admin rights
+when he promoted Charlie; so Charlie's admin status was valid at the time he removed Dwight.
+
 This works the same way no matter how long ago the group was created, no matter how much turnover
 there is, and whether or not Alice is even a member any more.
 
@@ -280,7 +297,7 @@ with a set of trusted CAs' public keys built-in.)
 Some big companies have their own certificate authorities to give employees unfalsifiable digital
 identities. Some governments do the same for citizens and residents: Here in Spain, I was issued a
 certificate to install in my browser, which allows me to transparently authenticate to government
-websites and sign officially documents digitally.
+websites and sign official documents digitally.
 
 But we’re trying to do this without depending on centralized services.
 
@@ -330,16 +347,15 @@ once: "If the user sees an encryption key, you've already lost."
 Here's a summary of the differences between these two different ways of thinking about working with
 cryptographic keys:
 
-|                         | Approach 1                                                                                           | Approach 2                                                                                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **who manages keys**    | we manage our keys                                                                                   | computers manage our keys for us                                                                                                                  |
-| **who has keys**        | individual humans or entities have keys                                                              | devices have keys                                                                                                                                 |
-| **who sees keys**       | our keys are visible to us                                                                           | we never see our keys                                                                                                                             |
-| **who shares keys**     | we explicitly share our public keys with other humans                                                | our devices share public keys with each other as needed                                                                                           |
-| **how stable are keys** | keys are stable components of identity, like email addresses or phone numbers                        | keys are ephemeral and created on the fly                                                                                                         |
-| **when are keys made**  | we generate keys once and provide the same private keys to multiple applications on multiple devices | keys are created for us as needed on each device by each application; they never leave that device, and are never shared with another application |
-| **examples**            | PGP, various forms of PKI                                                                            | WhatsApp, Signal, Telegram                                                                                                                        |
-| **my take**             | **hasn't really worked out**                                                                         | **seems more promising**                                                                                                                          |
+|                         | Approach 1                                                                                                                                                                          | Approach 2                                                                                                                                        |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **who manages keys**    | we manage our keys                                                                                                                                                                  | computers manage our keys for us                                                                                                                  |
+| **who has keys**        | individual humans or entities have keys                                                                                                                                             | devices have keys                                                                                                                                 |
+| **who sees keys**       | our keys are visible to us                                                                                                                                                          | we never see our keys                                                                                                                             |
+| **who shares keys**     | we explicitly share our public keys with other humans                                                                                                                               | our devices share public keys with each other as needed                                                                                           |
+| **how stable are keys** | keys are stable components of identity, like email addresses or phone numbers; we generate them once and provide the same private keys to multiple applications on multiple devices | keys are created for us as needed on each device by each application; they never leave that device, and are never shared with another application |
+| **examples**            | PGP, various forms of PKI                                                                                                                                                           | WhatsApp, Signal, Telegram                                                                                                                        |
+| **my take**             | **hasn't really worked out**                                                                                                                                                        | **seems more promising**                                                                                                                          |
 
 <figure class='figure-xs'>
 
@@ -354,7 +370,7 @@ TOFU considered squishy. <i>Image: [Yoav Aziz](https://unsplash.com/@yoavaziz)</
 WhatsApp, Signal, and others solve the problem of associating public keys with identities using a
 approach called "Trust on First Use", or **TOFU**.
 
-Here's how the idea behind TOFU:
+Here's the idea behind TOFU:
 
 - When Alice invites Bob to communicate with her, she just **trusts** that the **first** person to
   show up saying they're Bob _is_, in fact, Bob.
@@ -553,8 +569,8 @@ more members; and each member has one or more devices.
 
 ### The key graph and key rotation
 
-This idea of a graph, with keys as nodes and lockboxes as edges, becomes very useful when turn our
-attention the problem of rotating keys.
+This idea of a graph, with keys as nodes and lockboxes as edges, becomes very useful when we turn
+our attention the problem of rotating keys.
 
 <figure>
 
@@ -577,9 +593,8 @@ any role keys he had access to, as well as the team keys.
 
 ![](/images/posts/trust/keygraph-2.png)
 
-When a member leaves a team or a role, or a device is lost, we say
-the corresponding keyset is "compromised" and we need to replace it --- along with any keys that it
-provided access to.
+When a member leaves a team or a role, or a device is lost, we say the corresponding keyset is
+"compromised" and we need to replace it --- along with any keys that it provided access to.
 
 </figure>
 
@@ -645,7 +660,7 @@ head around these questions:
 
 - **Concurrency:** How do you merge divergent signature chains?
 - **Conflicts:** How do you deal with concurrent membership changes that are logically incompatible?
-- **Protocol:** What actually takes place, in what order, when two peers attempt connect?
+- **Protocol:** What actually takes place, in what order, when two peers attempt to connect?
 
 ### Dealing with concurrency
 
@@ -663,11 +678,11 @@ When you're working alone on a Git repo, your chain of commits is very reminisce
 chain we've described so far. Once you start working with two or more collaborators, though, you
 introduce the possibility of branching and merging.
 
-**Nothing is "merged" in a literal sense**. Rather, Git adds a special merge commit that (1) has no
-author, and (2) is hash-chained to two prior commits rather than one. That's why Git commits form a
-graph --- specifically, a directed acyclic graph (DAG) --- rather than a one-dimensional hash chain.
+**Nothing is "merged" in a literal sense**. Rather, Git adds a special merge commit that is
+hash-chained to two prior commits rather than one. That's why Git commits form a graph ---
+specifically, a directed acyclic graph (DAG) --- rather than a one-dimensional hash chain.
 
-So internally the **signature chain** needs to become a **signature graph** (although to keep things
+So internally our **signature chain** needs to become a **signature graph** (although to keep things
 simple we'll keep calling it a chain). This means that multiple links can have the same predecessor:
 
 <figure class='figure-xl'>
@@ -676,16 +691,14 @@ simple we'll keep calling it a chain). This means that multiple links can have t
 
 </figure>
 
-Also, we'll need a new kind of link as a marker for merges:
+Also, we'll need a new kind of link as a marker for merges. The merge link's only content is a pair
+of hashes, one for each of the branches being merged. It has no author and no signature.
 
 <figure class='figure-xl'>
 
 ![](/images/posts/trust/sigchain.2.png)
 
 </figure>
-
-The merge link's only content is a pair of hashes, one for each of the branches being merged. It has
-no author and no signature.
 
 ### Resolving conflicts
 
