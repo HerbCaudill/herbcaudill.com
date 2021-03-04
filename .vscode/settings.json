@@ -14,5 +14,8 @@
   "pasteImage.basePath": "${projectRoot}",
   "pasteImage.path": "${projectRoot}/public/images",
   "pasteImage.prefix": "/images/",
-  "pasteImage.insertPattern": "${imageSyntaxPrefix}/images/${imageFileName}${imageSyntaxSuffix}"
+  "pasteImage.insertPattern": "${imageSyntaxPrefix}/images/${imageFileName}${imageSyntaxSuffix}",
+  "liveFrame.url": "http://localhost:3000",
+  "liveFrame.title": "Local Development",
+  "liveFrame.pane": "Beside"
 }
