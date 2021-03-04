@@ -408,7 +408,7 @@ article .spoiler:hover strong {
 }
 
 article .spoiler a {
-  @apply text-2xs ml-2;
+  @apply text-2xs ml-2 whitespace-nowrap;
   color: inherit !important;
   background-image: none !important;
 }
