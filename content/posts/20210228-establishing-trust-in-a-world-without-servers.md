@@ -61,14 +61,20 @@ questions that we might have at this stage:
 1. **Peer authentication:** Without a server to vouch for his identity, how does Alice know it's
    really Bob at the other end?
 
-   <div class='spoiler'>**A:** We use a **signature challenge**: Alice creates an identity
+   <div class='spoiler'>
+
+   **A:** We use a **signature challenge**: Alice creates an identity
    challenge document for Bob to sign, and checks his signature against his public signature key.
-   [Jump to details](#peer-authentication)</div>
+   [Jump to details](#peer-authentication)
+
+    </div>
 
 1. **Permissions management:** Without a server to keep track of group membership and permissions,
    how can Alice add and remove team members, and limit what they can and can't do?
 
-   <div class='spoiler'>**A:** All changes to the group's membership and permissions are recorded
+   <div class='spoiler'>
+
+   **A:** All changes to the group's membership and permissions are recorded
    as a sequence of signed and hash-chained changes called a **signature chain**. Every group member
    keeps a complete replica of the signature chain and can validate other members' actions
    independently. All authority can be traced back to the group's founding member. [Jump to details](#permissions-management)
@@ -76,28 +82,44 @@ questions that we might have at this stage:
 1. **Key management:** To encrypt anything or use digital signatures, you need to know each other's
    public keys; but how can that happen if you don't have a trusted, centralized key server?
 
-   <div class='spoiler'>**A:** New members are invited using a **Seitan token exchange**, which is
-   basically Trust on First Use (TOFU) hardened with the use of an invitation key. [Jump to details](#key-management)</div>
+   <div class='spoiler'>
+
+   **A:** New members are invited using a **Seitan token exchange**, which is
+   basically Trust on First Use (TOFU) hardened with the use of an invitation key. [Jump to details](#key-management)
+
+    </div>
 
 1. **Read authorization:** How can you keep some users from seeing sensitive information if each user
    has a complete copy of the data?
 
-   <div class='spoiler'>**A:** We encrypt sensitive data for multiple users using
-   **lockboxes** (encrypted keys). [Jump to details](#read-authorization)</div>
+   <div class='spoiler'>
+
+   **A:** We encrypt sensitive data for multiple users using
+   **lockboxes** (encrypted keys). [Jump to details](#read-authorization)
+
+    </div>
 
 1. **Write authorization:** How do you prevent unauthorized users from modifying things they're not
    allowed to modify?
 
-   <div class='spoiler'>**A:** Since all users have the full signature chain and can use it to compute the
+   <div class='spoiler'>
+
+   **A:** Since all users have the full signature chain and can use it to compute the
    current state of the group's membership and permissions, each user can independently determine
-   whether or not to accept another member's changes as valid. [Jump to details](#write-authorization)</div>
+   whether or not to accept another member's changes as valid. [Jump to details](#write-authorization)
+
+    </div>
 
 1. **Synchronization and concurrency:** How does everyone stay up to date with changes
    to the group's membership and permissions? What happens when two admins make concurrent changes?
 
-   <div class='spoiler'>**A:** We represent the signature chain as a directed acyclic graph so that
+   <div class='spoiler'>
+
+   **A:** We represent the signature chain as a directed acyclic graph so that
    we preserve the history of any concurrent changes. Conflicting changes are resolved using
-   "strong-remove" heuristics. [Jump to details](#synchronization-and-concurrency)</div>
+   "strong-remove" heuristics. [Jump to details](#synchronization-and-concurrency)
+
+    </div>
 
 These are all tricky problems. Some of them have fairly well-understood solutions; others are closer
 to the cutting edge of academic research. I’ve spent a lot of time over the last few months trying
@@ -898,7 +920,7 @@ But in reality, this is where I ended up:
 As they say, you have a state machine in your code whether you know it or not --- the only question is
 whether you make it explicit or not. And making it explicit is doubly important in this context:
 Some of the most consequential security-related bugs were the consequence of implicit state machines
-that allowed attackers to sneak into states that should have been impossible.
+that allowed attackers to sneak into states that should have been impossible. `TODO examples?`
 
 In the end, it seems clear that the time invested in learning to use state machines, and
 [XState](https://xstate.js.org/docs/) specifically, has paid off in the form of code that I'm able
@@ -915,7 +937,11 @@ to reason about even when my brain is weak and foggy.
 I've been working on this for nearly a year now, and I'm excited to finally have a beta release of
 the `@localfirst/auth` library.
 
-`etc etc TODO`
+etc
+
+etc
+
+TODO
 
 I'm finishing up work on a simple chat application that demonstrates how this library can be used.
 If you'd like to see that when it's ready, you should follow me on Twitter:
