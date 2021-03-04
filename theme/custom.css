@@ -377,7 +377,7 @@ article aside a {
 
 /* spoilers */
 article .spoiler {
-  @apply bg-gray-700 text-sm text-black font-sans p-2 mt-1;
+  @apply bg-gray-800 text-sm text-black font-sans p-2 mt-1;
   border-radius: 0.5em 1.2em 1.5em 2.3em/1.4em 1.9em 1em 2.3em;
   transition: all 2s ease;
 }

@@ -17,8 +17,8 @@ tags: software
 draft: true
 ---
 
-For a developer, entering the local-first world can be disorienting; our understanding of how things
-normally work is often turned upside down.
+For a developer, entering the [local-first](http://inkandswitch.com/local-first.html) world can be
+disorienting; our understanding of how things normally work is often turned upside down.
 
 For me, the question of peer-to-peer **security** in particular at first seemed straightforward; but
 the more I thought about it the trickier it got. Now I feel like I have a pretty good grasp on it
@@ -61,13 +61,20 @@ questions that we might have at this stage:
 1. **Peer authentication:** Without a server to vouch for his identity, how does Alice know it's
    really Bob at the other end?
 
+   <aside>
+
+   If you want to get straight to the point, you can hover to show a brief spoiler of the solution
+   I'll propose for each of these problems.
+
+   </aside>
+
    <div class='spoiler'>
 
    **A:** We use a **signature challenge**: Alice creates an identity
    challenge document for Bob to sign, and checks his signature against his public signature key.
    [Jump to details](#peer-authentication)
 
-    </div>
+   </div>
 
 1. **Permissions management:** Without a server to keep track of group membership and permissions,
    how can Alice add and remove team members, and limit what they can and can't do?
