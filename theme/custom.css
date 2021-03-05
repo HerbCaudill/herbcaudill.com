@@ -1,21 +1,31 @@
-﻿.splat-underline-on-hover {
-  @apply group-hover:bg-splat-red hover:bg-splat-red hover:text-red-800;
+﻿/* ink underline */
+
+.ink-underline-on-hover {
+  @apply group-hover:bg-u-ink-red hover:bg-u-ink-red hover:text-red-800;
   @apply bg-no-repeat;
   background-position: 0 bottom;
   background-size: 100% min(5px, 0.25em);
 }
 
-.splat-underline {
-  @apply text-black bg-splat-black;
-  @apply splat-underline-on-hover;
+.ink-underline {
+  @apply text-black bg-u-ink-black;
+  @apply ink-underline-on-hover;
 }
 
-.splat-underline-1 {
-  @apply bg-splat-black-1 group-hover:bg-splat-red-1 hover:bg-splat-red-1;
+.ink-underline-1 {
+  @apply bg-u-ink-black-1 group-hover:bg-u-ink-red-1 hover:bg-u-ink-red-1;
 }
 
-.use-splat-underline a {
-  @apply splat-underline;
+.use-ink-underline a {
+  @apply ink-underline;
+}
+
+/* ink strikethrough */
+article del {
+  @apply bg-del-ink-black bg-no-repeat;
+  text-decoration: none;
+  background-position: 0 70%;
+  background-size: 100% 30%;
 }
 
 /* image captions */
@@ -40,11 +50,11 @@ article {
 
 /* links in articles always show the hand-drawn underline */
 article a {
-  @apply splat-underline;
+  @apply ink-underline;
 }
 
 article a:nth-child(odd) {
-  @apply splat-underline-1;
+  @apply ink-underline-1;
 }
 
 article h2 + h3 {
@@ -88,8 +98,9 @@ article > p:nth-child(1)::first-letter {
 /* make inline <code> spans stand out a bit more */
 article li code,
 article p code {
-  @apply font-mono font-medium bg-gray-50 rounded-lg px-1;
-  font-size: 0.85em;
+  @apply font-mono font-medium  rounded-md bg-gray-100;
+  font-size: 0.8em;
+  padding: 0.1em 0.5em;
 }
 
 /* exceptions to the above for text that's already tiny */
@@ -107,17 +118,15 @@ h4 code {
   font: inherit;
 }
 
-/* tweak the box surrounding blocks of code (this overrides some of Prism's styling) */
-article pre[class*='language-'] {
-  @apply block font-mono font-medium bg-gray-50 rounded-lg px-1;
-  line-height: 1.4;
+/* tweak the box surrounding blocks of code */
+/* (this overrides some of Prism's styling) */
+article pre {
+  @apply my-G p-3 bg-gray-50 rounded-lg;
+  @apply overflow-x-auto;
 }
 
-/* used for ascii art e.g. in rewrite post */
-article figure pre {
-  @apply my-G p-3 border border-gray-300 bg-gray-50;
-  @apply text-2xs md:text-xs font-mono font-medium text-black;
-  @apply leading-loose tracking-tight md:tracking-normal lg:tracking-wide overflow-x-auto;
+article pre > code[class*='language-'] {
+  @apply text-xs md:text-sm font-mono font-medium;
 }
 
 /* use sans font for <strong> in articles */
@@ -308,7 +317,7 @@ article .figure-2up > :nth-child(3) {
 }
 
 .context a {
-  @apply splat-underline;
+  @apply ink-underline;
 }
 
 article .endmatter {
@@ -372,7 +381,7 @@ article aside p {
 }
 
 article aside a {
-  @apply splat-underline;
+  @apply ink-underline;
 }
 
 /* spoilers */

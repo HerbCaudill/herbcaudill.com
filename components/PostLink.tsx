@@ -35,7 +35,7 @@ export const PostLink: React.FC<PostLinkProps> = ({
 
       <div className="col-span-3">
         <a
-          className="font-sans font-bold text-lg tracking-tight leading-none md:leading-none splat-underline-on-hover"
+          className="font-sans font-bold text-lg tracking-tight leading-none md:leading-none ink-underline-on-hover"
           dangerouslySetInnerHTML={{ __html: title }}
         />
         <div

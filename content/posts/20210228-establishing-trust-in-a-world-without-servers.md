@@ -861,7 +861,7 @@ like this:
 
 <figure class='figure-md'>
 
-```js
+```javascript
 {
   root: 'awfLr',
   head: 'ZDoRu',

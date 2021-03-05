@@ -68,7 +68,7 @@ export const Post: React.FC<PostProps> = ({
       />
 
       <div
-        className={`use-splat-underline
+        className={`use-ink-underline
             md:col-span-9 md:col-start-4 md:mt-24
             border-t border-gray-400 `}
       >
