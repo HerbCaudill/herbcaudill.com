@@ -14,89 +14,112 @@ thumbnail: /images/posts/trust/trust-thumbnail.png
 image: /images/posts/trust/trust.png
 caption: '"It would be so nice if something made sense for a change.” <i>— Lewis Carroll, Alice in Wonderland</i>'
 tags: software
-draft: true
 ---
 
 For a developer, entering the [local-first](http://inkandswitch.com/local-first.html) world can be
 disorienting; our understanding of how things normally work is often turned upside down.
 
-For me, the question of peer-to-peer **security** in particular at first seemed straightforward; but
-the more I thought about it the trickier it got. Now I feel like I have a pretty good grasp on it
-again, but I've had to reconsider what we really mean, _like really MEAN_, when we talk about
-"permission" or "trust" or "identity".
+That's especially true with the question of peer-to-peer **security**.
 
-By "security", we might mean a few related but different things:
+At first, this seemed straightforward to me. Then I thought about it some more and it started to
+seem impossible. Then I thought about it a _lot_ more, and it went back to seeming doable. But I've
+had to reconsider what we really mean, _like really MEAN_, when we talk about "permission" or
+"trust" or "identity".
 
-- **Authentication:** Alice needs to be sure that messages and changes that **say** they come from
-  Bob actually **did** come from Bob
+Application security generally breaks down into three areas:
+
+- **Authentication:** Alice needs to be sure that messages and changes that _say_ they come from
+  Bob actually _did_ come from Bob
 - **Authorization:** Alice needs to be sure Bob can only see what he's allowed to see, and do what
   he's allowed to do
-- **Encryption:** Alice and Bob need to be sure Eve can't snoop on what they're saying and doing
+- **Confidentiality:** Alice and Bob need to be sure Eve can't snoop on what they're saying and doing
 
-When all of your shared stuff lives on a server, authentication and authorization are
-well-understood problems with lots of off-the-shelf solutions to choose from. The server acts as a
-gatekeeper between users and the data. If Bob can't convince the server that he's really Bob, well
-then the server won't let him in. The server knows what Bob's allowed to see and do, and it simply
-won't let him see data he's not allowed to see, or change it in unauthorized ways.
+When all of your stuff is on a server, authentication and authorization are well-understood problems
+with lots of off-the-shelf solutions to choose from. Conceptually, it's uncomplicated: The server
+acts as a gatekeeper between users and the data. If Bob can't convince the server that he's really
+Bob, well then the server won't let him in. The server knows what Bob's allowed to see and do, and
+it simply won't let him see data he's not allowed to see, or change it in unauthorized ways.
 
 In practice, what this means is that we rely on well-known technology companies — Google, Apple,
 Microsoft, etc. — to **vouch for us** in our interactions with each other.
 
-This is one of those situations that seems unremarkable until you really start thinking about it.
-How weird is it that the role of certifying identity has fallen on **consumer brands**, as opposed
-to, say, the government or an NGO like ICANN?
+This is one of those situations that seems unremarkable until you really start thinking about it, at
+which point you wonder why you ended up living in this bizarro-world timeline. How is it that the
+role of certifying identity has fallen on **consumer brands**, as opposed to, say, the government or
+an NGO like ICANN?
 
 This state of affairs wasn't inevitable, and maybe it doesn't have to be that way going forward.
-Rather than relying on tech giants, governments, or any centralized organization to vouch for us, is
-there a way for us to **vouch for ourselves**?
+Rather than relying on tech giants, governments, or any centralized organization to confirm our
+identity, is there a way for us to **vouch for ourselves**?
 
 ## Down the rabbit hole
 
 When I put it that way, maybe it starts to seem obvious to you that the way forward is going to
-involve cryptography — specifically, public-key cryptography.
+involve cryptography — specifically, public-key cryptography. But the details of how we solve these
+problems with crypto are still fuzzy.
 
-But the details of how we solve these problems with crypto are still fuzzy. Let's list some of the
-questions that we might have at this stage:
+<aside>
 
-1. **Peer authentication:** Without a server to vouch for his identity, how does Alice know it's
-   really Bob at the other end?
+For more thoughts on this architecture, see [A web app with no web
+server?](/words/20181224-web-app-with-no-web-server). For an implementation that works in the
+browser, see [@localfirst/state](https://github.com/local-first-web/state).
+
+</aside>
+
+To make this more concrete, let's imagine we're making an app that manages projects and tasks for a
+team, like Trello or Asana. But instead of relying on a server to store the application data, each
+person on the team has a complete replica of the data on their own computer (and on any other
+devices they use, like their phones); and everyone's replicas are magically kept in sync with each
+other.
+
+👩🏾 Alice will be our hypothetical superuser: She'll set her team up with our app, and invite her
+team members to collaborate: 👨🏻‍🦲 Bob, 👳🏽‍♂️ Charlie, and 👴🏼 Dwight.
+
+Let's list some of the questions that we might have at this stage:
+
+1. **Permissions management** <br>**Q:** Without a server to keep track of group membership and permissions,
+   how can Alice add and remove team members, and limit what they can and can't do? Where does that
+   information even live?
 
    <aside>
 
-   If you want to get straight to the point, you can hover to show a brief spoiler of the solution
-   I'll propose for each of these problems.
+   If you want to get straight to the point, you can hover or touch the redacted text to show a spoiler
+   of the solution I'll propose for each of these problems.
 
    </aside>
 
    <div class='spoiler'>
 
-   **A:** We use a **signature challenge**: Alice creates an identity
-   challenge document for Bob to sign, and checks his signature against his public signature key.
-   [Jump to details](#peer-authentication)
+   **A:** All changes to the group's membership and permissions are recorded as a sequence of signed
+   and hash-chained changes called a **signature chain**. Every group member keeps a complete
+   replica of the signature chain and can validate other members' actions independently. All
+   authority can be traced back to the group's founding member. [Jump to
+   details](#permissions-management)
 
    </div>
 
-1. **Permissions management:** Without a server to keep track of group membership and permissions,
-   how can Alice add and remove team members, and limit what they can and can't do?
-
-   <div class='spoiler'>
-
-   **A:** All changes to the group's membership and permissions are recorded
-   as a sequence of signed and hash-chained changes called a **signature chain**. Every group member
-   keeps a complete replica of the signature chain and can validate other members' actions
-   independently. All authority can be traced back to the group's founding member. [Jump to details](#permissions-management)
-
-1. **Key management:** To encrypt anything or use digital signatures, you need to know each other's
+1. **Key management** <br>**Q:** To encrypt anything or use digital signatures, you need to know each other's
    public keys; but how can that happen if you don't have a trusted, centralized key server?
 
    <div class='spoiler'>
 
-   **A:** New members are invited using a **Seitan token exchange**, which is
-   basically Trust on First Use (TOFU) hardened with the use of an invitation key. [Jump to details](#key-management)
+   **A:** New members are invited using a **Seitan token exchange**, which is basically Trust on
+   First Use (TOFU) hardened with the use of an invitation key. [Jump to details](#key-management)
 
     </div>
 
-1. **Read authorization:** How can you keep some users from seeing sensitive information if each user
+1. **Peer authentication** <br>**Q:** Without a server to vouch for his identity, how does Alice know it's
+   really Bob at the other end?
+
+   <div class='spoiler'>
+
+   **A:** We use a **signature challenge**: Alice creates an identity challenge document for Bob to
+   sign, and checks his signature against his public signature key. [Jump to
+   details](#peer-authentication)
+
+   </div>
+
+1. **Read authorization** <br>**Q:** How can you keep some users from seeing sensitive information if each user
    has a complete copy of the data?
 
    <div class='spoiler'>
@@ -106,18 +129,19 @@ questions that we might have at this stage:
 
     </div>
 
-1. **Write authorization:** How do you prevent unauthorized users from modifying things they're not
+1. **Write authorization** <br>**Q:** How do you prevent unauthorized users from modifying things they're not
    allowed to modify?
 
    <div class='spoiler'>
 
-   **A:** Since all users have the full signature chain and can use it to compute the
+   **A:** Since all users have a full replica of the signature chain and can use it to compute the
    current state of the group's membership and permissions, each user can independently determine
-   whether or not to accept another member's changes as valid. [Jump to details](#write-authorization)
+   whether or not to accept another member's changes as valid. [Jump to
+   details](#write-authorization)
 
     </div>
 
-1. **Synchronization and concurrency:** How does everyone stay up to date with changes
+1. **Synchronization and concurrency** <br>**Q:** How does everyone stay up to date with changes
    to the group's membership and permissions? What happens when two admins make concurrent changes?
 
    <div class='spoiler'>
@@ -137,87 +161,77 @@ applications.
 
 Let's look at each of these in more detail.
 
-## Peer authentication
+## Permissions management
 
-### How can we be sure who we're talking to?
+### Introducing the signature chain
 
-<!-- <aside>
+> **Q:** Without a server to keep track of group membership and permissions, how can Alice add and remove
+> team members, and limit what they can and can’t do? Where does that information even live?
 
-If you're not clear on the details of public-key cryptography, or you'd like a refresher, I've written
-a summary of what I've learned on the topic over the last year or two. LINK TODO
+In the absence of a server, the group **rules** themselves have to be replicated on each client.
+Who's a member, who's not, and who's allowed to do what — and importantly, who's allowed to
+change the rules — all that information has to be shared with everyone, just like the data that the
+team is collaborating on. But **how do you know who to trust about what the rules themselves are?**
 
-</aside> -->
+<figure class='figure-xl'>
 
-When my web browser is talking to Amazon's, I know it's really Amazon because I typed in
-`amazon.es`. Amazon's servers knows they're talking to me because I gave them the email address and
-password they have on record for me.
+![](/images/posts/trust/sigchain.1.png)
 
-Now imagine someone tries to connect directly to Alice's computer. They say they're Bob. But how
-does Alice know they're not, say, Eve --- impersonating Bob?
-
-The most straightforward solution I've found here is a **signature challenge**.
-
-<figure class='figure-md'>
-
-![](/images/2021-02-28-18-25-46.png)
-
-This isn't the exact protocol, but it gives the basic idea.
+It's not a blockchain, I swear!
 
 </figure>
 
-As long as Alice knows the public half of the signature key Bob's using, she can validate Bob's
-signature of any piece of data. So we just need to get Bob to sign something.
-
-Bob **could** just show up with a signed document that says `Hello I am Bob`. But if that was the only
-evidence we required, then anyone Bob authenticates _to_ could just keep a copy of that document
-around and use it to impersonate him.
-
-So we need to make sure that the document maybe-Bob is signing is **unique** and **unpredictable**:
-Maybe-Bob should have no way of knowing what the document will contain, so they can't just reuse a
-signed document they've seen.
-
-That means that we need a multi-step protocol in order for Alice and Bob to authenticate each other.
-Here's how this works in `@localfirst/auth`:
-
-1. Bob connects to Alice, and sends an **identity claim** asserting that he is Bob.
-2. Alice responds with an **identity challenge** — a document that repeats back Bob's identity
-   claim, and adds to it a **timestamp** and a **random nonce**.
-3. Bob responds with an **identity proof** — a digitally signed copy of the challenge.
-4. Alice validates Bob's signature against the original challenge document, using Bob's public
-   signature key. If it checks out, she responds with an **identity acceptance** message indicating
-   that she's convinced of Bob's authenticity.
-
-If you're already asking "Yeah, but how does Alice know Bob's public key?" then congratulations,
-that's exactly the right kind of question to be asking at this point in the proceedings. We'll get
-to the answer in a moment. But first let's introduce an important piece of the puzzle, which is the
-signature chain.
-
-## Permissions management
-
-### Where do rules come from?
-
-In the absence of a server, the group **rules** themselves have to be passed around from client to
-client. Who's a member, who's not, and who's allowed to do what — and most importantly, who's
-allowed to change the rules — all that information has to be replicated across multiple devices,
-just like the data that the team is collaborating on. But **how do you know who to trust about what
-the rules themselves are?**
+After a couple of false starts, I found a solid solution to this problem in the docs for [Keybase's
+Teams application](https://book.keybase.io/teams): A **signature chain** contains a series of links,
+each one containing a single change to the team's membership or roles.
 
 <aside>
 
-You might point out that this is not very democratic, but that's OK because the only thing at stake
-here is the ability for members to communicate with each other. If Dwight is the only admin and he
-is being a despot, everyone else can just start a new group without him, and then decline to
-communicate with him. This is analogous to how the **right to fork** keeps open source maintainers
-from wielding power tyrannically.
+A **digital signature** is a code that is uniquely derived from the signer's private key plus the
+message being signed. It looks random and can't be generated in any other way. If Alice signs a
+message, and Bob (or anyone else) knows her **public key**, they can verify the message's
+**authenticity** (that Alice is the one who signed it) and its **integrity** (that it wasn't
+tampered with in transit).
+
+A **cryptographic hash** is also a unique, random-looking code generated from a message. It's like a
+**fingerprint**: it's impossible (practically) for two messages to have the same hash. The slightest
+change in the message gives a completely different hash.
 
 </aside>
 
-The key insight here is that **all authority can be traced back to the group's founding member**.
+- The first link, the **root** of the chain, marks the creation of the group and by definition adds
+  the founder to the group as an admin. It also includes the founder's **public keys**.
 
-Suppose Alice creates a group. At that point, she is the group's only member and the group's only
-admin. Then:
+- Each subsequent link represents an administrative **action** such as inviting a member, removing a
+  member, promoting a member to admin (or another role), or demoting a member.
 
-> - 👩🏾 Alice adds 👨🏻‍🦲 Bob and 👳🏽‍♂️ Charlie and 👴🏼 Dwight
+- Each link contains a **cryptographic hash** of the preceding link, so the order of the links
+  cannot be altered.
+
+- Each link contains a **digital signature** of its content by the member making the change, so that
+  its authenticity can be independently verified, and so that the link body cannot be tampered with.
+
+This chain is replicated on each team member's device, and any member can use it to reconstruct the
+group's current membership and roles. Given the same chain, two members will always arrive at the
+same state. And given a new link, any member can independently determine whether it's valid or not,
+and come to the same conclusion as every other member.
+
+The key insight behind the signature chain is that **all authority can be traced back to the group's
+founding member**.
+
+<aside>
+
+This is not democratic, but that's OK because the only thing at stake here is the ability for
+members to communicate with each other. If Dwight is the only admin and he is being a despot,
+everyone else can just start a new group without him, and then decline to communicate with him. This
+is analogous to how the **right to fork** keeps open source maintainers from wielding power
+tyrannically.
+
+</aside>
+
+When Alice creates a group, she is the group's only member and the group's only admin. Suppose she
+adds Bob, Charlie, and Dwight. Then:
+
 > - 👩🏾 Alice promotes 👨🏻‍🦲 Bob to admin
 > - 👨🏻‍🦲 Bob promotes 👳🏽‍♂️ Charlie to admin
 > - 👩🏾 Alice removes 👨🏻‍🦲 Bob
@@ -237,30 +251,11 @@ In this way we can conclude that Charlie's admin rights are legitimate because t
 be traced back to Alice.
 
 Note that even though Bob was ultimately removed from the group, he was a member with admin rights
-when he promoted Charlie; so Charlie's admin status was valid at the time he removed Dwight.
+when he promoted Charlie. His promotion of Charlie remains valid from that point forward, unless and
+until another admin removes or demotes Charlie.
 
 This works the same way no matter how long ago the group was created, no matter how much turnover
 there is, and whether or not Alice is even a member any more.
-
-<figure class='figure-xl'>
-
-![](/images/posts/trust/sigchain.1.png)
-
-It's not a blockchain, I swear!
-
-</figure>
-
-In practice, this is implemented with a **signature chain**: Each link in this chain contains **a
-single change to the team's membership or roles**: adding a member, removing a member, promoting a
-member to admin (or another role), or demoting a member. **Each link contains a cryptographic hash**
-of the preceding link; and **each link is digitally signed** by the member making the change (who
-has to be an admin at that point in time). The first link, the **root** of the chain, marks the
-creation of the group and by definition adds the founder to the group as an admin.
-
-Any member can then reconstruct the group's current membership and roles from the signature chain.
-Given the same chain, two members will always arrive at the same state. And given a new link, any
-member can independently determine whether it's valid or not, and come to the same conclusion as
-every other member.
 
 ## Key management
 
@@ -274,15 +269,17 @@ This is what [my public PGP key](https://keybase.io/hc3/pgp_keys.asc?fingerprint
 
 </figure>
 
-Now we can return to the question of public keys and how we associate them with individual
-identities.
+> **Q:** To encrypt anything or use digital signatures, you need to know each other’s public keys; but how
+> can that happen if you don’t have a trusted, centralized key server?
+
+We need to talk about public keys and how we associate them with individual identities.
 
 Remember, the great thing about public key encryption is that **Alice and Bob don’t need to share a
-secret** in order to encrypt messages for each other: they just need to know each other’s public
-keys.
+secret** in order to verify each other's signatures or encrypt messages for each other: they just
+need to know each other’s public keys.
 
-So **how does Alice find out what Bob‘s public key is?** For that matter, **how does Alice know what
-her own public key is?** Where does one get a keypair anyway, AT THE KEYPAIR STORE?
+So **how does Alice find out what Bob‘s public key is?** For that matter, **how does Alice even know
+what her own public key is?** Where does one get one of these keypairs anyway?
 
 The problem of linking identities to public keys — known as the public key infrastructure (PKI)
 problem — doesn’t seem like it should be a show-stopper, but it’s been one of the biggest obstacles
@@ -301,18 +298,19 @@ websites and sign official documents digitally.
 
 But we’re trying to do this without depending on centralized services.
 
-An alternative — and decentralized — solution is for people just to share their own keys directly
-with each other. This was the approach taken by PGP ('Pretty Good Privacy'), the first encryption
-toolset intended for ordinary users, in the 1990s. People would put their public keys on their
-websites and in their email signatures. Apparently there were [key signing
+A decentralized solution might be for people to actively share their own keys directly with each
+other. This was the approach taken by PGP ('Pretty Good Privacy'), the first encryption toolset
+intended for ordinary users, in the 1990s. People would put their public keys on their websites and
+in their email signatures. Apparently there were [key signing
 parties](https://en.wikipedia.org/wiki/Key_signing_party) where people exchanged and signed each
 other's keys.
 
-This approach required a lot of in-person interaction, and it was all just too geeky and weird for
-99.9% of the population; so it never took off.
+This approach required a lot of in-person interaction, and it was all just too geeky and weird.
+I would estimate that approximately 100% of the population has never attended a key signing
+party, so we're going to need an alternative approach.
 
 [Keybase](https://keybase.io/) had the clever idea of getting people to associate their public keys
-with their identities on public sites.
+with their identities on public sites where they have accounts, like Twitter or GitHub.
 
 <figure class='figure-b figure-2up'>
 
@@ -327,7 +325,11 @@ I've used Keybase to "verify myself" by posting machine-readable statements on
 
 </figure>
 
-It's a clever idea, but again, probably too nerdy for the average civilian.
+It's a clever idea. When Keybase originally came on the scene, everyone who reads Hacker News
+immediately signed up and tweeted their public keys. The remaining 99.9% of planet reacted by not
+doing anything at all, and we all proceeded to live our lives exactly as before without ever
+thinking about Keybase again, except briefly when Zoom bought the company in the early days of the
+pandemic in a desperate effort to quickly shore up their own security cred.
 
 ### What PGP got wrong
 
@@ -336,26 +338,30 @@ Signal, which were the first to bring end-to-end encryption to the masses — is
 encryption **transparent** to the user.
 
 It's not just that people are scared off by keys that looks like screenfuls of gobbledygook.
-Fundamentally, PGP's mistaken assumption was that "our" keys would become stable components of our
-digital identities, like our email addresses or our telephone numbers, and that we would manage them
-ourselves.
+Fundamentally, PGP failed because it required "our" keys to become stable components of our digital
+identities, like our email addresses or our telephone numbers, that we managed ourselves.
 
-Instead, **what we want is to not think about our keys at all**. As [Peter Van
+But encryption keys are fundamentally not friendly to humans. They're too long to memorize, unless
+you're a savant or a circus act. Retyping them is tedious and error-prone. If it's up to us to store
+them, we'll probably either put them somewhere where we'll never find them again, or somewhere
+insecure, or both.
+
+A more appealing idea is **not to not think about our keys at all**. As [Peter Van
 Hardenberg](https://twitter.com/pvh), CEO of the Ink & Switch research lab, has said to me more than
 once: "If the user sees an encryption key, you've already lost."
 
 Here's a summary of the differences between these two different ways of thinking about working with
 cryptographic keys:
 
-|                         | Approach 1                                                                                                                                                                          | Approach 2                                                                                                                                        |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **who manages keys**    | we manage our keys                                                                                                                                                                  | computers manage our keys for us                                                                                                                  |
-| **who has keys**        | individual humans or entities have keys                                                                                                                                             | devices have keys                                                                                                                                 |
-| **who sees keys**       | our keys are visible to us                                                                                                                                                          | we never see our keys                                                                                                                             |
-| **who shares keys**     | we explicitly share our public keys with other humans                                                                                                                               | our devices share public keys with each other as needed                                                                                           |
-| **how stable are keys** | keys are stable components of identity, like email addresses or phone numbers; we generate them once and provide the same private keys to multiple applications on multiple devices | keys are created for us as needed on each device by each application; they never leave that device, and are never shared with another application |
-| **examples**            | PGP, various forms of PKI                                                                                                                                                           | WhatsApp, Signal, Telegram                                                                                                                        |
-| **my take**             | **hasn't really worked out**                                                                                                                                                        | **seems more promising**                                                                                                                          |
+|                | ![](/images/posts/trust/drake-no.jpg)                                                                                                                                               | ![](/images/posts/trust/drake-yes.jpg)                                                                                                            |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **agency**     | we manage our keys                                                                                                                                                                  | computers manage our keys for us                                                                                                                  |
+| **scope**      | individual humans or entities have keys                                                                                                                                             | devices have keys                                                                                                                                 |
+| **visibility** | our keys are visible to us                                                                                                                                                          | we never see our keys                                                                                                                             |
+| **sharing**    | we explicitly share our public keys with other humans                                                                                                                               | our devices share public keys with each other as needed                                                                                           |
+| **stability**  | keys are stable components of identity, like email addresses or phone numbers; we generate them once and provide the same private keys to multiple applications on multiple devices | keys are created for us as needed on each device by each application; they never leave that device, and are never shared with another application |
+| **examples**   | PGP, various forms of corporate or governmental PKI                                                                                                                                 | WhatsApp, Signal, Telegram                                                                                                                        |
+| **my take**    | **never really took off**                                                                                                                                                           | **seems more promising**                                                                                                                          |
 
 <figure class='figure-xs'>
 
@@ -367,7 +373,7 @@ TOFU considered squishy. <i>Image: [Yoav Aziz](https://unsplash.com/@yoavaziz)</
 
 ### TOFU and other meat substitutes
 
-WhatsApp, Signal, and others solve the problem of associating public keys with identities using a
+WhatsApp, Signal, and others solve the problem of associating public keys with identities using an
 approach called "Trust on First Use", or **TOFU**.
 
 Here's the idea behind TOFU:
@@ -486,6 +492,56 @@ yet we're off to the races with public-key encryption.
 
 </div>
 
+## Peer authentication
+
+### How can we be sure who we're talking to?
+
+<!-- <aside>
+
+If you're not clear on the details of public-key cryptography, or you'd like a refresher, I've written
+a summary of what I've learned on the topic over the last year or two. LINK TODO
+
+</aside> -->
+
+When my web browser is talking to Amazon's, I know it's really Amazon because I typed in
+`amazon.es`. Amazon's server knows it's talking to me because I gave it the email address and
+password it has on record for me.
+
+Now imagine someone tries to connect directly to Alice's computer. They say they're Bob. But how
+does Alice know they're not, say, Eve --- impersonating Bob?
+
+The most straightforward solution I've found here is a **signature challenge**.
+
+<figure class='figure-md'>
+
+![](/images/2021-02-28-18-25-46.png)
+
+This isn't the exact protocol, but it gives the basic idea.
+
+</figure>
+
+As long as Alice knows the public half of the signature key Bob's using, she can validate Bob's
+signature of any piece of data. So we just need to get Bob to sign something.
+
+Bob **could** just show up with a signed document that says `Hello I am Bob`. But if that was the only
+evidence we required, then anyone Bob authenticates _to_ could just keep a copy of that document
+around and use it to impersonate him.
+
+So we need to make sure that the document maybe-Bob is signing is **unique** and **unpredictable**:
+Maybe-Bob should have no way of knowing what the document will contain, so they can't just reuse a
+signed document they've seen.
+
+That means that we need a multi-step protocol in order for Alice and Bob to authenticate each other.
+Here's how this works in `@localfirst/auth`:
+
+1. Bob connects to Alice, and sends an **identity claim** asserting that he is Bob.
+2. Alice responds with an **identity challenge** — a document that repeats back Bob's identity
+   claim, and adds to it a **timestamp** and a **random nonce**.
+3. Bob responds with an **identity proof** — a digitally signed copy of the challenge.
+4. Alice validates Bob's signature against the original challenge document, using Bob's public
+   signature key. If it checks out, she responds with an **identity acceptance** message indicating
+   that she's convinced of Bob's authenticity.
+
 ## Read authorization
 
 ### How to share data while also hiding it
@@ -570,7 +626,7 @@ more members; and each member has one or more devices.
 ### The key graph and key rotation
 
 This idea of a graph, with keys as nodes and lockboxes as edges, becomes very useful when we turn
-our attention the problem of rotating keys.
+our attention to the problem of rotating keys.
 
 <figure>
 
@@ -672,7 +728,7 @@ After all, we've gone to a lot of trouble to ensure that you _can't_ retroactive
 what with the "hash-chaining" and the "cryptographic signatures" and all.
 
 Here I eventually took inspiration from **Git**, which is also a decentralized collaboration system
-build on top of an append-only hash-chained data structure.
+built on top of an append-only hash-chained data structure.
 
 When you're working alone on a Git repo, your chain of commits is very reminiscent of the signature
 chain we've described so far. Once you start working with two or more collaborators, though, you
