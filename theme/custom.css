@@ -31,7 +31,7 @@ article del {
 /* image captions */
 .caption {
   @apply font-mono text-left leading-normal;
-  @apply text-2xs md:text-xs; /* tiny text on tiny screens */
+  @apply text-2xs lg:text-xs; /* tiny text on tiny screens */
 }
 
 /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
@@ -198,6 +198,7 @@ article figure {
   @apply my-10;
   /* on large screens, caption is positioned to right of image (the enclosing width is 7 columns) */
   @apply lg:grid lg:grid-cols-9 lg:gap-G; /* This becomes a grid with 9 columns - 7 for image, 2 for caption  */
+
   @apply lg:w-9/7; /* extend two columns beyond the enclosing width */
 }
 
@@ -228,6 +229,11 @@ article .figure-xl {
 
 article .figure-xl > :nth-child(1) {
   @apply md:col-span-12;
+}
+
+article .figure-xl > :nth-child(2) {
+  @apply md:relative md:-mb-12;
+  @apply md:col-span-3 lg:col-span-12;
 }
 
 /* large variant: images that span 10 columns */
@@ -264,26 +270,39 @@ article .figure-md > :nth-child(2) {
   @apply md:col-span-2;
 }
 
-/* extra-small variant: images in the left sidebar */
+/* extra-small variant*/
 
 article .figure-xs {
-  @apply mx-G w-full block my-G;
-  @apply md:mx-0 md:absolute md:pr-G;
+  /* tiny screens: image takes 1/2, caption takes 1/2 */
+  @apply grid grid-cols-12 gap-G;
+  @apply my-2 md:mt-G;
+  /* larger screens; float in left sidebar */
+  @apply md:block md:absolute md:pr-G;
   @apply md:-left-3/9 md:w-3/9;
   @apply lg:-left-3/7 lg:w-3/7;
 }
 
-article .figure-xs img {
+article .figure-xs > :nth-child(1) {
+  @apply col-span-6 md:col-span-3;
+}
+
+article .figure-xs > :nth-child(1) img {
+  @apply w-full mx-0;
   max-width: 100%;
 }
 
 article .figure-xs > :nth-child(2) {
-  @apply md:col-span-2;
+  @apply col-span-6 md:col-span-2 pl-0;
 }
 
-/* border variant: apply thin border + some padding to images*/
+article .figure-xs + h3 {
+  @apply mt-0 md:mt-16 lg:mt-12;
+}
+
+/* border variant: apply thin border + some padding to images */
+
 article .figure-b img {
-  @apply border border-gray-300 p-4;
+  @apply border border-gray-300 p-2;
 }
 
 /* 2-up variant */
@@ -356,6 +375,16 @@ article table {
   @apply w-full table-fixed my-G;
 }
 
+article table th,
+article table td {
+  @apply p-2;
+}
+
+article table th:first-child,
+article table td:first-child {
+  @apply pl-0;
+}
+
 article table th {
   @apply font-sans text-base text-left align-bottom;
   @apply border-b-4 border-black;
@@ -363,7 +392,7 @@ article table th {
 
 article table td {
   @apply font-sans text-sm;
-  @apply align-top py-2 pr-3;
+  @apply align-top;
   @apply border-b border-gray-400;
 }
 
@@ -371,13 +400,19 @@ article table td {
 
 article aside {
   @apply pl-G md:pl-0 w-full;
-  @apply md:mx-0 md:absolute md:pr-G;
+  @apply md:mx-0 md:absolute md:pr-G lg:pr-12;
   @apply md:-left-3/9 md:w-3/9;
-  @apply lg:-left-3/7 lg:w-2/7;
+  @apply lg:-left-3/7 lg:w-3/7;
+  @apply bg-arrow-black-d bg-no-repeat;
 }
 
 article aside p {
-  @apply caption my-2;
+  @apply caption;
+}
+
+/* This makes the background of the text white, without making the background of the whole block white */
+article aside p::first-line {
+  @apply bg-white;
 }
 
 article aside a {
