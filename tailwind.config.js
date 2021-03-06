@@ -1,6 +1,6 @@
 const { fonts, fontWeight } = require('./theme/fonts')
 const { colors } = require('./theme/colors')
-const { inkUnderline, inkStrikethrough } = require('./theme/ink')
+const { inkUnderline, inkStrikethrough, inkArrow } = require('./theme/ink')
 const { spacing } = require('tailwindcss/defaultTheme')
 const { allFractions, gap, halfGap } = require('./theme/columnFractions')
 
@@ -89,7 +89,9 @@ module.exports = {
         'u-ink-red': inkUnderline(colors.red['800']),
         'u-ink-black-1': inkUnderline('#444', 1),
         'u-ink-red-1': inkUnderline(colors.red['800'], 1),
-        'del-ink-black': inkStrikethrough(),
+        'del-ink-black': inkStrikethrough('black'),
+        'arrow-black': inkArrow('black'),
+        'arrow-black-d': inkArrow('black', -90),
       },
 
       // animation
