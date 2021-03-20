@@ -90,8 +90,8 @@ module.exports = {
         'u-ink-black-1': inkUnderline('#444', 1),
         'u-ink-red-1': inkUnderline(colors.red['800'], 1),
         'del-ink-black': inkStrikethrough('black'),
-        'arrow-black': inkArrow('black'),
-        'arrow-black-d': inkArrow('black', -90),
+        'arrow-black': inkArrow(colors.gray['500']),
+        'arrow-black-d': inkArrow(colors.gray['500'], true),
       },
 
       // animation
