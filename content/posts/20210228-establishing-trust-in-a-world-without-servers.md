@@ -155,13 +155,13 @@ Let's list some of the questions that we might have at this stage:
 These are all tricky problems. Some of them have fairly well-understood solutions; others are closer
 to the cutting edge of academic research. I’ve spent a lot of time over the last few months trying
 to understand the landscape, and to create TypeScript implementations of the best available
-solutions to each piece of the puzzle. The result is a library called `@local-first/auth`, which I
+solutions to each piece of the puzzle. The result is a library called `@localfirst/auth`, which I
 hope brings it all together to make it easier to create secure local-first collaboration
 applications.
 
 Let's look at each of these in more detail.
 
-## Permissions management
+## 1. Permissions management
 
 ### Introducing the signature chain
 
@@ -185,25 +185,19 @@ After a couple of false starts, I found a solid solution to this problem in the 
 Teams application](https://book.keybase.io/teams): A **signature chain** contains a series of links,
 each one containing a single change to the team's membership or roles.
 
-<aside>
-
-A **digital signature** is a code that is uniquely derived from the signer's private key plus the
-message being signed. It looks random and can't be generated in any other way. If Alice signs a
-message, and Bob (or anyone else) knows her **public key**, they can verify the message's
-**authenticity** (that Alice is the one who signed it) and its **integrity** (that it wasn't
-tampered with in transit).
-
-A **cryptographic hash** is also a unique, random-looking code generated from a message. It's like a
-**fingerprint**: it's impossible (practically) for two messages to have the same hash. The slightest
-change in the message gives a completely different hash.
-
-</aside>
-
 - The first link, the **root** of the chain, marks the creation of the group and by definition adds
   the founder to the group as an admin. It also includes the founder's **public keys**.
 
 - Each subsequent link represents an administrative **action** such as inviting a member, removing a
   member, promoting a member to admin (or another role), or demoting a member.
+
+  <aside>
+
+  A **cryptographic hash** is also a unique, random-looking code generated from a message. It's like a
+  **fingerprint**: it's impossible (practically) for two messages to have the same hash. The slightest
+  change in the message gives a completely different hash.
+
+  </aside>
 
 - Each link contains a **cryptographic hash** of the preceding link, so the order of the links
   cannot be altered.
@@ -257,7 +251,7 @@ until another admin removes or demotes Charlie.
 This works the same way no matter how long ago the group was created, no matter how much turnover
 there is, and whether or not Alice is even a member any more.
 
-## Key management
+## 2. Key management
 
 ### Where do keys come from?
 
@@ -424,14 +418,14 @@ that Seitan is tougher than TOFU, I guess? <i>Image: [Sigmund](https://unsplash.
 ### Introducing Seitan
 
 In the article quoted above, the Keybase team makes the case against TOFU and present their
-solution. I've ~~stolen~~ adapted several ideas from Keybase's approach: The signature chain idea is
-theirs, and so is the invitation process I've loosely copied in `@localfirst/auth`. They call their
-protocol the [Seitan token exchange](https://book.keybase.io/docs/teams/seitan).
+solution. I've ~~stolen~~ adapted yet another idea from Keybase: They call their invitation protocol
+the [Seitan token exchange](https://book.keybase.io/docs/teams/seitan); it adds a secret key
+to the invitation process in order to avoid the repeated leaps of faith required by TOFU.
 
 Here's how it works:
 
 Rather than invite Bob and then accept the first person who shows up saying they're Bob, Alice
-gives Bob a secret key when she invites him.
+gives Bob a secret invitation key when she asks him to join the group.
 
 We _could_ just store that secret key on the signature chain, and ask Bob to repeat it back to us
 when he's ready to join the group. But we'd prefer not to store unencrypted secrets on the signature
@@ -492,9 +486,11 @@ yet we're off to the races with public-key encryption.
 
 </div>
 
-## Peer authentication
+## 3. Peer authentication
 
 ### How can we be sure who we're talking to?
+
+> **Q:** Without a server to vouch for his identity, how does Alice know it’s really Bob at the other end?
 
 <!-- <aside>
 
@@ -503,12 +499,15 @@ a summary of what I've learned on the topic over the last year or two. LINK TODO
 
 </aside> -->
 
-When my web browser is talking to Amazon's, I know it's really Amazon because I typed in
-`amazon.es`. Amazon's server knows it's talking to me because I gave it the email address and
-password it has on record for me.
+We've solved the problem of verifying Bob's identity the very first time he shows up to join the team.
+But that's a one-time thing. How are we going to authenticate Bob the rest of the time?
 
-Now imagine someone tries to connect directly to Alice's computer. They say they're Bob. But how
-does Alice know they're not, say, Eve --- impersonating Bob?
+When I log on to Trello, I know it's really Trello on the other end because I typed in `trello.com`.
+Trello knows it's really me because I logged in with my email and the password they have on record
+for me.
+
+When someone tries to connect directly to Alice's computer, saying they're Bob, how does Alice know
+it's not an impostor --- Eve, for example?
 
 The most straightforward solution I've found here is a **signature challenge**.
 
@@ -520,36 +519,50 @@ This isn't the exact protocol, but it gives the basic idea.
 
 </figure>
 
-As long as Alice knows the public half of the signature key Bob's using, she can validate Bob's
-signature of any piece of data. So we just need to get Bob to sign something.
+Alice knows Bob's public keys, because he put them on the signature chain when he joined. Using his
+public signature key, she can validate Bob's signature of any message. So we just need to get
+Bob to sign something.
 
-Bob **could** just show up with a signed document that says `Hello I am Bob`. But if that was the only
-evidence we required, then anyone Bob authenticates _to_ could just keep a copy of that document
-around and use it to impersonate him.
+Bob **could** just show up with a signed message that says `Hello I am Bob`. But possession of a
+signed document isn't enough to prove that he's Bob --- if that was the case, anyone Bob
+authenticates _to_ could just keep a copy of that signed message around and use it to impersonate
+him.
 
-So we need to make sure that the document maybe-Bob is signing is **unique** and **unpredictable**:
-Maybe-Bob should have no way of knowing what the document will contain, so they can't just reuse a
-signed document they've seen.
+<aside>
+
+A **digital signature** is a code that is uniquely derived from the signer's private key plus the
+message being signed. It looks random and can't be generated in any other way. If Bob signs a
+message, and Alice (or anyone else) knows his **public key**, they can verify the message's
+**authenticity** (that Bob is the one who signed it) and its **integrity** (that it wasn't
+tampered with in transit).
+
+</aside>
+
+We need to know that maybe-Bob is signing something _now_, on demand, rather than handing over a
+document he already had. So we need to make sure that the message they're signing is **unique**
+and **unpredictable**: Maybe-Bob should have no way of knowing what the message will contain.
 
 That means that we need a multi-step protocol in order for Alice and Bob to authenticate each other.
 Here's how this works in `@localfirst/auth`:
 
 1. Bob connects to Alice, and sends an **identity claim** asserting that he is Bob.
-2. Alice responds with an **identity challenge** — a document that repeats back Bob's identity
+1. Alice responds with an **identity challenge** — a message that includes Bob's identity
    claim, and adds to it a **timestamp** and a **random nonce**.
-3. Bob responds with an **identity proof** — a digitally signed copy of the challenge.
-4. Alice validates Bob's signature against the original challenge document, using Bob's public
+1. Bob responds with an **identity proof** — a digitally signed copy of the challenge.
+1. Alice validates Bob's signature against the original challenge message, using Bob's public
    signature key. If it checks out, she responds with an **identity acceptance** message indicating
    that she's convinced of Bob's authenticity.
 
-## Read authorization
+## 4. Read authorization
 
 ### How to share data while also hiding it
 
+> **Q:** How can you keep some users from seeing sensitive information if each user has a complete copy
+> of the data?
+
 When a server doesn't think you should see a certain bit of data, it simply doesn't let you have it.
 
-In a peer-to-peer application, that's an option --- we might have certain documents that we just don't
-share at all. But the general approach is just to replicate the same database across all users. What
+In a peer-to-peer application, we generally replicate the same database across all users. But what
 if there is sensitive data embedded alongside less-sensitive data? For example, suppose you're
 working with a staff database: Along with names and addresses and phone numbers that everyone can
 see, you have things like salaries and social security numbers that only authorized members can see.
@@ -654,7 +667,7 @@ When a member leaves a team or a role, or a device is lost, we say the correspon
 
 </figure>
 
-## Write authorization
+## 5. Write authorization
 
 ### "Don't trust the client" when there's nothing but clients
 
@@ -694,7 +707,7 @@ state of the group’s membership and permissions. So each user can independentl
 not to accept another member’s changes as valid. If the signature chain says that Bob can change
 salaries, then we accept his change. If not, we don't.
 
-## Synchronization and concurrency
+## 6. Synchronization and concurrency
 
 <aside>
 
@@ -945,7 +958,7 @@ we figure out where we diverged. But that's a lot of back-and-forth. Kleppmann &
 sexy way of cutting down on the round trips, using a probabilistic device called a [Bloom
 filter](https://en.wikipedia.org/wiki/Bloom_filter).
 
-## Connection protocol
+## 7. Connection protocol
 
 ### Nothing is easy
 
