@@ -1,4 +1,4 @@
-﻿/* ink underline */
+﻿/***** ink underline */
 
 .ink-underline-on-hover {
   @apply group-hover:bg-u-ink-red hover:bg-u-ink-red hover:text-red-800;
@@ -98,8 +98,8 @@ article > p:nth-child(1)::first-letter {
 /* make inline <code> spans stand out a bit more */
 article li code,
 article p code {
-  @apply font-mono font-medium  rounded-md bg-gray-100;
-  font-size: 0.8em;
+  @apply font-mono font-medium rounded-md bg-gray-100;
+  font-size: 0.85em;
   padding: 0.1em 0.5em;
 }
 
@@ -141,30 +141,49 @@ article .caption strong {
   @apply font-mono;
 }
 
-/* big chunky left-aligned black bar */
+/* big chonky left-aligned black bar */
 article hr {
   @apply bg-transparent border-t-12 border-black my-16 w-1/6;
 }
 
-article ol li {
-  @apply list-decimal;
-}
-
-article ul li {
-  @apply list-square;
-}
+/***** all list items */
 
 article li {
   @apply list-outside ml-6 leading-relaxed mt-2;
 }
 
 article li p {
-  @apply m-0;
+  @apply m-0; /* no additional margin at beginning or end of a list item */
 }
 
 article li p + p {
-  @apply mt-4;
+  @apply mt-4; /* normal margin between consecutive paragraphs in same list item */
 }
+
+/* custom numbers for ordered lists */
+
+article ol {
+  list-style: decimal;
+}
+
+article ol li {
+  counter-increment: custom;
+}
+
+article ol li::marker {
+  @apply text-sm mr-1 font-sans font-bold text-gray-400;
+}
+
+article ol li::first-child {
+  counter-increment: item;
+}
+
+/* square bullets */
+article ul li {
+  @apply list-square;
+}
+
+/* custom blockquotes */
 
 article blockquote {
   @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
@@ -396,18 +415,40 @@ article table td {
   @apply border-b border-gray-400;
 }
 
+article img {
+  @apply m-0;
+  max-width: 100%;
+}
+
 /* asides */
 
+@responsive {
+  .arrow {
+    @apply md:bg-arrow-black;
+    @apply bg-no-repeat;
+    background-position: 0 0.1em;
+    background-size: 90% 0.7em;
+  }
+
+  .arrow-d {
+    @apply bg-arrow-black-d;
+    @apply bg-no-repeat;
+    background-position: 0 bottom;
+    background-size: 0.7em 17em;
+  }
+}
+
 article aside {
-  @apply pl-G md:pl-0 w-full;
-  @apply md:mx-0 md:absolute md:pr-G lg:pr-12;
+  @apply pl-G md:pl-0 md:pr-G lg:pr-12 w-full;
+  @apply my-5 md:mb-0 md:absolute;
   @apply md:-left-3/9 md:w-3/9;
   @apply lg:-left-3/7 lg:w-3/7;
-  @apply bg-arrow-black-d bg-no-repeat;
+
+  @apply arrow-d md:arrow;
 }
 
 article aside p {
-  @apply caption;
+  @apply caption mt-0;
 }
 
 /* This makes the background of the text white, without making the background of the whole block white */
@@ -421,7 +462,7 @@ article aside a {
 
 /* spoilers */
 article .spoiler {
-  @apply bg-gray-800 text-sm text-black font-sans p-2 mt-1;
+  @apply bg-gray-800 text-sm text-black font-sans p-2 mt-1 mb-5;
   border-radius: 0.5em 1.2em 1.5em 2.3em/1.4em 1.9em 1em 2.3em;
   transition: all 2s ease;
 }
