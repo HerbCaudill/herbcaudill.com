@@ -45,18 +45,16 @@ Microsoft, etc. — to **vouch for us** in our interactions with each other.
 
 This is one of those situations that seems unremarkable until you really start thinking about it, at
 which point you wonder why you ended up living in this bizarro-world timeline. How is it that the
-role of certifying identity has fallen on **consumer brands**, as opposed to, say, the government or
-an NGO like ICANN?
+role of certifying identity has fallen on **consumer brands**?
 
-This state of affairs wasn't inevitable, and maybe it doesn't have to be that way going forward.
-Rather than relying on tech giants, governments, or any centralized organization to confirm our
-identity, is there a way for us to **vouch for ourselves**?
+Perhaps it would be more logical for this role to fall on the government, or on a non-profit
+organization like ICANN. Or maybe there is a way for us to **vouch for ourselves**, instead of
+relying on tech giants, governments, or any centralized organization to confirm our identity.
 
 ## Down the rabbit hole
 
-When I put it that way, maybe it starts to seem obvious to you that the way forward is going to
-involve cryptography — specifically, public-key cryptography. But the details of how we solve these
-problems with crypto are still fuzzy.
+When I started thinking about authentication in these terms, it seemed clear that the way forward
+would involve cryptography — specifically, public-key cryptography. But the details were still fuzzy.
 
 <aside>
 
