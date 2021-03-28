@@ -9,7 +9,11 @@ const links = [
     icon: 'twitter',
     label: '@herbcaudill',
   },
-  { url: 'mailto:h@hc3.me', icon: 'envelope', label: 'herb@hc3.me' },
+  {
+    url: 'mailto:herb@caudillweb.com',
+    icon: 'envelope',
+    label: 'herb@caudillweb.com',
+  },
 ]
 
 export const Footer: React.FC<{ className?: string }> = ({ className }) => {
@@ -35,7 +39,7 @@ export const Footer: React.FC<{ className?: string }> = ({ className }) => {
                   className="w-6 h-6 inline mr-2"
                 />
                 <a
-                  className="pb-1 text-xs font-semibold ink-underline"
+                  className="pb-1 text-xs font-semibold ink-underline-on-hover"
                   target="_blank"
                   href={d.url}
                 >
