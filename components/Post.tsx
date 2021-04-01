@@ -38,7 +38,7 @@ export const Post: React.FC<PostProps> = ({
 
       {/* caption */}
       <p
-        className="caption md:col-span-2 md:mt-0 leading-normal"
+        className="caption use-ink-underline md:col-span-2 md:mt-0 leading-normal"
         dangerouslySetInnerHTML={{ __html: caption }}
       />
 
