@@ -23,6 +23,9 @@
 /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
 .attribution {
   @apply block text-gray-400;
+  & a {
+    @apply text-gray-400;
+  }
 }
 
 .fancy-numbers {
@@ -36,7 +39,7 @@
   position: relative;
   margin-left: calc(var(--num-container) + var(--num-gap));
 
-  &::before {
+  &:before {
     @apply text-sm font-mono bg-white text-black border border-black absolute text-center rounded-full;
     content: counter(ol);
     font-size: var(--num-size);
@@ -94,7 +97,7 @@ article {
       --num-container: calc(2px + var(--num-size) + var(--num-p) * 2);
 
       @apply relative;
-      &::before {
+      &:before {
         @apply absolute inline-block ml-0 text-sm font-mono bg-white text-black border border-black text-center rounded-full;
         content: counter(h2);
         font-size: var(--num-size);
@@ -107,7 +110,7 @@ article {
     }
 
     /* heavy line above big headings */
-    &::before {
+    &:before {
       @apply block border-t-12 border-black mt-16 mb-G w-1/6;
       content: '';
     }
@@ -128,7 +131,7 @@ article {
   }
 
   /* drop cap at beginning of first paragraph */
-  & > p:nth-child(1)::first-letter {
+  & > p:nth-child(1):first-letter {
     @apply float-left font-condensed font-bold;
     font-size: 3.5em;
     letter-spacing: 0.1em;
@@ -149,7 +152,7 @@ article {
   & p {
     & > code {
       @apply font-mono font-medium text-black rounded-md;
-      background: #00000005;
+      background: #00000007;
       font-size: 0.85em;
       padding: 0.1em 0.5em;
     }
@@ -251,7 +254,7 @@ article {
     & ol {
       & > li {
         @apply mt-6;
-        &::before {
+        &:before {
           /* use ABC for exercise numbers */
           content: counter(ol, upper-latin);
           @apply text-white bg-black font-bold;
@@ -266,6 +269,10 @@ article {
   & blockquote {
     @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
     @apply text-sm sm:text-base font-sans;
+
+    & > h3:first-child {
+      @apply mt-0 mb-2 text-base;
+    }
 
     /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
     & i {
@@ -505,7 +512,7 @@ article {
   }
 
   /* This makes the background of the text white, without making the background of the whole block white */
-  & aside p::first-line {
+  & aside p:first-line {
     @apply bg-white;
   }
 
