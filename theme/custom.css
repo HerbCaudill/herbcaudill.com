@@ -1,6 +1,53 @@
-﻿@layer base {
-  .splat-underline {
-    @apply group-hover:bg-splat-red hover:bg-splat-red bg-underline bg-bottom bg-no-repeat;
+﻿/***** ink underline */
+
+.ink-underline-on-hover {
+  @apply group-hover:bg-u-ink-red hover:bg-u-ink-red hover:text-red-800;
+  @apply bg-no-repeat;
+  background-position: 0 bottom;
+  background-size: 100% min(5px, 0.25em);
+}
+
+.ink-underline {
+  @apply text-black bg-u-ink-black;
+  @apply ink-underline-on-hover;
+}
+
+.ink-underline-1 {
+  @apply bg-u-ink-black-1 group-hover:bg-u-ink-red-1 hover:bg-u-ink-red-1;
+}
+
+.use-ink-underline a {
+  @apply ink-underline;
+}
+
+/* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
+.attribution {
+  @apply block text-gray-400;
+  & a {
+    @apply text-gray-400;
+  }
+}
+
+.fancy-numbers {
+  /* fancy line number */
+  --num-size: calc(0.8em);
+  --num-p: 0.3em;
+  --num-gap: 0.5em;
+  --num-container: calc(2px + var(--num-size) + var(--num-p) * 2);
+
+  counter-increment: ol;
+  position: relative;
+  margin-left: calc(var(--num-container) + var(--num-gap));
+
+  &:before {
+    @apply text-sm font-mono bg-white text-black border border-black absolute text-center rounded-full;
+    content: counter(ol);
+    font-size: var(--num-size);
+    left: calc(-1 * var(--num-container) - var(--num-gap));
+    line-height: calc(var(--num-container) - 1px);
+    width: var(--num-container);
+    height: var(--num-container);
+    top: calc(1.625em - var(--num-container) + var(--num-p));
   }
 
   /* image captions */
@@ -25,10 +72,31 @@
     @apply text-3xl font-sans font-bold mt-16 tracking-tight text-black mb-G;
   }
 
-  /* heavy line above big headings */
-  article h2:before {
-    @apply block border-t-12 border-black mb-G mt-16 w-1/6;
-    content: '';
+    & > span {
+      counter-increment: h2;
+      --num-size: calc(0.8em);
+      --num-p: 0.3em;
+      --num-gap: 0.5em;
+      --num-container: calc(2px + var(--num-size) + var(--num-p) * 2);
+
+      @apply relative;
+      &:before {
+        @apply absolute inline-block ml-0 text-sm font-mono bg-white text-black border border-black text-center rounded-full;
+        content: counter(h2);
+        font-size: var(--num-size);
+        line-height: calc(var(--num-container) - 1px);
+        width: var(--num-container);
+        height: var(--num-container);
+        top: 0;
+        left: calc(-1 * var(--num-container) - var(--num-gap));
+      }
+    }
+
+    /* heavy line above big headings */
+    &:before {
+      @apply block border-t-12 border-black mt-16 mb-G w-1/6;
+      content: '';
+    }
   }
 
   /* small headings */
@@ -45,8 +113,8 @@
   }
 
   /* drop cap at beginning of first paragraph */
-  article > p:nth-child(1)::first-letter {
-    @apply float-left font-mono font-bold;
+  & > p:nth-child(1):first-letter {
+    @apply float-left font-condensed font-bold;
     font-size: 3.5em;
     letter-spacing: 0.1em;
     line-height: 0.73;
@@ -54,9 +122,14 @@
   }
 
   /* make inline <code> spans stand out a bit more */
-  article code {
-    @apply font-mono mx-1;
-    font-size: 0.95em;
+  & li,
+  & p {
+    & > code {
+      @apply font-mono font-medium text-black rounded-md;
+      background: #00000007;
+      font-size: 0.85em;
+      padding: 0.1em 0.5em;
+    }
   }
 
   /* used for ascii art e.g. in rewrite post */
@@ -93,14 +166,39 @@
     @apply list-decimal list-outside ml-6 leading-relaxed;
   }
 
-  article ul li {
-    @apply list-square list-outside ml-6 leading-relaxed;
+  & .exercises {
+    @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
+    @apply text-sm sm:text-base font-sans;
+
+    & h3 {
+      @apply bg-black text-white text-xs tracking-widest uppercase px-7 py-1 -mt-5 -ml-7 border whitespace-nowrap inline;
+    }
+
+    & ol {
+      & > li {
+        @apply mt-6;
+        &:before {
+          /* use ABC for exercise numbers */
+          content: counter(ol, upper-latin);
+          @apply text-white bg-black font-bold;
+          top: 2px;
+        }
+      }
+    }
   }
 
   article blockquote {
     @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
-    @apply text-sm sm:text-base;
-  }
+    @apply text-sm sm:text-base font-sans;
+
+    & > h3:first-child {
+      @apply mt-0 mb-2 text-base;
+    }
+
+    /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
+    & i {
+      @apply attribution;
+    }
 
   article blockquote p {
     @apply m-0; /* No additional margin at beginning or end of blockquote  */
@@ -278,5 +376,138 @@
 
   article dl p {
     @apply my-0;
+  }
+
+  /* tables */
+
+  & table {
+    @apply w-full table-fixed my-G;
+  }
+
+  & table th,
+  & table td {
+    @apply p-2;
+  }
+
+  & table th:first-child,
+  & table td:first-child {
+    @apply pl-0;
+  }
+
+  & table th {
+    @apply font-sans text-base text-left align-bottom;
+    @apply border-b-4 border-black;
+  }
+
+  & table td {
+    @apply font-sans text-sm;
+    @apply align-top;
+    @apply border-b border-gray-400;
+  }
+
+  & img {
+    @apply m-0;
+    max-width: 100%;
+  }
+
+  /* asides*/
+
+  & aside {
+    @apply pl-G md:pl-0 md:pr-G lg:pr-12 w-full;
+    @apply my-5 md:mb-0 md:absolute;
+    @apply md:-left-3/9 md:w-3/9;
+    @apply lg:-left-3/7 lg:w-3/7;
+
+    @apply arrow-d md:arrow;
+  }
+
+  & aside p {
+    @apply caption mt-0;
+  }
+
+  /* This makes the background of the text white, without making the background of the whole block white */
+  & aside p:first-line {
+    @apply bg-white;
+  }
+
+  & aside a {
+    @apply ink-underline;
+  }
+
+  /* spoilers */
+
+  & .spoiler {
+    @apply bg-gray-800 text-sm text-black font-sans p-2 mt-1 mb-5;
+    border-radius: 0.5em 1.2em 1.5em 2.3em/1.4em 1.9em 1em 2.3em;
+    transition: all 2s ease;
+  }
+
+  & li:nth-child(odd) .spoiler {
+    border-radius: 0.6em 0.8em 0.3em 0.5em/1em 1.7em 0.5em 1.1em;
+  }
+
+  & li:nth-child(6) .spoiler,
+  & li:nth-child(2) .spoiler {
+    border-radius: 0.5em 3.7em 1.5em 1.1em/1.6em 1.8em 3.3em 1.5em;
+  }
+
+  & .spoiler:hover {
+    @apply bg-gray-200 text-gray-400 cursor-pointer;
+  }
+
+  & .spoiler p {
+    @apply mt-0 mb-1 !important;
+  }
+
+  & .spoiler strong {
+    transition: all 2s;
+  }
+
+  & .spoiler:hover strong {
+    @apply text-gray-600;
+  }
+
+  & .spoiler a {
+    @apply text-2xs ml-2 whitespace-nowrap;
+    color: inherit !important;
+    background-image: none !important;
+  }
+
+  & .spoiler a:hover {
+    @apply underline;
+  }
+}
+
+/* context blurb at bottom of article */
+
+.context {
+  & p {
+    @apply mt-5;
+  }
+
+  & img {
+    @apply mt-5 border;
+  }
+
+  & a {
+    @apply ink-underline;
+  }
+}
+
+/* arrows */
+
+@responsive {
+  .arrow {
+    @apply md:bg-arrow-black;
+    @apply bg-no-repeat;
+    background-position: 0 0.1em;
+    background-size: 90% 0.7em;
+  }
+
+  .arrow-d {
+    @apply bg-arrow-black-d;
+    @apply bg-no-repeat;
+    background-position: 0 bottom;
+    background-size: 0.7em 17em;
   }
 }
