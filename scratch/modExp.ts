@@ -75,7 +75,13 @@
  *   = (5 * 17 * 16 * 9 * 5) % 19
  *   = 1
  */
-export const modExp = (base: number, exp: number, modulus: number): number => {
+export const modExp = (
+  base: number | bigint,
+  exp: number,
+  modulus: number | bigint
+): number => {
+  const _base = BigInt(base)
+  const _modulus = BigInt(modulus)
   // going through the exponent's binary digits from right to left,  we'll successively multiply
   // this accumulator by each term (only if this power of 2 is included in the binary expansion of
   // the exponent, i.e. if the binary digit we're on is 1). In our example with `exp=117`:
@@ -85,19 +91,19 @@ export const modExp = (base: number, exp: number, modulus: number): number => {
   //   = 1 + 4 + 16 + 32 + 64
   // so we're including the terms corresponding to these powers of 2: 0, 2, 4, 5, 6
   // but not for these powers of 2: 1, 3
-  let acc = 1
+  let acc = 1n
 
   // this will hold each term of the expansion, e.g. (5^1 % 19), (5^2 % 19), (5^3 % 19), etc.
-  let term = base % modulus
+  let term = _base % _modulus
 
   // loop through while dividing the exponent by 2 each time (2 because binary expansion) until there's nothing left
-  while (exp > 0) {
+  do {
     const binaryDigit = exp & 1 // value of the rightmost bit, 0 or 1 (same as `exp % 2`)
     if (binaryDigit) acc *= term
-    term = (term * term) % modulus // use this term to calculate the next, i.e. moving on to the next power of 2: (5^2 % 19), (5^3 % 19), etc.
+    term = (term * term) % _modulus // use this term to calculate the next, i.e. moving on to the next power of 2: (5^2 % 19), (5^3 % 19), etc.
     exp = exp >> 1 // shift the exponent to the right (same as `Math.trunc(exp/2)`) so we can see what the next binary digit is
-  }
-  return acc % modulus
+  } while (exp > 0)
+  return Number(acc % _modulus)
 }
 
 const test = (a: number, b: number, c: number) => {
@@ -112,9 +118,9 @@ const test = (a: number, b: number, c: number) => {
 console.clear()
 test(5, 117, 19)
 test(99, 3, 5)
+test(545, 503, 943)
 test(16234234234234, 5, 2341)
 test(16234234234234, 6666, 2341)
-
 // to run:
 // cd scratch
 // ts-node modExp.ts
