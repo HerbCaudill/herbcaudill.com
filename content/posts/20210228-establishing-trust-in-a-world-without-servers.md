@@ -649,7 +649,7 @@ are nodes and lockboxes are edges.
 </figure>
 
 If Charlie is removed from the team, we need to replace the team keys, because he had access to
-them. If he was an admin, we need to replace the admin keys; and if we belonged to any other roles
+them. If he was an admin, we need to replace the admin keys; and if he belonged to any other roles
 we need to replace those role keys as well.
 
 If Bob loses a device, we need to treat his old device's keys as compromised. His device keys had
@@ -669,13 +669,17 @@ When a member leaves a team or a role, or a device is lost, we say the correspon
 
 ### "Don't trust the client" when there's nothing but clients
 
-When you're creating a traditional web app, you learn early on that **you can't trust what's coming
-from the user's browser**. You have no control over what happens on the client: A malicious user
-could be running a modified version of your web app, or could be tampering with the data that it
-sends your server. So it's not enough to implement permissions on the client. Suppose your app
-checks whether a user has permission to modify a certain field; it's not enough for the app's UI to
-stop them: You still have to check their updates when they get to the server, to make sure they
-haven't bypassed your rules by tampering with the payload.
+If you've ever created a traditional web app, you probably learned early on that **you can't trust
+what's coming from the user's browser**.
+
+You have no control over what happens "on the client" --- you might think it's your code, but it's
+on someone else's hardware. A malicious user could be running a modified version of your web app, or
+could be tampering with the data that it sends your server.
+
+So it's not enough to implement permissions on the client. Suppose your app checks whether a user
+has permission to modify a certain field; it's not enough for the app's UI to stop them --- you still
+have to check their updates when they get to the server, to make sure they haven't bypassed your
+rules by tampering with the payload.
 
 In a peer-to-peer world, there's nothing **but** clients — so you can't trust anyone. That means
 that every peer needs to check the information they get from other peers against the team rules. A
@@ -731,9 +735,9 @@ head around these questions:
 
 ### Dealing with concurrency
 
-The first thing that I couldn't figure out was how to deal with concurrent changes. If Alice and Bob
-are both offline and both make changes to the signature chain, then how do you merge their two
-changes to end up in a consistent state?
+The first thing that I got stuck on was how to deal with concurrent changes. If Alice and Bob are
+both offline and both make changes to the signature chain, then how do you merge their two changes
+to end up in a consistent state?
 
 After all, we've gone to a lot of trouble to ensure that you _can't_ retroactively modify the chain,
 what with the "hash-chaining" and the "cryptographic signatures" and all.
@@ -749,8 +753,9 @@ introduce the possibility of branching and merging.
 hash-chained to two prior commits rather than one. That's why Git commits form a graph ---
 specifically, a directed acyclic graph (DAG) --- rather than a one-dimensional hash chain.
 
-So internally our **signature chain** needs to become a **signature graph** (although to keep things
-simple we'll keep calling it a chain). This means that multiple links can have the same predecessor:
+So internally our **signature chain** needs to become a **signature graph** (although out of
+bloody-mindedness we'll keep calling it a chain). This means that multiple links can have the same
+predecessor:
 
 <figure class='figure-xl'>
 
@@ -775,8 +780,7 @@ actions could be applied in any order, and the result would be the same:
 > 👨🏻‍🦲 Bob creates a `manager` role  
 > 👩🏾 Alice invites 👴 Dwight
 
-But suppose we
-had these two concurrent actions:
+But suppose we had these two concurrent actions:
 
 > 👨🏻‍🦲 Bob invites 👳🏽‍♂️ Charlie  
 > 👩🏾 Alice removes 👨🏻‍🦲 Bob
@@ -787,10 +791,10 @@ in the opposite order? **Problem**. Bob can't invite Charlie if he's been remove
 As luck would have it, right around the time I was struggling with this, Martin Kleppmann sent me a
 pre-publication draft of a paper he was working on with Matthew Weidner et al. that formalized a way
 of dealing with this very problem: "[Key Agreement for Decentralized Secure Group Messaging with
-Strong Security Guarantees](https://eprint.iacr.org/2020/1281.pdf)"
+Strong Security Guarantees](https://eprint.iacr.org/2020/1281.pdf)".
 
-This paper contains a great deal that goes over my head. However, the scenarios they consider jumped
-out as being exactly the sort of thing I was wrestling with:
+Much of this paper goes over my head. However, the scenarios they consider jumped out as being
+exactly the sort of thing I was wrestling with:
 
 > 1. Two group members A and B concurrently remove each other. Do the removals both take effect,
 >    cancel out, or something else?
@@ -804,12 +808,12 @@ Weidner et al. describe the general concept of a **decentralized group membershi
 which defines how these sort of conflicts are resolved; and they propose a particular one that they
 call the **strong-remove DGM** scheme, reasoning as follows:
 
-> It is easy to re-add a group member who has been inadvertently removed, but it is impossible
-> to reverse a leak of confidential information that has occurred because a user believed to be
-> removed was, in fact, still a group member. ...
+> It is easy to re-add a group member who has been inadvertently removed, but it is impossible to
+> reverse a leak of confidential information that has occurred because a user believed to be removed
+> was, in fact, still a group member. ...
 >
-> In the design of our DGM scheme we are guided by one observation: a user who is being removed from a
-> group should not be able to circumvent their removal.
+> In the design of our DGM scheme we are guided by one observation: a user who is being removed from
+> a group should not be able to circumvent their removal.
 
 <aside>
 
