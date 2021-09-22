@@ -9,7 +9,7 @@ const links = [
     icon: 'twitter',
     label: '@herbcaudill',
   },
-  { url: 'mailto:h@hc3.me', icon: 'envelope', label: 'herb@hc3.me' },
+  { url: 'mailto:h@herbcaudill.com', icon: 'envelope', label: 'herb@herbcaudill.com' },
 ]
 
 export const Footer: React.FC<{ className?: string }> = ({ className }) => {
@@ -30,10 +30,7 @@ export const Footer: React.FC<{ className?: string }> = ({ className }) => {
           {links.map(d => {
             return (
               <div key={d.icon}>
-                <img
-                  src={`/images/icons/${d.icon}.svg`}
-                  className="w-6 h-6 inline mr-2"
-                />
+                <img src={`/images/icons/${d.icon}.svg`} className="w-6 h-6 inline mr-2" />
                 <a
                   className="pb-1 text-xs font-semibold ink-underline"
                   target="_blank"

@@ -979,7 +979,8 @@ Let's just say that there are a lot of moving parts here:
 - **Mutually authenticating**: If both devices belong to members, then each one needs to
   simultaneously challenge the other's identity _and_ prove their own identity.
 - **Synchronizing**: Once everyone has been authenticated, we need to update each other's signature
-  chains with the latest actions on either side. Once we're connected, we need to keep watching for
+  chains with the latest actions on ei
+  ther side. Once we're connected, we need to keep watching for
   any new changes to the signature chain, and update each other as needed.
 - **Key agreement**: Finally, the two peers needs to agree on an encryption key for the application
   to use to communicate.
