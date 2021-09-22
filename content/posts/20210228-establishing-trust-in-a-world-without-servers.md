@@ -960,6 +960,8 @@ we figure out where we diverged. But that's a lot of back-and-forth. Kleppmann &
 sexy way of cutting down on the round trips, using a probabilistic device called a [Bloom
 filter](https://en.wikipedia.org/wiki/Bloom_filter).
 
+... TODO
+
 ## 7. Connection protocol
 
 ### Nothing is easy
