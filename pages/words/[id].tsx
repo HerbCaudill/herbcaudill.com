@@ -15,7 +15,7 @@ const PostLayout: React.FC<{
       <Head>
         <title>{`${title} | ${siteTitle}`}</title>
         <meta name="description" content={description} />
-        <meta name="og:url" content={`https://hc3.me/posts/${id}`} />
+        <meta name="og:url" content={`https://herbcaudill.com/posts/${id}`} />
         <meta name="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
