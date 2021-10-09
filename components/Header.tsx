@@ -17,7 +17,7 @@ export const Header: React.FC<HeaderProps> = ({ title, size = 'lg' }) => {
             href="/"
             className={cx(
               'font-serif font-light tracking-tight',
-              'splat-underline-on-hover cursor-pointer whitespace-nowrap'
+              'ink-underline-on-hover cursor-pointer whitespace-nowrap'
             )}
           >
             {name}

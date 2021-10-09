@@ -22,7 +22,7 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
             <li className="my-7 py-1 group cursor-pointer " key={item}>
               <Link href={url}>
                 <a
-                  className={cx('py-1', 'splat-underline-on-hover', {
+                  className={cx('py-1', 'ink-underline-on-hover', {
                     'font-bold': isActive,
                   })}
                 >

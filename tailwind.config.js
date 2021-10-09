@@ -1,6 +1,6 @@
 const { fonts, fontWeight } = require('./theme/fonts')
 const { colors } = require('./theme/colors')
-const { splat } = require('./theme/splat')
+const { inkUnderline, inkStrikethrough, inkArrow } = require('./theme/ink')
 const { spacing } = require('tailwindcss/defaultTheme')
 const { allFractions, gap, halfGap } = require('./theme/columnFractions')
 
@@ -30,6 +30,7 @@ module.exports = {
       }),
 
       minWidth: (theme, { breakpoints }) => ({
+        ...allFractions,
         ...breakpoints(theme('screens')),
       }),
 
@@ -84,10 +85,13 @@ module.exports = {
 
       backgroundImage: {
         // hand-drawn underline
-        'splat-black': splat('#444'),
-        'splat-red': splat(colors.red['800']),
-        'splat-black-1': splat('#444', 1),
-        'splat-red-1': splat(colors.red['800'], 1),
+        'u-ink-black': inkUnderline('#444'),
+        'u-ink-red': inkUnderline(colors.red['800']),
+        'u-ink-black-1': inkUnderline('#444', 1),
+        'u-ink-red-1': inkUnderline(colors.red['800'], 1),
+        'del-ink-black': inkStrikethrough('black'),
+        'arrow-black': inkArrow(colors.gray['500']),
+        'arrow-black-d': inkArrow(colors.gray['500'], true),
       },
 
       // animation

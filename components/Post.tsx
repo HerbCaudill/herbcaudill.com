@@ -27,7 +27,10 @@ export const Post: React.FC<PostProps> = ({
       {/* Cover image */}
       {image ? (
         <div className="-mx-G md:mx-0 md:col-span-12">
-          <img src={image} className="w-full h-48 md:h-64 object-cover" />
+          <img
+            src={image}
+            className="w-full h-48 md:h-64 object-cover object-right"
+          />
         </div>
       ) : (
         <div className="-mx-G md:mx-0 md:mb-16 lg:mb-48 md:col-span-12 " />
@@ -39,16 +42,15 @@ export const Post: React.FC<PostProps> = ({
         dangerouslySetInnerHTML={{ __html: caption }}
       />
 
-      <div className="md:col-span-9 mt-12 md:mt-0">
+      <div className="md:col-span-9 md:col-start-4 mt-12 md:mt-0">
         {/* Title */}
         <h1
           className={`
-                font-serif font-extralight tracking-tighter leading-none
-                md:mt-0
-                text-4xl md:text-5xl lg:text-6xl`}
-        >
-          {title}
-        </h1>
+            font-serif font-extralight tracking-tighter leading-none
+            md:mt-0
+            text-4xl md:text-5xl lg:text-6xl`}
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
 
         {/* Subtitle */}
         <h2
@@ -66,7 +68,7 @@ export const Post: React.FC<PostProps> = ({
       />
 
       <div
-        className={`use-splat-underline
+        className={`use-ink-underline
             md:col-span-9 md:col-start-4 md:mt-24
             border-t border-gray-400 `}
       >
