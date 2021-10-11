@@ -8,6 +8,8 @@ description: |
   authentication and authorization and explain how I've approached solving these problems in a new
   library, <a href='https://github.com/local-first-web/auth'>@localfirst/auth</a>.
 
+draft: true
+
 date: '2021-02-28'
 
 thumbnail: /images/posts/trust/trust-thumbnail.png

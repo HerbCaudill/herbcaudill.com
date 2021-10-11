@@ -10,6 +10,8 @@ description: |
   eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing,
   commodo quis, gravida id, est. Vestibulum volutpat.
 
+draft: true
+
 date: '2021-05-29'
 thumbnail: /images/posts/thumbnails/roads.jpg
 image: /images/posts/roads/roads.jpg
@@ -46,7 +48,7 @@ This would give us the best of both worlds.
 advantages for me as developer: **dealing with fewer moving parts**
 
 - little or no **infrastructure to maintain**
-- code is fundamentally **simpler ** with no server
+- code is fundamentally **simpler** with no server
 
 advantages for me as user: **regaining control over MY stuff**
 
