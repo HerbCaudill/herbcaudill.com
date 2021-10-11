@@ -20,9 +20,7 @@ export const post = (id: string): PostData => {
     title: metadata.title.replace('_', '&nbsp;'),
     subtitle: metadata.subtitle.replace('_', '&nbsp;'),
     content: content,
-    tags: metadata.tags
-      ? metadata.tags.split(',').map((t: string) => t.trim())
-      : [],
+    tags: metadata.tags ? metadata.tags.split(',').map((t: string) => t.trim()) : [],
     context: markdownToHtml(metadata.context),
   }
 }
@@ -45,7 +43,6 @@ export const relatedPosts = (id: string): PostData[] => {
 export const getAllPostIds = () =>
   fs.readdirSync(postsDir).map(fileName => fileName.replace(/\.md$/, ''))
 
-export const getAllPostIdParams = () =>
-  getAllPostIds().map(id => ({ params: { id } }))
+export const getAllPostIdParams = () => getAllPostIds().map(id => ({ params: { id } }))
 
 export const byDate = (a: PostData, b: PostData) => (a.date < b.date ? 1 : -1)
