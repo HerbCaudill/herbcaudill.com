@@ -9,6 +9,8 @@
   description: string
   content: string
 
+  draft: boolean
+
   image?: string
   caption?: string
   thumbnail: string
