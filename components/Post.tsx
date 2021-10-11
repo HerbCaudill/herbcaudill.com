@@ -1,12 +1,14 @@
 import { Nav } from 'components/Nav'
 import { PostData } from 'lib/types'
 import { Date } from 'components/Date'
+import { DraftBlurb } from 'components/DraftBlurb'
 import { PostLink } from 'components/PostLink'
 
 export const Post: React.FC<PostProps> = ({
   title,
   subtitle,
   description,
+  draft,
   image,
   caption,
   content,
@@ -27,10 +29,7 @@ export const Post: React.FC<PostProps> = ({
       {/* Cover image */}
       {image ? (
         <div className="-mx-G md:mx-0 md:col-span-12">
-          <img
-            src={image}
-            className="w-full h-48 md:h-64 object-cover object-right"
-          />
+          <img src={image} className="w-full h-48 md:h-64 object-cover object-right" />
         </div>
       ) : (
         <div className="-mx-G md:mx-0 md:mb-16 lg:mb-48 md:col-span-12 " />
@@ -42,7 +41,7 @@ export const Post: React.FC<PostProps> = ({
         dangerouslySetInnerHTML={{ __html: caption }}
       />
 
-      <div className="md:col-span-9 md:col-start-4 mt-12 md:mt-0">
+      <div className="relative md:col-span-9 md:col-start-4 mt-12 md:mt-0">
         {/* Title */}
         <h1
           className={`
@@ -57,6 +56,13 @@ export const Post: React.FC<PostProps> = ({
           className="font-bold font-sans tracking-tight text-xl mt-2"
           dangerouslySetInnerHTML={{ __html: subtitle }}
         />
+
+        {/* draft stamp*/}
+        {draft ? (
+          <div className="absolute top-0 opacity-50 right-0 -top-24 w-48 md:w-72 md:-left-1/4 md:top-24">
+            <img src="/images/draft.png"></img>
+          </div>
+        ) : null}
       </div>
 
       <Nav
@@ -77,6 +83,8 @@ export const Post: React.FC<PostProps> = ({
           className=" pt-6 mb-12 font-mono text-sm text-left"
           dangerouslySetInnerHTML={{ __html: description }}
         ></p>
+
+        <DraftBlurb draft={draft} className="mt-24" />
       </div>
 
       {/* Article body */}
@@ -85,9 +93,10 @@ export const Post: React.FC<PostProps> = ({
           text-gray-700 text-base sm:text-lg font-serif 
           md:col-start-4 md:col-span-9 
           lg:col-start-4 lg:col-span-7`}
-        dangerouslySetInnerHTML={{ __html: content }}
-      />
-
+      >
+        <div dangerouslySetInnerHTML={{ __html: content }} />
+        <DraftBlurb draft={draft} />
+      </article>
       {/* Context */}
       <aside
         className={`
@@ -108,8 +117,7 @@ export const Post: React.FC<PostProps> = ({
           </p>
           {originalPublication && originalUrl ? (
             <p className="font-bold">
-              Originally published on{' '}
-              <a href={originalUrl}>{originalPublication}</a>.
+              Originally published on <a href={originalUrl}>{originalPublication}</a>.
             </p>
           ) : null}
         </div>
