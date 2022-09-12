@@ -10,7 +10,7 @@ description: |
 
 draft: true
 
-date: '2021-02-28'
+date: '2022-02-28'
 
 thumbnail: /images/posts/trust/trust-thumbnail.png
 image: /images/posts/trust/trust.png
