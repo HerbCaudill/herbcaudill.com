@@ -176,7 +176,7 @@ article {
   /* tweak the box surrounding blocks of code */
   /* (this overrides some of Prism's styling) */
   & pre {
-    @apply my-G p-3 bg-gray-50 rounded-full;
+    @apply my-G p-3 bg-gray-50 rounded-md;
     @apply overflow-x-auto;
 
     &::-webkit-scrollbar {
@@ -301,9 +301,9 @@ article {
     @apply my-10;
   }
 
-article li {
-  @apply list-outside ml-6 leading-relaxed mt-2;
-}
+  article li {
+    @apply list-outside ml-6 leading-relaxed mt-2;
+  }
 
   & figure {
     @apply my-10;
@@ -329,9 +329,9 @@ article li {
     @apply inline lg:block;
   }
 
-article blockquote p + p {
-  @apply mt-4; /* normal margin between paragraphs inside a blockquote */
-}
+  article blockquote p + p {
+    @apply mt-4; /* normal margin between paragraphs inside a blockquote */
+  }
 
   & .figure-xl {
     @apply mt-16; /* Extra top margin for large images, since they often serve to divide article sections */
@@ -369,10 +369,10 @@ article blockquote p + p {
     @apply lg:relative lg:w-full lg:left-0 lg:col-span-2;
   }
 
-/* break spans up on large screens, where the caption is in the sidebar  (e.g. "key" for ascii illustrations in rewrite article */
-article figure > :nth-child(2) span {
-  @apply inline lg:block;
-}
+  /* break spans up on large screens, where the caption is in the sidebar  (e.g. "key" for ascii illustrations in rewrite article */
+  article figure > :nth-child(2) span {
+    @apply inline lg:block;
+  }
 
   & .figure-md {
     @apply md:mx-0 md:grid md:grid-cols-9 md:gap-G;
@@ -421,7 +421,7 @@ article figure > :nth-child(2) span {
     @apply border border-gray-300 p-2;
   }
 
-/* medium variant: images that span 5 columns */
+  /* medium variant: images that span 5 columns */
 
   & .figure-2up {
     @apply my-G;
