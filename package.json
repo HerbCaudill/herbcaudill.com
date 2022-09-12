@@ -11,7 +11,7 @@
     "classnames": "2",
     "date-fns": "2",
     "gray-matter": "4",
-    "marked": "2",
+    "marked": "4",
     "next": "12",
     "postcss": "8",
     "postcss-preset-env": "7",
