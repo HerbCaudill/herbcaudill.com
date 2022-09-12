@@ -10,6 +10,7 @@ export const PostLink: React.FC<PostLinkProps> = ({
   subtitle,
   description,
   thumbnail,
+  draft,
   tags,
 }) => (
   <Link href={`/words/${id}`} key={id}>
@@ -22,14 +23,12 @@ export const PostLink: React.FC<PostLinkProps> = ({
         group
         hover:bg-gray-400 hover:bg-opacity-5 transition-all duration-500 ease-in-out
         cursor-pointer
+        ${draft ? 'opacity-25' : ''}
       `}
     >
       <div className="col-span-1 md:col-span-3">
         <div className="w-full relative overflow-hidden pb-100% md:pb-50% mb-2">
-          <img
-            className="absolute w-full h-full object-cover border"
-            src={thumbnail}
-          />
+          <img className="absolute w-full h-full object-cover border" src={thumbnail} />
         </div>
       </div>
 
