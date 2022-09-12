@@ -57,12 +57,7 @@ export const Post: React.FC<PostProps> = ({
           dangerouslySetInnerHTML={{ __html: subtitle }}
         />
 
-        {/* draft stamp*/}
-        {draft ? (
-          <div className="absolute top-0 opacity-50 right-0 -top-24 w-48 md:w-72 md:-left-1/4 md:top-24">
-            <img src="/images/draft.png"></img>
-          </div>
-        ) : null}
+        <DraftBlurb draft={draft} className="mt-2 w-7/9" />
       </div>
 
       <Nav
@@ -79,12 +74,7 @@ export const Post: React.FC<PostProps> = ({
             border-t border-gray-400 `}
       >
         {/* Description */}
-        <p
-          className=" pt-6 mb-12 font-mono text-sm text-left"
-          dangerouslySetInnerHTML={{ __html: description }}
-        ></p>
-
-        <DraftBlurb draft={draft} className="mt-24" />
+        <p className=" pt-6 mb-12 font-mono text-sm text-left" dangerouslySetInnerHTML={{ __html: description }}></p>
       </div>
 
       {/* Article body */}
@@ -95,8 +85,10 @@ export const Post: React.FC<PostProps> = ({
           lg:col-start-4 lg:col-span-7`}
       >
         <div dangerouslySetInnerHTML={{ __html: content }} />
-        <DraftBlurb draft={draft} />
+
+        <DraftBlurb draft={draft} className="mt-2" />
       </article>
+
       {/* Context */}
       <aside
         className={`
