@@ -1,4 +1,4 @@
-import marked from 'marked'
+import { marked } from 'marked'
 
 const renderer = new marked.Renderer()
 
@@ -7,13 +7,7 @@ const handleDefList = (text: string) => {
   // : Description
   var dlRegex = /(^|\n+)(\S.+)\n:(\s+)(\S.+)/
 
-  var dl =
-    '\n\n' +
-    '<dl>' +
-    '<dt><p>$2</p></dt>' +
-    '<dd><p>$4</p></dd>' +
-    '</dl>' +
-    '\n\n'
+  var dl = '\n\n' + '<dl>' + '<dt><p>$2</p></dt>' + '<dd><p>$4</p></dd>' + '</dl>' + '\n\n'
 
   if (text.match(dlRegex)) {
     text = text.replace(dlRegex, dl)
