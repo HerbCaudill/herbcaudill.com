@@ -13,7 +13,7 @@
     "gray-matter": "4",
     "marked": "2",
     "next": "12",
-    "postcss": "8",
+    "postcss": "7",
     "postcss-preset-env": "7",
     "react": "17",
     "react-dom": "17",
