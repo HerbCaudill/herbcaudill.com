@@ -20,7 +20,7 @@
   @apply ink-underline;
 }
 
-/* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
+/* attribution in captions, e.g. "-- Joel Spolsky" */
 .attribution {
   @apply block text-gray-400;
   & a {
@@ -488,7 +488,7 @@ article {
   }
 
   & table th {
-    @apply font-sans text-base text-left align-bottom;
+    @apply font-sans text-base align-bottom;
     @apply border-b-4 border-black;
   }
 

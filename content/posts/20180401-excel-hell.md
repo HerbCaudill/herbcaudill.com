@@ -14,11 +14,11 @@ thumbnail: '/images/thumbnails/excel.jpg'
 
 After writing [many words about the challenges of building a SaaS toolset for a team](https://medium.com/@herbcaudill/the-trouble-with-saas-279694551b25), I concluded that the holy grail would look like this:
 
-![](/images/posts/excel/1.png)
+![]($$/1.png)
 
 I’d mentioned to some people on my team that I was thinking over a new product idea. When I published that post, this was the first reaction:
 
-![](/images/posts/excel/2.png)
+![]($$/2.png)
 
 The conventional wisdom in the software business is to **do one thing well.** In general that’s good advice, and that thinking has brought us some terrific, tightly-focused tools.
 
@@ -32,9 +32,9 @@ The reality of most teams, including mine, is this: We use purpose-built softwar
 
 <div class='image-2up'>
 
-![](/images/posts/excel/3.png)
+![]($$/3.png)
 
-![](/images/posts/excel/4.png)
+![]($$/4.png)
 
 </div>
 
@@ -50,7 +50,7 @@ It goes without saying that Microsoft Excel is the world’s most-used **spreads
 
 <div class='image'>
 
-![](/images/posts/excel/5.png)
+![]($$/5.png)
 
 VisiCalc was the original [killer app](https://en.wikipedia.org/wiki/Killer_application) — software compelling enough to fuel sales of the hardware it ran on.
 
@@ -68,7 +68,7 @@ Realizing this, Microsoft belatedly started to add data-management features to E
 
 <div class='image image-lg'>
 
-![](/images/posts/excel/6.png)
+![]($$/6.png)
 
 Did you know you could create queries within an Excel spreadsheet to filter, project, transform, pivot or unpivot data from an existing table?
 
@@ -88,9 +88,9 @@ Search Quora or StackOverflow and you’ll find dozens of variations of the ques
 
 <div class='image-2up'>
 
-![](/images/posts/excel/7.png)
+![]($$/7.png)
 
-![](/images/posts/excel/8.gif)
+![]($$/8.gif)
 
 Listen closely, and you can hear the sound of someone’s brain about to melt.
 
@@ -102,7 +102,7 @@ But _most people’s_ brains don’t go naturally to a relational-tables model, 
 
 <div class='image'>
 
-![](/images/posts/excel/9.png)
+![]($$/9.png)
 
 Two signs that you’ve outgrown Excel: (1) Repeating the same data over, and (2) a series of numbered columns.
 
@@ -120,7 +120,7 @@ So people are naturally tempted to do things like this — manually grouping and
 
 <div class='image'>
 
-![](/images/posts/excel/10.png)
+![]($$/10.png)
 
 This is an official template provided by the Microsoft Corporation. It’s pretty, but of all people, they should know better than to offer this up as a good practice!
 
@@ -130,9 +130,9 @@ If you know spreadsheets, you know that this spreadsheet would be a nightmare to
 
 <div class='image-2up'>
 
-![](/images/posts/excel/11.png)
+![]($$/11.png)
 
-![](/images/posts/excel/12.png)
+![]($$/12.png)
 
 Even if you’ve done everything right, you can’t create these kinds of views on your data in Excel.
 
@@ -146,7 +146,7 @@ The downside of Excel’s flexibility is that it’s really, really easy to do t
 
 <div class='image'>
 
-![](/images/posts/excel/13.png)
+![]($$/13.png)
 
 Some of these were entered as M/D/Y and some as D/M/Y. Can you tell which is which?
 
@@ -160,7 +160,7 @@ As a result, the internet is littered with Excel horror stories, from the [$25-m
 
 Twelve years after Google Sheets was introduced, and ten years after Microsoft launched Excel Online, most spreadsheet “systems” are still files that live on a server or on someone’s hard drive somewhere.
 
-![](/images/posts/excel/14.png)
+![]($$/14.png)
 
 As a result:
 
@@ -183,7 +183,7 @@ So let’s talk about **Microsoft Access**, which _is_ database software, and wh
 
 **So why don’t more people use Access?** It’s not because they’re too dumb to figure it out. My team includes four data scientists and five programmers. We can all write SQL in our sleep. We use spreadsheets _a lot_ and we don’t use Access _at all_.
 
-![](/images/posts/excel/15.png)
+![]($$/15.png)
 
 The reason, I think, is best summarized in Venkatesh Rao’s answer on Quora to the question “[Why do many people still use Excel as a pseudo database?](https://www.quora.com/Why-do-many-people-still-use-Excel-as-a-pseudo-database)”:
 
@@ -201,9 +201,9 @@ It has to let me easily create lists and tables like Excel. But in the long run 
 
 <div class='image-2up'>
 
-![](/images/posts/excel/16.png)
+![]($$/16.png)
 
-![](/images/posts/excel/17.png)
+![]($$/17.png)
 
 Fieldbook (left) and Airtable both advertise the simplicity of spreadsheets combined with the power of a database.
 
@@ -231,7 +231,7 @@ I have a theory that **a loosely-typed object-oriented model**, like JavaScript 
 
 <div class='image image-md'>
 
-![](/images/posts/excel/18.jpeg)
+![]($$/18.jpeg)
 
 Photo © 2011 by Simon Bramwell
 
@@ -241,7 +241,7 @@ I was recently talking with a DevResults customer who was managing data from an 
 
 <div class='image image-md'>
 
-![](/images/posts/excel/19.png)
+![]($$/19.png)
 
 </div>
 
@@ -283,7 +283,7 @@ We can capture this information in a JavaScript object or a JSON file in a succi
 
 In contrast, the relational model of the same data introduces a weird layer of abstraction and indirection.
 
-![](/images/posts/excel/20.png)
+![]($$/20.png)
 
 This is weird for a couple of reasons.
 

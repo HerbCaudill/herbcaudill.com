@@ -7,7 +7,7 @@ date: '2018-12-23'
 originalPublication: Medium
 originalUrl: https://medium.com/all-the-things/data-types-for-humans-ea2dd63a19db
 
-image: '/images/thumbnails/datatypes-banner.jpg'
+image: '/images/posts/datatypes/datatypes-banner.jpg'
 thumbnail: '/images/thumbnails/datatypes.jpg'
 ---
 

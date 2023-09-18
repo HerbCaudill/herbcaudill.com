@@ -1,7 +1,5 @@
 import { marked } from 'marked'
 
-const renderer = new marked.Renderer()
-
 const handleDefList = (text: string) => {
   // Label
   // : Description
@@ -13,19 +11,21 @@ const handleDefList = (text: string) => {
     text = text.replace(dlRegex, dl)
     return text
   } else {
-    return `<p>${text}</p>
-`
+    return `<p>${text}</p>\n`
   }
 }
-
-renderer.paragraph = handleDefList
 
 marked.setOptions({
   gfm: true, // GitHub flavored markdownn
   sanitize: false, // No need since I control the markdown being processed
   smartLists: true,
   smartypants: true, // smart quotes
-  renderer,
+})
+
+marked.use({
+  renderer: {
+    paragraph: handleDefList,
+  },
 })
 
 export const markdownToHtml = (input: string) => (input ? marked(input) : '')
