@@ -24,7 +24,7 @@ Recently, I've been spending a lot of time thinking about how to solve some of m
 
 I believe that my software should:
 
-1. 🐱‍💻 let me **change** it to fit my needs
+1. 🛠️ let me **change** it to fit my needs
 2. 🛫 let me work **offline**
 3. 📦 give me **control** over my stuff
 4. 🔌 **integrate** with other software

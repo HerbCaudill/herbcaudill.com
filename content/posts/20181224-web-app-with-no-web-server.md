@@ -7,7 +7,7 @@ originalPublication: Medium
 originalUrl: https://medium.com/all-the-things/a-web-application-with-no-web-server-61000a6aed8f
 date: '2018-12-24'
 
-thumbnail: '/images/thumbnails/serverless.png'
+thumbnail: '/images/thumbnails/serverless.jpg'
 ---
 
 Things have changed a lot in the decade since the last time I built a web application from the ground up. It used to be you picked a framework (ASP.NET, Rails, etc.) and learned it inside out. Now, as a result of the open source explosion in the JavaScript ecosystem, it’s your job to put together a mosaic of frameworks.

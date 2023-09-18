@@ -3,27 +3,16 @@ title: Rewrite, refactor, or reinvent?
 subtitle: Lessons from 6 software rewrite stories
 
 description: |
-  A new take on the age-old question: Should you rewrite your application from scratch, 
-  or is that “the single worst strategic mistake that any software company can make”? 
-  Turns out there are more than two options for dealing with a mature codebase.
+  A new take on the age-old question: Should you rewrite your application from scratch, or is that “the single worst strategic mistake that any software company can make”? Turns out there are more than two options for dealing with a mature codebase.
 
 context: |
-  I started writing this as a way of organizing my own thoughts. I originally intended 
-  just to share it internally with my team at DevResults, but when it was nearly done I thought 
-  I might as well put it online. 
+  I started writing this as a way of organizing my own thoughts. I originally intended just to share it internally with my team at DevResults, but when it was nearly done I thought I might as well put it online. 
 
-  Less than an hour after I hit publish on Medium, DHH himself [tweeted it out
-  approvingly](https://twitter.com/dhh/status/1097937474003685376). By the next day it was coming
-  back to me in my own Twitter feed, as software developers who I admired responded to it: Nicholas
-  Zakas, Anil Dash, Dan Abramov, Simon Willison.  
+  Less than an hour after I hit publish on Medium, DHH himself [tweeted it out approvingly](https://twitter.com/dhh/status/1097937474003685376). By the next day it was coming back to me in my own Twitter feed, as software developers who I admired responded to it: Nicholas Zakas, Anil Dash, Dan Abramov, Simon Willison.  
 
-  At a conference a few weeks later, I met Amir Sahlifendic, the founder of
-  [Todoist](www.todoist.com). The conversation turned to the question of mature codebases. Amir
-  said, "You should really read this article that came out a while back, about rewriting
-  software..." 
+  At a conference a few weeks later, I met Amir Sahlifendic, the founder of [Todoist](www.todoist.com). The conversation turned to the question of mature codebases. Amir said, "You should really read this article that came out a while back, about rewriting software..." 
 
-  At any rate, this is by far the most widely-read thing I've ever written. According to Medium,
-  it's been read from beginning to end by nearly 40,000 people -- not bad for a half-hour read!
+  At any rate, this is by far the most widely-read thing I've ever written. According to Medium, it's been read from beginning to end by nearly 40,000 people -- not bad for a half-hour read!
 
 originalPublication: Medium
 originalUrl: http://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22

@@ -6,15 +6,11 @@ description: |
   Cloud-based software has made collaboration easier, but at a cost to both developers and users.
   Could a new model for software give us the best of both worlds?
 
-draft: true
+draft: false
 
 date: '2022-01-10'
-thumbnail: /images/posts/thumbnails/roads.jpg
-image: /images/posts/roads/roads.jpg
+thumbnail: /images/thumbnails/placeholder.jpg
 tags: software
-
-caption: |
-  Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis.
 ---
 
 Imagine you were trying to reach a mountain peak, in heavy fog, with no maps or trails. How would
@@ -26,10 +22,10 @@ If you think about it for a moment, though, you might realize that there's a pro
 approach. Maybe if the mountain you're climbing looks like Mt. Fuji, you're fine - but what if, like
 most mountains, it includes a number of smaller peaks at different altitudes?
 
-> TK pictures of Mt. Fuji & maybe Montserrat or Montarto
+![](/images/posts/localfirst/mountain.gif)
 
 If you only go up and never go down, you'll very likely find yourself in what mathematicians call a
-[local optimum](TK).
+[local maximum](TK).
 
 And if others are also using your same mountain-climbing heuristics, you might quickly find yourself
 in the ridiculous situation of competing with a bunch of other people for this same false summit.
@@ -39,13 +35,13 @@ irrational to keep heading for the nearer, lower peak. After all, you're almost 
 else is there too, then the trail is well-worn so you won't get lost. Going downhill just feels
 wrong - especially while others are making progress uphill.
 
-> THIS IS A METAPHOR
+### This is a metaphor
 
-I think that we in software industry have ended up in a local optimum. When I say the "software
+I think that we in software industry have ended up in a local maximum. When I say the "software
 industry", I'm thinking specifically of those of us who make collaboration software: multiplayer
 apps that help people work together over the internet.
 
-In this metaphor the false summit, the local optimum, is **cloud software**, also referred to as
+In this metaphor the false summit, the local maximum, is **cloud software**, also referred to as
 "web-based software" and "software as a service". My hope with this article to persuade you that
 there's a higher peak out there - a better approach to creating collaboration software, which goes
 by the name of **local-first software**. And I'd like to not only persuade you that this other peak
@@ -68,7 +64,7 @@ grow longer and longer. One person might ask everyone to hold off on making any 
 while they're working on the document; but inevitably at some point you would still end up
 laboriously re-applying edits from one document to another.
 
-> TK alice/bob/charlie illustration?s
+![](/images/posts/localfirst/filesharing.gif)
 
 Around this time, if you wanted multiplayer software, you generally had to host it yourself; so this
 was mostly the province of bigger companies that had the kind of infrastructure to do this.
@@ -107,7 +103,7 @@ makes web-based monitoring and evaluation software for international aid project
 
 What's good about this approach?
 
-#### Users get easy collaboration
+### Users get easy collaboration
 
 For the user, the big advantage of cloud software is having a **single source of truth**: Your data
 lives in only one place, and that makes collaboration easier.
@@ -118,7 +114,7 @@ always using the latest version.
 You can **access it from anywhere**, and it's **backed up** for you — you don't have to worry about
 losing data if something happens to your device.
 
-#### Providers get control over customers and their data
+### Providers get control over customers and their data
 
 The advantages for the software developer are even greater. It's very convenient having everything
 on your servers; it gives you a lot of **control**. It's much easier to debug, because you have
@@ -133,7 +129,7 @@ shut off their access.
 So there's a lot to like here. But everything is about trade-offs, and I think it's worth thinking
 about what we traded off when we moved everything to the cloud.
 
-#### Users have given up the ability to work offline
+### Users have given up the ability to work offline
 
 For the **user**, the tradeoffs all have to do with the fact that our data, which used to live on
 our own computer, is now inconveniently located hundreds or possibly thousands of miles away, on
@@ -141,7 +137,7 @@ someone else's computer. For starters, this means that we have to have a good, w
 connection in order to do anything at all. If we're **offline**, or having network problems, we have
 no access to our stuff.
 
-#### …and responsiveness
+### …and responsiveness
 
 And our own network connection is just the beginning: Every leg of the journey between you and your
 data represents a possible point of failure. And even if everything is working perfectly and every
@@ -149,7 +145,7 @@ step takes place at the maximum possible speed, which it won't, you'll still exp
 **latency** with every interaction. You're ultimately limited by the speed of light, which starts to
 matter at planetary scale.
 
-#### …and ownership of our data
+### …and ownership of our data
 
 So the "hundreds or possibly thousands of miles away" part is inconvenient, but the "someone else's
 computer" part is what's really troublesome. "Possession is nine tenths of the law", and in a very
@@ -159,7 +155,7 @@ There's always the threat of being **locked out** of my stuff because my credit 
 because my product was discontinued, or the company went out of business, or just because someone
 goofed up.
 
-#### … and our privacy
+### … and our privacy
 
 Putting my stuff on someone else's computers also means that I have less control over who sees my
 stuff.
@@ -189,7 +185,7 @@ institutions that have made that possible aren't universal facts of life — the
 and they're fragile, and they're not available to everyone. If you're a government whistleblower,
 you can't be blasé. If you're an activist in Hong Kong, you don't have that luxury.
 
-#### As a society
+### As a society
 
 And I'll say one last thing about what we as consumers and as a society have given up.
 
@@ -201,13 +197,13 @@ Something that's starting to worry me more and more is that we depend so much on
 companies, that they end up with the kind of power over our lives that normally we reserve for
 democratically elected governments. So much is at stake if you're booted off Twitter or Google or
 Amazon that these companies have what amounts to internal judicial systems to deal with various
-kinds of misbehavior. But unlike the real thing, in these shadow judiciaries you have no **rights**.
+kinds of misbehavior. But unlike the real thing, in these shadow judiciaries you have no _rights_.
 Big tech doesn't have to prove anything to you, or even tell you what you're accused of.
 
 So I think as a society, "we the people" should be worried about the quasi-governmental power that
 we're conceding, little by little, to unelected, unaccountable private companies.
 
-#### Developers have taken on lots of extra complexity
+### Developers have taken on lots of extra complexity
 
 So the shift to cloud software has resulted in us users giving up a lot of control to software
 providers. But for software developers, cloud software has been a mixed bag as well — especially for
@@ -286,6 +282,16 @@ collaboration, via peer-to-peer communication with the local applications on oth
 I think that's a really exciting vision of the future — one that would get us back everything we
 traded away when we switch to cloud applications, without making us give up the ability to
 collaborate smoothly. The best of both worlds.
+
+|                                                         | 💿<br/>traditional<br/>apps | 🌧<br/>cloud<br/>apps | 👍<br/>local-first<br/>apps |
+| ------------------------------------------------------- | :-------------------------: | :------------------: | :-------------------------: |
+| ⌚ **fast**: my data is on my device                    |             ✅              |          ⛔          |             ✅              |
+| 🚙 **robust**: network optional                         |             ✅              |          ⛔          |             ✅              |
+| 🕵️‍♀️ **private**: only I decide who sees it               |             ✅              |          ⛔          |             ✅              |
+| 📦 **mine**: I own it and can take it with me           |             ✅              |          ⛔          |             ✅              |
+| 👪 **multiplayer**: I can work with others in real time |             ⛔              |          ✅          |             ✅              |
+| 📱 **multidevice**: move from laptop to phone to tablet |             ⛔              |          ✅          |             ✅              |
+| 🌩 **backed up**: no worries about data loss             |             ⛔              |          ✅          |             ✅              |
 
 But if you look around, you'll see that very little software these days works that way. Why is that?
 If this is such an attractive vision, why are we still building web apps? Why did Microsoft go to

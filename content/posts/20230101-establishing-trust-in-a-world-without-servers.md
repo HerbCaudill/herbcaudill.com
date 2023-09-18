@@ -8,9 +8,9 @@ description: |
   authentication and authorization and explain how I've approached solving these problems in a new
   library, <a href='https://github.com/local-first-web/auth'>@localfirst/auth</a>.
 
-draft: true
+draft: false
 
-date: '2022-02-28'
+date: '2023-01-01'
 
 thumbnail: /images/posts/trust/trust-thumbnail.png
 image: /images/posts/trust/trust.png
@@ -43,15 +43,11 @@ Bob, well then the server won't let him in. The server knows what Bob's allowed 
 it simply won't let him see data he's not allowed to see, or change it in unauthorized ways.
 
 In practice, what this means is that we rely on well-known technology companies — Google, Apple,
-Microsoft, etc. — to **vouch for us** in our interactions with each other.
+Microsoft, etc. — to **vouch for us** in our interactions with each other. It's a bit weird that the
+job of certifying human identities has been outsourced to a handful of tech giants, right?
 
-This is one of those situations that seems unremarkable until you really start thinking about it, at
-which point you wonder why you ended up living in this bizarro-world timeline. How is it that the
-role of certifying identity has fallen on **consumer brands**?
-
-Perhaps it would be more logical for this role to fall on the government, or on a non-profit
-organization like ICANN. Or maybe there is a way for us to **vouch for ourselves**, instead of
-relying on tech giants, governments, or any centralized organization to confirm our identity.
+Wouldn't it be great if we could just **vouch for ourselves and for each other**, instead
+of relying on tech giants, governments, or any centralized organization to confirm our identity?
 
 ## Down the rabbit hole
 
@@ -67,17 +63,19 @@ browser, see [@localfirst/state](https://github.com/local-first-web/state).
 </aside>
 
 To make this more concrete, let's imagine we're making an app that manages projects and tasks for a
-team, like Trello or Asana. But instead of relying on a server to store the application data, each
-person on the team has a complete replica of the data on their own computer (and on any other
-devices they use, like their phones); and everyone's replicas are magically kept in sync with each
-other.
+team, like Trello or Asana. But this is going to be a [local-first
+app](http://inkandswitch.com/local-first.html), so we won't have a central server that stores our
+application data. Instead, each person on the team has a complete replica of the data on their own
+computer (and on any other devices they use, like their phones); and everyone's replicas are
+magically kept in sync with each other.
 
 👩🏾 Alice will be our hypothetical superuser: She'll set her team up with our app, and invite her
 team members to collaborate: 👨🏻‍🦲 Bob, 👳🏽‍♂️ Charlie, and 👴🏼 Dwight.
 
 Let's list some of the questions that we might have at this stage:
 
-1. **Permissions management** <br>**Q:** Without a server to keep track of group membership and permissions,
+1. **Permissions management**  
+   **Q:** Without a server to keep track of group membership and permissions,
    how can Alice add and remove team members, and limit what they can and can't do? Where does that
    information even live?
 
@@ -90,26 +88,29 @@ Let's list some of the questions that we might have at this stage:
 
    <div class='spoiler'>
 
-   **A:** All changes to the group's membership and permissions are recorded as a sequence of signed
-   and hash-chained changes called a **signature chain**. Every group member keeps a complete
-   replica of the signature chain and can validate other members' actions independently. All
-   authority can be traced back to the group's founding member. [Jump to
-   details](#permissions-management)
+   **A:** All changes to the group's membership and permissions are recorded on a hash-chained graph
+   of signed actions. Every group member keeps a complete replica of the graph, and
+   can validate other members' actions independently. All authority can be traced back to the
+   group's founding member. [Jump to details](#permissions-management)
 
    </div>
 
-1. **Key management** <br>**Q:** To encrypt anything or use digital signatures, you need to know each other's
-   public keys; but how can that happen if you don't have a trusted, centralized key server?
+1. **Key management**  
+   **Q:** To encrypt anything or use digital signatures, you need to know each other's public keys;
+   but how can that happen if you don't have a trusted, centralized key server?
 
    <div class='spoiler'>
 
    **A:** New members are invited using a **Seitan token exchange**, which is basically Trust on
-   First Use (TOFU) hardened with the use of an invitation key. [Jump to details](#key-management)
+   First Use (TOFU) hardened with the use of an invitation key. When a new member is invited and
+   joins, they provide their public keys, which are then stored on the graph. [Jump to
+   details](#key-management)
 
     </div>
 
-1. **Peer authentication** <br>**Q:** Without a server to vouch for his identity, how does Alice know it's
-   really Bob at the other end?
+1. **Peer authentication**  
+   **Q:** Without a server to vouch for his identity, how does Alice know if she's really talking to
+   Bob?
 
    <div class='spoiler'>
 
@@ -119,8 +120,9 @@ Let's list some of the questions that we might have at this stage:
 
    </div>
 
-1. **Read authorization** <br>**Q:** How can you keep some users from seeing sensitive information if each user
-   has a complete copy of the data?
+1. **Read authorization**  
+   **Q:** How can you keep some users from seeing sensitive information if each user has a complete
+   copy of the data?
 
    <div class='spoiler'>
 
@@ -129,26 +131,25 @@ Let's list some of the questions that we might have at this stage:
 
     </div>
 
-1. **Write authorization** <br>**Q:** How do you prevent unauthorized users from modifying things they're not
-   allowed to modify?
+1. **Write authorization**  
+   **Q:** How do you prevent unauthorized users from modifying things they're not allowed to modify?
 
    <div class='spoiler'>
 
-   **A:** Since all users have a full replica of the signature chain and can use it to compute the
-   current state of the group's membership and permissions, each user can independently determine
-   whether or not to accept another member's changes as valid. [Jump to
-   details](#write-authorization)
+   **A:** We can't stop people from making changes to the data they have locally. But each user can
+   use the graph to determine the current state of the group's membership and permissions, and
+   independently determine which changes to accept. [Jump to details](#write-authorization)
 
     </div>
 
-1. **Synchronization and concurrency** <br>**Q:** How does everyone stay up to date with changes
-   to the group's membership and permissions? What happens when two admins make concurrent changes?
+1. **Synchronization and concurrency**  
+   **Q:** How does everyone stay up to date with changes to the group's membership and permissions?
+   What happens when two admins make concurrent changes?
 
    <div class='spoiler'>
 
-   **A:** We represent the signature chain as a directed acyclic graph so that
-   we preserve the history of any concurrent changes. Conflicting changes are resolved using
-   "strong-remove" heuristics. [Jump to details](#synchronization-and-concurrency)
+   **A:** The graph preserves the history of any concurrent changes. Conflicting changes are
+   resolved using "strong-remove" heuristics. [Jump to details](#synchronization-and-concurrency)
 
     </div>
 
@@ -173,17 +174,16 @@ Who's a member, who's not, and who's allowed to do what — and importantly, who
 change the rules — all that information has to be shared with everyone, just like the data that the
 team is collaborating on. But **how do you know who to trust about what the rules themselves are?**
 
-<figure class='figure-xl'>
+After a couple of false starts, I found a solid solution to this problem in the docs for [Keybase's
+Teams application](https://book.keybase.io/teams). They use what they call a **[signature
+chain](https://book.keybase.io/docs/teams/sigchain)**: a series of links, each one containing a
+single change to the team's membership or roles.
 
-![](/images/posts/trust/sigchain.1.png)
+<figure class='figure-lg'>
 
-It's not a blockchain, I swear!
+![](/images/posts/trust/01-simple-graph.png)
 
 </figure>
-
-After a couple of false starts, I found a solid solution to this problem in the docs for [Keybase's
-Teams application](https://book.keybase.io/teams): A **signature chain** contains a series of links,
-each one containing a single change to the team's membership or roles.
 
 - The first link, the **root** of the chain, marks the creation of the group and by definition adds
   the founder to the group as an admin. It also includes the founder's **public keys**.
@@ -293,9 +293,10 @@ websites and sign official documents digitally.
 But we’re trying to do this without depending on centralized services.
 
 A decentralized solution might be for people to actively share their own keys directly with each
-other. This was the approach taken by PGP ('Pretty Good Privacy'), the first encryption toolset
-intended for ordinary users, in the 1990s. People would put their public keys on their websites and
-in their email signatures. Apparently there were [key signing
+other. This was the approach taken by [PGP ("Pretty Good
+Privacy")](https://en.wikipedia.org/wiki/Pretty_Good_Privacy), the first encryption toolset intended
+for ordinary users, in the 1990s. People would put their public keys on their websites and in their
+email signatures. Apparently there were [key signing
 parties](https://en.wikipedia.org/wiki/Key_signing_party) where people exchanged and signed each
 other's keys.
 
@@ -303,8 +304,9 @@ This approach required a lot of in-person interaction, and it was all just too g
 I would estimate that approximately 100% of the population has never attended a key signing
 party, so we're going to need an alternative approach.
 
-[Keybase](https://keybase.io/) had the clever idea of getting people to associate their public keys
-with their identities on public sites where they have accounts, like Twitter or GitHub.
+[Keybase](https://keybase.io/) had a better idea: People can just post their public keys in
+machine-readable form on public sites where they have accounts, like Twitter or GitHub. Then anyone
+can look up a person's public keys by username, and use them to verify their identity.
 
 <figure class='figure-b figure-2up'>
 
@@ -344,6 +346,10 @@ A more appealing idea is **not to not think about our keys at all**. As [Peter V
 Hardenberg](https://twitter.com/pvh), CEO of the Ink & Switch research lab, has said to me more than
 once: "If the user sees an encryption key, you've already lost."
 
+Here's how I think software should handle encryption keys: Each application on each device should
+generate its own keys, and store them securely in a way that's invisible to the user. The private keys
+should never leave the device. The public keys should be shared directly with other devices.
+
 Here's a summary of the differences between these two different ways of thinking about working with
 cryptographic keys:
 
@@ -359,13 +365,17 @@ cryptographic keys:
 
 <figure class='figure-xs'>
 
-![](/images/2021-03-02-16-22-12.png)
+![](/images/posts/trust/2021-03-02-16-22-12.png)
 
 TOFU considered squishy. <i>Image: [Yoav Aziz](https://unsplash.com/@yoavaziz)</i>
 
 </figure>
 
 ### TOFU and other meat substitutes
+
+We're agreed, then, that device-to-device sharing of keys is better than key signing parties. But
+Alice's device still needs to know that Bob's device is really Bob's device, and not an Eve's device
+pretending to be Bob's device.
 
 WhatsApp, Signal, and others solve the problem of associating public keys with identities using an
 approach called "Trust on First Use", or **TOFU**.
@@ -387,11 +397,8 @@ fooled her and is able to straighten it out.
 The problem, though, is that the "first use" bit is kind of misleading, because **in practice TOFU
 doesn't happen just once**.
 
-To understand why, it's worth clarifying that when we say "Bob" or "Alice" we should really be
-saying `Bob's iPhone 10` or `Alice's new Dell laptop`. As the table above makes clear, these keys
-don't pertain to the individual, they're created by a particular application on a particular device.
-
-So what happens when Bob gets a new phone, or Alice reinstalls the software on her laptop?
+Remember, the keys we care about are device-level keys, not user-level keys. So what happens when
+Bob gets a new phone, or Alice reinstalls the software on her laptop?
 
 What happens is an "account reset", and at that point we're back to TOFU — except that now, the
 attack scenarios are a bit more plausible: an impostor might have engineered the reset, and it would
@@ -408,7 +415,7 @@ blog](https://keybase.io/blog/chat-apps-softer-than-tofu):
 
 <figure class='figure-xs'>
 
-![](/images/2021-03-02-16-25-20.png)
+![](/images/posts/trust/2021-03-02-16-25-20.png)
 
 I've lifted a technique from Keybase that they call a **Seitan token exchange** --- the idea being
 that Seitan is tougher than TOFU, I guess? <i>Image: [Sigmund](https://unsplash.com/@sigmund)</i>
@@ -417,10 +424,11 @@ that Seitan is tougher than TOFU, I guess? <i>Image: [Sigmund](https://unsplash.
 
 ### Introducing Seitan
 
-In the article quoted above, the Keybase team makes the case against TOFU and present their
-solution. I've ~~stolen~~ adapted yet another idea from Keybase: They call their invitation protocol
-the [Seitan token exchange](https://book.keybase.io/docs/teams/seitan); it adds a secret key
-to the invitation process in order to avoid the repeated leaps of faith required by TOFU.
+In the article quoted above, the Keybase team makes the case against TOFU and presents their
+solution. This is yet another idea that I've ~~stolen~~ adapted from Keybase. They call their
+invitation protocol the [Seitan token exchange](https://book.keybase.io/docs/teams/seitan); it adds
+a secret key to the invitation process in order to avoid the repeated leaps of faith required by
+TOFU.
 
 Here's how it works:
 
@@ -435,7 +443,7 @@ possible for another member to co-opt Bob's invitation and impersonate him.
 
 <figure class='figure-xs'>
 
-![](/images/2021-02-28-18-28-53.png)
+![](/images/posts/trust/2021-02-28-18-28-53.png)
 
 By including a single-use secret code in an invitation, we can make the process of adding members to
 our team more secure, without introducing complexity or crypto mumbo-jumbo.
@@ -502,9 +510,9 @@ a summary of what I've learned on the topic over the last year or two. LINK TODO
 We've solved the problem of verifying Bob's identity the very first time he shows up to join the team.
 But that's a one-time thing. How are we going to authenticate Bob the rest of the time?
 
-When I log on to Trello, I know it's really Trello on the other end because I typed in `trello.com`.
-Trello knows it's really me because I logged in with my email and the password they have on record
-for me.
+When I log on to Trello, I know it's really Trello on the other end because I typed in `trello.com`
+(and I trust the domain name system to send me to a Trello server). Trello knows it's really me
+because I logged in with my email and the password they have on record for me.
 
 When someone tries to connect directly to Alice's computer, saying they're Bob, how does Alice know
 it's not an impostor --- Eve, for example?
@@ -513,7 +521,7 @@ The most straightforward solution I've found here is a **signature challenge**.
 
 <figure class='figure-md'>
 
-![](/images/2021-02-28-18-25-46.png)
+![](/images/posts/trust/2021-02-28-18-25-46.png)
 
 This isn't the exact protocol, but it gives the basic idea.
 
@@ -576,7 +584,7 @@ it?
 
 <figure class='figure-xs'>
 
-![](/images/2021-03-02-12-17-11.png)
+![](/images/posts/trust/2021-03-02-12-17-11.png)
 
 If you've ever rented a vacation home or apartment, you might have run into one of these. A lockbox
 allows you to use one key (or code) to unlock another, which you can in turn use to unlock the thing
