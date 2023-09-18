@@ -5,11 +5,9 @@ subtitle: Five functions that servers carry out
 description: |
   Before we can move past the server-centric model for collaboration software, we need to understand all the things we're currently depending on servers for.
 
-draft: false
+draft: true
 
 date: '2022-01-15'
-image: /images/posts/server/server-exploded.jpg
-thumbnail: /images/posts/server/server-exploded.jpg
 ---
 
 As an American living in Spain, every once and a while I'm mildly surprised to be reminded that
@@ -18,7 +16,7 @@ authority — can be traced back to the dark ages.
 
 <figure>
 
-![](/images/posts/server/felipe.jpg)
+![]($$/felipe.jpg)
 
 Felipe Juan Pablo Alfonso de Todos los Santos de Borbón y Grecia, King Felipe VI of Spain 🙄
 

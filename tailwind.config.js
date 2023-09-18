@@ -94,22 +94,6 @@ module.exports = {
         'arrow-black-d': inkArrow(colors.gray['500'], true),
       },
 
-      // animation
-
-      keyframes: {
-        wiggle: {
-          '0%, 100%': { transform: 'rotate(-5deg)' },
-          '0%, 100%': { transform: 'rotate(-6deg)' },
-          '0%, 100%': { transform: 'rotate(-3deg)' },
-          '50%': { transform: 'rotate(3deg)' },
-        },
-      },
-
-      animation: {
-        wiggle: 'wiggle 1s ease-in-out infinite',
-        'spin-fast': 'spin 500ms linear infinite',
-      },
-
       // grids
 
       gridTemplateColumns: {
@@ -127,8 +111,7 @@ module.exports = {
     opacity: ({ after }) => after(['group-hover', 'group-focus']),
     textColor: ({ after }) => after(['group-hover', 'group-focus']),
     boxShadow: ({ after }) => after(['group-hover', 'group-focus']),
-    backgroundImage: ({ after }) =>
-      after(['group-hover', 'hover', 'group-focus']),
+    backgroundImage: ({ after }) => after(['group-hover', 'hover', 'group-focus']),
   },
 
   future: {

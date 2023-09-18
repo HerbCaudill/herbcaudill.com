@@ -5,6 +5,7 @@ import { markdownToHtml } from './markdownToHtml'
 import { PostData } from './types'
 
 const postsDir = path.join(process.cwd(), '/content/posts')
+const imagesDir = path.join(process.cwd(), '/public/images/posts')
 
 export const posts = () =>
   getAllPostIds()
@@ -14,12 +15,17 @@ export const posts = () =>
 export const post = (id: string): PostData => {
   const fullPath = path.join(postsDir, `${id}.md`)
   const { content, metadata } = loadMarkdownFile(fullPath)
+
   return {
-    id,
     ...(metadata as PostData),
+    id,
+    image: getBannerImage(id),
+    thumbnail: getThumbnailImage(id),
     title: metadata.title.replace('_', '&nbsp;'),
     subtitle: metadata.subtitle.replace('_', '&nbsp;'),
-    content: content,
+    content: content
+      // replace $$ tokens in image paths with the path to this post's images directory
+      .replace(/\$\$\//g, `/images/posts/${id}/`),
     tags: metadata.tags ? metadata.tags.split(',').map((t: string) => t.trim()) : [],
     context: markdownToHtml(metadata.context),
   }
@@ -40,9 +46,20 @@ export const relatedPosts = (id: string): PostData[] => {
   return [prevIndex, nextIndex].map(i => allPosts[i])
 }
 
-export const getAllPostIds = () =>
-  fs.readdirSync(postsDir).map(fileName => fileName.replace(/\.md$/, ''))
+export const getAllPostIds = () => fs.readdirSync(postsDir).map(fileName => fileName.replace(/\.md$/, ''))
 
 export const getAllPostIdParams = () => getAllPostIds().map(id => ({ params: { id } }))
 
 export const byDate = (a: PostData, b: PostData) => (a.date < b.date ? 1 : -1)
+
+const getImagePath = (name: string) => (id: string) => {
+  const imageDir = path.join(imagesDir, id)
+  for (const ext of ['jpg', 'jpeg', 'png']) {
+    const imagePath = path.join(imageDir, `${name}.${ext}`)
+    if (fs.existsSync(imagePath)) return `/images/posts/${id}/${name}.${ext}`
+  }
+  return null
+}
+
+const getBannerImage = getImagePath('_banner')
+const getThumbnailImage = (id: string) => getImagePath('_thumbnail')(id) || getBannerImage(id)

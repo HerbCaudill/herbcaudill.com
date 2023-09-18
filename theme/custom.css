@@ -20,7 +20,7 @@
   @apply ink-underline;
 }
 
-/* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
+/* attribution in captions, e.g. "-- Joel Spolsky" */
 .attribution {
   @apply block text-gray-400;
   & a {

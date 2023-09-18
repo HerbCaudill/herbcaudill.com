@@ -5,10 +5,9 @@ subtitle: Conflict free something something
 description: |
   Something something something
 
-draft: false
+draft: true
 
 date: '2022-12-06'
-thumbnail: /images/thumbnails/placeholder.jpg
 ---
 
 CRDTs (conflict-free replicated datatypes) are exciting. They're widely regarded as a key enabling

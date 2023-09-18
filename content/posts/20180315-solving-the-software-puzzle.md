@@ -6,8 +6,6 @@ description: No matter what applications we choose, there's lots of duplication 
 date: '2018-03-15'
 originalPublication: Medium
 originalUrl: https://medium.com/all-the-things/the-trouble-with-saas-279694551b25
-
-thumbnail: '/images/thumbnails/puzzle.jpg'
 ---
 
 I am a huge fan of the software-as-a-service (SaaS) model, both as a software creator and as a software consumer.

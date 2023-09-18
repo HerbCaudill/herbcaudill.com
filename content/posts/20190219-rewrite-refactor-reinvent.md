@@ -18,8 +18,6 @@ originalPublication: Medium
 originalUrl: http://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22
 date: '2019-02-19'
 
-thumbnail: /images/posts/rewrite/thumbnail.jpg
-image: /images/posts/rewrite/rust.jpg
 caption: '“As if source code <em>rusted!</em>” <i>— Joel Spolsky</i>'
 tags: software
 ---
@@ -47,7 +45,7 @@ _(Bonus: ASCII art summaries of each story!)_
 
 <figure class='figure-xl'>
 
-![](/images/posts/rewrite/netscape6.png)
+![]($$/netscape6.png)
 
 </figure>
 
@@ -72,7 +70,7 @@ Netscape’s first serious competition came from Microsoft’s Internet Explorer
 
 At the beginning of 1998, Netscape was still the leading browser, but just barely. Netscape’s retail price was $49; Microsoft was giving IE away for free and shipping it with Windows as the default browser.
 
-![](/images/posts/rewrite/1.jpeg)
+![]($$/1.jpeg)
 
 After version 4.0 of Netscape was released, the company [announced](https://www.cnet.com/news/netscape-sets-source-code-free/) that version 5.0 would be given away for free, and developed by an open source community created and funded by the company, called Mozilla.
 
@@ -96,7 +94,7 @@ Not that it mattered. In the three years that Netscape stood still, Internet Exp
 
 <div class="image image-b">
 
-![](/images/posts/rewrite/2.png)
+![]($$/2.png)
 
 <p class="caption">
   When the rewrite began, Netscape was losing ground quickly to Microsoft’s Internet Explorer. When the new browser was finally released three years later, it was buggy and slow; meanwhile Netscape’s market share had dwindled to practically nothing. (Chart adapted from <a href='https://en.wikipedia.org/wiki/Usage_share_of_web_browsers'>Wikipedia</a>.)
@@ -125,7 +123,7 @@ But the rewrite was certainly a contributing factor, and the end result was the 
 
 <figure class='figure-xl'>
 
-![](/images/posts/rewrite/1.png)
+![]($$/1.png)
 
 </figure>
 
@@ -145,9 +143,9 @@ They originally caught my attention when I was just starting out as a web design
 
 <div class="image image-2up">
 
-![](/images/posts/rewrite/fedex1.png)
+![]($$/fedex1.png)
 
-![](/images/posts/rewrite/fedex2.png)
+![]($$/fedex2.png)
 
 37signals’ <a href="https://web.archive.org/web/20050207174211/http://www.37signals.com/better/fedex/after.html">redesign of FedEx’s shipping form</a> (left) is still better than <a href="https://www.fedex.com/shipping/shipEntryAction.do?method=doEntry&amp;link=1&amp;locale=en_US&amp;urlparams=us&amp;sType=F">the real thing</a>, nearly two decades later.
 
@@ -185,7 +183,7 @@ They started to see their profitable product as a set of golden handcuffs:
 
 > The number one thing is just to make sure all the users you already have are still happy. The money just keeps coming in every month, new check, new check, new check. Great. But, you have to stick your arms forward and say, “Okay, I will never change my software again.”
 
-![](/images/posts/rewrite/4.jpeg)
+![]($$/4.jpeg)
 
 Spoiler alert: They rewrote Basecamp from scratch and it turned out great. It took around a year, and new signups doubled immediately following the release of Basecamp 2.
 
@@ -219,7 +217,7 @@ He points out that when you force users to pack up and move, _that’s_ when you
 
 <figure>
 
-![](/images/posts/rewrite/5.jpeg)
+![]($$/5.jpeg)
 
 <p class='caption'>
 David compares Basecamp Classic to a Leica M3: It hasn’t been manufactured since 1967, but Leica is still committed to supporting it and repairing it for as long as they’re in business. (Photo <a href="https://commons.wikimedia.org/w/index.php?curid=27903569">Dnalor 01</a>)
@@ -234,7 +232,7 @@ The kicker is that, four years later, they did it all over again: [Basecamp 3 wa
 >
 > But, but, but isn’t that expensive? Isn’t that hard? What about security? What about legacy code bases? Yes, what about it? Taking care of customers — even if they’re not interested in upgrading on our schedule — is what we do here.
 
-![](/images/posts/rewrite/6.jpeg)
+![]($$/6.jpeg)
 
 ### Lessons
 
@@ -250,7 +248,7 @@ Having to maintain multiple versions of product indefinitely doesn’t come with
 
 <figure class='figure-xl'>
 
-![](/images/posts/rewrite/7.jpeg)
+![]($$/7.jpeg)
 
 </figure>
 
@@ -292,7 +290,7 @@ VS Code is open-source, lightweight, fast, and extensible; and — amazingly for
 
 <figure>
 
-![](/images/posts/rewrite/8.jfif)
+![]($$/8.jfif)
 
 VS Code has become the text editor of choice for JS hipsters. (Chart from [State of JavaScript Survey, 2018](https://2018.stateofjs.com/other-tools/))
 
@@ -306,7 +304,7 @@ In stark contrast to Netscape’s experience, Microsoft succeeded in building an
 
 <figure>
 
-![](/images/posts/rewrite/9.png)
+![]($$/9.png)
 
 Of all the open source projects on GitHub, Visual Studio Code is ranked thirteenth by number of stars — coincidentally, just below Linux!
 
@@ -324,7 +322,7 @@ In spite all of the [hand-wringing about the complexity of today’s toolset](ht
 
 <figure class='figure-xl'>
 
-![](/images/posts/rewrite/10.jpeg)
+![]($$/10.jpeg)
 
 </figure>
 
@@ -351,7 +349,7 @@ Both Inbox and Gmail used the same back end. They were essentially just differen
 
 After a while, though, Inbox stopped improving, and it became clear that Google was no longer investing any resources in it. Sure enough, four years after it was launched, Google announced that it would be [sunsetting Inbox](https://www.theverge.com/2018/9/12/17848500/google-inbox-shut-down-sunset-snooze-email-march-2019).
 
-![](/images/posts/rewrite/11.png)
+![]($$/11.png)
 
 I was initially very annoyed, but after spending a little time with the latest version of Gmail, I found that **many of my favorite features from Inbox had been ported to the original product**: Smart Reply, hover actions, and inline attachments and images. Gmail’s multiple inboxes were a good-enough stand-in for Inbox’s bundles.
 
@@ -371,7 +369,7 @@ I think there would have been less unhappiness if Gmail had gone all the way to 
 
 <figure class='figure-xl'>
 
-![](/images/posts/rewrite/12.png)
+![]($$/12.png)
 
 </figure>
 
@@ -457,9 +455,9 @@ Joel presented it as a tool for managing work at a higher level than FogBugz all
 
 <figure class='figure-2up'>
 
-![](/images/posts/rewrite/14.png)
+![]($$/14.png)
 
-![](/images/posts/rewrite/13.jpeg)
+![]($$/13.jpeg)
 
 </figure>
 
@@ -509,7 +507,7 @@ But the sentimental part of me wishes there had been a better way to “honor th
 
 <figure class='figure-xl'>
 
-![](/images/posts/rewrite/15.png)
+![]($$/15.png)
 
 </figure>
 
@@ -572,7 +570,7 @@ Shortly afterwards they lifted the veil of secrecy: They let BillSpring customer
 
 Little by little, “FreshBooks Classic” customers were invited to try the new upgrade — but they didn’t have to, and they could always migrate back to the more familiar version if they wanted.
 
-![](/images/posts/rewrite/16.jpeg)
+![]($$/16.jpeg)
 
 ### Lessons
 

@@ -8,12 +8,10 @@ description: |
   authentication and authorization and explain how I've approached solving these problems in a new
   library, <a href='https://github.com/local-first-web/auth'>@localfirst/auth</a>.
 
-draft: false
+draft: true
 
 date: '2023-01-01'
 
-thumbnail: /images/posts/trust/trust-thumbnail.png
-image: /images/posts/trust/trust.png
 caption: '"It would be so nice if something made sense for a change.” <i>— Lewis Carroll, Alice in Wonderland</i>'
 tags: software
 ---
@@ -181,7 +179,7 @@ single change to the team's membership or roles.
 
 <figure class='figure-lg'>
 
-![](/images/posts/trust/01-simple-graph.png)
+![]($$/01-simple-graph.png)
 
 </figure>
 
@@ -257,7 +255,7 @@ there is, and whether or not Alice is even a member any more.
 
 <figure class='figure-xs'>
 
-![](/images/posts/trust/2021-02-28-17-30-41.png)
+![]($$/2021-02-28-17-30-41.png)
 
 This is what [my public PGP key](https://keybase.io/hc3/pgp_keys.asc?fingerprint=33fe890a032e2915863b43f1cdd09cf0755686ec) looks like.
 
@@ -310,9 +308,9 @@ can look up a person's public keys by username, and use them to verify their ide
 
 <figure class='figure-b figure-2up'>
 
-![](/images/posts/trust/2021-02-28-17-35-23.png)
+![]($$/2021-02-28-17-35-23.png)
 
-![](/images/posts/trust/2021-02-28-18-12-11.png)
+![]($$/2021-02-28-18-12-11.png)
 
 I've used Keybase to "verify myself" by posting machine-readable statements on
 [Twitter](https://twitter.com/herbcaudill/status/1252295765055156229),
@@ -353,7 +351,7 @@ should never leave the device. The public keys should be shared directly with ot
 Here's a summary of the differences between these two different ways of thinking about working with
 cryptographic keys:
 
-|                | ![](/images/posts/trust/drake-no.jpg)                                                                                                                                               | ![](/images/posts/trust/drake-yes.jpg)                                                                                                            |
+|                | ![]($$/drake-no.jpg)                                                                                                                                                                | ![]($$/drake-yes.jpg)                                                                                                                             |
 | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **agency**     | we manage our keys                                                                                                                                                                  | computers manage our keys for us                                                                                                                  |
 | **scope**      | individual humans or entities have keys                                                                                                                                             | devices have keys                                                                                                                                 |
@@ -365,7 +363,7 @@ cryptographic keys:
 
 <figure class='figure-xs'>
 
-![](/images/posts/trust/2021-03-02-16-22-12.png)
+![]($$/2021-03-02-16-22-12.png)
 
 TOFU considered squishy. <i>Image: [Yoav Aziz](https://unsplash.com/@yoavaziz)</i>
 
@@ -415,7 +413,7 @@ blog](https://keybase.io/blog/chat-apps-softer-than-tofu):
 
 <figure class='figure-xs'>
 
-![](/images/posts/trust/2021-03-02-16-25-20.png)
+![]($$/2021-03-02-16-25-20.png)
 
 I've lifted a technique from Keybase that they call a **Seitan token exchange** --- the idea being
 that Seitan is tougher than TOFU, I guess? <i>Image: [Sigmund](https://unsplash.com/@sigmund)</i>
@@ -443,7 +441,7 @@ possible for another member to co-opt Bob's invitation and impersonate him.
 
 <figure class='figure-xs'>
 
-![](/images/posts/trust/2021-02-28-18-28-53.png)
+![]($$/2021-02-28-18-28-53.png)
 
 By including a single-use secret code in an invitation, we can make the process of adding members to
 our team more secure, without introducing complexity or crypto mumbo-jumbo.
@@ -521,7 +519,7 @@ The most straightforward solution I've found here is a **signature challenge**.
 
 <figure class='figure-md'>
 
-![](/images/posts/trust/2021-02-28-18-25-46.png)
+![]($$/2021-02-28-18-25-46.png)
 
 This isn't the exact protocol, but it gives the basic idea.
 
@@ -584,7 +582,7 @@ it?
 
 <figure class='figure-xs'>
 
-![](/images/posts/trust/2021-03-02-12-17-11.png)
+![]($$/2021-03-02-12-17-11.png)
 
 If you've ever rented a vacation home or apartment, you might have run into one of these. A lockbox
 allows you to use one key (or code) to unlock another, which you can in turn use to unlock the thing
@@ -634,7 +632,7 @@ user keys.
 
 <figure class='figure-md'>
 
-![](/images/posts/trust/keygraph-devices.png)
+![]($$/keygraph-devices.png)
 
 Each of Bob's devices has its own key, and obtains Bob's user keys via a lockbox.
 
@@ -651,7 +649,7 @@ our attention to the problem of rotating keys.
 
 <figure>
 
-![](/images/posts/trust/keygraph-1.png)
+![]($$/keygraph-1.png)
 
 Keys provide access to other keys, via lockboxes; so we have a graph where keys
 are nodes and lockboxes are edges.
@@ -668,7 +666,7 @@ any role keys he had access to, as well as the team keys.
 
 <figure>
 
-![](/images/posts/trust/keygraph-2.png)
+![]($$/keygraph-2.png)
 
 When a member leaves a team or a role, or a device is lost, we say the corresponding keyset is
 "compromised" and we need to replace it --- along with any keys that it provided access to.
@@ -769,7 +767,7 @@ predecessor:
 
 <figure class='figure-xl'>
 
-![](/images/posts/trust/sigchain.3.png)
+![]($$/sigchain.3.png)
 
 </figure>
 
@@ -778,7 +776,7 @@ of hashes, one for each of the branches being merged. It has no author and no si
 
 <figure class='figure-xl'>
 
-![](/images/posts/trust/sigchain.2.png)
+![]($$/sigchain.2.png)
 
 </figure>
 
@@ -838,7 +836,7 @@ mean that if Bob is being removed from the group, any actions he takes concurren
 
 <figure class='figure-xl'>
 
-![](/images/posts/trust/sigchain.5.png)
+![]($$/sigchain.5.png)
 
 </figure>
 
@@ -897,7 +895,7 @@ same answer.
 
 <figure class='figure-lg'>
 
-![](/images/posts/trust/sigchain.merge.1.png)
+![]($$/sigchain.merge.1.png)
 
 Note that when you merge two branches, what you end up with is no longer a hash chain, and
 that's fine. Before we flatten it, we'll have checked the integrity of the _whole graph_ by
@@ -912,7 +910,7 @@ to ensure that everyone arrives at the same ordering.
 
 <figure class='figure-lg'>
 
-![](/images/posts/trust/sigchain.merge.2.png)
+![]($$/sigchain.merge.2.png)
 
 On the left, we have a graph where actions **c** and **d** take place concurrently. Depending on the
 rules we use for ordering and filtering, this graph might be flattened into any of the sequences shown
@@ -1008,7 +1006,7 @@ In my case, at first inspection it seemed like all I would need was this:
 
 <figure class=''>
 
-![](/images/posts/trust/state.1.png)
+![]($$/state.1.png)
 
 </figure>
 
@@ -1016,7 +1014,7 @@ But in reality, this is where I ended up:
 
 <figure class='figure-xl'>
 
-![](/images/posts/trust/state.2.png)
+![]($$/state.2.png)
 
 </figure>
 

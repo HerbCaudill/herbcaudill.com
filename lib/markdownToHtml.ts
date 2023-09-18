@@ -11,8 +11,7 @@ const handleDefList = (text: string) => {
     text = text.replace(dlRegex, dl)
     return text
   } else {
-    return `<p>${text}</p>
-`
+    return `<p>${text}</p>\n`
   }
 }
 
@@ -23,6 +22,10 @@ marked.setOptions({
   smartypants: true, // smart quotes
 })
 
-marked.use({ renderer: { paragraph: handleDefList } })
+marked.use({
+  renderer: {
+    paragraph: handleDefList,
+  },
+})
 
 export const markdownToHtml = (input: string) => (input ? marked(input) : '')

@@ -3,16 +3,10 @@ import { Date } from './Date'
 import { PostData } from 'lib/types'
 import { Tag } from './Tag'
 
-export const PostLink: React.FC<PostLinkProps> = ({
-  id,
-  date,
-  title,
-  subtitle,
-  description,
-  thumbnail,
-  draft,
-  tags,
-}) => (
+const env = process.env.NODE_ENV
+const isProd = env === 'production'
+
+export const PostLink: React.FC<PostLinkProps> = ({ id, date, title, subtitle, description, draft, thumbnail }) => (
   <Link href={`/words/${id}`} key={id}>
     <div
       className={`
@@ -23,7 +17,7 @@ export const PostLink: React.FC<PostLinkProps> = ({
         group
         hover:bg-gray-400 hover:bg-opacity-5 transition-all duration-500 ease-in-out
         cursor-pointer
-        ${draft ? 'opacity-25' : ''}
+        ${isProd && draft ? 'opacity-25' : ''}
       `}
     >
       <div className="col-span-1 md:col-span-3">
@@ -41,10 +35,7 @@ export const PostLink: React.FC<PostLinkProps> = ({
           className="font-mono leading-tight md:leading-tight py-1 text-xs md:font-serif md:text-base"
           dangerouslySetInnerHTML={{ __html: subtitle }}
         />
-        <Date
-          dateString={date}
-          className="hidden mt-3 md:block text-2xs tracking-widest font-mono uppercase"
-        />
+        <Date dateString={date} className="hidden mt-3 md:block text-2xs tracking-widest font-mono uppercase" />
       </div>
 
       <div

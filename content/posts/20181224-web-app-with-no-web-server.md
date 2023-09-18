@@ -6,8 +6,6 @@ description: 'In a traditional client/server/database web app, so much effort go
 originalPublication: Medium
 originalUrl: https://medium.com/all-the-things/a-web-application-with-no-web-server-61000a6aed8f
 date: '2018-12-24'
-
-thumbnail: '/images/thumbnails/serverless.jpg'
 ---
 
 Things have changed a lot in the decade since the last time I built a web application from the ground up. It used to be you picked a framework (ASP.NET, Rails, etc.) and learned it inside out. Now, as a result of the open source explosion in the JavaScript ecosystem, it’s your job to put together a mosaic of frameworks.
@@ -16,7 +14,7 @@ On the one hand, we’ve finally arrived at the promised land of code reuse. If 
 
 <figure class='figure-lg'>
 
-![](/images/posts/serverless/cartoon.jpeg)
+![]($$/cartoon.jpeg)
 
 Used with permission. Original [here](http://www.commitstrip.com/en/2015/09/16/how-to-choose-the-right-javascript-framework/).
 
@@ -34,7 +32,7 @@ My starting point is the way [DevResults](http://www.devresults.com) works, so e
 
 <figure class='figure-lg image-b'>
 
-![](/images/posts/serverless/01.jpeg)
+![]($$/01.jpeg)
 
 Nothing surprising here — this is a very standard architecture for web apps of a certain age.
 
@@ -48,7 +46,7 @@ There are several sources of inefficiency here:
 
 <figure class='figure-lg image-b'>
 
-![](/images/posts/serverless/02.jpeg)
+![]($$/02.jpeg)
 
 **Kind of a mess:** Logic expressed in 3 languages, data model expressed lots of different ways.
 
@@ -62,7 +60,7 @@ The first step to simplify this is to use a single language for the codebase. In
 
 <figure class='figure-lg image-b'>
 
-![](/images/posts/serverless/03.png)
+![]($$/03.png)
 
 **Better**: Server-side JavaScript lets us write code around the data model just once, and run in both places.
 
@@ -74,7 +72,7 @@ We can also use a NoSQL database like MongoDB, which accepts and returns JSON da
 
 <figure class='figure-lg image-b'>
 
-![](/images/posts/serverless/04.png)
+![]($$/04.png)
 
 **Better**: GraphQL for requesting data, JSON for representing data.
 
@@ -93,7 +91,7 @@ But when I started playing with this in a couple of toy apps, I was **still frus
 
 <figure class='figure-lg image-b'>
 
-![](/images/posts/serverless/05.png)
+![]($$/05.png)
 
 Is there a good reason for all of this duplication?
 
@@ -116,7 +114,7 @@ There are two big challenges with building an app that works offline:
 
 <figure class='figure-lg image-b'>
 
-![](/images/posts/serverless/06.png)
+![]($$/06.png)
 
 The standard browser/server/database model isn’t well-suited to offline scenarios.
 
@@ -140,7 +138,7 @@ More than a decade later, you can do pretty much anything you want within a brow
 
 Let’s take a step back and think about what a “web application” with no web server would look like.
 
-![](/images/posts/serverless/07.png)
+![]($$/07.png)
 
 The most obvious answer is that **we need the server to collaborate with others**. If you’re the only one involved in whatever you’re working on, you may not need a web app. But if you’re working with a team of two or more people, you want some way of keeping everyone on the same page, and centralizing the data on a server is an obvious way of doing that.
 
@@ -148,7 +146,7 @@ So, yes, this would be a very simple architecture:
 
 <figure class='image-b'>
 
-![](/images/posts/serverless/08.jpeg)
+![]($$/08.jpeg)
 
 Simple, but not very useful.
 
@@ -162,7 +160,7 @@ Let’s just imagine for the moment that we had a magical way of automatically a
 
 <figure class='image-b'>
 
-![](/images/posts/serverless/09.gif)
+![]($$/09.gif)
 
 Simple, but you have to believe in magic.
 
@@ -176,7 +174,7 @@ OK, no problem — we can just fire up a client on a computer that no one uses, 
 
 <figure class='image-b'>
 
-![](/images/posts/serverless/10.png)
+![]($$/10.png)
 
 </figure>
 
@@ -196,7 +194,7 @@ The solution hinges on a different conception of data from the one I’ve always
 
 The databases I’ve always worked with treat data as **mutable**: If you need to update data, you replace what was there with something new. So when I moved from Washington DC to Barcelona, some database might have reflected the change by replacing a value in the `City` column for my record:
 
-![](/images/posts/serverless/11.gif)
+![]($$/11.gif)
 
 In this case, you could go back and look at the **log** of changes to see, for example, that an entry was made in 2012 stating that I lived in Washington DC, and that in 2016 that entry was updated to Barcelona.
 
@@ -217,7 +215,7 @@ The event log shows these two facts:
 
 Both of these statements are true facts, and we can easily query them to derive a picture of the state of the world at any given moment `t`. Now we can see that the _current_ state of the world is just a special case, where `t` = **now**.
 
-![](/images/posts/serverless/12.gif)
+![]($$/12.gif)
 
 With this perspective, much of the complexity around replication and synchronization just disappears. **CRUD** (create/read/update/delete) is now just **CR**, because updates and deletes are just another kind of new information. It’s much easier to merge two event streams than it is to merge two conflicting point-in-time snapshots.
 
@@ -235,7 +233,7 @@ I’m going to focus on the next-to-the-last item in that list — CRDTs — bec
 
 <figure class='figure-xs'>
 
-![](/images/posts/serverless/13.png)
+![]($$/13.png)
 
 </figure>
 
@@ -267,7 +265,7 @@ So the overall idea starts to look like this:
 
 <figure class='figure-xl'>
 
-![](/images/posts/serverless/14.png)
+![]($$/14.png)
 
 </figure>
 

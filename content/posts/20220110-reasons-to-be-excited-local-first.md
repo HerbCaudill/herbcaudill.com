@@ -6,10 +6,9 @@ description: |
   Cloud-based software has made collaboration easier, but at a cost to both developers and users.
   Could a new model for software give us the best of both worlds?
 
-draft: false
+draft: true
 
 date: '2022-01-10'
-thumbnail: /images/thumbnails/placeholder.jpg
 tags: software
 ---
 
@@ -22,7 +21,7 @@ If you think about it for a moment, though, you might realize that there's a pro
 approach. Maybe if the mountain you're climbing looks like Mt. Fuji, you're fine - but what if, like
 most mountains, it includes a number of smaller peaks at different altitudes?
 
-![](/images/posts/localfirst/mountain.gif)
+![]($$/mountain.gif)
 
 If you only go up and never go down, you'll very likely find yourself in what mathematicians call a
 [local maximum](TK).
@@ -64,7 +63,7 @@ grow longer and longer. One person might ask everyone to hold off on making any 
 while they're working on the document; but inevitably at some point you would still end up
 laboriously re-applying edits from one document to another.
 
-![](/images/posts/localfirst/filesharing.gif)
+![]($$/filesharing.gif)
 
 Around this time, if you wanted multiplayer software, you generally had to host it yourself; so this
 was mostly the province of bigger companies that had the kind of infrastructure to do this.

@@ -9,7 +9,7 @@ date: '2018-12-22'
 originalPublication: Medium
 originalUrl: https://medium.com/all-the-things/a-secret-agent-database-for-the-rest-of-us-de39abfb2a08
 
-image: '/images/posts/secretagent/1.png'
+image: '$$/1.png'
 thumbnail: '/images/thumbnails/secretagent.png'
 ---
 
@@ -17,41 +17,39 @@ I have a long-standing love-hate relationship with the way computer interfaces a
 
 On the one hand, they’re so unrealistic! Lynne has patiently sat through any number of post-movie rants about this kind of thing:
 
-![](/images/posts/secretagent/2.gif)
+![]($$/2.gif)
 
-![](/images/posts/secretagent/3.gif)
+![]($$/3.gif)
 
 On the other hand, they’re kind of awesome! At their best, film UIs capture the way we _wish_ computers worked:
 
-![](/images/posts/secretagent/4.gif)
+![]($$/4.gif)
 
-![](/images/posts/secretagent/5.gif)
+![]($$/5.gif)
 
 In the movies, no one ever spends five minutes looking for a file. In the movies, no one struggles to print something from their laptop.
 
 In the movies, when you type someone’s name into the computer, you’re immediately presented with everything you need to know about them:
 
-![](/images/posts/secretagent/6.png)
+![]($$/6.png)
 
-![](/images/posts/secretagent/7.png)
+![]($$/7.png)
 
-![](/images/posts/secretagent/8.jpeg)
+![]($$/9.jpeg)
 
-![](/images/posts/secretagent/9.jpeg)
+![]($$/10.jpeg)
 
-![](/images/posts/secretagent/10.jpeg)
+![]($$/11.jpeg)
 
-![](/images/posts/secretagent/11.jpeg)
+![]($$/12.png)
 
-![](/images/posts/secretagent/12.png)
+![]($$/13.png)
 
-![](/images/posts/secretagent/13.png)
+![]($$/14.jpeg)
 
-![](/images/posts/secretagent/14.jpeg)
+![]($$/15.jpeg)
 
-![](/images/posts/secretagent/15.jpeg)
-
-![](/images/posts/secretagent/16.jpeg)
+![]($$/16.jpeg)
 
 Mugshots, surveillance photos, maps, scans of paper records, ID cards, maps, fingerprints, 3D body scans: It’s all there, in one place, when you need it.
 
@@ -63,9 +61,9 @@ When I see the computer systems used by spy organizations in the movies, I alway
 
 <figure class='figure-2up'>
 
-![](/images/posts/secretagent/17.png)
+![]($$/17.png)
 
-![](/images/posts/secretagent/18.png)
+![]($$/18.png)
 
 Maybe the CIA saves all the good software contractors for their internally-facing systems — who knows!
 
@@ -79,7 +77,7 @@ Specifically, Celeste wants to be able to type in an agent’s name _(klackety-k
 
 <figure class='-xl'>
 
-![](/images/posts/secretagent/19.png)
+![]($$/19.png)
 
 </figure>
 
