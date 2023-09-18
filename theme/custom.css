@@ -151,7 +151,7 @@ article {
   & li,
   & p {
     & > code {
-      @apply font-mono font-medium text-black rounded-md;
+      @apply font-mono text-gray-700 rounded-md;
       background: #00000007;
       font-size: 0.85em;
       padding: 0.1em 0.5em;
@@ -333,20 +333,23 @@ article {
     @apply mt-4; /* normal margin between paragraphs inside a blockquote */
   }
 
+  /* x-large variant: images that span 12 columns */
+
   & .figure-xl {
-    @apply mt-16; /* Extra top margin for large images, since they often serve to divide article sections */
-    @apply md:mx-0 md:grid md:grid-cols-12 md:gap-G;
+    @apply lg:block;
     @apply md:-ml-3/9 md:w-12/9;
     @apply lg:-ml-3/7 lg:w-12/7;
   }
 
   & .figure-xl > :nth-child(1) {
-    @apply md:col-span-12;
+    @apply md:w-full md:my-0;
+    @apply lg:col-span-12;
   }
 
   & .figure-xl > :nth-child(2) {
-    @apply md:relative md:-mb-12;
-    @apply md:col-span-3 lg:col-span-12;
+    /* on md screens we tuck the caption under the left corner of the image */
+    @apply md:absolute md:w-3/9 md:-left-3/9 md:pr-G;
+    @apply lg:pt-G lg:w-3/7 lg:-left-3/7;
   }
 
   /* large variant: images that span 10 columns */
@@ -373,6 +376,8 @@ article {
   article figure > :nth-child(2) span {
     @apply inline lg:block;
   }
+
+  /* medium variant*/
 
   & .figure-md {
     @apply md:mx-0 md:grid md:grid-cols-9 md:gap-G;
@@ -421,7 +426,7 @@ article {
     @apply border border-gray-300 p-2;
   }
 
-  /* medium variant: images that span 5 columns */
+  /* 2-up variant: two images side-by-side */
 
   & .figure-2up {
     @apply my-G;

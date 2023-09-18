@@ -28,7 +28,7 @@ export const Post: React.FC<PostProps> = ({
       {/* Cover image */}
       {image ? (
         <div className="-mx-G md:mx-0 md:col-span-12">
-          <img src={image} className="w-full h-48 md:h-64 object-cover object-right" />
+          <img src={image} className="w-full " />
         </div>
       ) : (
         <div className="-mx-G md:mx-0 md:mb-16 lg:mb-48 md:col-span-12 " />

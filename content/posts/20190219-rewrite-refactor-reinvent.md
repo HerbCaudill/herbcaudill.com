@@ -92,7 +92,7 @@ Another two years went by before Netscape 6.0 was finally released; and even aft
 
 Not that it mattered. In the three years that Netscape stood still, Internet Explorer had taken all of its remaining market share:
 
-<div class="image image-b">
+<figure>
 
 ![]($$/2.png)
 
@@ -141,7 +141,7 @@ In the early 2000s, a Chicago web design company called **37signals** had built 
 
 They originally caught my attention when I was just starting out as a web designer, with a series of unsolicited redesigns of sites like Google and PayPal, called [37better](https://web.archive.org/web/20050206094649/http://www.37signals.com/better).
 
-<div class="image image-2up">
+<figure class="figure-b figure-2up">
 
 ![]($$/fedex1.png)
 
