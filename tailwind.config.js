@@ -84,7 +84,7 @@ module.exports = {
       },
 
       backgroundImage: {
-        // hand-drawn underline
+        // hand-drawn lines for underlines, strikethrough, and arrows
         'u-ink-black': inkUnderline('#444'),
         'u-ink-red': inkUnderline(colors.red['800']),
         'u-ink-black-1': inkUnderline('#444', 1),
@@ -119,6 +119,6 @@ module.exports = {
     purgeLayersByDefault: true,
   },
 
-  purge: ['./pages/**/*.tsx', './components/**/*.tsx', './**/*.css'],
+  purge: ['./pages/**/*.tsx', './components/**/*.tsx', './**/custom.css'],
   plugins: [],
 }

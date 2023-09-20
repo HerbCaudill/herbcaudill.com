@@ -46,17 +46,17 @@ export const Post: React.FC<PostProps> = ({
           className={`
             font-serif font-extralight tracking-tighter leading-none
             md:mt-0
-            text-4xl md:text-5xl lg:text-6xl`}
+            text-3xl md:text-5xl lg:text-6xl`}
           dangerouslySetInnerHTML={{ __html: title }}
         />
 
         {/* Subtitle */}
         <h2
-          className="font-bold font-sans tracking-tight text-xl mt-2"
+          className="font-bold font-sans tracking-tight text-lg sm:text-xl leading-tight mt-2"
           dangerouslySetInnerHTML={{ __html: subtitle }}
         />
 
-        <DraftBlurb draft={draft} className="mt-2 w-7/9" />
+        <DraftBlurb draft={draft} />
       </div>
 
       <Nav
@@ -84,7 +84,7 @@ export const Post: React.FC<PostProps> = ({
       >
         <article dangerouslySetInnerHTML={{ __html: content }} />
 
-        <DraftBlurb draft={draft} className="mt-2" />
+        <DraftBlurb draft={draft} />
       </div>
 
       {/* Context */}

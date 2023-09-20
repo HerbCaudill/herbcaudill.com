@@ -1,23 +1,21 @@
-﻿/***** ink underline */
+﻿.chonky-line {
+  @apply border-t-12 border-black w-1/6;
+}
 
-.ink-underline-on-hover {
+/***** ink underline */
+
+article a,
+.use-ink-underline a,
+.ink-underline {
+  @apply text-black bg-u-ink-black;
   @apply group-hover:bg-u-ink-red hover:bg-u-ink-red hover:text-red-800;
   @apply bg-no-repeat;
   background-position: 0 bottom;
   background-size: 100% min(5px, 0.25em);
 }
 
-.ink-underline {
-  @apply text-black bg-u-ink-black;
-  @apply ink-underline-on-hover;
-}
-
-.ink-underline-1 {
+article a:nth-child(odd) {
   @apply bg-u-ink-black-1 group-hover:bg-u-ink-red-1 hover:bg-u-ink-red-1;
-}
-
-.use-ink-underline a {
-  @apply ink-underline;
 }
 
 /* attribution in captions, e.g. "-- Joel Spolsky" */
@@ -68,18 +66,29 @@
   }
 }
 
+/* arrows */
+
+@responsive {
+  .arrow {
+    @apply md:bg-arrow-black;
+    @apply bg-no-repeat;
+    background-position: 0 0.1em;
+    background-size: 90% 0.7em;
+  }
+
+  .arrow-d {
+    @apply bg-arrow-black-d;
+    @apply bg-no-repeat;
+    background-position: 0 bottom;
+    background-size: 0.7em 17em;
+  }
+}
+
+/*** styles within the <article> body in Post.tsx */
+
 article {
-  @apply relative text-gray-700 text-base sm:text-lg lg:text-xl font-serif font-regular;
+  @apply relative text-gray-700 text-base sm:text-lg font-serif font-regular;
   counter-reset: h2;
-
-  /* links in articles always show the hand-drawn underline */
-  & a {
-    @apply ink-underline;
-  }
-
-  & a:nth-child(odd) {
-    @apply ink-underline-1;
-  }
 
   & h2 + h3 {
     @apply -mt-4;
@@ -111,7 +120,8 @@ article {
 
     /* heavy line above big headings */
     &:before {
-      @apply block border-t-12 border-black mt-16 mb-G w-1/6;
+      @apply chonky-line;
+      @apply block mt-16 mb-G;
       content: '';
     }
   }
@@ -146,6 +156,26 @@ article {
     background-position: 0 70%;
     background-size: 100% 30%;
   }
+
+  /* use sans font for <strong> in articles */
+  & strong {
+    @apply font-sans font-semibold text-black;
+  }
+
+  /* exception to the above - strong in captions keeps the mono font */
+  & aside strong,
+  & figure strong,
+  & .caption strong {
+    @apply font-mono;
+  }
+
+  /* big chonky left-aligned black bar */
+  & hr {
+    @apply chonky-line;
+    @apply bg-transparent my-16;
+  }
+
+  /***** code */
 
   /* make inline <code> spans stand out a bit more */
   & li,
@@ -183,36 +213,16 @@ article {
       @apply w-3 h-3;
     }
 
-    &::-webkit-scrollbar-track {
-    }
-
     &::-webkit-scrollbar-thumb {
       @apply bg-gray-100 hover:bg-gray-200 border-solid border-2 border-gray-50 rounded-lg;
     }
 
     & > code[class*='language-'] {
-      @apply text-xs leading-tight md:text-sm font-mono font-medium tracking-wide text-black;
+      @apply text-xs leading-tight md:text-sm font-mono font-medium tracking-wide;
     }
   }
 
-  /* use sans font for <strong> in articles */
-  & strong {
-    @apply font-sans font-semibold text-black;
-  }
-
-  /* exception to the above - strong in captions keeps the mono font */
-  & aside strong,
-  & figure strong,
-  & .caption strong {
-    @apply font-mono;
-  }
-
-  /* big chonky left-aligned black bar */
-  & hr {
-    @apply bg-transparent border-t-12 border-black my-16 w-1/6;
-  }
-
-  /***** all list items */
+  /***** lists  */
 
   & li {
     @apply list-outside ml-6 leading-relaxed mt-2;
@@ -264,10 +274,10 @@ article {
     }
   }
 
-  /* custom blockquotes */
+  /***** blockquotes */
 
   & blockquote {
-    @apply -mx-1 my-6 p-5 border border-gray-400 text-black;
+    @apply -mx-1 my-6 p-5 border border-gray-200 text-black;
     @apply text-sm sm:text-base font-sans;
 
     & > h3:first-child {
@@ -285,6 +295,10 @@ article {
 
     & p + p {
       @apply mt-4; /* normal margin between paragraphs inside a blockquote */
+    }
+
+    & blockquote {
+      @apply border-gray-200; /* nested blockquotes are lighter */
     }
   }
 
@@ -304,6 +318,8 @@ article {
   article li {
     @apply list-outside ml-6 leading-relaxed mt-2;
   }
+
+  /***** figures */
 
   & figure {
     @apply my-10;
@@ -446,11 +462,7 @@ article {
     @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
   }
 
-  & .endmatter {
-    @apply text-sm font-sans;
-  }
-
-  /* description lists (used on Facts page) */
+  /***** description lists (used on Facts page)*/
 
   & dl {
     @apply grid grid-cols-9 text-xs;
@@ -476,7 +488,7 @@ article {
     @apply my-0;
   }
 
-  /* tables */
+  /***** tables */
 
   & table {
     @apply w-full table-fixed my-G;
@@ -508,7 +520,7 @@ article {
     max-width: 100%;
   }
 
-  /* asides*/
+  /***** asides*/
 
   & aside {
     @apply pl-G md:pl-0 md:pr-G lg:pr-12 w-full;
@@ -532,7 +544,7 @@ article {
     @apply ink-underline;
   }
 
-  /* spoilers */
+  /***** spoilers */
 
   & .spoiler {
     @apply bg-gray-800 text-sm text-black font-sans p-2 mt-1 mb-5;
@@ -574,9 +586,13 @@ article {
   & .spoiler a:hover {
     @apply underline;
   }
+
+  & .endmatter {
+    @apply text-sm font-sans;
+  }
 }
 
-/* context blurb at bottom of article */
+/**** context blurb at bottom of article */
 
 .context {
   & p {
@@ -589,23 +605,5 @@ article {
 
   & a {
     @apply ink-underline;
-  }
-}
-
-/* arrows */
-
-@responsive {
-  .arrow {
-    @apply md:bg-arrow-black;
-    @apply bg-no-repeat;
-    background-position: 0 0.1em;
-    background-size: 90% 0.7em;
-  }
-
-  .arrow-d {
-    @apply bg-arrow-black-d;
-    @apply bg-no-repeat;
-    background-position: 0 bottom;
-    background-size: 0.7em 17em;
   }
 }

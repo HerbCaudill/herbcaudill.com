@@ -1,0 +1,95 @@
+﻿/***** article content */
+
+.chonky-line {
+  @apply border-t-12 border-black w-1/6;
+}
+
+/***** ink underline */
+
+.ink-underline-on-hover {
+  @apply group-hover:bg-u-ink-red hover:bg-u-ink-red hover:text-red-800;
+  @apply bg-no-repeat;
+  background-position: 0 bottom;
+  background-size: 100% min(5px, 0.25em);
+}
+
+.ink-underline {
+  @apply text-black bg-u-ink-black;
+  @apply ink-underline-on-hover;
+}
+
+.ink-underline-1 {
+  @apply bg-u-ink-black-1 group-hover:bg-u-ink-red-1 hover:bg-u-ink-red-1;
+}
+
+.use-ink-underline a {
+  @apply ink-underline;
+}
+
+/***** arrows */
+
+@responsive {
+  .arrow {
+    @apply md:bg-arrow-black;
+    @apply bg-no-repeat;
+    background-position: 0 0.1em;
+    background-size: 90% 0.7em;
+  }
+
+  .arrow-d {
+    @apply bg-arrow-black-d;
+    @apply bg-no-repeat;
+    background-position: 0 bottom;
+    background-size: 0.7em 17em;
+  }
+}
+
+/***** attribution in captions, e.g. "-- Joel Spolsky" */
+.attribution {
+  @apply block text-gray-400;
+  & a {
+    @apply text-gray-400;
+  }
+}
+
+/***** fancy numbers  */
+
+.fancy-numbers {
+  /* fancy line number */
+  --num-size: calc(0.8em);
+  --num-p: 0.3em;
+  --num-gap: 0.5em;
+  --num-container: calc(2px + var(--num-size) + var(--num-p) * 2);
+
+  counter-increment: ol;
+  position: relative;
+  margin-left: calc(var(--num-container) + var(--num-gap));
+
+  &:before {
+    @apply text-sm font-mono bg-white text-black border border-black absolute text-center rounded-full;
+    content: counter(ol);
+    font-size: var(--num-size);
+    left: calc(-1 * var(--num-container) - var(--num-gap));
+    line-height: calc(var(--num-container) - 1px);
+    width: var(--num-container);
+    height: var(--num-container);
+    top: calc(1.625em - var(--num-container) + var(--num-p));
+  }
+}
+
+/***** captions */
+
+.caption {
+  @apply font-mono text-left leading-normal;
+  @apply text-2xs lg:text-xs; /* tiny text on tiny screens */
+
+  /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
+  & i {
+    @apply attribution;
+  }
+
+  /* blockquote wants to make the text bigger */
+  & blockquote {
+    @apply text-xs font-mono;
+  }
+}
