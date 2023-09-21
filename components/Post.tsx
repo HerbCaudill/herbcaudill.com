@@ -46,7 +46,7 @@ export const Post: React.FC<PostProps> = ({
           className={`
             font-serif font-extralight tracking-tighter leading-none
             md:mt-0
-            text-3xl md:text-5xl lg:text-6xl`}
+            text-4xl md:text-5xl lg:text-6xl`}
           dangerouslySetInnerHTML={{ __html: title }}
         />
 

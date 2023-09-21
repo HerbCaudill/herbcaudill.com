@@ -23,6 +23,8 @@ export const post = (id: string): PostData => {
     thumbnail: getThumbnailImage(id),
     title: metadata.title.replace('_', '&nbsp;'),
     subtitle: metadata.subtitle.replace('_', '&nbsp;'),
+    caption: markdownToHtml(metadata.caption),
+    description: markdownToHtml(metadata.description),
     content: content
       // replace $$ tokens in image paths with the path to this post's images directory
       .replace(/\$\$\//g, `/images/posts/${id}/`),

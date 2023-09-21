@@ -26,29 +26,30 @@ context: |
   with the original title and date for context.
 ---
 
-Recently, during Spain's second or third COVID wave, I sat down to build a very simple
-React app as a demo for something I was working on, and I was immediately paralyzed trying to decide
-how to style the application.
+Recently, locked down during Spain's second or third COVID wave and nervously anticipating elections
+in the US, I sat down to build a very simple React app as a demo for something I was working on, and
+I was immediately paralyzed trying to decide how to style the application.
 
-It wasn't at all important how this particular demo app _looked_, and the underlying technology used
-to style it mattered even less.
+There was no good reason for this to be a showstopper. It wasn't at all important how this
+particular demo app _looked_, and the underlying technology used to style it mattered even less.
 
-Maybe it was the Difficult Times We're Living Through, but I found myself with dissatisfied with
-basically every approach I'd ever used: Every UI framework, every component library, every CSS
-methodology -- they all seemed to fundamentally fall short of doing what I needed.
+But I found myself unable to proceed, fundamentally dissatisfied with basically every approach I'd
+ever used: Every UI framework, every component library, every CSS methodology -- they all seemed to
+fall short of doing what I needed, and I didn't want to just pick something familiar and move on.
 
-I started out in this business as a designer, so design just matters a lot to me in general.
+Maybe it was the Difficult Times We're Living Through. But I started out in this business as a
+designer, so design just matters a lot to me in general.
 
 And I'm thinking a lot about about interfaces that users can modify or assemble from scratch using
 components that can be composed with other components. So there needs to be a solid design system
 underlying this that is **modular and composable**.
 
-And the developer experience (DX) of styling matters more than it normally would,
-because ultimately I'd like for it to be easy for advanced users to extend the system by creating
-new datatypes  --  along with the components for working with them. So the whole question of how you
-balance customizability with keeping the design good and appealing and consistent is super
-important. We want it to be flexible in all the right places, while making it easy to create
-things that look great and hard to make ugly things.
+And the **developer experience** of styling matters more than it normally would, because ultimately
+I'd like for it to be easy for advanced users to extend the system by creating new
+[datatypes ](/words/20181223-data-types-for-humans) -- along with the components for working with
+them. So the whole question of how you balance customizability with keeping the design good and
+appealing and consistent is super important. We want it to be flexible in all the right places,
+while making it easy to create things that look great and hard to make ugly things.
 
 This article started out as my own notes on my research. For a while, the deeper I went down the
 rabbit hole, and the longer this piece got, the more unhappy I was with my options.
@@ -127,36 +128,6 @@ a lot, including on this site.
 The strength of a design system lies in the **constraints** provided by these design tokens: You
 can't just pick any line weight or type size, you have to choose from a limited set of options.
 
-Many companies have open-sourced their design systems:
-
-But this leaves the designer themselves without any guiderails every time they need to add something
-_new _ —  they have to try to be consistent on their own. In a large codebase, maintaining that
-consistency carries a significant cognitive load, and it’s easy for things to diverge in lots of
-directions. Even with a world-class design team, you can end up with a lot of unwanted
-inconsistency.
-
-Adam Wathan [catalogs some
-examples](https://adamwathan.me/css-utility-classes-and-separation-of-concerns/%23cp_embed_ZJeWBY:~:text%3DBut%2520what%2520if%2520you%2520decide%2520to%2C124%2520background%2520colors%252C%252070%2520font%2520sizes)
-of the crazy profusion of styles on some well-known sites:
-
-- **GitLab**: 402 text colors, 239 background colors, 59 font sizes
-- **Buffer**: 124 text colors, 86 background colors, 54 font sizes
-- **Stripe**: 189 text colors, 90 background colors, 35 font sizes
-- **GitHub**: 163 text colors, 147 background colors, 56 font sizes
-
-This is where you end up when every new chunk of CSS you write is a blank canvas; there’s nothing
-stopping you from using whatever values you want.
-
-Good design requires constraints. Grids and palettes are useful design tools _because they limit our
-choices_.
-
-What we’re looking for here is really what’s called a **design system.**
-
-A design system says you can use these colors, these type treatments, these drop shadows, these 5
-spacing increments. These are called design tokens. By composing these building blocks taken from a
-limited menu of options, you can build up the rest of your styles without having to work your brain
-so hard.
-
 Many companies have open-sourced their design systems: Microsoft has [Fluent
 UI](https://www.microsoft.com/design/fluent/%23/web), Salesforce has
 [Lightning](https://www.lightningdesignsystem.com/), Shopify has
@@ -196,8 +167,8 @@ from Bootstrap.
 
 I’m sure I’m not the only one on my team who has experienced a familiar sinking feeling whenever it
 comes time to touch the application’s CSS. Whether the task at hand is fixing a display bug,
-updating the design, or creating a new component  —  there’s a sense of dread, rooted in the fear of
-breaking something  —  which in turn comes from a sense that it’s impossible to completely
+updating the design, or creating a new component  --  there’s a sense of dread, rooted in the fear of
+breaking something  --  which in turn comes from a sense that it’s impossible to completely
 understand or predict the effects of any given change.
 
 <figure class='figure-md figure-b'>
@@ -205,7 +176,7 @@ understand or predict the effects of any given change.
 ![]($$/two-css-properties-walk-into-a-bar.png)
 
 There should be a German noun for the fear of breaking something in a CSS codebase. Perhaps
-**_Kaskadenangst_**  —  “cascade anxiety”?
+**_Kaskadenangst_**  --  “cascade anxiety”?
 
 </figure>
 
@@ -214,7 +185,7 @@ perhaps if we organized things better, maybe if we had abstracted the right abst
 would enjoy working with our CSS.
 
 But it turns out that large CSS codebases are pretty much universally feared and reviled by the very
-people who created them.
+people who created them, no matter how competent they are.
 
 Case in point: If anyone knows what they're doing with digital design, it's the people at [_The
 Guardian_](http://theguardian.com). Their web presence been an inspiration to me for many years,
@@ -243,7 +214,7 @@ scratch](https://www.theguardian.com/info/2019/apr/04/revisiting-the-rendering-t
 Now of course, working in _any_ kind of legacy code can seem opaque and feel nerve-wracking to work
 with. But there are some peculiarities of CSS that make it particularly fraught.
 
-## The perils of globalization
+### The perils of globalization
 
 The "C" in CSS stands for "cascading", and the cascade is a powerful device: Changing one small rule
 can can have sweeping effects. This system of inheritance and overrides makes it possible to style a
@@ -253,266 +224,49 @@ The flip side of the cascade’s power, though, is that if you have more than a 
 can quickly end up with a network of effects and counter-effects that exceeds your ability to keep
 it straight in your head.
 
-The root of the problem is that **all CSS is global**. As Facebook engineer Christopher Chedeau
-points out in this [landmark 2014 talk](https://vimeo.com/116209150), “avoid global variables” has
-forever been at the top of the list of best practices for programmers, but Bootstrap 3 shipped with
-600 global variables. CSS is, by its very nature, a global list of rules.
+The root of the problem is that **all CSS is global**. “Avoid global variables” has forever been at
+the top of the list of best practices for programmers, but CSS is, by its very nature, a global list
+of rules.
 
-Not only do all styles exist in the same global namespace, but rules can “see” the entire DOM, and
-you don’t know in advance what the DOM will contain; so it’s not possible to compute in advance what
-rules might be applied in what combinations. This is not merely a difficulty, it’s a problem of
-**fundamental unknowability**. This is why so many CSS codebases are, in practice, append-only: No
-amount of static analysis can tell you whether it’s safe to delete any given rule.
+Not only do all styles exist in the same global namespace, but rules can “see” the entire
+DOM, and you don’t know in advance what the DOM will contain; so it’s not possible to compute in
+advance what rules might be applied in what combinations. This is not merely a difficulty, it’s a
+problem of **fundamental unknowability**.
+
+This is why so many CSS codebases are, in practice, append-only: No amount of static analysis can
+tell you whether it’s safe to delete any given rule.
 
 In an article entitled [Oh No! Our Stylesheet Only Grows and Grows and
 Grows!](https://css-tricks.com/oh-no-stylesheet-grows-grows-grows-append-stylesheet-problem/), CSS
 guru Chris Coyier describes the lengths one team goes to: They instrument their production site to
 analyze a sample of real page loads and report back which CSS selectors seem to be unused. But even
-this extreme approach to dead code elimination just provides an educated guess: It’s not realistic
-to test every possible page in every conceivable state of user interaction:
+this extreme approach to dead code elimination just provides an educated guess -- there's just no
+way to test every possible page in every conceivable state of user interaction:
 
-> I’m sure you can imagine some CSS that applies only to a select menu, for a logged-in user, with
-> an expired subscription, who wants to update a credit card, in a modal window, with a form that
-> displays a certain way because the card is American Express.
-
-(And if you can’t even detect dead code, you definitely can’t think about automating optimizations
-like inlining critical CSS for first load, or other forms of just-in-time CSS delivery.)
+> imagine some CSS that applies only to a select menu, for a logged-in user, with an expired
+> subscription, who wants to update a credit card, in a modal window, with a form that displays a
+> certain way because the card is American Express.
 
 So we all approach CSS changes with trepidation, only adding and never changing or deleting, and
-keeping our additions as focused as possible  —  and consequently ramping up specificity in a
-never-ending arms race of specificity. Sunil Pai, another Facebook front-end engineer,
-[says](https://gist.github.com/threepointone/731b0c47e78d8350ae4e105c1a83867d):
+keeping our additions as focused as possible  --  and consequently ramping up specificity in a
+never-ending arms race of specificity, with nuclear `!important` statements proliferating out of
+control.
 
-> The Facebook codebase has thousands of `!important` statements, despite being written by competent
-> engineers with solid engineering practices and deep relationships with design teams.
+## Reining in CSS's global scope
 
-Most programming languages have found ways to **modularize** code, so that an ordinary human only
-needs to reason about one self-contained part at a time. There are ways of dealing with CSS’s lack
-of modularity  —  I’ll come back to this later.
-
-But the problem goes beyond CSS’s global scope. I’m increasingly convinced that we’ve been using CSS
-the wrong way altogether, at least when it comes to building software applications that run in the
-browser. This is partly due to the nature of the language, and partly due to the culture that’s
-grown up around CSS.
-
-<figure class='figure-xl'>
-
-![]($$/zen-garden.jpg)
-
-**A vivid illustration of the power of CSS:** The Zen Garden was hugely influential in getting
-designers and developers to embrace web standards.
-
-</figure>
-
-### The false promise of the CSS Zen Garden
-
-The first time I wrote an HTML page was in 1995, before CSS was a thing.
-
-In 1996, when Internet Explorer 3 came out with the first browser support for CSS, I tried it out
-with great excitement, although it didn’t work in Netscape so I knew it would be a while before I
-could use it for anything real.
-
-<figure class='figure-md'>
-
-![](https://cdn-images-1.medium.com/max/800/0*NIk91gK-3YTXNOBd.png)
-
-Gather around for a little history, kids.
-
-</figure>
-
-Around the turn of the millennium, the first websites I made for money used just a smattering of CSS
-for styling. Like everyone else at the time, I used carefully sliced-up images, tucked into
-elaborately nested `<table>` structures, to pull off effects like rounded corners and drop shadows.
-
-In 2003, the one-two punch of Jeffrey Zeldman’s [Designing With Web
-Standards](https://www.amazon.com/Designing-Web-Standards-Jeffrey-Zeldman/dp/0735712018) and the
-[CSS Zen Garden](http://www.csszengarden.com/) changed forever the way I built web pages.
-
-The CSS Zen Garden is a website made by David Shea, a Canadian web designer. It consists of a single
-bare-bones HTML file, radically restyled in different ways simply by changing the stylesheet.
-Thousands of people submitted designs. Minds were blown, including mine. The Zen Garden, I think,
-left all of us trying to live up to this ideal, that you should always be prepared to swap out your
-web page’s stylesheet with another. Your HTML is “content”: It’s a static, immutable, known thing.
-And what we optimize for is changing out is “style”, CSS, which treats the HTML as a stable
-dependency.
-
-### A different perspective on “separation of concerns”
-
-<figure >
-
-![]($$/separation-of-concerns-pulp-fiction.jpg)
-
-I dare you. I double dog dare you.
-
-</figure>
-
-But when’s the last time you actually swapped out a site’s stylesheet?
-
-Some sites use this approach to offer multiple themes  —  this is how [Wikipedia’s skins
-work](https://en.wikipedia.org/wiki/Wikipedia:Skin), for instance  —  but it’s an unusual thing to
-do precisely because it multiplies the CSS maintenance burden. Basically, this thing that was sold
-to us as a killer feature turned out to be an edge case.
-
-In practice, my experience is that it’s very rare to make substantial CSS changes without making
-corresponding HTML changes.
-
-Philip Walton, now an engineer at Google, [observed way back in
-2013](https://tympanus.net/codrops/2013/01/22/defending-presentational-class-names/%5C):
-
-> I’ve been redesigning websites for many, many years. I’ve worked on big sites and small ones; I’ve
-> worked alone and as a member of a large engineering team. And not once, in my entire career, have
-> I worked on a redesign where I wasn’t allowed to alter the HTML. For me and most designers I know,
-> when you redesign a site you want to change the markup. … **Markup is not content. HTML adds
-> structure and semantics to our content, but it is not the content itself**. I think it’s time we
-> stopped equating the two.
-
-Your CSS and your markup are tightly coupled, because **there’s presentation-level information
-encoded in the structure of your HTML**  —  the order things are in, the way they’re nested. HTML is
-not pure “content” and never has been.
-
-<figure class='figure-md'>
-
-![]($$/presentation-vs-content.png)
-
-**A couple of different ways of thinking about “separation of concerns”.** An HTML document mixes
-content, structure, and semantics. If your data is separate from your markup  —  as it will be in
-any software application  —  it starts to make more sense to treat the styling and the markup as a
-single thing: a **component**.
-
-</figure>
-
-I think that the mental model encouraged by the Zen Garden has led us astray, by causing us to focus
-on a nearly non-existent use case.
-
-As a result we’ve instituted the wrong sort of separation of concerns. In any website or application
-of any complexity, the meaningful boundary between presentation and content isn’t between files with
-that end in `.html` and files that end in `.css`  —  it’s between _components_ (containing CSS,
-HTML, and JavaScript) and structured _data_. You can take a given piece of data – a contact entry,
-or a restaurant’s details and reviews, or a blog post – and pour it into any number of different
-components.
-
-![]($$/modular.png)
-
-For example, a single contact record might be displayed as a row in a table, or a thumbnail, or an
-editable form.
-
-<figure class='figure-xl'>
-
-![]($$/components.png)
-
-**A powerful abstraction:** Components allow you to take a single element of **data** and bind it to
-any number of different **presentation** layouts   —  “presentation” meaning styles and markup.
-
-</figure>
-
-Now _this_ is a separation of concerns that actually turns out to be super useful in practice. It’s
-something developers do all the time. And that’s why we’ve all coalesced around React and other
-component-centric frameworks.
-
-### Software applications are not documents
-
-The model of an interchangeable global stylesheet works fine for its original purpose, which is
-formatting hypertext *documents*  —  where there’s a fairly limited universe of possibilities.
-
-<figure class='figure-md'>
-
-![]($$/pdf-about-css.png)
-
-**Isn’t it ironic:** HTML was originally designed for publishing academic papers  —  which these
-days are the one form of content that you’re **least** likely to find in HTML (including research on
-HTML and CSS)!
-
-</figure>
-
-But today’s web would be unrecognizable to the authors of the original HTML and CSS specs. Most
-significantly, we’ve turned it into a platform for serving software _applications_. In this context,
-our document-related metaphors are unhelpful; and we don’t do ourselves any favors by continuing to
-insist on the abstractions that made sense in that world.
-
-It shouldn’t surprise us if the the best tools for publishing an essay or a research paper aren’t
-the best tools for building an email client or a spreadsheet.
-
-I feel like so much of the drama and controversy and hard feelings that have been stirred up in the
-front-end community over the last few years could have been avoided by being clearer about this
-distinction.
-
-> ### Speaking of drama: A side note recognizing that this is, perhaps surprisingly, a really sensitive topic
->
-> Before I go any further, I should acknowledge that I’ve wandered onto a topic that is flammable in
-> ways that goes beyond the usual nerd debates.
->
-> It might seem strange that we could get emotional over the question of how exactly the style rules
-> for web pages should be written and organized. But this isn’t tabs vs. spaces.
->
-> ![]($$/glory-of-cascade.jpg)
->
-> Understandably, if your whole career has been about taming the cascade, you’re not going to take
-> kindly to some clueless twentysomething writing the whole thing off as obsolete or misguided. When
-> you’ve mastered a technology, even the driest analysis of that technology’s drawbacks can be seen
-> as a personal attack.
->
-> To complicate things further, there’s a gender angle to this. Front-end development has
-> historically been somewhat more accessible to women, while elite brogrammers saw HTML and CSS as
-> trivial and unworthy of their attention. As much of the value has shifted from the server to the
-> client, it’s understandably galling to see the same dudes now saying that stylesheets are too
-> complex and need to be replaced with tools from their side of the house. One could be forgiven for
-> seeing it as a land grab, a hostile encroachment on a rare bit of tech territory where women have
-> thrived.
->
-> Kevin Ball was once the lead developer for the ZURB Foundation UI framework. In a 2018 post
-> entitled “[CSS dismissal is about exclusion, not
-> technology](http://zendev.com/2018/09/11/css-dismissal-is-about-exclusion-not-technology.html)”,
-> he draws an analogy to the male takeover of programming as a profession in the 60s and 70s.
->
-> > We’ve seen this play before. The systematic devaluation of CSS, and more, the people who use
-> > CSS. The constant “mansplaining” of CSS features to women who literally are the reason it
-> > exists. It’s time to stop pretending. We’re seeing a power play, trying to once again push
-> > people out of the industry by pushing a particular approach to front-end development.
->
-> I … I don’t know about that.
->
-> There’s a legitimate point here about the immediate effects on people’s careers of a shift in
-> technology. But while I can’t really speak to anyone’s motivations but my own, it seems a bit of a
-> stretch to suggest that people’s complaints about CSS are actually a front for a bad-faith effort
-> to perpetuate male privilege.
->
-> At any rate, I know my own lived experience of nightmarish CSS codebases; and I'd like to know how
-> to avoid going there again.
->
-> So: Onwards.
-
-## Reining in CSS’s global scope
-
-The case of JavaScript might be instructive. JavaScript is another web technology that originally
-used a single global scope; so it might be instructive to see how that’s played out.
-
-Turning JavaScript into a modular language is something that the community has wrestled with for the
-last decade, and we could break that process into three stages:
-
-1.  naming conventions and other best practices;
-2.  userland libraries and build-time tools (AMD, CommonJS); and
-3.  modularity as a language-level feature (ES6 modules).
-
-In the CSS world, we’re seeing the first two stages playing out, maybe with a few years’ delay
-relative to JS. (The CSS specification itself is evolving rapidly, but as far as I know there’s not
-been a proposal to build a module system into the language itself.)
+Most programming languages have solved this problem by **modularizing** code, so that an ordinary
+human only needs to reason about one self-contained part at a time. There are a couple of ways
+to achieve this with CSS:
 
 ### Naming conventions
 
-If you don’t have proper namespacing, you can always just fake it by prepending your global variable
-names with a probably-unique string, add in lots of underscores for good measure, and hope for the
-best.
+In the absence of true modules, you can always just fake it by prepending your global variable names
+with a probably-unique string, add in lots of underscores for good measure, and hope for the best.
 
-The [BEM](http://getbem.com/) (Block, Element, Modifier) methodology, from the Russian search engine
-Yandex, was the first naming convention to gain wide adoption in the CSS community, and is still far
-and away the most popular despite the subsequent appearance of alternatives like
-[SMACSS](http://smacss.com/),
-[OOCSS](https://www.smashingmagazine.com/2011/12/an-introduction-to-object-oriented-css-oocss/) and
-[SUIT](https://suitcss.github.io/).
-
-The idea is straightforward: Class names always start with a block name  —  essentially a namespace
-at the component level  —  and are followed by an element name, and perhaps a modifier. Something
-like this:
+The [BEM](http://getbem.com/) methodology, from the Russian search engine Yandex, is a popular
+naming convention for CSS that does just that. Class names always start with a **block** name  --
+essentially a namespace at the component level  -- followed by an **element** name, and optionally
+a **modifier**. For example:
 
 ```text
 .bio__image { ... }
@@ -534,15 +288,15 @@ This works well as far as it goes, but it’s brittle. As The Guardian’s front
 So, the problem with conventions is that they require discipline, diligence, and consistency from
 humans; while humans notoriously sloppy, lazy, and undisciplined.
 
-Hmm. Well, that’s why we invented computers. Rather than cajole and persuade developers and then
-hope against hope that they nobody screws things up, we can just give the job of naming things to a
+Well, that’s why we invented computers. Rather than cajole and persuade developers and then hope
+against hope that they nobody screws things up, we can just give the job of naming things to a
 computer.
 
-That’s the big idea behind [CSS Modules](http://glenmaddern.com/articles/css-modules), a build-time
-tool created by Australian developer Mark Dalgleish that basically automates a BEM-style prefixing
-scheme. It lets you break your stylesheet up into component-level files, and then namespaces them by
-prefixing them with the component’s filename. So for example, a style named `title` might be
-replaced with one named `_article__title_309571057`.
+[CSS Modules](http://glenmaddern.com/articles/css-modules), a build-time tool created by Australian
+developer Mark Dalgleish, basically automates a BEM-style prefixing scheme. It lets you break your
+stylesheet up into component-level files, and then namespaces them by prefixing them with the
+component’s filename. So for example, a style named `title` might be replaced with one named
+`_article__title_309571057`.
 
 ### CSS in JavaScript
 
@@ -550,10 +304,12 @@ But what if, instead of creating a new pseudo-module system for CSS, we just use
 that we already have in JavaScript?
 
 These kinds of ideas usually just sneak up on us little by little. The whole CSS-in-JS thing is
-unusual in that it went overnight from being preposterous to plausible. Nearly every article on the
-topic  —  whether it’s an argument for or against, or a tutorial, implementation, or whatever  —
-points back to a talk by Christopher Chedeau ([Vjeux](https://medium.com/u/46fa99d9bca4)) at a
-regional JavaScript conference in Washington DC at the end of 2014. It’s worth watching in full:
+unusual in that one day it was not a thing at all, and seemingly the next day there were thousands
+of blog posts, tutorials, and opinion pieces, and dozens of brand-new frameworks jostling for attention.
+
+The precipitating event was a talk that Facebook's Christopher Chedeau
+([Vjeux](https://medium.com/u/46fa99d9bca4)) at a small JavaScript conference in Washington DC at
+the end of 2014. It’s worth watching in full:
 
 <figure class='figure-md'>
 
@@ -565,97 +321,41 @@ the talk thinking it would be such a watershed.
 
 </figure>
 
-The basic idea he put forward seems simple: Rather than CSS classes, you have JavaScript objects
-whose names correspond to CSS properties (camel-cased, e.g. `borderRadius` rather than
-`border-radius`). The object is then passed to an element’s `style` property in JSX, whereby they’re
-rendered as inline styles.
+The original idea was fairly simple: Rather than have your CSS in a separate, global file, you
+assign inline styles directly to elements within each component.
 
-```js
-let styles = {
-  background: 'lightBlue',
-  border: '1px solid blue',
-  borderRadius: 2,
-}
-<div style={styles}>...</div>
+```jsx
+return <div style={{ backgroundColor: 'red', height: 10, width: 10 }} />
 ```
 
-A number of CSS-in-JS libraries popped up over the following year, with widely varying approaches.
-Since then, [Styled Components](http://styled-components.com) and
-[Emotion](http://emotion.sh/docs/introduction) have come to dominate the field  —  and they’ve each
-liberally adopted each others’ improvements and API options, so that they’re nearly interchangeable
-at this point.
+This is rendered as
 
-![](https://cdn-images-1.medium.com/max/800/0*t2yNRxE2nsk8KN_i.png)
-
-Styles in either of these libraries can be authored using actual CSS syntax and template literals:
-
-```js
-let styles = css`
-    background: lightBlue;
-    border: 1px solid blue;
-    border-radius: 2px;
-    @:hover {
-      background: darkBlue;
-    }
-}`
-<div css={styles}>...</div>
+```html
+<div style=`background-color: red; height: 10px; width: 10px` />
 ```
 
-Or they can be written using the same kind of objects Chedeau proposed:
+Modern CSS-in-JS libraries do a little fancy footwork in the background to dynamically roll these
+inline styles into proper CSS classes, which allows you to support . For example:
 
-```js
-let styles = {
-  background: 'lightBlue',
-  border: '1px solid blue',
-  borderRadius: 2,
-  '&:hover': { background: 'darkBlue' }
-}
-<div css={styles}>...</div>
+```jsx
+return <div css={{ backgroundColor: 'red', height: 10, width: 10, '&:hover': { backgroundColor: 'blue' } }} />
 ```
 
-You’ll notice that we’re adding our styles to a `css` attribute instead of `styles`. The simple
-approach of adding inline styles turns out to be limiting; there are things you can do with classes
-—  pseudo-selectors like `:hover` or `:focus`, media queries, etc.  —  that you can't do with inline
-styles. So most modern libraries convert rules to CSS classes on the fly, with generated names.
+Which would render something like this:
 
-For example, here’s a glimpse behind the scenes on Twitter’s web client.
-
-<figure class='figure-lg figure-b'>
-
-![]($$/twitter-source.png)
-
-(Depending on your perspective, you might think this is slick   —  or [not
-so much](https://twitter.com/dhh/status/1089179428788133888)!)
-
-</figure>
-
-To me, a beautiful thing about having CSS in your JS is how it simplifies styling a component’s
-various states. Imagine you’re styling a strip of tabs, and you want the currently active tab to be
-styled differently. In BEM-flavored CSS you might have this:
-
-```css
-.tabstrip__tab {
-    ...
-    background: 'lightBlue';
-}
-.tabstrip__tab--active {
-    ...
-    background: 'darkBlue';
-}
-
-```
-
-With Emotion etc. you have this:
-
-```js
-const Tab = props => {
-  let styles = {
-        ...
-        background: props.active ? 'darkBlue' : 'lightBlue',
-    }
-  ...
-}
-
+```html
+<style>
+  .eujXCt {
+    background-color: red;
+    height: 10px;
+    width: 10px;
+  }
+  .eujXCt:hover {
+    background-color: blue;
+  }
+</style>
+...
+<div class="eujXCt" />
 ```
 
 The key insight of React and other modern rendering engines is to think of **UI as a function of
@@ -666,7 +366,7 @@ coin and it’s useful to think of them _both_ as a function of state.
 
 ## But we still need constraints
 
-So we could use CSS modules or one of the CSS-in-JS frameworks to solve the problem of global scope.
+OK. So we could use CSS modules or one of the CSS-in-JS frameworks to solve the problem of global scope.
 That's a huge improvement.
 
 But how do you go about building a **design system** that constrains our choices? Whether you love
@@ -732,7 +432,7 @@ It’s always been common practice to use a handful of utility classes in CSS: T
 `.float-left` or `.hidden` that often only contain a single rule, referred to in the class's name.
 
 But Jeffrey Zeldman et al. had drilled into my very soul the principle that classes should be
-**semantic** — that they should refer to the _content_ (`.author-name` or `.summary`) rather than
+**semantic** -- that they should refer to the _content_ (`.author-name` or `.summary`) rather than
 the _presentation_ (`.thick-border-top` or `.small-text`).
 
 So when I first heard about Tachyons, I dismissed it out of hand. The idea of a stylesheet that
@@ -812,7 +512,7 @@ approximately _nobody_ has ever redesigned a website by writing a new stylesheet
 markup. But while chasing that fantasy, we've given up the ability to **reuse our existing CSS
 classes**, which would be far more valuable. As Adam Morse writes (emphasis mine):
 
-> When I read about or listen to ideas on how to scale an app’s CSS  —  most of the talk is about
+> When I read about or listen to ideas on how to scale an app’s CSS  --  most of the talk is about
 > how to write CSS. The real way to scale CSS, is to **stop writing CSS**.
 
 With utility classes, not only are you able to "stop writing CSS", but -- as a side benefit -- you get

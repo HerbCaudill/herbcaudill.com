@@ -298,7 +298,7 @@ article {
     }
 
     & blockquote {
-      @apply border-gray-200; /* nested blockquotes are lighter */
+      @apply border-gray-100 text-sm; /* nested blockquotes */
     }
   }
 
