@@ -8,7 +8,7 @@ description: |
   Specifically, how would you implement the visual design? I’ve spent an unreasonable amount of time 
   reading and thinking about this, and I wrote this as a way of sorting out my own thoughts about it.
 
-draft: false
+draft: true
 
 date: '2020-10-07'
 
@@ -19,26 +19,28 @@ caption: |
 context: |
   **Note from the future:** I wrote most of this article in 2020 as my own notes on my research. Once I discovered Tailwind, I
   stopped writing and got back to work, and nearly forgot about this piece. It's now 2023, and in the interim Tailwind has gone 
-  from being super controversial to being a safe, even [obvious](https://npmtrends.com/bootstrap-vs-tailwindcss) choice. So this all feels a bit like
-  beating a dead horse at this point; but I've gone ahead and finished it and I'm posting it anyway, with the original title and date for context.
+  from being super controversial to being a safe, even [obvious](https://npmtrends.com/bootstrap-vs-tailwindcss) choice. So this all feels a bit like beating a dead horse at this point; but I've gone ahead and finished it and I'm posting it anyway, with the original title and date for context.
 ---
 
 Recently, during Spain's second or third COVID wave, I sat down to build a very simple
 React app as a demo for something I was working on, and I was immediately paralyzed trying to decide
 how to style the application.
 
-It wasn't important how this particular demo app, and the underlying technology used to style it mattered
-even less. But I was dissatisfied with basically every approach I'd ever used: Every UI framework,
-every component library, every CSS methodology seemed to fundamentally fall short of doing what I
-needed.
+It wasn't at all important how this particular demo app _looked_, and the underlying technology used
+to style it mattered even less.
 
-I started out in this business as a designer, so design just matters a lot to me in general. And the
-long-term goal is all about interfaces that users can modify or assemble from scratch using
+Maybe it was the Difficult Times We're Living Through, but I found myself with dissatisfied with
+basically every approach I'd ever used: Every UI framework, every component library, every CSS
+methodology -- they all seemed to fundamentally fall short of doing what I needed.
+
+I started out in this business as a designer, so design just matters a lot to me in general.
+
+And I'm thinking a lot about about interfaces that users can modify or assemble from scratch using
 components that can be composed with other components. So there needs to be a solid design system
-underlying this that is modular and composable.
+underlying this that is **modular and composable**.
 
 If the goal is for this to universal, it's not reasonable to expect the same UI esthetic to
-work in every context; so everything needs to be themable.
+work in every context; so everything needs to be **themable and customizable**.
 
 And the developer experience (DX) of styling matters more than it normally would,
 because ultimately I'd like for it to be easy for advanced users to extend the system by creating
@@ -65,21 +67,20 @@ You should read to the end to find out what that approach was! But let's start f
 
 My first thought was to take a look at the current state of UI component libraries.
 
-Developers can save a lot of time by building on top of an open-source library for UI components,
-rather than creating their entire user interface from scratch. A UI library typically provides
-ready-made grids and templates for laying out the screen, as well as individual elements like
-buttons, alerts, and forms. Libraries also typically include any JavaScript needed to make
-interactive things like dropdowns and dialogs work.
+About a decade ago, I -- along with seemingly every other web designer in the planet -- went all-in
+on [Bootstrap](http://getbootstrap.com).
 
-For example, for years DevResults has used a library called
-[**Bootstrap**](http://getbootstrap.com).
+Bootstrap was originally an internal project at Twitter, intended to reduce duplication and
+encourage consistency across various parts of the application’s UI. When they open-sourced it, it
+became hugely popular – to the point of becoming the default choice for new websites and web apps,
+defining the visual style of the web for the better part of the decade, and causing
+[some](https://www.friday.ie/blog/why-do-all-websites-look-the-same/) to
+[complain](https://medium.com/@firedrop/is-it-just-me-or-do-all-websites-look-the-same-8bb166d4dc9c)
+that [every website looked the same](https://www.dagusa.com/).
 
-There were probably component libraries before Bootstrap, but it was the first I knew about, and for
-a long time it was seemingly the only one that mattered. It was originally an internal project at
-Twitter, intended to reduce duplication and encourage consistency across various parts of the
-application’s UI. Twitter released Bootstrap to the public in 2011. It became hugely popular – to
-the point of becoming the default choice for new websites and web apps, and defining the visual
-style of the web for the better part of the decade.
+Bootstrap provides ready-made grids and templates, a library of individual elements like buttons,
+alerts, and forms; and a handful of interactive components like dropdowns and dialogs. It's a solid
+choice; DevResults still uses Bootstrap to this day.
 
 <figure class='figure-xl'>
 
@@ -99,24 +100,6 @@ have become popular as well:
   a bit to keep up with the times.
 - [**Ant Design**](https://ant.design/) is a product of Ant Financial, which I gather is the PayPal
   of the Alibaba universe. It’s very widely used in China.
-
-### Interactivity and accessibility
-
-Most UI frameworks come with some JavaScript-driven interactive components like dropdowns, tabs,
-autocomplete inputs, and modals. If you like a library's esthetic, you'd better hope you like the
-functionality of their interactive components, and vice versa -- because the two are intricately
-linked, and trying to override a framework's built-in classes is something I don't enjoy doing.
-
-If you look through these libraries’ websites, they all _say_ somewhere that their components are
-accessible. But some of them are built from the ground up with accessibility in mind, while [others
-seem to treat it as an afterthought](https://darekkay.com/blog/accessible-ui-frameworks/).
-Accessibility isn’t a yes-or-no proposition  —  there are degrees, and it’s really hard to get it
-all right.
-
-One approach is to separate out the styling from the interactivity. For example, [**Reach
-UI**](https://reach.tech/) is an accessibility-first library that that provides bare-bones
-implementations of UI patterns like dialogs and autocomplete, with the expectation that you’ll
-provide your own styling.
 
 <figure class='figure-xl'>
 
