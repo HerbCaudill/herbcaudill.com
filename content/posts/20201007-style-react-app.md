@@ -13,13 +13,17 @@ draft: true
 date: '2020-10-07'
 
 caption: |
-  "CSS is easy. It´s like riding a bike, which is on fire and the ground is on fire and everything is on fire because it is hell." 
-  <i> —  <a href='https://twitter.com/iamdevloper/status/753716544949981184?lang=en'>@iamdevloper</a></i>
+  "CSS is easy. It´s like riding a bike, which is on fire and the ground is on fire and everything is 
+  on fire because it is hell." 
+  _ -- [@iamdevloper](https://twitter.com/iamdevloper/status/753716544949981184)_
 
 context: |
-  **Note from the future:** I wrote most of this article in 2020 as my own notes on my research. Once I discovered Tailwind, I
-  stopped writing and got back to work, and nearly forgot about this piece. It's now 2023, and in the interim Tailwind has gone 
-  from being super controversial to being a safe, even [obvious](https://npmtrends.com/bootstrap-vs-tailwindcss) choice. So this all feels a bit like beating a dead horse at this point; but I've gone ahead and finished it and I'm posting it anyway, with the original title and date for context.
+  **Note from the future:** I wrote most of this article in 2020 as my own notes on my research. Once 
+  I discovered Tailwind, I stopped writing and got back to work, and nearly forgot about this piece. 
+  It's now 2023, and in the interim Tailwind has gone from being super controversial to being a safe, 
+  even [obvious](https://npmtrends.com/bootstrap-vs-tailwindcss) choice. So this all feels a bit like 
+  beating a dead horse at this point; but I've gone ahead and finished it and I'm posting it anyway, 
+  with the original title and date for context.
 ---
 
 Recently, during Spain's second or third COVID wave, I sat down to build a very simple
@@ -39,9 +43,6 @@ And I'm thinking a lot about about interfaces that users can modify or assemble 
 components that can be composed with other components. So there needs to be a solid design system
 underlying this that is **modular and composable**.
 
-If the goal is for this to universal, it's not reasonable to expect the same UI esthetic to
-work in every context; so everything needs to be **themable and customizable**.
-
 And the developer experience (DX) of styling matters more than it normally would,
 because ultimately I'd like for it to be easy for advanced users to extend the system by creating
 new datatypes  --  along with the components for working with them. So the whole question of how you
@@ -52,18 +53,12 @@ things that look great and hard to make ugly things.
 This article started out as my own notes on my research. For a while, the deeper I went down the
 rabbit hole, and the longer this piece got, the more unhappy I was with my options.
 
-The good news is that I finally did find an approach that ticks all my boxes -- so much so that I went
-back to work, stopped writing, and nearly forgot about this article.
+The good news is that I finally did find an approach that I got excited about -- so much so that I
+went back to work, stopped writing, and nearly forgot about this article.
 
 You should read to the end to find out what that approach was! But let's start from the beginning.
 
-## UI libraries
-
-<figure class='figure-lg'>
-
-![]($$/ui-frameworks.png)
-
-</figure>
+## UI libraries and design systems
 
 My first thought was to take a look at the current state of UI component libraries.
 
@@ -79,7 +74,7 @@ defining the visual style of the web for the better part of the decade, and caus
 that [every website looked the same](https://www.dagusa.com/).
 
 Bootstrap provides ready-made grids and templates, a library of individual elements like buttons,
-alerts, and forms; and a handful of interactive components like dropdowns and dialogs. It's a solid
+alerts, and forms; and a handful of interactive components like dropdowns and modals. It's a solid
 choice; DevResults still uses Bootstrap to this day.
 
 <figure class='figure-xl'>
@@ -94,12 +89,30 @@ start with buttons. Shown here, from left to right: Material UI, Semantic UI, An
 Bootstrap is still far and away the most widely used UI framework, but there are other options that
 have become popular as well:
 
+- [**Zurb foundation**](https://get.foundation/) is a more minimalist framework that came out around
+  the same time as Bootstrap.
 - [**Material UI**](https://material-ui.com/) is an unofficial, community-created implementation of
   Google’s [Material Design](https://material.io/design).
 - [**Semantic UI**](https://semantic-ui.com/) is a sharp, simple library that seems to be struggling
   a bit to keep up with the times.
 - [**Ant Design**](https://ant.design/) is a product of Ant Financial, which I gather is the PayPal
   of the Alibaba universe. It’s very widely used in China.
+
+The stylesheets and ready-made components of a UI framework are a useful way to start building a
+polished-looking website or application. But when a developer needs to create new components, it
+doesn't provide much in the way of guiderails, and it's easy to end up with lots of different
+colors, type sizes, and so on.
+
+Often an organization will come up with a comprehensive and opinionated framework internally, called
+a **design system**.
+
+A design system will usually include a Bootstrap-like UI library with pre-designed components like
+buttons, modals, and dropdowns. But since it's not possible to foresee every component that people
+are going to need, the focus is at a lower level: A design system offers a set of composable
+elements, called **design tokens**. These might include everything from type styles and color
+palettes to line weights, drop shadows, scales for spacing, and so on. These can be combined in
+different ways to create completely new components and layouts in a way that's visually consistent with
+other components and with the organization's overall brand.
 
 <figure class='figure-xl'>
 
@@ -111,14 +124,10 @@ a lot, including on this site.
 
 </figure>
 
-## Design systems
+The strength of a design system lies in the **constraints** provided by these design tokens: You
+can't just pick any line weight or type size, you have to choose from a limited set of options.
 
-What we’re looking for goes beyond just buttons and dropdowns, though. We’ll need other kinds of
-components, and we want to make it easy to create new components that fit in esthetically.
-
-For me, a big part of the promise of CSS has always been that you can establish a visual identity by
-enforcing design constraints. So a designer creates the CSS, and developers can only pick from the
-classes the designer offers.
+Many companies have open-sourced their design systems:
 
 But this leaves the designer themselves without any guiderails every time they need to add something
 _new _ —  they have to try to be consistent on their own. In a large codebase, maintaining that
@@ -157,6 +166,12 @@ UI](https://www.microsoft.com/design/fluent/%23/web), Salesforce has
 Some of these are really internally-facing and seemingly open-sourced just for the hell of it; while
 others are intended for wider adoption and customization.
 
+Google’s “Material Design” system was my introduction to the concept, and it really straddles these
+two modes: Its original intention was to unify Google’s sprawling universe of applications. But
+Material embodies a set of lower-level principles that can be adapted to any graphic identity, and
+it has been used as the foundation of in-house design systems for [many
+organizations](http://material.io/blog/material-partner-studies), from Lyft to NPR to Zappos.
+
 <figure>
 
 ![]($$/material.gif)
@@ -166,18 +181,17 @@ non-Google brands' design systems.
 
 </figure>
 
-Google’s “Material Design” system was my introduction to the concept, and it really straddles these
-two modes: Its original intention was to unify Google’s sprawling universe of applications. But
-Material embodies a set of principles that can be adapted to any graphic identity, and it has been
-used as the foundation of in-house design systems for [many
-organizations](http://material.io/blog/material-partner-studies) from Lyft to NPR to Zappos.
+In my experience, though, customizing the design of an existing framework like Bootstrap or Material
+UI is a nightmare. Bootstrap's CSS contains _literally seventy-twelve million billion variables_. It's
+death by a thousand overrides, as you struggle to overlay your vision on top of an endless supply of
+someone else's decisions.
 
 The question of how you modify an existing set of styles brings us to an extended digression on an
 important topic, which is…
 
 ## The beauty and the terror of working with Cascading Style Sheets
 
-The DevResults codebase has around 17,000 lines of our own SCSS, plus something like 6,000 lines
+The DevResults codebase has around 17,000 lines of our own CSS, plus something like 6,000 lines
 from Bootstrap.
 
 I’m sure I’m not the only one on my team who has experienced a familiar sinking feeling whenever it
@@ -185,14 +199,6 @@ comes time to touch the application’s CSS. Whether the task at hand is fixing 
 updating the design, or creating a new component  —  there’s a sense of dread, rooted in the fear of
 breaking something  —  which in turn comes from a sense that it’s impossible to completely
 understand or predict the effects of any given change.
-
-There are definitely things that we could have done better  —  conventions we could have adopted,
-systems we could have put in place, abstractions we could have abstracted. But I think this a
-classic case of a software [Pit of
-Despair](https://blog.codinghorror.com/falling-into-the-pit-of-success/)  —  the sort of technology
-problem that **everyone blames themselves** for, when the real problem has to do with the
-technology’s own built-in defaults, limitations, and
-[footguns](https://en.wiktionary.org/wiki/footgun).
 
 <figure class='figure-md figure-b'>
 
@@ -203,13 +209,17 @@ There should be a German noun for the fear of breaking something in a CSS codeba
 
 </figure>
 
-I think it’s time for us to stop blaming ourselves. It’s not wrong to want our technology to help us
-fall into the Pit of Success; we haven’t gotten here due to a lack of competence or understanding.
+I used to think it was just us, that this was our fault: Surely if we were using better conventions,
+perhaps if we organized things better, maybe if we had abstracted the right abstractions, _then_ we
+would enjoy working with our CSS.
 
-Case in point: [_The Guardian_](http://theguardian.com)’s web presence been an inspiration to me for
-many years, with a confident and distinctive design sense that’s woven across an amazing variety of
-digital contexts with remarkable consistency. If anyone knows what they’re doing with CSS, it’s
-these people.
+But it turns out that large CSS codebases are pretty much universally feared and reviled by the very
+people who created them.
+
+Case in point: If anyone knows what they're doing with digital design, it's the people at [_The
+Guardian_](http://theguardian.com). Their web presence been an inspiration to me for many years,
+with a confident and distinctive design sense that’s woven across an amazing variety of digital
+contexts with remarkable consistency.
 
 <figure class='figure-lg'>
 
@@ -221,7 +231,8 @@ for the rest of us?
 
 </figure>
 
-Here’s how they describe their codebase before their last update:
+Here’s how they describe their codebase [six years after starting from
+scratch](https://www.theguardian.com/info/2019/apr/04/revisiting-the-rendering-tier):
 
 > At the time of writing, it has gone from 0 to 62,783 lines of Sass. That Sass generates tens of
 > thousands of rules that are intended to describe a maintainable set of responses to business and
@@ -232,7 +243,7 @@ Here’s how they describe their codebase before their last update:
 Now of course, working in _any_ kind of legacy code can seem opaque and feel nerve-wracking to work
 with. But there are some peculiarities of CSS that make it particularly fraught.
 
-### The perils of globalization
+## The perils of globalization
 
 The "C" in CSS stands for "cascading", and the cascade is a powerful device: Changing one small rule
 can can have sweeping effects. This system of inheritance and overrides makes it possible to style a
