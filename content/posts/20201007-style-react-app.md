@@ -241,16 +241,16 @@ way to test every possible page in every conceivable state of user interaction:
 This is why so many CSS codebases are, in practice, append-only: No amount of static analysis can
 tell you whether it’s safe to delete any given rule.
 
-So we all approach CSS changes with trepidation, only adding and never changing or deleting, and
+So we all approach CSS changes with trepidation, never changing or deleting, only adding, and
 keeping our additions as focused as possible  --  and consequently ramping up specificity in a
 never-ending arms race of specificity, with nuclear `!important` statements proliferating out of
 control.
 
 ## Reining in CSS's global scope
 
-Most programming languages have solved this problem by **modularizing** code, so that an ordinary
-human only needs to reason about one self-contained part at a time. There are a couple of ways to
-achieve this with CSS:
+Most programming languages have solved this problem organizing code into **modules**, each with its
+own scope. This makes it so that an ordinary human only needs to reason about one self-contained part at a time.
+There are a couple of ways to achieve this with CSS:
 
 ### Naming conventions7987
 
