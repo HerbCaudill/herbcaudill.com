@@ -583,8 +583,9 @@ _constraining_ our choices?
 
 [Theme UI](https://theme-ui.com/home/) came out in 2019, and it's the first CSS-in-JS framework I
 found that explicitly sets out to be the foundation of a design system. Created by Gatsby developer
-Brent Jackson, it builds on his previous contributions including [BassCSS](http://basscss.com),
-[ReBass](https://rebassjs.org/), and [Styled System](http://styled-system.com).
+Brent Jackson, it calls itself a **constraint-based framework** and builds on his previous
+contributions including [BassCSS](http://basscss.com), [ReBass](https://rebassjs.org/), and [Styled
+System](http://styled-system.com).
 
 <figure class='figure-xl'>
 
@@ -626,15 +627,15 @@ it hasn’t exactly taken the world by storm, so there's not much of a community
 it.
 
 And while it says it comes with 30 pre-built components, they're kind of a random assortment and
-they're mostly _very_ low-level; so you're pretty much starting from scratch when it comes to
-actually building out the UI for an application.
+they're mostly _very_ low-level; so you're pretty much on your own when it comes to actually
+building out the UI for an application.
 
 ### Tachyons
 
 The final piece of the puzzle for me came when I took a second look at the idea of "atomic" or
 "functional" or "utility-first" CSS.
 
-[Tachyons](https://tachyons.io/) was the first such CSS framework that I learned about. It has a
+[Tachyons](https://tachyons.io/) was the first such framework that I learned about. It has a
 lot of overlap with Theme UI, both in its motivation and in its history: Its creator, Adam Morse, is
 a long-term collaborator of Brent Jackson. Like Theme UI, it describes itself as a constraint-based
 framework, and it's driven by a theme file in which you define your design tokens.
@@ -649,9 +650,9 @@ framework, and it's driven by a theme file in which you define your design token
 }
 ```
 
-Unlike Theme UI, though, it is not a CSS-in-JS framework. Instead, it uses your theme definition _at
-build time_ to generate an actual stylesheet, containing nothing but composable **utility classes**,
-with names like `.f3` (for the third-largest font size) and `.pa1` (for the largest amount of padding).
+Unlike Theme UI, though, it does not use JavaScript to apply styles. Instead, it uses your theme
+definition _at build time_ to generate an actual stylesheet, containing nothing but composable
+**utility classes**, with names like `.f3` (font size) and `.pa1` (padding).
 
 ```
 /* generated css */
@@ -688,7 +689,7 @@ the _presentation_ (`.thick-border-top` or `.small-text`).
 
 Like CSS-in-JS before it, the idea of “atomic” or “utility-first” CSS provoked an unexpectedly
 visceral response in some prominent corners of the web design community. (Dave Shea is the creator
-of the CSS Zen Garden)
+of the CSS Zen Garden.)
 
 </figure>
 
@@ -712,16 +713,14 @@ things have in common is that they're _presented_ the same way. So you have to c
 semantic purity and reusability: "Semantic HTML" is at odds with the whole idea of
 a scalable and composable design system.
 
-In a post entitled [CSS and Scalability](https://mrmrs.cc/writing/scalable-css/), Adam Morse writes:
+In his post [CSS and Scalability](https://mrmrs.cc/writing/scalable-css/), Adam Morse writes:
 
-> This is where we come to the crux of the problem I have with any system that requires you to map
-> visual styles to components in your CSS. Content semantics have **nothing to do with visual
-> styles**. When I used to build things with Legos I never thought ‘oh this is a piece for an engine
-> block’ I thought ‘oh cool this is a 1x4 blue Lego and I can do anything I want with it’. It didn’t
-> matter if I was building an underwater aquanauts base or an airplane  --  I knew exactly how to
-> use that Lego block.
+> Content semantics have **nothing to do with visual styles**. When I used to build things with
+> legos I never thought ‘oh this is a piece for an engine block’ I thought ‘oh cool this is a 1x4
+> blue lego and I can do anything I want with it’. It didn’t matter if I was building an underwater
+> aquanauts base or an airplane  --  I knew exactly how to use that lego block.
 
-With the right set of "Lego blocks", a single stylesheet should accommodate an evolving application
+With the right set of "lego blocks", a single stylesheet should accommodate an evolving application
 without having to change much or at all. Traditional CSS has never _scaled_ in that sense: It's
 always grown linearly along with markup, with tons of repetition (or worse, _almost_-repetition).
 
