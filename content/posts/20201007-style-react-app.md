@@ -765,8 +765,8 @@ classes, which would be far more valuable. As Adam Morse writes:
 > When I read about or listen to ideas on how to scale an app’s CSS  --  most of the talk is about
 > how to write CSS. The real way to scale CSS, is to **stop writing CSS**.
 
-With utility classes, not only are you able to "stop writing CSS", but -- as a side benefit -- you
-get the _constraints_ that you need to implement a design system:
+Adam Wathan points out that with utility classes, not only are you able to "stop writing CSS", but
+-- as a side benefit -- you get the _constraints_ that you need to implement a design system.
 
 > You could try and enforce consistency through variables or mixins, but every line of new CSS is
 > still an opportunity for new complexity; adding more CSS will never make your CSS simpler.
@@ -777,7 +777,7 @@ get the _constraints_ that you need to implement a design system:
 > When everyone on a project is choosing their styles from a curated set of limited options, your
 > CSS stops growing linearly with your project size, and you get consistency for free.
 
-Adam Wathan describes the home-grown framework he's settled on. Like Tachyons, it almost exclusively
+He describes the home-grown framework he's settled on. Like Tachyons, it almost exclusively
 relies on stringing together utility classes like `.p-2`, `.text-xs`, and `.bg-warning`. In closing,
 he mentions that he's open-sourced his framework and called it [Tailwind
 CSS](https://tailwindcss.com/).
@@ -788,15 +788,15 @@ I was intrigued by Tailwind, but still very skeptical: This was really not what 
 looking for. It went counter to the religion of web standards that I had internalized over nearly
 two decades. The white-hot wrath of [Jeffrey Zeldman's
 disapproval](https://www.zeldman.com/2017/01/03/kiss-my-classname/) was making me sweat from 6,000
-kilometers away.
+kilometers away:
 
-<figure>
-
-![]($$/zeldman.jpg)
-
-Jeffrey Zeldman is not amused by our desire for a better life.
-
-</figure>
+> SORRY. I disagree. Nonsemantic classnames that refer to visual styles will always be a bad idea.
+>
+> Slapping a visually named class on every item in your markup may indeed make your HTML easier to
+> understand for a future developer who takes over without talking to you, especially if you don’t
+> document your work and create a style guide. **But making things easier for yourself and other
+> developers is not your job.** And if you want to make things easier for yourself and other
+> developers, talk to them, and create a style guide or pattern library.
 
 But I actually _did_ think it was my job to make things easier on myself and my fellow developers,
 if I could. And I had read somewhere that Tailwind was the sort of thing you had to try out to
@@ -813,11 +813,9 @@ a couple of self-explanatory classes on it.
 
 The clarity and simplicity of having the styles right there in front of you, in line with the markup
 they're affecting, is a breath of fresh air. Even when you're starting with a blank slate, it's a
-significant cognitive burden to keep track of what styles in this file apply to which elements in
-this other file: The constant mental effort that this context-switching requires is something that
-you underestimate until you're freed from it. And as we've noted, this mental burden only grows and
-grows as your stylesheets grow and proliferate and contradict each other, until it becomes a dark,
-anxiety-producing thing that makes your life substantially worse.
+significant cognitive burden to keep track of what bit in this file applies to which bit in this
+other file: The constant mental effort that this context-switching requires is something that you
+underestimate until you're freed from it.
 
 With Tailwind, you never have to wonder about the scope of your changes, or worry about unintended
 effects. No more knocking over a bar stool in a completely different bar.
@@ -831,16 +829,13 @@ autocompletion for the full set of utility classes, complete with color previews
 
 </figure>
 
-The experience of customizing Tailwind was such a revelation. In Bootstrap, with its _billions and
-billions_ of global variables, the process of applying your own design choices felt like a
-never-ending battle against the tide. With Tailwind, I felt in control. I tweaked the colors, chose
-some fonts, and from then on I was picking from a reasonable set of options, rather than constantly
-struggling to override someone else's defaults.
+Implementing your own design in Tailwind is a pleasure. No more tearing your hair out trying to
+override the the default styles: Instead, you start with a clean slate and you build up your own
+styles using a customizable menu of sensible options for colors, size, spacing scales, and so on.
 
-Beyond choosing fonts, colors, size and spacing scales, and so on, the depth of Tailwind's
-customizability blew me away. The config file gives you full access to the underlying machinery, so
-for example if you need utility classes that Tailwind doesn't include, you can have it generate
-whatever you want.
+The depth of Tailwind's customizability blew me away. Not only can you tweak the design tokens to
+your heart's content, but you have full access to the underlying machinery. If you need utility
+classes that Tailwind doesn't include, you can have it generate whatever you want.
 
 Tailwind is still a _CSS_ framework, and that shows in several respects that make it a big
 improvement over CSS-in-JS frameworks like Theme UI or Styled Components.
@@ -870,10 +865,9 @@ elements. You _could_ make a polymorphic `<Button>` component that encapsulates 
 able to return either of those tags, but I've gone down that road and let me save you the trouble.
 It's much easier to just write `<button class='button'>` and `<a class='button'>`.
 
-CSS-in-JS systems also struggle with essential CSS features like media queries and element states
-like `hover` and `focus`, and are forced to fake it in JavaScript. Since Tailwind is just CSS at the
-end of the day, it doesn't have this problem. As a bonus, Tailwind's shorthand is ergonomic and easy
-to read and write:
+CSS-in-JS systems deal awkwardly with essential CSS features like media queries and element states
+like `hover` and `focus`. Since Tailwind is just CSS at the end of the day, it doesn't have this
+problem. As a bonus, Tailwind's shorthand is ergonomic and easy to read and write:
 
 ```
 <!-- Darker background on hover -->
