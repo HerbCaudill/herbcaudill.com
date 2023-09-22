@@ -203,11 +203,11 @@ article {
     font: inherit;
   }
 
-  /* tweak the box surrounding blocks of code */
+  /* tweak the box surrounding blocks of highlighted code */
   & pre {
     @apply my-G p-3 bg-gray-800 rounded-md;
     @apply overflow-x-auto;
-    @apply text-gray-300 text-sm leading-5 font-mono tracking-wide;
+    @apply text-gray-300 text-xs sm:text-sm leading-5 font-mono tracking-wide;
   }
 
   /***** lists  */

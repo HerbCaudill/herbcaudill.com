@@ -62,18 +62,25 @@ You should read to the end to find out what that approach was! But let's start f
 
 My first thought was to take a look at the current state of UI component libraries.
 
-About a decade ago, I -- along with seemingly every other web designer in the planet -- went all-in
-on [Bootstrap](http://getbootstrap.com).
+About a decade ago, I went all-in on [Bootstrap](http://getbootstrap.com) -- as did seemingly every
+other web designer in the planet.
 
 Bootstrap was originally an internal project at Twitter, intended to reduce duplication and
 encourage consistency across various parts of the application’s UI. When they open-sourced it, it
 became hugely popular – to the point of becoming the default choice for new websites and web apps,
-defining the visual style of the web for the better part of the decade, and causing
-[some](https://www.friday.ie/blog/why-do-all-websites-look-the-same/) to
+and causing [some](https://www.friday.ie/blog/why-do-all-websites-look-the-same/) to
 [complain](https://medium.com/@firedrop/is-it-just-me-or-do-all-websites-look-the-same-8bb166d4dc9c)
 that [every website looked the same](https://www.dagusa.com/).
 
-Bootstrap provides ready-made grids and templates, a library of individual elements like buttons,
+<figure class='figure-md figure-b'>
+
+![]($$/every-bootstrap-website.png)
+
+Bootstrap defined the visual style of the web for the better part of a decade.
+
+</figure>
+
+Bootstrap provides ready-made grids and templates; a library of individual elements like buttons,
 alerts, and forms; and a handful of interactive components like dropdowns and modals. It's a solid
 choice; DevResults still uses Bootstrap to this day.
 
@@ -419,8 +426,8 @@ it inline. Like everyone else at the time, I used carefully sliced-up images, tu
 elaborately nested `<table>` structures, to pull off effects like rounded corners and drop shadows.
 In my defense, browsers sucked and there wasn't really an alternative.
 
-In 2003, a manifesto and a website changed things forever. The manifesto was Jeffrey Zeldman’s book
-[Designing With Web
+In 2003, a manifesto and a website changed things forever. The manifesto was Jeffrey Zeldman’s
+cranky masterpiece [Designing With Web
 Standards](https://www.amazon.com/Designing-Web-Standards-Jeffrey-Zeldman/dp/0735712018), which
 exhorted the industry -- browser vendors as well as web developers -- to get its shit together. And
 the website was the [CSS Zen Garden](http://www.csszengarden.com/), which vividly demonstrated the
