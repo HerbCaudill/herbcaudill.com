@@ -340,13 +340,14 @@ article {
   /* x-large variant: images that span 12 columns */
 
   & .figure-xl {
+    @apply md:-ml-3/9 md:mr-0 md:w-12/9;
     @apply lg:block;
-    @apply md:-ml-3/9 md:w-12/9;
     @apply lg:-ml-3/7 lg:w-12/7;
   }
 
   & .figure-xl > :nth-child(1) {
-    @apply md:w-full md:my-0;
+    @apply -mx-G; /* on small screens, image goes from edge to edge */
+    @apply md:w-full md:m-0;
     @apply lg:col-span-12;
   }
 
@@ -359,12 +360,13 @@ article {
   /* large variant: images that span 10 columns */
 
   & .figure-lg {
-    @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-G;
-    @apply md:-ml-3/9 md:w-12/9;
+    @apply md:-ml-3/9 md:mr-0 md:w-12/9;
+    @apply lg:grid lg:grid-cols-12 lg:gap-G;
     @apply lg:-ml-3/7 lg:w-12/7;
   }
 
   & .figure-lg > :nth-child(1) {
+    @apply -mx-G; /* on small screens, image goes from edge to edge */
     @apply md:w-full md:my-0;
     @apply lg:col-span-10;
   }
