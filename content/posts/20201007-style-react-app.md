@@ -478,9 +478,8 @@ well. Were designers now going to have to learn to code to keep their jobs?
 
 ### Software applications are not documents
 
-Part of the difficulty with web technologies like HTML and CSS is that the web was originally
-conceived as a way of publishing hypertext _documents_ --  where there’s a fairly limited universe
-of possibilities.
+But the web was originally conceived as a way of publishing hypertext _documents_ --  where there’s
+a fairly limited universe of possibilities.
 
 <figure class='figure-xs'>
 
@@ -496,21 +495,24 @@ Stylesheets are an excellent solution for formatting static prose. This remains 
 principles like "separation of concerns" and "semantic HTML" make eminent sense.
 
 But today’s web would be unrecognizable to the authors of the original HTML and CSS specs.
+
 JavaScript, once a toy, is now the engine behind most of the web. Interactivity is the norm, not an
 optional enhancement. The web is now a vehicle for delivering full-fledged applications -- in fact
 it's one of the most important software platforms there is. Most websites -- even ones that have
 written text as their core offering -- are more like software applications than they are like
-documents. And web technologies are at the core of many applications that aren't even delivered via
-the web: Just looking at the installed applications on my Windows laptop, a great many of them --
-from Slack to Spotify to VS Code -- are built using HTML, CSS, and JavaScript.
+documents.
 
-But it shouldn't surprise us that the tools used to publish an academic paper would be different from
-the ones used to build an application like Google Sheets. The two have as much in common as a
+And web technologies used to build applications that aren't even delivered via
+the web: Just looking at the installed applications on my Windows laptop, a great many of them --
+from Slack to Spotify to VS Code -- are made using HTML, CSS, and JavaScript.
+
+Should it surprise us that the tools used to publish an academic paper would be different from
+the ones used to build an application like Google Sheets? The two have as much in common as a
 microwave has with a newspaper.
 
-Jeffrey Zeldman grouses crankily about the "cult of the complex", longing for the days when
-designers could proudly point to "hand-coded, progressively enhanced HTML, CSS, and JavaScript they
-understand and wrote themselves"
+Jeffrey Zeldman [grouses crankily](https://alistapart.com/article/cult-of-the-complex/) about the
+"cult of the complex", longing for the days when designers could proudly point to "hand-coded,
+progressively enhanced HTML, CSS, and JavaScript they understand and wrote themselves"
 
 > If you entered web design and development in the past ten years, you’ve likely learned and may
 > rely on frameworks. And what keeps the whole monkey-works going? JavaScript, and more JavaScript.
@@ -523,13 +525,12 @@ understand and wrote themselves"
 > which external technology not intended to control layout should be used to “fix” CSS. (Hint: They
 > mostly choose JavaScript.)
 
-But whether we like it or not, a microwave _is_ more complex than a newspaper. Taming complexity is
-one of a software developer's most important jobs.
+But whether we like it or not, a microwave _is_ more complex than a newspaper.
 
-Superficially, it may seem like you've _added_ complexity when you replace a CSS file with a
-JavaScript-driven toolchain. But this upfront investment in complexity makes it possible to reason
-about the effects of your CSS styles by containing the scope of your changes to manageable, modular
-units.
+And taming complexity is one of a software developer's most important jobs. Superficially, it may
+seem like you've _added_ complexity when you replace a CSS file with a JavaScript-driven toolchain.
+But this upfront investment in complexity makes it possible to reason about the effects of your CSS
+styles by containing the scope of your changes to manageable, modular units.
 
 <figure class='figure-xl'>
 
