@@ -35,12 +35,13 @@ But I found myself unable to proceed, fundamentally dissatisfied with basically 
 ever used: Every UI framework, every component library, every CSS methodology -- they all seemed to
 fall short of doing what I needed, and I didn't want to just pick something familiar and move on.
 
-Maybe it was the Difficult Times We're Living Through. But I started out in this business as a
-designer, so design just matters a lot to me in general.
+Maybe my obstinacy was explained by the Difficult Times We're Living Through.
 
-And I'm thinking a lot about about interfaces that users can modify or assemble from scratch using
-components that can be composed with other components. This requires a solid underlying design
-system that is **modular and composable**.
+But I started out in this business as a designer, so design just matters a lot to me in general.
+
+And I've been thinking a lot about about interfaces that users can modify or assemble from scratch
+using components that can be composed with other components. To pull this off, I'll need a solid
+underlying design system that is **modular and composable**.
 
 And the **developer experience** of styling matters more than it normally would, because ultimately
 I'd like for it to be easy for advanced users to extend the system by creating new
@@ -52,8 +53,8 @@ places, while making it easy to create things that look great and hard to make u
 This article started out as my own notes on my research. For a while, the deeper I went down the
 rabbit hole, and the longer this piece got, the more unhappy I was with my options.
 
-The good news is that I finally did find an approach that I got excited about -- so much so that I
-went back to work, stopped writing, and nearly forgot about this article.
+I finally did find an approach that I got excited about -- so much so that I went back to work,
+stopped writing, and nearly forgot about this article.
 
 You should read to the end to find out what that approach was! But let's start from the beginning.
 
