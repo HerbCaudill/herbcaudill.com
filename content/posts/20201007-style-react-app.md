@@ -280,7 +280,7 @@ This works well as far as it goes, but it’s brittle. As The Guardian’s front
 ### CSS Modules
 
 So, the problem with conventions is that they require discipline, diligence, and consistency from
-humans; while humans notoriously sloppy, lazy, and undisciplined.
+humans; while humans are notoriously sloppy, lazy, and undisciplined.
 
 Well, that’s why we invented computers. Rather than cajole and persuade developers and then hope
 against hope that they nobody screws things up, we can just give the job of naming things to a
@@ -337,7 +337,7 @@ These are then rendered as inline styles:
 
 Modern CSS-in-JS libraries do a little fancy footwork in the background to dynamically roll these
 styles into proper CSS classes (with randomly-generated names). This allows you to use basic
-CSS features like hover states that you wouldn't be able to support with pure inline styles. For
+CSS features like `hover` states that you wouldn't be able to support with pure inline styles. For
 example:
 
 ```jsx
@@ -390,7 +390,7 @@ coin and it’s useful to think of them _both_ as a function of state.
 Of course, the front-end development community took the CSS-in-JS revolution in stride and everyone
 lived happily ever after.
 
-Hahahahaha!! If only. People's heads LITERALLY EXPLODED. What followed was the division of the
+Hahahahaha!! Just kidding. People's heads LITERALLY EXPLODED. What followed was the division of the
 profession into opposing camps, followed by years of vitriolic debate, bitter recriminations,
 name-calling, bad memes, and snarky tweets. Friendships were destroyed. One widely-circulated
 article described CSS-in-JS as [a bad-faith effort to perpetuate male
