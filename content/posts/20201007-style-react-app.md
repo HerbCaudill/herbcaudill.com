@@ -759,8 +759,8 @@ fixed, and can be used with any HTML. And he asks:
 
 This seems like an easy choice to me. Outside the artificial confines of the CSS Zen Garden,
 approximately _nobody_ has ever redesigned a website by writing a new stylesheet for the existing
-markup. But while chasing that fantasy, we've given up the ability to **reuse our existing CSS
-classes**, which would be far more valuable. As Adam Morse writes (emphasis mine):
+markup. But while chasing that fantasy, we've given up the ability to reuse our existing CSS
+classes, which would be far more valuable. As Adam Morse writes:
 
 > When I read about or listen to ideas on how to scale an app’s CSS  --  most of the talk is about
 > how to write CSS. The real way to scale CSS, is to **stop writing CSS**.
