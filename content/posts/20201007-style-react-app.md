@@ -192,6 +192,9 @@ Guardian_](http://theguardian.com). Their web presence been an inspiration to me
 with a confident and distinctive design sense that’s woven across an amazing variety of digital
 contexts with remarkable consistency.
 
+And just six years after they started over from scratch, they describe their codebase over 60,000+
+lines as a "precarious, teetering, maintenance nightmare".
+
 <figure class='figure-lg'>
 
 ![]($$/guardian.png)
@@ -201,15 +204,6 @@ in digital design and typography. If they feel overwhelmed by their CSS codebase
 for the rest of us?
 
 </figure>
-
-Here’s how they describe their codebase [six years after starting from
-scratch](https://www.theguardian.com/info/2019/apr/04/revisiting-the-rendering-tier):
-
-> At the time of writing, it has gone from 0 to 62,783 lines of Sass. That Sass generates tens of
-> thousands of rules that are intended to describe a maintainable set of responses to business and
-> design problems. Individually, they represent half a decade’s considered decisions made by
-> skillful and dedicated engineers. In sum, though, they present **a precarious, teetering,
-> maintenance nightmare**.
 
 Now of course, working in _any_ kind of legacy code can seem opaque and feel nerve-wracking to work
 with. But there are some peculiarities of CSS that make it particularly fraught.
@@ -226,7 +220,7 @@ it straight in your head.
 
 The root of the problem is that **all CSS is global**. “Avoid global variables” has forever been at
 the top of the list of best practices for programmers, but CSS is, by its very nature, a global list
-of rules. Frameworks like Bootstrap come with hundreds of global variables.
+of rules. Every one of those Bootstrap variables is global.
 
 Not only do all styles exist in the same global namespace, but rules can “see” the entire DOM, and
 you don’t know in advance what the DOM will contain; so it’s not possible to compute in advance what
@@ -258,7 +252,7 @@ Most programming languages have solved this problem by **modularizing** code, so
 human only needs to reason about one self-contained part at a time. There are a couple of ways to
 achieve this with CSS:
 
-### Naming conventions
+### Naming conventions7987
 
 In the absence of true modules, you can always just fake it by prepending your global variable names
 with a probably-unique string, add in lots of underscores for good measure, and hope for the best.
