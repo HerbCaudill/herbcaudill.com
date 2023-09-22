@@ -31,7 +31,7 @@ I was immediately paralyzed trying to decide how to style the application.
 There was no good reason for this to be a showstopper. It wasn't at all important how this
 particular demo app _looked_, and the underlying technology used to style it mattered even less.
 
-But I found myself unable to proceed, fundamentally dissatisfied with basically every approach I'd
+But I found myself unwilling to proceed, fundamentally dissatisfied with basically every approach I'd
 ever used: Every UI framework, every component library, every CSS methodology -- they all seemed to
 fall short of doing what I needed, and I didn't want to just pick something familiar and move on.
 
