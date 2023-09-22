@@ -720,9 +720,10 @@ In his post [CSS and Scalability](https://mrmrs.cc/writing/scalable-css/), Adam 
 > blue lego and I can do anything I want with it’. It didn’t matter if I was building an underwater
 > aquanauts base or an airplane  --  I knew exactly how to use that lego block.
 
-With the right set of "lego blocks", a single stylesheet should accommodate an evolving application
+With the right set of "lego blocks", a single stylesheet can accommodate an evolving application
 without having to change much or at all. Traditional CSS has never _scaled_ in that sense: It's
-always grown linearly along with markup, with tons of repetition (or worse, _almost_-repetition).
+always grown linearly along with markup, with lots of repetition and lots of opportunities for
+inconsistency.
 
 <figure class='figure-xs'>
 
