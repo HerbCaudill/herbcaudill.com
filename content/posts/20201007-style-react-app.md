@@ -252,7 +252,7 @@ Most programming languages have solved this problem organizing code into **modul
 own scope. This makes it so that an ordinary human only needs to reason about one self-contained part at a time.
 There are a couple of ways to achieve this with CSS:
 
-### Naming conventions7987
+### Naming conventions
 
 In the absence of true modules, you can always just fake it by prepending your global variable names
 with a probably-unique string, add in lots of underscores for good measure, and hope for the best.
@@ -298,13 +298,13 @@ But what if, instead of creating a new pseudo-module system for CSS, we just use
 that we already have in JavaScript?
 
 These kinds of ideas usually just sneak up on us little by little. The whole CSS-in-JS thing is
-unusual in that one day it was not a thing at all, and seemingly the next day there were thousands
+unusual in that one day it was not a thing at all, and seemingly overnight there were thousands
 of blog posts, opinion pieces arguing for and against, tutorials teaching you how to do it, and
 dozens of brand-new frameworks experimenting with the idea.
 
-The precipitating event was a talk that Facebook's Christopher Chedeau
-([Vjeux](https://medium.com/u/46fa99d9bca4)) at a small JavaScript conference in Washington DC at
-the end of 2014. It’s worth watching in full:
+The precipitating event was a talk that React developer Christopher Chedeau
+([Vjeux](https://medium.com/u/46fa99d9bca4)) gave at a small JavaScript conference in Washington DC
+at the end of 2014. It’s worth watching in full:
 
 <figure class='figure-md'>
 
@@ -317,28 +317,26 @@ went into the talk thinking it would be such a watershed.
 </figure>
 
 The original idea was fairly simple: Rather than have your CSS in a separate, global file, you
-assign inline styles directly to elements within each component.
+assign styles directly to elements within each component.
 
 ```js
-return (
-  <div
-    style={{
-      backgroundColor: 'red',
-      height: 10,
-      width: 10,
-    }}
-  />
-)
+<div
+  style={{
+    backgroundColor: danger ? 'red' : 'green',
+    height: 10,
+    width: 10,
+  }}
+/>
 ```
 
-This is rendered as
+These are then rendered as inline styles:
 
 ```html
 <div style=`background-color: red; height: 10px; width: 10px` />
 ```
 
 Modern CSS-in-JS libraries do a little fancy footwork in the background to dynamically roll these
-inline styles into proper CSS classes (with randomly-generated names). This allows you to use basic
+styles into proper CSS classes (with randomly-generated names). This allows you to use basic
 CSS features like hover states that you wouldn't be able to support with pure inline styles. For
 example:
 
@@ -370,10 +368,10 @@ Which would render something like this:
 <div class="eujXCt" />
 ```
 
-By co-locating styles with the JavaScript files that generate the markup, you make several of CSS's
-seemingly intractable problems go away as if by magic. Styles that are applied within a component
-are strictly scoped to that component. When making styling changes in one place, you no longer have
-to worry that you'll unintentionally mess something else up. Dead code is no longer a concern.
+By putting styles in the same JavaScript files that generate the markup, you make several of CSS's
+seemingly intractable problems go away as if by magic. Styles are strictly scoped to their
+component. When making styling changes in one place, you no longer have to worry that you'll
+unintentionally mess something else up. Dead code is no longer a concern.
 
 The key insight of React and other modern rendering engines is to think of **UI as a function of
 state**. In the original model, UI meant just HTML, with the CSS living on a separate, static,
@@ -392,12 +390,12 @@ coin and it’s useful to think of them _both_ as a function of state.
 Of course, the front-end development community took the CSS-in-JS revolution in stride and everyone
 lived happily ever after.
 
-Hahahahaha!! If only. People's heads exploded. What followed was the division of the profession into
-opposing camps, followed by years of vitriolic debate, bitter recriminations, name-calling, bad
-memes, and snarky tweets. Friendships were destroyed. One widely-circulated article described
-CSS-in-JS as [a bad-faith effort to perpetuate male
+Hahahahaha!! If only. People's heads LITERALLY EXPLODED. What followed was the division of the
+profession into opposing camps, followed by years of vitriolic debate, bitter recriminations,
+name-calling, bad memes, and snarky tweets. Friendships were destroyed. One widely-circulated
+article described CSS-in-JS as [a bad-faith effort to perpetuate male
 privilege](http://zendev.com/2018/09/11/css-dismissal-is-about-exclusion-not-technology.html). There
-was gnashing of teeth and darkness fell across the land.
+was a great gnashing of teeth and darkness fell across the land.
 
 ### How we got here
 
@@ -414,24 +412,20 @@ Gather around for a little history, kids.
 
 The first time I wrote an HTML page was in 1995, before CSS was a thing.
 
-In 1996, when Internet Explorer 3 came out with the first browser support for CSS, I tried it out
-with great excitement, although it didn’t work in Netscape so I knew it would be a while before I
-could use it for anything real.
+In 1996, Internet Explorer 3 came out with the first browser support for CSS. I tried it out with
+great excitement, although it didn’t work in Netscape so I couldn't use it for anything real.
 
 Around 2000, the first websites I made for money used just a smattering of CSS for styling, most of
 it inline. Like everyone else at the time, I used carefully sliced-up images, tucked into
 elaborately nested `<table>` structures, to pull off effects like rounded corners and drop shadows.
-
-In my defense, browsers were terrible back then: They had inconsistent and incomplete support for
-HTML and CSS standards, so it was super hard to make things look good and to make them look
-consistent across platforms.
+In my defense, browsers sucked and there wasn't really an alternative.
 
 In 2003, a manifesto and a website changed things forever. The manifesto was Jeffrey Zeldman’s book
 [Designing With Web
 Standards](https://www.amazon.com/Designing-Web-Standards-Jeffrey-Zeldman/dp/0735712018), which
-exhorted the industry -- both browser vendors and developers -- to get its shit together. And the
-website was the [CSS Zen Garden](http://www.csszengarden.com/), which vividly demonstrated the power
-of CSS.
+exhorted the industry -- browser vendors as well as web developers -- to get its shit together. And
+the website was the [CSS Zen Garden](http://www.csszengarden.com/), which vividly demonstrated the
+power of CSS.
 
 <figure class='figure-xl'>
 
@@ -450,12 +444,12 @@ Zeldman cofounded the [Web Standards Project](https://en.wikipedia.org/wiki/Web_
 an advocacy organization that managed to persuade browser vendors to adopt web standards, and to
 persuade web developers to write HTML and CSS that took advantage of these standards.
 
-The Web Standards Project closed its doors in 2013, declaring victory. They made an enormous
-difference: It's hard to overstate how much web development sucked in the days of incompatible
-browsers. The innovation and improvement we're used to seeing these days in the CSS and JavaScript
-standards wouldn't have been possible without them. You had to be there before and after to
-understand what a huge and positive difference these people made to the landscape of front-end
-development.
+It's hard to overstate what a huge and positive difference these people made to the landscape of
+front-end development. Before they came around, every browser did things differently, and it could
+be a soul-destroying enterprise to get things to look consistent across platforms. By 2013, the Web
+Standards Project was able to close its doors, claiming victory. The innovation and improvement
+we're used to seeing these days in the CSS and JavaScript standards wouldn't have been possible
+without them.
 
 There are a couple of key principles that they got web developers like me to internalize like they
 were religious dogma:
@@ -471,10 +465,8 @@ These ideas durably changed the way we worked, for the better.
 
 So you can see why some might be scandalized by the idea of discarding the stylesheet and using
 JavaScript to apply inline styles: It seemed like a return to the dark ages of Internet Explorer 6
-(shudder).
-
-Complaints about the difficulty of working with CSS, like the ones I made a few paragraphs back,
-were seen as ungrateful attacks on the whole web standards movement.
+(shudder). Complaints about the difficulty of working with CSS were seen as ungrateful attacks on
+the whole web standards movement.
 
 It's also important to understand that the separation of concerns between HTML, CSS, and JavaScript
 fit in comfortably with a natural division of labor between **designers** on the one hand, and
@@ -486,9 +478,9 @@ well. Were designers now going to have to learn to code to keep their jobs?
 
 ### Software applications are not documents
 
-The root of many of the problems developers have with web technologies like HTML and CSS is that the
-web was originally conceived as a way of publishing hypertext _documents_ --  where there’s a fairly
-limited universe of possibilities.
+Part of the difficulty with web technologies like HTML and CSS is that the web was originally
+conceived as a way of publishing hypertext _documents_ --  where there’s a fairly limited universe
+of possibilities.
 
 <figure class='figure-xs'>
 
