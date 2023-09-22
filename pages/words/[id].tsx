@@ -5,6 +5,9 @@ import { siteTitle } from 'lib/constants'
 import { getAllPostIdParams, post, relatedPosts } from 'lib/posts'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
+// import hljs styles
+import 'highlight.js/styles/atom-one-dark-reasonable.css'
+
 const PostLayout: React.FC<{
   postData: PostProps
 }> = ({ postData }) => {
@@ -19,10 +22,8 @@ const PostLayout: React.FC<{
         <meta name="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
-        <link href="/prism.css" rel="stylesheet" />
       </Head>
       <Post {...postData} />
-      <script src="/prism.js" />
     </Layout>
   )
 }

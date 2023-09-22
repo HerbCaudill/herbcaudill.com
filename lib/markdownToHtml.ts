@@ -1,4 +1,21 @@
 import { marked } from 'marked'
+import hljs from 'highlight.js/lib/core'
+
+import javascript from 'highlight.js/lib/languages/javascript'
+hljs.registerLanguage('js', javascript)
+hljs.registerLanguage('jsx', javascript)
+hljs.registerLanguage('javascript', javascript)
+
+import typescript from 'highlight.js/lib/languages/typescript'
+hljs.registerLanguage('ts', typescript)
+hljs.registerLanguage('tsx', typescript)
+hljs.registerLanguage('typescript', typescript)
+
+import css from 'highlight.js/lib/languages/css'
+hljs.registerLanguage('css', css)
+
+import html from 'highlight.js/lib/languages/xml'
+hljs.registerLanguage('html', html)
 
 const handleDefList = (text: string) => {
   // Label
@@ -25,6 +42,9 @@ marked.setOptions({
 marked.use({
   renderer: {
     paragraph: handleDefList,
+  },
+  highlight: function (code) {
+    return hljs.highlightAuto(code).value
   },
 })
 

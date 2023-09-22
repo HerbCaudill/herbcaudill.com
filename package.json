@@ -11,6 +11,7 @@
     "classnames": "2",
     "date-fns": "2",
     "gray-matter": "4",
+    "highlight.js": "^11.8.0",
     "marked": "4",
     "next": "12",
     "postcss": "8",

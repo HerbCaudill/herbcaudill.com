@@ -35,7 +35,7 @@ export const Post: React.FC<PostProps> = ({
       )}
 
       {/* caption */}
-      <p
+      <div
         className="caption use-ink-underline md:col-span-2 md:mt-0 leading-normal"
         dangerouslySetInnerHTML={{ __html: caption }}
       />
@@ -72,7 +72,7 @@ export const Post: React.FC<PostProps> = ({
             border-t border-gray-400 `}
       >
         {/* Description */}
-        <p className=" pt-6 mb-12 font-mono text-sm text-left" dangerouslySetInnerHTML={{ __html: description }}></p>
+        <div className=" pt-6 mb-12 font-mono text-sm text-left" dangerouslySetInnerHTML={{ __html: description }} />
       </div>
 
       {/* Article body */}
