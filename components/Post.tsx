@@ -52,7 +52,7 @@ export const Post: React.FC<PostProps> = ({
 
         {/* Subtitle */}
         <h2
-          className="font-bold font-sans tracking-tight text-lg sm:text-xl leading-tight mt-2"
+          className="font-bold font-sans tracking-tight text-md sm:text-xl leading-tight mt-2"
           dangerouslySetInnerHTML={{ __html: subtitle }}
         />
 
