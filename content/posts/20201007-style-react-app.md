@@ -8,8 +8,6 @@ description: |
   Specifically, how would you implement the visual design? I’ve spent an unreasonable amount of time 
   reading and thinking about this, and I wrote this as a way of sorting out my own thoughts about it.
 
-draft: true
-
 date: '2020-10-07'
 
 caption: |
