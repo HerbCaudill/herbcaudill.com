@@ -105,10 +105,25 @@ have become popular as well:
 - [**Ant Design**](https://ant.design/) is a product of Ant Financial, which I gather is the PayPal
   of the Alibaba universe. It’s very widely used in China.
 
-The stylesheets and ready-made components of a UI framework are a useful way to start building a
-polished-looking website or application. But when a developer needs to create new components, it
-doesn't provide much in the way of guiderails, and it's easy to end up with lots of different
-colors, type sizes, and so on.
+But this leaves the designer themselves without any guiderails every time they need to add something
+new --  they have to try to be consistent on their own. In a large codebase, maintaining that
+consistency carries a significant cognitive load, and it’s easy for things to diverge in lots of
+directions. Even with a world-class design team, you can end up with a lot of unwanted
+inconsistency.
+
+Adam Wathan [catalogs some
+examples](https://adamwathan.me/css-utility-classes-and-separation-of-concerns) of the crazy
+profusion of styles on some well-known sites:
+
+- **GitLab** has **402** different text colors.
+- **ConvertKit**'s site has **70** different font sizes.
+- **GitHub** uses a total of **147** different background colors.
+
+This is where you end up when every new chunk of CSS you write is a blank canvas; there’s nothing
+stopping you from using whatever values you want.
+
+Good design requires **constraints**. Grids and palettes are useful design tools _because they limit our
+choices_.
 
 Often an organization will come up with a comprehensive and opinionated framework internally, called
 a **design system**.
@@ -130,9 +145,6 @@ particularly sharp, and in fact I use the [IBM Plex](https://www.ibm.com/plex/) 
 a lot, including on this site.
 
 </figure>
-
-The strength of a design system lies in the **constraints** provided by these design tokens: You
-can't just pick any line weight or type size, you have to choose from a limited set of options.
 
 Many companies have open-sourced their design systems: Microsoft has [Fluent
 UI](https://www.microsoft.com/design/fluent/%23/web), Salesforce has
