@@ -41,15 +41,15 @@ Maybe it was the Difficult Times We're Living Through. But I started out in this
 designer, so design just matters a lot to me in general.
 
 And I'm thinking a lot about about interfaces that users can modify or assemble from scratch using
-components that can be composed with other components. So there needs to be a solid design system
-underlying this that is **modular and composable**.
+components that can be composed with other components. This requires a solid underlying design
+system that is **modular and composable**.
 
 And the **developer experience** of styling matters more than it normally would, because ultimately
 I'd like for it to be easy for advanced users to extend the system by creating new
 [datatypes ](/words/20181223-data-types-for-humans) -- along with the components for working with
 them. So the whole question of how you balance customizability with keeping the design good and
-appealing and consistent is super important. We want it to be flexible in all the right places,
-while making it easy to create things that look great and hard to make ugly things.
+appealing and consistent is super important. The design system needs to be flexible in all the right
+places, while making it easy to create things that look great and hard to make ugly things.
 
 This article started out as my own notes on my research. For a while, the deeper I went down the
 rabbit hole, and the longer this piece got, the more unhappy I was with my options.
@@ -575,7 +575,7 @@ of different components.
 ## Designing with constraints
 
 So, back to the real world. Let's say we're fine with the whole CSS-in-JS thing, with our styles
-scoped at the component level. We still have the the 400-colors-of-text problem: How do we go about
+scoped at the component level. That still leaves us with the 400-colors-of-text problem: How do we go about
 building a **design system** that ensures our changes will add up to a coherent whole by
 _constraining_ our choices?
 
