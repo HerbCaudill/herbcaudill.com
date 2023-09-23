@@ -649,7 +649,7 @@ The final piece of the puzzle for me came when I took a second look at the idea 
 
 [Tachyons](https://tachyons.io/) was the first such framework that I learned about. It has a lot of
 overlap with Theme UI, both in its motivation and in its history: Its creator, Adam Morse, is a
-long-term collaborator of Brent Jackson. Like Theme UI, it describes itself as a constraint-based
+long-term collaborator of Brent Jackson. Like Theme UI, Tachyons describes itself as a constraint-based
 framework, and it's driven by a theme file in which you define your design tokens.
 
 ```js
@@ -691,7 +691,7 @@ consisted entirely of utility classes seemed to make a mockery of CSS.
 Sure, it’s always been common practice to use a handful of utility classes in CSS: Things like
 `.float-left` or `.hidden` that often only contain a single rule, referred to in the class's name.
 
-But Jeffrey Zeldman et al. had drilled into my very soul the principle that classes should be
+But Zeldman et al. had drilled into my very soul the principle that classes should be
 **semantic** -- that they should refer to the _content_ (`.author-name` or `.summary`) rather than
 the _presentation_ (`.thick-border-top` or `.small-text`).
 
@@ -777,8 +777,12 @@ classes, which would be far more valuable. As Adam Morse writes:
 > When I read about or listen to ideas on how to scale an app’s CSS  --  most of the talk is about
 > how to write CSS. The real way to scale CSS, is to **stop writing CSS**.
 
-Adam Wathan points out that with utility classes, not only are you able to "stop writing CSS", but
--- as a side benefit -- you get the _constraints_ that you need to implement a design system.
+And the only way to "stop writing CSS" is to come up with a way of composing and reusing your
+existing CSS.
+
+Wathan points out that with utility classes, not only are you able to get off the treadmill of
+adding more and more CSS to your codebase, but -- as a side benefit -- you get the _constraints_
+that you need to implement a design system.
 
 > You could try and enforce consistency through variables or mixins, but every line of new CSS is
 > still an opportunity for new complexity; adding more CSS will never make your CSS simpler.
@@ -789,7 +793,7 @@ Adam Wathan points out that with utility classes, not only are you able to "stop
 > When everyone on a project is choosing their styles from a curated set of limited options, your
 > CSS stops growing linearly with your project size, and you get consistency for free.
 
-He describes the home-grown framework he's settled on. Like Tachyons, it almost exclusively relies
+He concludes by describing the home-grown framework he's settled on. Like Tachyons, it almost exclusively relies
 on stringing together utility classes like `.p-2`, `.text-xs`, and `.bg-warning`. In closing, he
 mentions that he's open-sourced his framework and called it [Tailwind
 CSS](https://tailwindcss.com/).
