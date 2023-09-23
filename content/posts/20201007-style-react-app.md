@@ -3,9 +3,10 @@ title: How to style React applications while the world burns around us
 subtitle: Thinking about front-end frameworks and CSS during interesting times
 
 description: |
-  What tools would you use to build the UI for a 
+  What tools would you reach for today to style the UI for a 
   <a href='https://medium.com/all-the-things/the-trouble-with-saas-279694551b25'>hyper-customizable app</a>? 
-  Specifically, how would you implement the visual design?
+  I just spent an unreasonable amount of time trying to understand the current landscape and settle on the perfect
+  framework. I was surprised by what I found.
 
 date: '2020-10-07'
 
@@ -24,11 +25,12 @@ context: |
 ---
 
 Locked down during Spain's second or third COVID wave and nervously anticipating elections in the
-US, I sat down to build a very simple React app as a demo for something I was working on, and I was
-immediately paralyzed trying to decide how to style the application.
+US, I sat down to build a very simple React app as a demo for something I was working on.
 
-There was no good reason for this to be a showstopper. It wasn't at all important how this
-particular demo app _looked_, and the underlying technology used to style it mattered even less.
+I was immediately paralyzed by the question of how to style the application.
+
+There was no good reason for this to be a showstopper. It wasn't particularly important how this
+demo app _looked_, and the underlying technology used to style it mattered even less.
 
 But I found myself unwilling to proceed, fundamentally dissatisfied with basically every approach
 I'd ever used: Every UI framework, every component library, every CSS methodology -- they all seemed
@@ -47,7 +49,7 @@ with them. So the whole question of how you balance customizability with keeping
 appealing and consistent is super important. The design system needs to be flexible in all the right
 places, while making it easy to create things that look great and hard to make ugly things.
 
-## UI libraries and design systems
+## UI libraries
 
 My first thought was to take a look at the current state of UI component libraries.
 
@@ -89,16 +91,19 @@ have become popular as well:
   the same time as Bootstrap.
 - [**Material UI**](https://material-ui.com/) is an unofficial, community-created implementation of
   Google’s [Material Design](https://material.io/design).
-- [**Semantic UI**](https://semantic-ui.com/) is a sharp, simple library that seems to be struggling
-  a bit to keep up with the times.
+- [**Semantic UI**](https://semantic-ui.com/) is a sharp, simple library that I've used in the past
+  but that seems to be struggling a bit to keep up with the times.
 - [**Ant Design**](https://ant.design/) is a product of Ant Financial, which I gather is the PayPal
   of the Alibaba universe. It’s very widely used in China.
 
-But this leaves the designer themselves without any guiderails every time they need to add something
-new --  they have to try to be consistent on their own. In a large codebase, maintaining that
-consistency carries a significant cognitive load, and it’s easy for things to diverge in lots of
-directions. Even with a world-class design team, you can end up with a lot of unwanted
-inconsistency.
+## Design systems
+
+The problem with UI component libraries like Bootstrap is that they leave the designer without any
+guiderails when they need to create completely _new_ components.
+
+In a large codebase, maintaining visual consistency carries a significant cognitive load, and it’s
+easy for things to diverge in lots of directions. Even with a world-class design team, you can end
+up with a lot of unwanted inconsistency.
 
 Adam Wathan [catalogs some
 examples](https://adamwathan.me/css-utility-classes-and-separation-of-concerns) of the crazy
@@ -114,12 +119,11 @@ stopping you from using whatever values you want.
 Good design requires **constraints**. Grids and palettes are useful design tools _because they limit
 our choices_.
 
-Often an organization will come up with a comprehensive and opinionated framework internally, called
-a **design system**.
+Many organizations have addressed this need by creating a **design system**.
 
-A design system will usually include a Bootstrap-like UI library with pre-designed components like
-buttons, modals, and dropdowns. But since it's not possible to foresee every component that people
-are going to need, the focus is at a lower level: A design system offers a set of composable
+Superficially similar to a UI library, a design system might include a set of pre-designed
+components like buttons, modals, and dropdowns. But since you can't foresee every component that
+people are going to need, the focus is at a lower level: A design system offers a set of composable
 elements, called **design tokens**. These might include everything from type styles and color
 palettes to line weights, drop shadows, scales for spacing, and so on. These can be combined in
 different ways to create completely new components and layouts in a way that's visually consistent
@@ -130,8 +134,8 @@ with other components and with the organization's overall brand.
 ![]($$/carbon.jpg)
 
 I've always thought IBM's [Carbon](https://www.carbondesignsystem.com/) design system was
-particularly sharp, and in fact I use the [IBM Plex](https://www.ibm.com/plex/) family of typefaces
-a lot, including on this site.
+particularly sharp, and I use the [IBM Plex](https://www.ibm.com/plex/) family of typefaces
+a lot -- including on this site.
 
 </figure>
 
@@ -150,7 +154,7 @@ Material embodies a set of lower-level principles that can be adapted to any gra
 it has been used as the foundation of in-house design systems for [many
 organizations](http://material.io/blog/material-partner-studies), from Lyft to NPR to Zappos.
 
-<figure>
+<figure class='figure-lg'>
 
 ![]($$/material.gif)
 
@@ -515,7 +519,7 @@ Slack to Spotify to VS Code -- are made using HTML, CSS, and JavaScript.
 
 Should it surprise us that the tools used to publish an academic paper would be different from the
 ones used to build an application like Google Sheets? The two have as much in common as a microwave
-has with a newspaper.
+oven has with a newspaper.
 
 Jeffrey Zeldman [grouses crankily](https://alistapart.com/article/cult-of-the-complex/) about the
 "cult of the complex", longing for the days when designers could proudly point to "hand-coded,
@@ -532,9 +536,10 @@ progressively enhanced HTML, CSS, and JavaScript they understand and wrote thems
 > which external technology not intended to control layout should be used to “fix” CSS. (Hint: They
 > mostly choose JavaScript.)
 
-But whether we like it or not, a microwave _is_ more complex than a newspaper.
+But we're trying to build a microwave, not publish a newspaper. The complexity is there whether we
+like it or not.
 
-Taming complexity is one of a software developer's most important jobs. Superficially, it may seem
+And taming complexity is one of a software developer's most important jobs. Superficially, it may seem
 like you've _added_ complexity when you replace a hand-crafted CSS file with a JavaScript-driven
 toolchain. But this upfront investment in complexity makes it possible to reason about the effects
 of your CSS styles by containing the scope of your changes to manageable, modular units.
@@ -683,7 +688,7 @@ You then style each element by stringing together a series of these utility clas
 When I first heard about Tachyons, I dismissed it out of hand. The idea of a stylesheet that
 consisted entirely of utility classes seemed to make a mockery of CSS.
 
-Of course, it’s always been common practice to use a handful of utility classes in CSS: Things like
+Sure, it’s always been common practice to use a handful of utility classes in CSS: Things like
 `.float-left` or `.hidden` that often only contain a single rule, referred to in the class's name.
 
 But Jeffrey Zeldman et al. had drilled into my very soul the principle that classes should be
@@ -715,10 +720,10 @@ Is there a _semantic_ connection between these two things?
 </figure>
 
 A strictly semantic class like `.contact` or `.restaurant` can't be reused for anything else, by
-definition. You could call this a `.card`, but that refers to its presentation. What these two
-things have in common is that they're _presented_ the same way. So you have to choose between
-semantic purity and reusability: "Semantic HTML" is at odds with the whole idea of a scalable and
-composable design system.
+definition. You could call this a `.card` or something, but that refers to its presentation. What
+these two things have in common is that they're _presented_ the same way. So you have to choose
+between semantic purity and reusability: "Semantic HTML" is at odds with the whole idea of a
+scalable and composable design system.
 
 In his post [CSS and Scalability](https://mrmrs.cc/writing/scalable-css/), Adam Morse writes:
 
@@ -746,10 +751,10 @@ Classes and "Separation of
 Concerns"](http://adamwathan.me/css-utility-classes-and-separation-of-concerns/), he walks us
 through his evolving approach.
 
-Like me, he starts out having internalized the religion of semantic HTML; and he describes phase by
-phase how he's been forced to become less and less strict about avoiding presentational class names.
-He points out that we gave up the game on semantic purity as soon as we became comfortable with
-class names like `.card` and `.stacked-form`:
+Like me, he starts out having internalized the religion of semantic HTML. But he describes how in
+reality he's had to become less and less strict about avoiding presentational class names. He points
+out that we gave up the game on semantic purity as soon as we became comfortable with class names
+like `.card` and `.stacked-form`:
 
 > There's no pretending that `.stacked-form` is any more "semantic" than `.align-right`; they're
 > both named after how they affect the presentation of the markup, and we are using those classes in
@@ -797,14 +802,6 @@ two decades. The white-hot wrath of [Jeffrey Zeldman's
 disapproval](https://www.zeldman.com/2017/01/03/kiss-my-classname/) was making me sweat from 6,000
 kilometers away:
 
-> SORRY. I disagree. Nonsemantic classnames that refer to visual styles will always be a bad idea.
->
-> Slapping a visually named class on every item in your markup may indeed make your HTML easier to
-> understand for a future developer who takes over without talking to you, especially if you don’t
-> document your work and create a style guide. **But making things easier for yourself and other
-> developers is not your job.** And if you want to make things easier for yourself and other
-> developers, talk to them, and create a style guide or pattern library.
-
 <figure class='figure-xs'>
 
 ![]($$/zeldman.2.jpg)
@@ -813,9 +810,20 @@ Jeffrey Zeldman is not amused by our desire to make a better life for ourselves 
 
 </figure>
 
-But I actually _did_ think it was my job to make things easier on myself and my fellow developers,
-if I could. And I had read somewhere that Tailwind was the sort of thing you had to try out to
-understand. So I took Tailwind out for a spin, expecting to hate it.
+> SORRY. I disagree. Nonsemantic classnames that refer to visual styles will always be a bad idea.
+>
+> Slapping a visually named class on every item in your markup may indeed make your HTML easier to
+> understand for a future developer who takes over without talking to you, especially if you don’t
+> document your work and create a style guide. **But making things easier for yourself and other
+> developers is not your job.** And if you want to make things easier for yourself and other
+> developers, talk to them, and create a style guide or pattern library.
+
+But I actually _do_ think it's my job to make things easier on myself and my fellow developers, if I
+can. And I don't agree that the problem can be solved with better communication or better
+documentation.
+
+I had read somewhere that Tailwind was the sort of thing you had to try out to understand. So I took
+Tailwind out for a spin, expecting to hate it.
 
 I've never looked back.
 
