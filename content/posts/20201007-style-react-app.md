@@ -1,17 +1,16 @@
 ﻿---
-title: How to style React applications in 2020, as if anything mattered
-subtitle: Thinking about front-end frameworks and CSS while the world burns around us
+title: How to style React applications while the world burns around us
+subtitle: Thinking about front-end frameworks and CSS during interesting times
 
 description: |
-  What tools would you use to build the UI for a single 
-  <a href='https://medium.com/all-the-things/the-trouble-with-saas-279694551b25'>infinitely-customizable app for everything</a>? 
-  Specifically, how would you implement the visual design? I’ve spent an unreasonable amount of time 
-  reading and thinking about this, and I wrote this as a way of sorting out my own thoughts about it.
+  What tools would you use to build the UI for a 
+  <a href='https://medium.com/all-the-things/the-trouble-with-saas-279694551b25'>hyper-customizable app</a>? 
+  Specifically, how would you implement the visual design?
 
 date: '2020-10-07'
 
 caption: |
-  "CSS is easy. It´s like riding a bike, which is on fire and the ground is on fire and everything is 
+  "CSS is easy. It's like riding a bike, which is on fire and the ground is on fire and everything is 
   on fire because it is hell."  
   _-- [@iamdevloper](https://twitter.com/iamdevloper/status/753716544949981184)_
 
@@ -24,39 +23,29 @@ context: |
   with the original title and date for context.
 ---
 
-Recently, locked down during Spain's second or third COVID wave and nervously anticipating elections
-in the US, I sat down to build a very simple React app as a demo for something I was working on, and
-I was immediately paralyzed trying to decide how to style the application.
+Locked down during Spain's second or third COVID wave and nervously anticipating elections in the
+US, I sat down to build a very simple React app as a demo for something I was working on, and I was
+immediately paralyzed trying to decide how to style the application.
 
 There was no good reason for this to be a showstopper. It wasn't at all important how this
 particular demo app _looked_, and the underlying technology used to style it mattered even less.
 
-But I found myself unwilling to proceed, fundamentally dissatisfied with basically every approach I'd
-ever used: Every UI framework, every component library, every CSS methodology -- they all seemed to
-fall short of doing what I needed, and I didn't want to just pick something familiar and move on.
+But I found myself unwilling to proceed, fundamentally dissatisfied with basically every approach
+I'd ever used: Every UI framework, every component library, every CSS methodology -- they all seemed
+to fall short of doing what I needed, and I didn't want to just pick something familiar and move on.
 
-Maybe my obstinacy was explained by the Difficult Times We're Living Through.
+Maybe my obstinacy was due to the Difficult Times We're Living Through.
 
-But I started out in this business as a designer, so design just matters a lot to me in general.
+But what I ultimately want to create are interfaces that users can modify or assemble from scratch
+using interchangeable building blocks. To pull this off, I'll need a solid underlying design system
+that is **modular and composable**.
 
-And I've been thinking a lot about about interfaces that users can modify or assemble from scratch
-using components that can be composed with other components. To pull this off, I'll need a solid
-underlying design system that is **modular and composable**.
-
-And the **developer experience** of styling matters more than it normally would, because ultimately
-I'd like for it to be easy for advanced users to extend the system by creating new
-[datatypes ](/words/20181223-data-types-for-humans) -- along with the components for working with
-them. So the whole question of how you balance customizability with keeping the design good and
+And in this case the **developer experience** of styling matters more than it normally would,
+because ultimately I'd like for it to be easy for advanced users to extend the system by creating
+new [datatypes ](/words/20181223-data-types-for-humans) -- along with the components for working
+with them. So the whole question of how you balance customizability with keeping the design good and
 appealing and consistent is super important. The design system needs to be flexible in all the right
 places, while making it easy to create things that look great and hard to make ugly things.
-
-This article started out as my own notes on my research. For a while, the deeper I went down the
-rabbit hole, and the longer this piece got, the more unhappy I was with my options.
-
-I finally did find an approach that I got excited about -- so much so that I went back to work,
-stopped writing, and nearly forgot about this article.
-
-You should read to the end to find out what that approach was! But let's start from the beginning.
 
 ## UI libraries and design systems
 
@@ -122,8 +111,8 @@ profusion of styles on some well-known sites:
 This is where you end up when every new chunk of CSS you write is a blank canvas; there’s nothing
 stopping you from using whatever values you want.
 
-Good design requires **constraints**. Grids and palettes are useful design tools _because they limit our
-choices_.
+Good design requires **constraints**. Grids and palettes are useful design tools _because they limit
+our choices_.
 
 Often an organization will come up with a comprehensive and opinionated framework internally, called
 a **design system**.
@@ -171,9 +160,9 @@ non-Google brands' design systems.
 </figure>
 
 In my experience, though, customizing the design of an existing framework like Bootstrap or Material
-UI is a nightmare. Bootstrap's CSS contains _literally seventy-twelve million billion variables_.
-It's death by a thousand overrides, as you struggle to overlay your vision on top of an endless
-supply of someone else's decisions.
+UI is a nightmare. Bootstrap's CSS contains _literally eleventy million billion_ variables. It's
+death by a thousand overrides, as you struggle to overlay your vision on top of an endless supply of
+someone else's decisions.
 
 The question of how you modify an existing set of styles brings us to an extended digression on an
 important topic, which is…
@@ -193,8 +182,7 @@ understand or predict the effects of any given change.
 
 ![]($$/two-css-properties-walk-into-a-bar.png)
 
-There should be a German noun for the fear of breaking something in a CSS codebase. Perhaps
-**_Kaskadenangst_**  --  “cascade anxiety”?
+There should be a German noun for the fear of breaking something in a CSS codebase.
 
 </figure>
 
@@ -202,7 +190,7 @@ I used to think it was just us, that this was our fault: Surely if we were using
 perhaps if we organized things better, maybe if we had abstracted the right abstractions, _then_ we
 would enjoy working with our CSS.
 
-But it turns out that large CSS codebases are pretty much universally feared and reviled by the very
+But it turns out that large CSS codebases are pretty much universally dreaded and feared by the very
 people who created them, no matter how competent they are.
 
 Case in point: If anyone knows what they're doing with digital design, it's the people at [_The
@@ -223,8 +211,8 @@ for the rest of us?
 
 </figure>
 
-Now of course, working in _any_ kind of legacy code can seem opaque and feel nerve-wracking to work
-with. But there are some peculiarities of CSS that make it particularly fraught.
+Now of course, _any_ kind of legacy code can be nerve-wracking to work with. But there are some
+peculiarities of CSS that make it particularly fraught.
 
 ### The perils of globalization
 
@@ -238,37 +226,38 @@ it straight in your head.
 
 The root of the problem is that **all CSS is global**. “Avoid global variables” has forever been at
 the top of the list of best practices for programmers, but CSS is, by its very nature, a global list
-of rules. Every one of those Bootstrap variables is global.
+of rules. Those pages and pages of Bootstrap variables? Every single one is global.
 
 Not only do all styles exist in the same global namespace, but rules can “see” the entire DOM, and
 you don’t know in advance what the DOM will contain; so it’s not possible to compute in advance what
 rules might be applied in what combinations. This is not merely a difficulty, it’s a problem of
 **fundamental unknowability**.
 
+One consequence of that is that it's impossible to delete dead code, because you can't be sure
+whether any given CSS selector is used or not. As a result, CSS codebases are, in practice,
+append-only.
+
 In an article entitled [Oh No! Our Stylesheet Only Grows and Grows and
 Grows!](https://css-tricks.com/oh-no-stylesheet-grows-grows-grows-append-stylesheet-problem/), CSS
 guru Chris Coyier describes the lengths one team goes to: They instrument their production site to
 analyze a sample of real page loads and report back which CSS selectors seem to be unused. But even
-this extreme approach to dead code elimination just provides an educated guess -- there's just no
-way to test every possible page in every conceivable state of user interaction:
+this extreme approach just provides an educated guess -- there's just no way to test every possible
+page in every conceivable state of user interaction:
 
 > imagine some CSS that applies only to a select menu, for a logged-in user, with an expired
 > subscription, who wants to update a credit card, in a modal window, with a form that displays a
 > certain way because the card is American Express.
 
-This is why so many CSS codebases are, in practice, append-only: No amount of static analysis can
-tell you whether it’s safe to delete any given rule.
-
-So we all approach CSS changes with trepidation, never changing or deleting, only adding, and
+The same problem applies to modifying existing selectors: You can't be sure what the effects will
+be. So we all approach CSS changes with trepidation, never changing or deleting, only adding, and
 keeping our additions as focused as possible  --  and consequently ramping up specificity in a
-never-ending arms race of specificity, with nuclear `!important` statements proliferating out of
-control.
+never-ending arms race, with nuclear `!important` statements proliferating out of control.
 
 ## Reining in CSS's global scope
 
 Most programming languages have solved this problem organizing code into **modules**, each with its
-own scope. This makes it so that an ordinary human only needs to reason about one self-contained part at a time.
-There are a couple of ways to achieve this with CSS:
+own scope. This makes it so that an ordinary human only needs to reason about one self-contained
+part at a time. There are a couple of ways to achieve this with CSS:
 
 ### Naming conventions
 
@@ -297,12 +286,10 @@ This works well as far as it goes, but it’s brittle. As The Guardian’s front
 
 ### CSS Modules
 
-So, the problem with conventions is that they require discipline, diligence, and consistency from
-humans; while humans are notoriously sloppy, lazy, and undisciplined.
-
-Well, that’s why we invented computers. Rather than cajole and persuade developers and then hope
-against hope that they nobody screws things up, we can just give the job of naming things to a
-computer.
+Well, if the problem with conventions is that they require discipline and consistency from
+undisciplined and sloppy humans, that’s why we invented computers. Rather than cajole and persuade
+developers and then hope against hope that they nobody screws things up, we can just give the job of
+naming things to a computer.
 
 [CSS Modules](http://glenmaddern.com/articles/css-modules), a build-time tool created by Australian
 developer Mark Dalgleish, basically automates a BEM-style prefixing scheme. It lets you break your
@@ -316,9 +303,9 @@ But what if, instead of creating a new pseudo-module system for CSS, we just use
 that we already have in JavaScript?
 
 These kinds of ideas usually just sneak up on us little by little. The whole CSS-in-JS thing is
-unusual in that one day it was not a thing at all, and seemingly overnight there were thousands
-of blog posts, opinion pieces arguing for and against, tutorials teaching you how to do it, and
-dozens of brand-new frameworks experimenting with the idea.
+unusual in that one day it was not a thing at all, and seemingly overnight there were thousands of
+blog posts, opinion pieces arguing for and against, tutorials teaching you how to do it, and dozens
+of brand-new frameworks experimenting with the idea.
 
 The precipitating event was a talk that React developer Christopher Chedeau
 ([Vjeux](https://medium.com/u/46fa99d9bca4)) gave at a small JavaScript conference in Washington DC
@@ -354,8 +341,8 @@ These are then rendered as inline styles:
 ```
 
 Modern CSS-in-JS libraries do a little fancy footwork in the background to dynamically roll these
-styles into proper CSS classes (with randomly-generated names). This allows you to use basic
-CSS features like `hover` states that you wouldn't be able to support with pure inline styles. For
+styles into proper CSS classes (with randomly-generated names). This allows you to use basic CSS
+features like `hover` states that you wouldn't be able to support with pure inline styles. For
 example:
 
 ```jsx
@@ -515,18 +502,20 @@ principles like "separation of concerns" and "semantic HTML" make eminent sense.
 But today’s web would be unrecognizable to the authors of the original HTML and CSS specs.
 
 JavaScript, once a toy, is now the engine behind most of the web. Interactivity is the norm, not an
-optional enhancement. The web is now a vehicle for delivering full-fledged applications -- in fact
-it's one of the most important software platforms there is. Most websites -- even ones that have
-written text as their core offering -- are more like software applications than they are like
+optional enhancement.
+
+Most significantly, the web is now a vehicle for delivering full-fledged **software applications**
+-- in fact it's one of the most important software platforms there is. Most websites -- even ones
+that have written text as their core offering -- are more like applications than they are like
 documents.
 
-And web technologies used to build applications that aren't even delivered via
-the web: Just looking at the installed applications on my Windows laptop, a great many of them --
-from Slack to Spotify to VS Code -- are made using HTML, CSS, and JavaScript.
+And web technologies used to build applications that aren't even delivered via the web: Just looking
+at the applications installed on my iPhone and on my Windows laptop, a great many of them -- from
+Slack to Spotify to VS Code -- are made using HTML, CSS, and JavaScript.
 
-Should it surprise us that the tools used to publish an academic paper would be different from
-the ones used to build an application like Google Sheets? The two have as much in common as a
-microwave has with a newspaper.
+Should it surprise us that the tools used to publish an academic paper would be different from the
+ones used to build an application like Google Sheets? The two have as much in common as a microwave
+has with a newspaper.
 
 Jeffrey Zeldman [grouses crankily](https://alistapart.com/article/cult-of-the-complex/) about the
 "cult of the complex", longing for the days when designers could proudly point to "hand-coded,
@@ -545,10 +534,10 @@ progressively enhanced HTML, CSS, and JavaScript they understand and wrote thems
 
 But whether we like it or not, a microwave _is_ more complex than a newspaper.
 
-And taming complexity is one of a software developer's most important jobs. Superficially, it may
-seem like you've _added_ complexity when you replace a CSS file with a JavaScript-driven toolchain.
-But this upfront investment in complexity makes it possible to reason about the effects of your CSS
-styles by containing the scope of your changes to manageable, modular units.
+Taming complexity is one of a software developer's most important jobs. Superficially, it may seem
+like you've _added_ complexity when you replace a hand-crafted CSS file with a JavaScript-driven
+toolchain. But this upfront investment in complexity makes it possible to reason about the effects
+of your CSS styles by containing the scope of your changes to manageable, modular units.
 
 <figure class='figure-xl'>
 
@@ -593,8 +582,8 @@ of different components.
 ## Designing with constraints
 
 So, back to the real world. Let's say we're fine with the whole CSS-in-JS thing, with our styles
-scoped at the component level. That still leaves us with the 400-colors-of-text problem: How do we go about
-building a **design system** that ensures our changes will add up to a coherent whole by
+scoped at the component level. That still leaves us with the 400-colors-of-text problem: How do we
+go about building a **design system** that ensures our changes will add up to a coherent whole by
 _constraining_ our choices?
 
 ### Theme UI
@@ -653,9 +642,9 @@ building out the UI for an application.
 The final piece of the puzzle for me came when I took a second look at the idea of "atomic" or
 "functional" or "utility-first" CSS.
 
-[Tachyons](https://tachyons.io/) was the first such framework that I learned about. It has a
-lot of overlap with Theme UI, both in its motivation and in its history: Its creator, Adam Morse, is
-a long-term collaborator of Brent Jackson. Like Theme UI, it describes itself as a constraint-based
+[Tachyons](https://tachyons.io/) was the first such framework that I learned about. It has a lot of
+overlap with Theme UI, both in its motivation and in its history: Its creator, Adam Morse, is a
+long-term collaborator of Brent Jackson. Like Theme UI, it describes itself as a constraint-based
 framework, and it's driven by a theme file in which you define your design tokens.
 
 ```js
@@ -728,8 +717,8 @@ Is there a _semantic_ connection between these two things?
 A strictly semantic class like `.contact` or `.restaurant` can't be reused for anything else, by
 definition. You could call this a `.card`, but that refers to its presentation. What these two
 things have in common is that they're _presented_ the same way. So you have to choose between
-semantic purity and reusability: "Semantic HTML" is at odds with the whole idea of
-a scalable and composable design system.
+semantic purity and reusability: "Semantic HTML" is at odds with the whole idea of a scalable and
+composable design system.
 
 In his post [CSS and Scalability](https://mrmrs.cc/writing/scalable-css/), Adam Morse writes:
 
@@ -795,9 +784,9 @@ Adam Wathan points out that with utility classes, not only are you able to "stop
 > When everyone on a project is choosing their styles from a curated set of limited options, your
 > CSS stops growing linearly with your project size, and you get consistency for free.
 
-He describes the home-grown framework he's settled on. Like Tachyons, it almost exclusively
-relies on stringing together utility classes like `.p-2`, `.text-xs`, and `.bg-warning`. In closing,
-he mentions that he's open-sourced his framework and called it [Tailwind
+He describes the home-grown framework he's settled on. Like Tachyons, it almost exclusively relies
+on stringing together utility classes like `.p-2`, `.text-xs`, and `.bg-warning`. In closing, he
+mentions that he's open-sourced his framework and called it [Tailwind
 CSS](https://tailwindcss.com/).
 
 ### Tailwind CSS
@@ -816,6 +805,14 @@ kilometers away:
 > developers is not your job.** And if you want to make things easier for yourself and other
 > developers, talk to them, and create a style guide or pattern library.
 
+<figure class='figure-xs'>
+
+![]($$/zeldman.2.jpg)
+
+Jeffrey Zeldman is not amused by our desire to make a better life for ourselves and our colleagues.
+
+</figure>
+
 But I actually _did_ think it was my job to make things easier on myself and my fellow developers,
 if I could. And I had read somewhere that Tailwind was the sort of thing you had to try out to
 understand. So I took Tailwind out for a spin, expecting to hate it.
@@ -826,17 +823,18 @@ The first thing I noticed was how _ergonomic_ it is to work in Tailwind.
 
 You probably never noticed what a drag it is to have to waste brain cycles _choosing names for
 classes_. How much of your life has been wasted coming up with names for single-use abstractions
-like `.card-details__inner-wrapper--selected`? In Tailwind you just make an anonymous `div` and slap
-a couple of self-explanatory classes on it.
+like `.card-details__inner-wrapper--selected`? In Tailwind you just make an anonymous `div` and put
+self-explanatory classes on it.
 
 The clarity and simplicity of having the styles right there in front of you, in line with the markup
-they're affecting, is a breath of fresh air. Even when you're starting with a blank slate, it's a
-significant cognitive burden to keep track of what bit in this file applies to which bit in this
-other file: The constant mental effort that this context-switching requires is something that you
-underestimate until you're freed from it.
+they're affecting, is a breath of fresh air. It's a significant cognitive burden to keep track of
+what bit in this file applies to which bit in this other file -- even when you're starting with a
+blank slate, let alone when you have thousands of lines of CSS to sift through. The constant mental
+effort that this context-switching requires is something that you underestimate until you're freed
+from it.
 
 With Tailwind, you never have to wonder about the scope of your changes, or worry about unintended
-effects. No more knocking over a bar stool in a completely different bar.
+effects. No more knocking over bar stools in completely different bars.
 
 <figure class='figure-lg'>
 
@@ -885,7 +883,8 @@ It's much easier to just write `<button class='button'>` and `<a class='button'>
 
 CSS-in-JS systems deal awkwardly with essential CSS features like media queries and element states
 like `hover` and `focus`. Since Tailwind is just CSS at the end of the day, it doesn't have this
-problem. As a bonus, Tailwind's shorthand is ergonomic and easy to read and write:
+problem. As a bonus, Tailwind's shorthand for pseudo-classes and responsive breakpoints is ergonomic
+and easy to read and write:
 
 ```
 <!-- Darker background on hover -->
