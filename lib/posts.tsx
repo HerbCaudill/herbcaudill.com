@@ -37,7 +37,7 @@ export const relatedPosts = (id: string): PostData[] => {
   // for now the related posts are just the previous and following posts in order
 
   // find current post
-  const allPosts = posts()
+  const allPosts = posts().filter(post => post.id === id || !post.draft) // don't include drafts
   const thisIndex = allPosts.findIndex(post => post.id === id)
   const lastIndex = allPosts.length - 1
 
