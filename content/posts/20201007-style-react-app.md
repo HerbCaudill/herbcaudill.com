@@ -823,19 +823,19 @@ Jeffrey Zeldman is not amused by our desire to make a better life for ourselves 
 > developers, talk to them, and create a style guide or pattern library.
 
 But I actually _do_ think it's my job to make things easier on myself and my fellow developers, if I
-can. And I don't agree that the problem can be solved with better communication or better
-documentation.
+can. And I don't agree that the problems we've enumerated with large CSS codebases can be solved
+with better communication or better documentation.
 
-I had read somewhere that Tailwind was the sort of thing you had to try out to understand. So I took
-Tailwind out for a spin, expecting to hate it.
+I had read somewhere that Tailwind was the sort of thing you had to actually try out to understand.
+So I took Tailwind out for a spin, expecting to hate it.
 
 I've never looked back.
 
 The first thing I noticed was how _ergonomic_ it is to work in Tailwind.
 
-You probably never noticed what a drag it is to have to waste brain cycles _choosing names for
-classes_. How much of your life has been wasted coming up with names for single-use abstractions
-like `.card-details__inner-wrapper--selected`? In Tailwind you just make an anonymous `div` and put
+As with CSS-in-JS, it's a relief to no longer have to be constantly coming up with names for things.
+How much of your life has been wasted coming up with names for single-use abstractions like
+`.card-details__inner-wrapper--selected`? In Tailwind you just make an anonymous `div` and put
 self-explanatory classes on it.
 
 The clarity and simplicity of having the styles right there in front of you, in line with the markup
@@ -857,18 +857,11 @@ autocompletion for the full set of utility classes, complete with color previews
 
 </figure>
 
-Implementing your own design in Tailwind is a pleasure. No more tearing your hair out trying to
-override the the default styles: Instead, you start with a clean slate and you build up your own
-styles using a customizable menu of sensible options for colors, size, spacing scales, and so on.
+Unlike CSS-in-JS, with Tailwind you're actually applying CSS classes by name; and that shows in
+several respects that make it a big improvement over JavaScript-centric frameworks like Theme UI or
+Styled Components.
 
-The depth of Tailwind's customizability blew me away. Not only can you tweak the design tokens to
-your heart's content, but you have full access to the underlying machinery. If you need utility
-classes that Tailwind doesn't include, you can have it generate whatever you want.
-
-Tailwind is still a _CSS_ framework, and that shows in several respects that make it a big
-improvement over CSS-in-JS frameworks like Theme UI or Styled Components.
-
-For one thing you're able to use its utility classes as building blocks in a regular stylesheet,
+For one thing you're able to use your utility classes as building blocks in a regular stylesheet,
 using the `@apply` directive. So you get the consistency benefits of your design tokens whether
 you're styling a React component, or writing a traditional CSS style definition.
 
@@ -884,8 +877,8 @@ h2 {
 
 That turns out to be important for a couple of reasons. First, as we saw earlier, traditional CSS
 stylesheets make total sense for _documents_, and that extends really to any long body of text, like
-a blog post. These are often stored in Markdown format anyway, so don't control the HTML and you
-have no choice but to style your headings, lists, links, blockquotes, etc. using a stylesheet.
+a blog post. These are often stored in Markdown format anyway, so you don't control the HTML and a
+stylesheet is the only option for styling your headings, lists, links, blockquotes, etc.
 
 There are also situations where a CSS abstraction makes more sense than a component abstraction. For
 example, you might want a button-like style that you can apply to both `<button>` and `<a>`
@@ -905,6 +898,14 @@ and easy to read and write:
 <!-- Width of 16, 32 on medium screens, and 48 on large screens -->
 <img class="w-16 md:w-32 lg:w-48" src="..." />
 ```
+
+Implementing your own design in Tailwind is a pleasure. No more tearing your hair out trying to
+override the the default styles: Instead, you start with a clean slate and you build up your own
+styles using a customizable menu of sensible options for colors, size, spacing scales, and so on.
+
+The depth of Tailwind's customizability blew me away. Not only can you tweak the design tokens to
+your heart's content, but you have full access to the underlying machinery. If you need utility
+classes that Tailwind doesn't include, you can have it generate whatever you want.
 
 [Tailwind UI](https://tailwindui.com) is Tailwind's answer to the component libraries offered by
 frameworks like Bootstrap or Semantic UI.
@@ -962,6 +963,11 @@ take-it-or-leave-it components from libraries that I've used in the past, which 
 difficult or impossible to restyle and customize.
 
 ### Unexpectedly, the holy grail
+
+For me, the upside of working with Tailwind is somehow more than the sum of its technical
+advantages. At a visceral level it just _feels_ comfortable, feels like the right tool for the job,
+in a way that nothing else ever did. Whoever said that you couldn't really _get_ Tailwind until you
+actually used it was right.
 
 I'm as surprised as anyone to find myself here: While Tailwind maybe wasn't the sort of solution I
 thought I was looking for, it's definitely the solution I needed. It checks all my boxes, and then
