@@ -205,7 +205,7 @@ contexts with remarkable consistency.
 And just six years after they started over from scratch, they describe their codebase over 60,000+
 lines as a "precarious, teetering, maintenance nightmare".
 
-<figure class='figure-lg'>
+<figure class='figure-xl figure-b'>
 
 ![]($$/guardian.png)
 
@@ -315,7 +315,7 @@ The precipitating event was a talk that React developer Christopher Chedeau
 ([Vjeux](https://medium.com/u/46fa99d9bca4)) gave at a small JavaScript conference in Washington DC
 at the end of 2014. It’s worth watching in full:
 
-<figure class='figure-md'>
+<figure class='figure-lg'>
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/116209150?h=ee272a3a11&color=ffffff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="fullscreen; picture-in-picture" ></iframe>
 </div>
@@ -440,7 +440,8 @@ power of CSS.
 
 ![]($$/zen-garden.jpg)
 
-**A vivid illustration of the power of CSS:** The Zen Garden was hugely influential in getting
+**A vivid illustration of the power of CSS:** The Zen Garden popularized the idea that you could
+redesign a website just by swapping out its stylesheet. It was hugely influential in getting
 designers and developers to embrace web standards.
 
 </figure>
@@ -457,7 +458,7 @@ It's hard to overstate what a huge and positive difference these people made to 
 front-end development. Before they came around, every browser did things differently, and it could
 be a soul-destroying enterprise to get things to look consistent across platforms. By 2013, the Web
 Standards Project was able to close its doors, claiming victory. The innovation and improvement
-we're used to seeing these days in the CSS and JavaScript standards wouldn't have been possible
+we're used to seeing every year in the CSS and JavaScript standards wouldn't have been possible
 without them.
 
 There are a couple of key principles that they got web developers like me to internalize like they
@@ -910,15 +911,6 @@ classes that Tailwind doesn't include, you can have it generate whatever you wan
 [Tailwind UI](https://tailwindui.com) is Tailwind's answer to the component libraries offered by
 frameworks like Bootstrap or Semantic UI.
 
-<figure class='figure-lg figure-b'>
-
-![]($$/tailwind-ui-buttons.png)
-
-Tailwind UI gives you lots and lots of thoughtfully designed copy-and-paste examples of markup using
-Tailwind CSS for common application and website components.
-
-</figure>
-
 It's a library of professionally designed components that goes beyond the basics of buttons,
 dropdowns and modals, to include fully fleshed-out examples of common application UI requirements
 like sign-in forms and dashboards; marketing website elements like pricing pages and logo clouds;
@@ -926,17 +918,19 @@ and ecommerce components like shopping carts and checkout forms. A few component
 access requires a paid account; this in turn supports ongoing development of the open-source
 framework, and has allowed Adam Wathan to quit his day job and work on Tailwind full-time.
 
-Most of the Tailwind UI components are just static HTML markup with curated CSS classes, which you
-copy and paste into your project and customize as needed.
+<figure class='figure-2up figure-b'>
 
-<figure class='figure-lg'>
+![]($$/tailwind-ui-2.png)
 
-![]($$/headless-ui.jpg)
+![]($$/tailwind-ui-alerts.png)
 
-Headless UI finally solves the problem of interactive components that are tightly coupled to a
-specific visual style.
+Tailwind UI gives you lots and lots of thoughtfully designed copy-and-paste examples of markup using
+Tailwind CSS for common application and website components.
 
 </figure>
+
+Most of the Tailwind UI components are just static HTML markup with curated CSS classes, which you
+copy and paste into your project and customize as needed.
 
 For more complex interactions requiring JavaScript, [Headless UI](https://headlessui.com/) is an
 open-source set of unstyled components designed to be used with Tailwind. Like [Reach
@@ -961,6 +955,15 @@ These elements can be put together in a variety of different ways, styled any wa
 interwoven with whatever HTML markup you need. This is a vast improvement over the
 take-it-or-leave-it components from libraries that I've used in the past, which have invariably been
 difficult or impossible to restyle and customize.
+
+<figure class='figure-lg'>
+
+![]($$/headless-ui.jpg)
+
+Headless UI finally solves the problem of interactive components that are tightly coupled to a
+specific visual style.
+
+</figure>
 
 ### Unexpectedly, the holy grail
 
