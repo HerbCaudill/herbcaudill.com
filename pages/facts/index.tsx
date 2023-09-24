@@ -1,9 +1,10 @@
 import { IndexLayout } from 'components/IndexLayout'
-import { getPostMetadata } from 'lib/loadMarkdownFile'
+import { loadMarkdownFile } from 'lib/loadMarkdownFile'
+import { Html } from 'lib/types'
 import { GetStaticProps } from 'next'
 import path from 'path'
 
-const FactsIndex = ({ content, metadata }: Props) => {
+const FactsIndex = ({ content }: { content: Html }) => {
   return (
     <IndexLayout label="Facts">
       <div
@@ -32,10 +33,5 @@ export default FactsIndex
 const factsFilePath = path.join(process.cwd(), '/content/facts.md')
 
 export const getStaticProps: GetStaticProps = async () => ({
-  props: getPostMetadata(factsFilePath),
+  props: loadMarkdownFile(factsFilePath),
 })
-
-type Props = {
-  content: string
-  metadata: Record<string, any>
-}

@@ -3,6 +3,7 @@ import path from 'path'
 import parse from 'gray-matter'
 import { markdownToHtml } from './markdownToHtml'
 import { PostMetadata, PostContent, Markdown, RawMetadata } from './types'
+import { loadMarkdownFile } from './loadMarkdownFile'
 
 const postsDir = path.join(process.cwd(), '/content/posts')
 const imagesDir = path.join(process.cwd(), '/public/images/posts')
@@ -15,9 +16,7 @@ export const allPostsMetadata = () =>
     .sort(byDateDescending)
 
 /** Returns just the metadata of one post (omits the full content) */
-export const getPostMetadata = (parsedFile: ParsedFile): PostMetadata => {
-  const { id, data: metadata } = parsedFile
-
+export const getPostMetadata = ({ id, data: metadata }: Omit<ParsedFile, 'content'>): PostMetadata => {
   return {
     ...metadata,
 
@@ -50,22 +49,17 @@ type ParsedFile = {
 
 /** Returns the full content of a post (including metadata) */
 export const loadPost = (id: string): PostContent => {
-  const parsedFile = parseFile(`${id}.md`)
-  const metadata = getPostMetadata(parsedFile)
-
-  const content =
-    //  convert markdown to html
-    markdownToHtml(parsedFile.content)
-      // fix image paths
-      .replace(/\$\$\//g, `/images/posts/${id}/`)
+  const { content, data } = loadMarkdownFile(`${id}.mdx`)
+  const metadata = getPostMetadata({ id, data })
 
   return {
     ...metadata,
-    content,
+    content: content.replace(/\$\$\//g, `/images/posts/${id}/`),
   }
 }
 
-const parseFile = (fileName: string) => {
+/** Loads the file for the given post and parses the gray matter */
+export const parseFile = (fileName: string) => {
   const fileText = fs.readFileSync(path.join(postsDir, fileName), 'utf8')
   const { data, content } = parse(fileText)
   const id = path.basename(fileName, path.extname(fileName))
