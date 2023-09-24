@@ -1,23 +1,40 @@
-﻿export type PostData = {
+﻿export type Markdown = string & { __markdown: true }
+export type Html = string & { __html: true }
+
+export type RawMetadata = {
+  title: string
+  subtitle: string
+
+  description: Markdown
+  caption?: Markdown
+  context?: Markdown
+
+  draft?: boolean
+  tags?: string
+  originalPublication?: string
+  originalUrl?: string
+}
+
+export type PostMetadata = {
   id: string
+  date: string
 
   title: string
   subtitle: string
 
-  date: string
+  description: Html
+  caption?: Html
+  context?: Html
 
-  description: string
-  content: string
-
-  draft: boolean
-
-  image?: string
-  caption?: string
-  thumbnail: string
-
+  draft?: boolean
   tags: string[]
+  originalPublication?: string
+  originalUrl?: string
 
-  originalPublication: string
-  originalUrl: string
-  context: string
+  image: string
+  thumbnail: string
+}
+
+export type PostContent = PostMetadata & {
+  content: string
 }

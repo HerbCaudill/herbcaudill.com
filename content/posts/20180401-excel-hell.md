@@ -7,7 +7,6 @@ description: |
 
 originalPublication: Medium
 originalUrl: https://medium.com/all-the-things/a-single-infinitely-customizable-app-for-everything-else-9abed7c5b5e7
-date: '2018-04-01'
 
 thumbnail: '/images/thumbnails/excel.jpg'
 ---

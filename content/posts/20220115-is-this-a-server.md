@@ -6,8 +6,6 @@ description: |
   Before we can move past the server-centric model for collaboration software, we need to understand all the things we're currently depending on servers for.
 
 draft: true
-
-date: '2022-01-15'
 ---
 
 As an American living in Spain, every once and a while I'm mildly surprised to be reminded that

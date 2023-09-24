@@ -1,6 +1,6 @@
 import { IndexLayout } from 'components/IndexLayout'
 import { Posts } from 'components/Posts'
-import { posts } from 'lib/posts'
+import { allPostsMetadata } from 'lib/posts'
 import { PostData } from 'lib/types'
 import { GetStaticProps } from 'next'
 
@@ -17,7 +17,7 @@ export default Drafts
 export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
-      posts: posts(),
+      posts: allPostsMetadata(),
     },
   }
 }

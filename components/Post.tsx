@@ -1,5 +1,5 @@
 import { Nav } from 'components/Nav'
-import { PostData } from 'lib/types'
+import { PostContent, PostMetadata } from 'lib/types'
 import { Date } from 'components/Date'
 import { DraftBlurb } from 'components/DraftBlurb'
 import { PostLink } from 'components/PostLink'
@@ -127,6 +127,6 @@ export const Post = ({
   )
 }
 
-export interface PostProps extends PostData {
-  relatedPosts: PostData[]
+export interface PostProps extends PostContent {
+  relatedPosts: PostMetadata[]
 }

@@ -10,8 +10,6 @@ description: |
 
 draft: true
 
-date: '2023-01-01'
-
 caption: '"It would be so nice if something made sense for a change.” <i>— Lewis Carroll, Alice in Wonderland</i>'
 tags: software
 ---

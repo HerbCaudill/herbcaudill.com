@@ -5,7 +5,6 @@ description: Why shouldn’t our tools for organizing information be as cool as 
 
 draft: true
 
-date: '2018-12-22'
 originalPublication: Medium
 originalUrl: https://medium.com/all-the-things/a-secret-agent-database-for-the-rest-of-us-de39abfb2a08
 

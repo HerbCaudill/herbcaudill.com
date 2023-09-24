@@ -16,7 +16,6 @@ context: |
 
 originalPublication: Medium
 originalUrl: http://medium.com/@herbcaudill/lessons-from-6-software-rewrite-stories-635e4c8f7c22
-date: '2019-02-19'
 
 caption: '“As if source code <em>rusted!</em>” <i>— Joel Spolsky</i>'
 tags: software

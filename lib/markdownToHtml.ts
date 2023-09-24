@@ -4,6 +4,7 @@ import { markedHighlight } from 'marked-highlight'
 import { markedSmartypants } from 'marked-smartypants'
 
 import hljs from 'highlight.js'
+import { Html, Markdown } from './types'
 
 const handleDefList = (text: string) => {
   // Label
@@ -39,4 +40,4 @@ const marked = new Marked(
   markedSmartypants()
 )
 
-export const markdownToHtml = (input: string) => (input ? marked.parse(input) : '') as string
+export const markdownToHtml = (input: Markdown) => (input ? marked.parse(input) : '') as Html

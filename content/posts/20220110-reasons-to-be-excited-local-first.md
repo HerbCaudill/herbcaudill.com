@@ -8,7 +8,6 @@ description: |
 
 draft: true
 
-date: '2022-01-10'
 tags: software
 ---
 
@@ -283,14 +282,14 @@ traded away when we switch to cloud applications, without making us give up the 
 collaborate smoothly. The best of both worlds.
 
 |                                                         | 💿<br/>traditional<br/>apps | 🌧<br/>cloud<br/>apps | 👍<br/>local-first<br/>apps |
-| ------------------------------------------------------- | :-------------------------: | :------------------: | :-------------------------: |
-| ⌚ **fast**: my data is on my device                    |             ✅              |          ⛔          |             ✅              |
-| 🚙 **robust**: network optional                         |             ✅              |          ⛔          |             ✅              |
-| 🕵️‍♀️ **private**: only I decide who sees it               |             ✅              |          ⛔          |             ✅              |
-| 📦 **mine**: I own it and can take it with me           |             ✅              |          ⛔          |             ✅              |
-| 👪 **multiplayer**: I can work with others in real time |             ⛔              |          ✅          |             ✅              |
-| 📱 **multidevice**: move from laptop to phone to tablet |             ⛔              |          ✅          |             ✅              |
-| 🌩 **backed up**: no worries about data loss             |             ⛔              |          ✅          |             ✅              |
+| ------------------------------------------------------- | :-------------------------: | :-------------------: | :-------------------------: |
+| ⌚ **fast**: my data is on my device                    |             ✅              |          ⛔           |             ✅              |
+| 🚙 **robust**: network optional                         |             ✅              |          ⛔           |             ✅              |
+| 🕵️‍♀️ **private**: only I decide who sees it               |             ✅              |          ⛔           |             ✅              |
+| 📦 **mine**: I own it and can take it with me           |             ✅              |          ⛔           |             ✅              |
+| 👪 **multiplayer**: I can work with others in real time |             ⛔              |          ✅           |             ✅              |
+| 📱 **multidevice**: move from laptop to phone to tablet |             ⛔              |          ✅           |             ✅              |
+| 🌩 **backed up**: no worries about data loss            |             ⛔              |          ✅           |             ✅              |
 
 But if you look around, you'll see that very little software these days works that way. Why is that?
 If this is such an attractive vision, why are we still building web apps? Why did Microsoft go to

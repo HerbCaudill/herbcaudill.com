@@ -6,8 +6,6 @@ description: |
   Something something something
 
 draft: true
-
-date: '2022-12-06'
 ---
 
 CRDTs (conflict-free replicated datatypes) are exciting. They're widely regarded as a key enabling

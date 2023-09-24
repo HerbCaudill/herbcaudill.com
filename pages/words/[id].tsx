@@ -1,12 +1,11 @@
 import { Layout } from 'components/Layout'
 import { Post, PostProps } from 'components/Post'
 import { siteTitle } from 'lib/constants'
-import { getAllPostIdParams, post, relatedPosts } from 'lib/posts'
+import { allPostsMetadata, loadPost, relatedPosts } from 'lib/posts'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import Head from 'next/head'
 
 import 'highlight.js/styles/rainbow.css'
-
-import Head from 'next/head'
 
 const PostLayout = ({ postData }: { postData: PostProps }) => {
   const { id, title, description, image } = postData
@@ -16,7 +15,7 @@ const PostLayout = ({ postData }: { postData: PostProps }) => {
       <Head>
         <title>{`${title} | ${siteTitle}`}</title>
         <meta name="description" content={description} />
-        <meta name="og:url" content={`https://herbcaudill.com/posts/${id}`} />
+        <meta name="og:url" content={`https://herbcaudill.com/words/${id}`} />
         <meta name="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
@@ -33,7 +32,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       postData: {
-        ...post(id),
+        ...loadPost(id),
         relatedPosts: relatedPosts(id),
       },
     },
@@ -41,6 +40,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: getAllPostIdParams(),
+  paths: allPostsMetadata().map(({ id }) => ({ params: { id } })),
   fallback: false,
 })

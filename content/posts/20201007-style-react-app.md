@@ -8,8 +8,6 @@ description: |
   I just spent an unreasonable amount of time trying to understand the current landscape and settle on the perfect
   framework. I was surprised to find what I needed in an unexpected place.
 
-date: '2020-10-07'
-
 caption: |
   "CSS is easy. It's like riding a bike, which is on fire and the ground is on fire and everything is 
   on fire because it is hell."  
