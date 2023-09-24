@@ -1,4 +1,4 @@
-﻿---
+---
 title: How to style React applications while the world burns around us
 subtitle: Thinking about front-end frameworks and CSS during interesting times
 
@@ -61,7 +61,7 @@ and causing [some](https://www.friday.ie/blog/why-do-all-websites-look-the-same/
 [complain](https://medium.com/@firedrop/is-it-just-me-or-do-all-websites-look-the-same-8bb166d4dc9c)
 that [every website looked the same](https://www.dagusa.com/).
 
-<figure class='figure-md figure-b'>
+<figure className='figure-md figure-b'>
 
 ![]($$/every-bootstrap-website.png)
 
@@ -73,7 +73,7 @@ Bootstrap provides ready-made grids and templates; a library of individual eleme
 alerts, and forms; and a handful of interactive components like dropdowns and modals. It's a solid
 choice; DevResults still uses Bootstrap to this day.
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/buttons.png)
 
@@ -127,7 +127,7 @@ palettes to line weights, drop shadows, scales for spacing, and so on. These can
 different ways to create completely new components and layouts in a way that's visually consistent
 with other components and with the organization's overall brand.
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/carbon.jpg)
 
@@ -152,7 +152,7 @@ Material embodies a set of lower-level principles that can be adapted to any gra
 it has been used as the foundation of in-house design systems for [many
 organizations](http://material.io/blog/material-partner-studies), from Lyft to NPR to Zappos.
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/material.gif)
 
@@ -180,7 +180,7 @@ updating the design, or creating a new component  --  there’s a sense of d
 of breaking something  --  which in turn comes from a sense that it’s impossible to completely
 understand or predict the effects of any given change.
 
-<figure class='figure-md figure-b'>
+<figure className='figure-md figure-b'>
 
 ![]($$/two-css-properties-walk-into-a-bar.png)
 
@@ -203,7 +203,7 @@ contexts with remarkable consistency.
 And just six years after they started over from scratch, they describe their codebase over 60,000+
 lines as a "precarious, teetering, maintenance nightmare".
 
-<figure class='figure-xl figure-b'>
+<figure className='figure-xl figure-b'>
 
 ![]($$/guardian.png)
 
@@ -271,8 +271,6 @@ naming convention for CSS that does just that. Class names always start with a *
 essentially a namespace at the component level  -- followed by an **element** name, and optionally a
 **modifier**. For example:
 
-<!-- scss avoids reformatting this but still does code highlighting -->
-
 ```scss
 .bio__image { ... }
 .bio__name { ... }
@@ -315,9 +313,15 @@ The precipitating event was a talk that React developer Christopher Chedeau
 ([Vjeux](https://medium.com/u/46fa99d9bca4)) gave at a small JavaScript conference in Washington DC
 at the end of 2014. It’s worth watching in full:
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/116209150?h=ee272a3a11&color=ffffff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="fullscreen; picture-in-picture" ></iframe>
+<div style={{ padding: '56.25% 0 0 0', position: 'relative' }}>
+  <iframe
+    src="https://player.vimeo.com/video/116209150?h=ee272a3a11&color=ffffff&title=0&byline=0&portrait=0"
+    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+    frameBorder="0"
+    allow="fullscreen; picture-in-picture"
+  ></iframe>
 </div>
 
 In spite of the somewhat muffled audio, this is a really compelling presentation. I can’t imagine he
@@ -390,7 +394,7 @@ coin and it’s useful to think of them _both_ as a function of state.
 
 ## Understanding the ensuing drama
 
-<figure class=''>
+<figure className=''>
 
 ![]($$/one-does-not-simply.jpg)
 
@@ -411,7 +415,7 @@ was a great gnashing of teeth and darkness fell across the land.
 To understand why this turned out to be such an emotional question, it's worth taking a quick look
 at the history of CSS and web standards.
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/sure-grandma.jpg)
 
@@ -436,7 +440,7 @@ exhorted the industry -- browser vendors as well as web developers -- to get its
 the website was the [CSS Zen Garden](http://www.csszengarden.com/), which vividly demonstrated the
 power of CSS.
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/zen-garden.jpg)
 
@@ -491,7 +495,7 @@ well. Were designers now going to have to learn to code to keep their jobs?
 But the web was originally conceived as a way of publishing hypertext _documents_ --  where there’s
 a fairly limited universe of possibilities.
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/pdf-about-css.png)
 
@@ -545,7 +549,7 @@ like you've _added_ complexity when you replace a hand-crafted CSS file with a J
 toolchain. But this upfront investment in complexity makes it possible to reason about the effects
 of your CSS styles by containing the scope of your changes to manageable, modular units.
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/components.png)
 
@@ -562,7 +566,7 @@ conceptually coherent: Your CSS and your markup are tightly coupled, because **t
 presentation-level information encoded in the structure of your HTML** --  the order things are in,
 the way they’re nested. HTML markup is not pure “content” and never has been.
 
-<figure class='figure-md'>
+<figure className='figure-md'>
 
 ![]($$/presentation-vs-content.png)
 
@@ -579,7 +583,7 @@ between files with that end in `.html` and files that end in `.css`  --  i
 contact entry, or a restaurant’s details and reviews, or a blog post – and pour it into any number
 of different components.
 
-<figure class='figure'>
+<figure className='figure'>
 
 ![]($$/modular.png)
 
@@ -600,7 +604,7 @@ Brent Jackson, it calls itself a **constraint-based framework** and builds on hi
 contributions including [BassCSS](http://basscss.com), [ReBass](https://rebassjs.org/), and [Styled
 System](http://styled-system.com).
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/theme-ui.png)
 
@@ -710,7 +714,7 @@ But on reflection, the dogma of semantic HTML never really aligned very well wit
 front-end development. You often want to use consistent styling for things with completely different
 semantics.
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/cards.png)
 
@@ -736,7 +740,7 @@ without having to change much or at all. Traditional CSS has never _scaled_ in t
 always grown linearly along with markup, with lots of repetition and lots of opportunities for
 inconsistency.
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/refactoring-ui.png)
 
@@ -805,7 +809,7 @@ two decades. The white-hot wrath of [Jeffrey Zeldman's
 disapproval](https://www.zeldman.com/2017/01/03/kiss-my-classname/) was making me sweat from 6,000
 kilometers away:
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/zeldman.2.jpg)
 
@@ -847,7 +851,7 @@ from it.
 With Tailwind, you never have to wonder about the scope of your changes, or worry about unintended
 effects. No more knocking over bar stools in completely different bars.
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/tailwind-tooling.png)
 
@@ -916,7 +920,7 @@ and ecommerce components like shopping carts and checkout forms. A few component
 access requires a paid account; this in turn supports ongoing development of the open-source
 framework, and has allowed Adam Wathan to quit his day job and work on Tailwind full-time.
 
-<figure class='figure-2up figure-b'>
+<figure className='figure-2up figure-b'>
 
 ![]($$/tailwind-ui-2.png)
 
@@ -954,7 +958,7 @@ interwoven with whatever HTML markup you need. This is a vast improvement over t
 take-it-or-leave-it components from libraries that I've used in the past, which have invariably been
 difficult or impossible to restyle and customize.
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/headless-ui.jpg)
 

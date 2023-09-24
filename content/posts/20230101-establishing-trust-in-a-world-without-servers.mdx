@@ -1,4 +1,4 @@
-﻿---
+---
 title: Alice and Bob in wonderland
 subtitle: Establishing trust in the strange world of peer-to-peer collaboration
 
@@ -82,7 +82,7 @@ Let's list some of the questions that we might have at this stage:
 
    </aside>
 
-   <div class='spoiler'>
+   <div className='spoiler'>
 
    **A:** All changes to the group's membership and permissions are recorded on a hash-chained graph
    of signed actions. Every group member keeps a complete replica of the graph, and
@@ -95,7 +95,7 @@ Let's list some of the questions that we might have at this stage:
    **Q:** To encrypt anything or use digital signatures, you need to know each other's public keys;
    but how can that happen if you don't have a trusted, centralized key server?
 
-   <div class='spoiler'>
+   <div className='spoiler'>
 
    **A:** New members are invited using a **Seitan token exchange**, which is basically Trust on
    First Use (TOFU) hardened with the use of an invitation key. When a new member is invited and
@@ -108,7 +108,7 @@ Let's list some of the questions that we might have at this stage:
    **Q:** Without a server to vouch for his identity, how does Alice know if she's really talking to
    Bob?
 
-   <div class='spoiler'>
+   <div className='spoiler'>
 
    **A:** We use a **signature challenge**: Alice creates an identity challenge document for Bob to
    sign, and checks his signature against his public signature key. [Jump to
@@ -120,7 +120,7 @@ Let's list some of the questions that we might have at this stage:
    **Q:** How can you keep some users from seeing sensitive information if each user has a complete
    copy of the data?
 
-   <div class='spoiler'>
+   <div className='spoiler'>
 
    **A:** We encrypt sensitive data for multiple users using
    **lockboxes** (encrypted keys). [Jump to details](#read-authorization)
@@ -130,7 +130,7 @@ Let's list some of the questions that we might have at this stage:
 1. **Write authorization**  
    **Q:** How do you prevent unauthorized users from modifying things they're not allowed to modify?
 
-   <div class='spoiler'>
+   <div className='spoiler'>
 
    **A:** We can't stop people from making changes to the data they have locally. But each user can
    use the graph to determine the current state of the group's membership and permissions, and
@@ -142,7 +142,7 @@ Let's list some of the questions that we might have at this stage:
    **Q:** How does everyone stay up to date with changes to the group's membership and permissions?
    What happens when two admins make concurrent changes?
 
-   <div class='spoiler'>
+   <div className='spoiler'>
 
    **A:** The graph preserves the history of any concurrent changes. Conflicting changes are
    resolved using "strong-remove" heuristics. [Jump to details](#synchronization-and-concurrency)
@@ -175,7 +175,7 @@ Teams application](https://book.keybase.io/teams). They use what they call a **[
 chain](https://book.keybase.io/docs/teams/sigchain)**: a series of links, each one containing a
 single change to the team's membership or roles.
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/01-simple-graph.png)
 
@@ -251,7 +251,7 @@ there is, and whether or not Alice is even a member any more.
 
 ### Where do keys come from?
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/2021-02-28-17-30-41.png)
 
@@ -304,7 +304,7 @@ party, so we're going to need an alternative approach.
 machine-readable form on public sites where they have accounts, like Twitter or GitHub. Then anyone
 can look up a person's public keys by username, and use them to verify their identity.
 
-<figure class='figure-b figure-2up'>
+<figure className='figure-b figure-2up'>
 
 ![]($$/2021-02-28-17-35-23.png)
 
@@ -359,7 +359,7 @@ cryptographic keys:
 | **examples**   | PGP, various forms of corporate or governmental PKI                                                                                                                                 | WhatsApp, Signal, Telegram                                                                                                                        |
 | **my take**    | **never really took off**                                                                                                                                                           | **seems more promising**                                                                                                                          |
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/2021-03-02-16-22-12.png)
 
@@ -409,7 +409,7 @@ blog](https://keybase.io/blog/chat-apps-softer-than-tofu):
 > every person in the company will need to go meet that person. In person. Otherwise, the entire
 > chat is compromised by one mole or hacker.
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/2021-03-02-16-25-20.png)
 
@@ -437,7 +437,7 @@ chain. Remember, everyone in the group gets a full copy of the chain, so so ever
 "public" within the group. Although we generally trust members of the team, we'd rather not make it
 possible for another member to co-opt Bob's invitation and impersonate him.
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/2021-02-28-18-28-53.png)
 
@@ -470,7 +470,7 @@ Now anyone in the group who wants to know Bob's public keys can get them from th
 public keys are also in the chain, in the root link.) Et voilà: No key parties, no PKI, no TOFU, and
 yet we're off to the races with public-key encryption.
 
-<div class='caption'>
+<div className='caption'>
 
 > If you're very sharp, at this point you might be thinking that I'm trying to pull the wool over your
 > eyes by using a not-so-secure channel to bootstrap a secure one.
@@ -496,12 +496,12 @@ yet we're off to the races with public-key encryption.
 
 > **Q:** Without a server to vouch for his identity, how does Alice know it’s really Bob at the other end?
 
-<!-- <aside>
+<aside>
 
 If you're not clear on the details of public-key cryptography, or you'd like a refresher, I've written
 a summary of what I've learned on the topic over the last year or two. LINK TODO
 
-</aside> -->
+</aside>
 
 We've solved the problem of verifying Bob's identity the very first time he shows up to join the team.
 But that's a one-time thing. How are we going to authenticate Bob the rest of the time?
@@ -515,7 +515,7 @@ it's not an impostor --- Eve, for example?
 
 The most straightforward solution I've found here is a **signature challenge**.
 
-<figure class='figure-md'>
+<figure className='figure-md'>
 
 ![]($$/2021-02-28-18-25-46.png)
 
@@ -578,7 +578,7 @@ but others can't.
 But how can we encrypt something once so that multiple people, each with their own keys, can decrypt
 it?
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/2021-03-02-12-17-11.png)
 
@@ -628,7 +628,7 @@ tries to connect with Alice, his identity claim is not `Hello I am Bob` but `Hel
 or `Hello I am Bob's Galaxy S27`; and he signs the identity challenge with his device keys, not with his
 user keys.
 
-<figure class='figure-md'>
+<figure className='figure-md'>
 
 ![]($$/keygraph-devices.png)
 
@@ -696,7 +696,7 @@ can never let its guard down and has to treat every bit of data it gets as poten
 What happens if a rogue peer sends changes that break the rules? **Everyone else simply ignores
 them**, the same way the server would ignore illegal changes from a rogue client.
 
-### Tired: Permission<br> Wired: Attention
+### Tired: Permission<br/> Wired: Attention
 
 This requires another inversion of our usual thinking. Is **permission** the right word for what
 we're thinking about? After all, our peers don't need our permission to do whatever they want on
@@ -721,7 +721,7 @@ salaries, then we accept his change. If not, we don't.
 
 "The Programmers’ Credo: we do these things not because they are easy, but because we _thought_ they
 were going to be easy." <i>-- <a
-href='https://twitter.com/Pinboard/status/761656824202276864'>Pinboard</a> </i> <br><br>"The first
+href='https://twitter.com/Pinboard/status/761656824202276864'>Pinboard</a> </i> <br/><br/>"The first
 90 percent of the code accounts for the first 90 percent of the development time. The remaining 10
 percent of the code accounts for the other 90 percent of the development time." <i>-- <a
 href='https://en.wikipedia.org/wiki/Ninety-ninety_rule'>The ninety/ninety rule</a></i>
@@ -763,7 +763,7 @@ So internally our **signature chain** needs to become a **signature graph** (alt
 bloody-mindedness we'll keep calling it a chain). This means that multiple links can have the same
 predecessor:
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/sigchain.3.png)
 
@@ -772,7 +772,7 @@ predecessor:
 Also, we'll need a new kind of link as a marker for merges. The merge link's only content is a pair
 of hashes, one for each of the branches being merged. It has no author and no signature.
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/sigchain.2.png)
 
@@ -832,7 +832,7 @@ group membership and roles.
 In general, then, **removals always win** in the case of conflict. I've interpreted this broadly to
 mean that if Bob is being removed from the group, any actions he takes concurrently are disregarded.
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/sigchain.5.png)
 
@@ -891,7 +891,7 @@ actions, and we might also need to **filter** out actions that are ruled out by 
 logic. Importantly, anyone doing the calculation needs to be able to independently come up with the
 same answer.
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/sigchain.merge.1.png)
 
@@ -906,7 +906,7 @@ As it turns out, once you've done the filtering, the ordering doesn't much matte
 So we choose one or the other of the two branches to go first in an **arbitrary but deterministic way**,
 to ensure that everyone arrives at the same ordering.
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/sigchain.merge.2.png)
 
@@ -936,7 +936,7 @@ wire, as efficiently as possible.
 At this point the data structure containing our signature chain-graph-thing might look something
 like this:
 
-<figure class='figure-md'>
+<figure className='figure-md'>
 
 ```javascript
 {
@@ -1002,7 +1002,7 @@ machine but wasn't.
 We've all been there, and it's just because things always look simple until you dig in a little bit.
 In my case, at first inspection it seemed like all I would need was this:
 
-<figure class=''>
+<figure className=''>
 
 ![]($$/state.1.png)
 
@@ -1010,7 +1010,7 @@ In my case, at first inspection it seemed like all I would need was this:
 
 But in reality, this is where I ended up:
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/state.2.png)
 
@@ -1027,7 +1027,7 @@ to reason about even when my brain is weak and foggy.
 
 ## Introducing the `@localfirst/auth` library
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![Local First Auth logo](https://raw.githubusercontent.com/local-first-web/branding/main/svg/auth-v.svg)
 
@@ -1048,7 +1048,7 @@ If you'd like to see that when it's ready, you should follow me on Twitter:
 
 ## Thanks
 
-<div class='endmatter'>
+<div className='endmatter'>
 
 This project's shape emerged from a series of conversations early on with [Peter Van
 Hardenberg](https://twitter.com/pvh) of [Ink & Switch](https://www.inkandswitch.com). Peter drilled

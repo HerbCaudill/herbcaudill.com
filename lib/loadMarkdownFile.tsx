@@ -1,5 +1,5 @@
 import { markdownToHtml } from './markdownToHtml'
-import { parseFile } from './posts'
+import { parseFile } from './parseFile'
 
 export const loadMarkdownFile = (fileName: string) => {
   const { data, content } = parseFile(fileName)

@@ -1,12 +1,12 @@
 import fs from 'fs'
-import path from 'path'
-import parse from 'gray-matter'
 import { markdownToHtml } from './markdownToHtml'
-import { PostMetadata, PostContent, Markdown, RawMetadata } from './types'
+import { PostMetadata, PostContent, Markdown, RawMetadata, ParsedFile } from './types'
 import { loadMarkdownFile } from './loadMarkdownFile'
-
-const postsDir = path.join(process.cwd(), '/content/posts')
-const imagesDir = path.join(process.cwd(), '/public/images/posts')
+import { getBannerImage, getThumbnailImage } from './getBannerImage'
+import { parseFile } from './parseFile'
+import { getDateFromId } from './getDateFromId'
+import { postsDir } from './constants'
+import { byDateDescending } from './byDateDescending'
 
 /** Returns metadata for all posts (omits the full content) */
 export const allPostsMetadata = () =>
@@ -24,8 +24,8 @@ export const getPostMetadata = ({ id, data: metadata }: Omit<ParsedFile, 'conten
     date: getDateFromId(id),
 
     // interpret underscores as non-breaking spaces in title and subtitle
-    title: metadata.title.replace('_', '&nbsp;'),
-    subtitle: metadata.subtitle.replace('_', '&nbsp;'),
+    title: metadata.title?.replace('_', '&nbsp;') || '',
+    subtitle: metadata.subtitle?.replace('_', '&nbsp;') || '',
 
     // convert markdown to html
     description: markdownToHtml(metadata.description),
@@ -41,12 +41,6 @@ export const getPostMetadata = ({ id, data: metadata }: Omit<ParsedFile, 'conten
   }
 }
 
-type ParsedFile = {
-  id: string
-  data: RawMetadata
-  content: Markdown
-}
-
 /** Returns the full content of a post (including metadata) */
 export const loadPost = (id: string): PostContent => {
   const { content, data } = loadMarkdownFile(`${id}.mdx`)
@@ -56,41 +50,6 @@ export const loadPost = (id: string): PostContent => {
     ...metadata,
     content: content.replace(/\$\$\//g, `/images/posts/${id}/`),
   }
-}
-
-/** Loads the file for the given post and parses the gray matter */
-export const parseFile = (fileName: string) => {
-  const fileText = fs.readFileSync(path.join(postsDir, fileName), 'utf8')
-  const { data, content } = parse(fileText)
-  const id = path.basename(fileName, path.extname(fileName))
-  return {
-    id,
-    data: data as RawMetadata,
-    content: content as Markdown,
-  }
-}
-
-/** Finds an image with the given name in the images directory for the given post */
-const getImagePath = (name: string) => (id: string) => {
-  const imageDir = path.join(imagesDir, id)
-  const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg']
-  for (const ext of imageExtensions) {
-    const imagePath = path.join(imageDir, `${name}.${ext}`)
-    if (fs.existsSync(imagePath)) return `/images/posts/${id}/${name}.${ext}`
-  }
-  return null
-}
-
-// the banner is any image file named _banner (_banner.jpg, _banner.png, etc.)
-const getBannerImage = getImagePath('_banner')
-
-// use the banner as thumbnail if no thumbnail exists
-const getThumbnailImage = (id: string) => getImagePath('_thumbnail')(id) || getBannerImage(id)
-
-/** Post IDs start with the date in YYYYMMDD format */
-const getDateFromId = (id: string) => {
-  const date = id.split('-')[0]
-  return `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`
 }
 
 export const relatedPosts = (id: string): PostMetadata[] => {
@@ -107,5 +66,3 @@ export const relatedPosts = (id: string): PostMetadata[] => {
 
   return [prevIndex, nextIndex].map(i => publishedPosts[i])
 }
-
-export const byDateDescending = (a: PostMetadata, b: PostMetadata) => (a.date < b.date ? 1 : -1)

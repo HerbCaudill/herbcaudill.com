@@ -15,6 +15,12 @@ export type RawMetadata = {
   originalUrl?: string
 }
 
+export type ParsedFile = {
+  id: string
+  data: RawMetadata
+  content: Markdown
+}
+
 export type PostMetadata = {
   id: string
   date: string

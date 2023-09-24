@@ -11,7 +11,7 @@ Things have changed a lot in the decade since the last time I built a web applic
 
 On the one hand, we’ve finally arrived at the promised land of code reuse. If you’re into programming productivity, no Agile methodology or VS Code extension compares to a technique I like to call **“importing code that someone else wrote.”** What a time to be alive!
 
-<figure class='figure-lg'>
+<figure className='figure-lg'>
 
 ![]($$/cartoon.jpeg)
 
@@ -29,7 +29,7 @@ At some point, though, you have to stop thinking and start coding. I’ve spent 
 
 My starting point is the way [DevResults](http://www.devresults.com) works, so even though that’s a decade-old codebase, let’s take a look at its architecture. It’s a server application written in C#, a SQL database, and an Angular front end. So something like this:
 
-<figure class='figure-lg image-b'>
+<figure className='figure-lg image-b'>
 
 ![]($$/01.jpeg)
 
@@ -43,7 +43,7 @@ There are several sources of inefficiency here:
 - Our **data model has to be restated repeatedly** in multiple different formats.
 - Each of these layers includes some logic, and it’s **hard to avoid duplicating some logic** across more than one layer.
 
-<figure class='figure-lg image-b'>
+<figure className='figure-lg image-b'>
 
 ![]($$/02.jpeg)
 
@@ -57,7 +57,7 @@ Now, DevResults was first written in 2009, and changes to the code since then ha
 
 The first step to simplify this is to use a single language for the codebase. In 2018, the only reasonable choice is JavaScript. We can use Node.js on the back end, and that way bits of logic that are shared between the client and the server only have to be written once.
 
-<figure class='figure-lg image-b'>
+<figure className='figure-lg image-b'>
 
 ![]($$/03.png)
 
@@ -69,7 +69,7 @@ The first step to simplify this is to use a single language for the codebase. In
 
 We can also use a NoSQL database like MongoDB, which accepts and returns JSON data. So our data can move from client to server to database without having to be translated.
 
-<figure class='figure-lg image-b'>
+<figure className='figure-lg image-b'>
 
 ![]($$/04.png)
 
@@ -88,7 +88,7 @@ But when I started playing with this in a couple of toy apps, I was **still frus
 - Data **storage** is provided by the database. But since the client needs to work offline, it needs to provide storage also. That means you need to write two data layers — one for the client to work with local data, the other for the server to work with the database.
 - Application **logic** traditionally lives on the server. But if the client needs to work offline, some or all of that logic needs to be on the client as well.
 
-<figure class='figure-lg image-b'>
+<figure className='figure-lg image-b'>
 
 ![]($$/05.png)
 
@@ -111,7 +111,7 @@ There are two big challenges with building an app that works offline:
 - It has to work when no server is available (duh), which means that it needs to have a **full local copy of the data** that it needs.
 - When the app does go back online, it needs to **reconcile changes** that have been made locally with changes that have been made elsewhere.
 
-<figure class='figure-lg image-b'>
+<figure className='figure-lg image-b'>
 
 ![]($$/06.png)
 
@@ -143,7 +143,7 @@ The most obvious answer is that **we need the server to collaborate with others*
 
 So, yes, this would be a very simple architecture:
 
-<figure class='image-b'>
+<figure className='image-b'>
 
 ![]($$/08.jpeg)
 
@@ -157,7 +157,7 @@ So let’s put on our “[pretend it’s magic](https://books.google.es/books?id
 
 Let’s just imagine for the moment that we had a magical way of automatically and instantaneously synchronizing Alice’s data with Bob’s data, so that when they’re both online, they’re both always looking at the same thing.
 
-<figure class='image-b'>
+<figure className='image-b'>
 
 ![]($$/09.gif)
 
@@ -171,7 +171,7 @@ But wait, you say! This peer-to-peer setup requires Alice and Bob to be online a
 
 OK, no problem — we can just fire up a client on a computer that no one uses, and leave it running all the time.
 
-<figure class='image-b'>
+<figure className='image-b'>
 
 ![]($$/10.png)
 
@@ -230,7 +230,7 @@ I’m going to focus on the next-to-the-last item in that list — CRDTs — bec
 
 ### CRDTs and Automerge: Indistinguishable from magic
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/13.png)
 
@@ -262,7 +262,7 @@ So the overall idea starts to look like this:
 - **Real-time background synchronization** is provided automatically and unobtrusively by **Automerge**.
 - **Instead of a server, we have an always-available headless peer** living in a lambda function. If we define a “team” as our permissions boundary, it might make sense to just spin up one lambda per team.
 
-<figure class='figure-xl'>
+<figure className='figure-xl'>
 
 ![]($$/14.png)
 
@@ -287,7 +287,7 @@ Is this insane? Has it been done before? Let me know what you think!
 
 ## Further exploration
 
-<div class='endmatter'>
+<div className='endmatter'>
 
 In [Distributed Systems and the End of the API](https://writings.quilt.org/2014/05/12/distributed-systems-and-the-end-of-the-api/) (2014), Chas Emerick points out that network API models — whether RPC, SOAP, REST (or now, GraphQL) — are fundamentally unsuited to distributed systems, and that many API use cases can be solved using CRDTs instead.
 
@@ -303,4 +303,4 @@ Ink and Switch has also created a series of proof-of-concept apps using Automerg
 - [**Pixelpusher**](https://github.com/automerge/pixelpusher), a collaborative drawing tool
 - [**Pushpin**](https://github.com/inkandswitch/pushpin), a collaborative corkboard app
 
-</figure>
+</div>

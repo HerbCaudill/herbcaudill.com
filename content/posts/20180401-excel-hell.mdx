@@ -29,7 +29,7 @@ On the other hand, there’s clearly enormous demand for an extremely malleable 
 
 The reality of most teams, including mine, is this: We use purpose-built software for some stuff, and for the rest we use Excel.
 
-<div class='image-2up'>
+<div className='image-2up'>
 
 ![]($$/3.png)
 
@@ -47,7 +47,7 @@ Let’s take a little detour to think about this.
 
 It goes without saying that Microsoft Excel is the world’s most-used **spreadsheet** software. What is surprising, and of interest to us, is that Microsoft Excel is the world’s most used **database** software as well.
 
-<div class='image'>
+<div className='image'>
 
 ![]($$/5.png)
 
@@ -65,7 +65,7 @@ Joel Spolsky, who worked on the Excel team at the time, [describes the moment](h
 
 Realizing this, Microsoft belatedly started to add data-management features to Excel. The biggest single improvement was a feature tried in 2003 called, aptly, “Tables”. I suspect that 95% of Excel users don’t know it’s there. Microsoft is still retrofitting Excel with database functionality. Deep in the bowels of the “Data” tab you’ll find hardcore data manipulation tools that approximately no one has ever used.
 
-<div class='image image-lg'>
+<div className='image image-lg'>
 
 ![]($$/6.png)
 
@@ -85,7 +85,7 @@ My wife, Lynne, is the prototype of the intelligent non-programmer. (She is also
 
 Search Quora or StackOverflow and you’ll find dozens of variations of the question “[Is it possible to store multiple values in an Excel cell?](https://stackoverflow.com/questions/32060804/is-it-possible-to-store-multiple-values-in-an-excel-cell)” or “[Can I insert a table into an Excel cell?](https://stackoverflow.com/questions/2852755/insert-table-into-cell-excel)”
 
-<div class='image-2up'>
+<div className='image-2up'>
 
 ![]($$/7.png)
 
@@ -99,7 +99,7 @@ If you have a certain type of background, you look at a situation like this and 
 
 But _most people’s_ brains don’t go naturally to a relational-tables model, and _most people_ have never used those functions.
 
-<div class='image'>
+<div className='image'>
 
 ![]($$/9.png)
 
@@ -117,7 +117,7 @@ That’s because in Excel, **data and presentation are hopelessly commingled**. 
 
 So people are naturally tempted to do things like this — manually grouping and subtotaling different categories, with blank rows and brightly colored labels:
 
-<div class='image'>
+<div className='image'>
 
 ![]($$/10.png)
 
@@ -127,7 +127,7 @@ This is an official template provided by the Microsoft Corporation. It’s prett
 
 If you know spreadsheets, you know that this spreadsheet would be a nightmare to work with. You can’t get numbers into it or out of it without repetitive copying or pasting, or retyping. And it’s brittle — look at it wrong and you’ll break something. Just picture in your head what’s involved if you want to add a new expense category, or remove an existing one.
 
-<div class='image-2up'>
+<div className='image-2up'>
 
 ![]($$/11.png)
 
@@ -143,7 +143,7 @@ There’s no way to create a natural view of data with one-to-many or many-to-ma
 
 The downside of Excel’s flexibility is that it’s really, really easy to do the wrong thing. You can enter text into a numeric column. You can type something that looks like a date but isn’t.
 
-<div class='image'>
+<div className='image'>
 
 ![]($$/13.png)
 
@@ -198,7 +198,7 @@ This tension between spreadsheets and databases gives us a starting point for wh
 
 It has to let me easily create lists and tables like Excel. But in the long run it has to give my data a more solid structure like Access does.
 
-<div class='image-2up'>
+<div className='image-2up'>
 
 ![]($$/16.png)
 
@@ -228,7 +228,7 @@ The relational data model is wonderful; but it was invented to make things easy 
 
 I have a theory that **a loosely-typed object-oriented model**, like JavaScript objects or JSON documents in a NoSQL database, is **a more natural fit for most people’s mental models** than a strictly-typed relational table structure.
 
-<div class='image image-md'>
+<div className='image image-md'>
 
 ![]($$/18.jpeg)
 
@@ -238,7 +238,7 @@ Photo © 2011 by Simon Bramwell
 
 I was recently talking with a DevResults customer who was managing data from an educational project that works in several developing countries. Since this scenario is fresh on my mind, let’s consider a simple data model for a school.
 
-<div class='image image-md'>
+<div className='image image-md'>
 
 ![]($$/19.png)
 

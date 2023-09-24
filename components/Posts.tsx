@@ -1,4 +1,4 @@
-import { PostData } from 'lib/types'
+import { PostMetadata } from '../lib/types'
 import { PostLink } from './PostLink'
 
 export const Posts = ({ posts, includeDrafts = false }: PostProps) => {
@@ -15,6 +15,6 @@ export const Posts = ({ posts, includeDrafts = false }: PostProps) => {
 }
 
 type PostProps = {
-  posts: PostData[]
+  posts: PostMetadata[]
   includeDrafts: boolean
 }

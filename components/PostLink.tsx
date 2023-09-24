@@ -1,6 +1,6 @@
 ﻿import Link from 'next/link'
 import { Date } from './Date'
-import { PostData } from 'lib/types'
+import { PostMetadata } from 'lib/types'
 import { Tag } from './Tag'
 
 const env = process.env.NODE_ENV
@@ -52,4 +52,4 @@ export const PostLink = ({ id, date, title, subtitle, description, draft, thumbn
   </Link>
 )
 
-interface PostLinkProps extends PostData {}
+interface PostLinkProps extends PostMetadata {}

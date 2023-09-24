@@ -1,3 +1,4 @@
+import { MDXRemote } from 'next-mdx-remote'
 import { Nav } from 'components/Nav'
 import { PostContent, PostMetadata } from 'lib/types'
 import { Date } from 'components/Date'
@@ -5,19 +6,14 @@ import { DraftBlurb } from 'components/DraftBlurb'
 import { PostLink } from 'components/PostLink'
 
 export const Post = ({
-  image,
-  title,
-  subtitle,
-  description,
-  draft,
-  caption,
-  content,
-  date,
-  originalPublication,
-  originalUrl,
-  context,
+  metadata,
+  compiledSource,
+
   relatedPosts,
 }: PostProps) => {
+  const { image, title, subtitle, description, draft, caption, date, originalPublication, originalUrl, context } =
+    metadata
+
   return (
     <div
       className={`
@@ -82,7 +78,9 @@ export const Post = ({
           md:col-start-4 md:col-span-9 
           lg:col-start-4 lg:col-span-7`}
       >
-        <article dangerouslySetInnerHTML={{ __html: content }} />
+        <article>
+          <MDXRemote frontmatter={metadata} compiledSource={compiledSource} scope={{}} />
+        </article>
 
         <DraftBlurb draft={draft} />
       </div>
@@ -127,6 +125,8 @@ export const Post = ({
   )
 }
 
-export interface PostProps extends PostContent {
+export type PostProps = {
+  metadata: PostMetadata
+  compiledSource: string
   relatedPosts: PostMetadata[]
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Cryptography 101
 subtitle: Everything you need to know about digital encryption and signatures but were embarrassed to ask.
 
@@ -45,7 +45,7 @@ But first, a quick reminder about the nature of digital data.
 
 ## Prologue: Numbers all the way down
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/ascii.png)
 
@@ -74,7 +74,7 @@ T  h   e      e   a  g   l   e      l   a  n   d   s      a  t      m   i   d   
 84 104 101 32 101 97 103 108 101 32 108 97 110 100 115 32 97 116 32 109 105 100 110 105 103 104 116
 ```
 
-<div class='exercises'>
+<div className='exercises'>
 
 ### See for yourself
 
@@ -211,7 +211,7 @@ QDA AZCIA IZKRP ZQ JFRKFCDQ
 Substitution ciphers can be solved so easily that they put them in the newspaper next to crossword
 puzzles, so that people can work them out with pencil and paper for fun.
 
-<figure class='figure-md' >
+<figure className='figure-md' >
 
 ![]($$/cryptogram.jpg)
 
@@ -219,7 +219,7 @@ If your grandpa can crack it over coffee, it's probably not secure.
 
 </figure>
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![]($$/distribution.png)
 
@@ -248,7 +248,7 @@ In order for our symmetric encryption algorithm to be secure, what we need is a 
 key to the size of the message, **without** repeating it. We'll look at a way to do that, but first
 we need to talk about random and pseudo-random numbers.
 
-<div class='exercises'>
+<div className='exercises'>
 
 ### See for yourself
 
@@ -294,7 +294,7 @@ secrets are no longer secret.
 passphrase --- `Horse Battery Correct Staple` --- to encrypt and decrypt. That might seem totally
 random to you --- unless you've seen this XKCD cartoon.
 
-<figure class='figure-md'>
+<figure className='figure-md'>
 
 ![Password Strength](https://imgs.xkcd.com/comics/password_strength.png)
 
@@ -308,7 +308,7 @@ come up with are often not as random as we think they are. This is partly becaus
 total possibility space in various ways that make our passwords easier to remember; thus `passw0rd`
 and `abc123`.
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![](https://miro.medium.com/max/640/1*pMNDxIQh72rFs7lsW6Ww0w.png)
 
@@ -372,7 +372,7 @@ All of these can be combined to create something that's unpredictable enough tha
 keep our webcams pointed at a lava lamp. Modern devices use techniques like these to provide
 programmers with truly random numbers.
 
-<div class='exercises'>
+<div className='exercises'>
 
 ### See for yourself
 
@@ -383,7 +383,7 @@ programmers with truly random numbers.
 
 ## <span></span> Pseudo-random number generators
 
-<figure class='figure-xs'>
+<figure className='figure-xs'>
 
 ![JohnvonNeumann-LosAlamos.gif](https://upload.wikimedia.org/wikipedia/commons/5/5e/JohnvonNeumann-LosAlamos.gif)
 
@@ -479,7 +479,7 @@ XOR g77yL4zBl33d713fm8zOxO1mrrLigBmoLPbF...
 Anyone who has the secret key can generate the same random stream, and in turn use that to decrypt
 the message.
 
-<div class='exercises'>
+<div className='exercises'>
 
 ### See for yourself
 
@@ -597,7 +597,7 @@ Some uses of hashes include:
   secret and turn it into a long secret, without using repetition or other patterns that leave
   statistical traces.
 
-<div class='exercises'>
+<div className='exercises'>
 
 ### See for yourself
 
@@ -625,8 +625,11 @@ Stanford University --- Whitfield Diffie and Martin Hellman --- came up with a w
 Bob a secret message _even if the two had never communicated before_.
 
 > If this sounds ridiculous, it should. It sounds impossible. If you were to survey the world's
-> cryptographers in 1975, they would have told you it was impossible.  
-> <i>--- Bruce Schneier, [Secrets and Lies](https://www.amazon.com/Secrets-Lies-Digital-Security-Networked/dp/1119092434)</i>
+> cryptographers in 1975, they would have told you it was impossible.
+>
+> <i>
+>   --- Bruce Schneier, [Secrets and Lies](https://www.amazon.com/Secrets-Lies-Digital-Security-Networked/dp/1119092434)
+> </i>
 
 The math behind asymmetric encryption relies on **trapdoor functions** --- another category of
 one-way functions. In this case, these are calculations that are easy to do but _very hard_ to
