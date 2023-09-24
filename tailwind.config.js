@@ -114,11 +114,6 @@ module.exports = {
     backgroundImage: ({ after }) => after(['group-hover', 'hover', 'group-focus']),
   },
 
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-
-  purge: ['./pages/**/*.tsx', './components/**/*.tsx', './**/custom.css'],
+  content: ['./pages/**/*.tsx', './components/**/*.tsx', './theme/index.css'],
   plugins: [],
 }

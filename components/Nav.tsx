@@ -9,7 +9,7 @@ const items = [
   'Facts',
 ]
 
-export const Nav: React.FC<{ className?: string }> = ({ className }) => {
+export const Nav = ({ className }: { className?: string }) => {
   const router = useRouter()
 
   return (
@@ -20,14 +20,13 @@ export const Nav: React.FC<{ className?: string }> = ({ className }) => {
           const isActive = router.pathname.startsWith(url)
           return (
             <li className="my-7 py-1 group cursor-pointer " key={item}>
-              <Link href={url}>
-                <a
-                  className={cx('py-1', 'ink-underline-on-hover', {
-                    'font-bold': isActive,
-                  })}
-                >
-                  {item}
-                </a>
+              <Link
+                href={url}
+                className={cx('py-1', 'ink-underline-on-hover', {
+                  'font-bold': isActive,
+                })}
+              >
+                {item}
               </Link>
             </li>
           )

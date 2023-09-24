@@ -1,9 +1,6 @@
 import { parseISO, format } from 'date-fns'
 
-export const Date: React.FC<{ dateString: string; className?: string }> = ({
-  dateString,
-  className,
-}) => {
+export const Date = ({ dateString, className }: { dateString: string; className?: string }) => {
   const date = parseISO(dateString)
   return (
     <time dateTime={dateString} className={className}>

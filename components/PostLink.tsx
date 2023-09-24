@@ -6,8 +6,8 @@ import { Tag } from './Tag'
 const env = process.env.NODE_ENV
 const isProd = env === 'production'
 
-export const PostLink: React.FC<PostLinkProps> = ({ id, date, title, subtitle, description, draft, thumbnail }) => (
-  <Link href={`/words/${id}`} key={id}>
+export const PostLink = ({ id, date, title, subtitle, description, draft, thumbnail }: PostLinkProps) => (
+  <Link legacyBehavior href={`/words/${id}`} key={id}>
     <div
       className={`
         grid gap-G

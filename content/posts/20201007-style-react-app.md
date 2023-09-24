@@ -6,7 +6,7 @@ description: |
   What tools would you reach for today to style the UI for a 
   <a href='https://medium.com/all-the-things/the-trouble-with-saas-279694551b25'>hyper-customizable app</a>? 
   I just spent an unreasonable amount of time trying to understand the current landscape and settle on the perfect
-  framework. I was surprised by what I found.
+  framework. I was surprised to find what I needed in an unexpected place.
 
 date: '2020-10-07'
 
@@ -273,7 +273,9 @@ naming convention for CSS that does just that. Class names always start with a *
 essentially a namespace at the component level  -- followed by an **element** name, and optionally a
 **modifier**. For example:
 
-```
+<!-- scss avoids reformatting this but still does code highlighting -->
+
+```scss
 .bio__image { ... }
 .bio__name { ... }
 .bio__name--hover { ... }
@@ -667,7 +669,7 @@ Unlike Theme UI, though, it does not use JavaScript to apply styles. Instead, it
 definition _at build time_ to generate an actual stylesheet, containing nothing but composable
 **utility classes**, with names like `.f3` (font size) and `.pa1` (padding).
 
-```
+```txt
 /* generated css */
 .f1 { font-size: 3rem; }
 .f2 { font-size: 2.25; }
@@ -680,10 +682,8 @@ definition _at build time_ to generate an actual stylesheet, containing nothing 
 
 You then style each element by stringing together a series of these utility classes:
 
-```
-<a href="/components/" class="f6 fw6 hover-blue black-70 mr2 mr3-m mr4-l">
-  Components
-</a>
+```html
+<a href="/components/" class="f6 hover-blue black-70 mr2">Components</a>
 ```
 
 When I first heard about Tachyons, I dismissed it out of hand. The idea of a stylesheet that
@@ -712,7 +712,7 @@ But on reflection, the dogma of semantic HTML never really aligned very well wit
 front-end development. You often want to use consistent styling for things with completely different
 semantics.
 
-<figure class='figure-md'>
+<figure class='figure-lg'>
 
 ![]($$/cards.png)
 

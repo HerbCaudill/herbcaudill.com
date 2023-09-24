@@ -1,12 +1,9 @@
-﻿import { Avatar } from './Avatar'
+﻿import React from 'react'
+import { Avatar } from './Avatar'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import cx from 'classnames'
-export const Layout: React.FC<LayoutProps> = ({
-  children,
-  label,
-  compact = false,
-}) => {
+export const Layout = ({ children, label, compact = false }: Props) => {
   return (
     <>
       <div
@@ -19,13 +16,7 @@ export const Layout: React.FC<LayoutProps> = ({
         // smaller than this & we just shrink to fit
         style={{ minWidth: 300 }}
       >
-        <header
-          className={cx(
-            { 'py-12': !compact },
-            'text-center',
-            'md:col-span-2 lg:col-span-1'
-          )}
-        >
+        <header className={cx({ 'py-12': !compact }, 'text-center', 'md:col-span-2 lg:col-span-1')}>
           <Avatar size={compact ? 'sm' : 'lg'} />
         </header>
 
@@ -44,7 +35,8 @@ export const Layout: React.FC<LayoutProps> = ({
     </>
   )
 }
-interface LayoutProps {
+interface Props {
+  children: React.ReactNode
   label: string
   compact?: boolean
 }

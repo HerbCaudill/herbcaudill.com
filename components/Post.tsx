@@ -4,7 +4,7 @@ import { Date } from 'components/Date'
 import { DraftBlurb } from 'components/DraftBlurb'
 import { PostLink } from 'components/PostLink'
 
-export const Post: React.FC<PostProps> = ({
+export const Post = ({
   image,
   title,
   subtitle,
@@ -17,7 +17,7 @@ export const Post: React.FC<PostProps> = ({
   originalUrl,
   context,
   relatedPosts,
-}) => {
+}: PostProps) => {
   return (
     <div
       className={`

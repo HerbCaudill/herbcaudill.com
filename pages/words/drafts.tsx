@@ -4,7 +4,7 @@ import { posts } from 'lib/posts'
 import { PostData } from 'lib/types'
 import { GetStaticProps } from 'next'
 
-const Drafts: React.FC<{ posts: PostData[] }> = ({ posts }) => {
+const Drafts = ({ posts }: { posts: PostData[] }) => {
   return (
     <IndexLayout label="Words">
       <Posts posts={posts} includeDrafts={true} />

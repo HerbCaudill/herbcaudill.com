@@ -1,4 +1,4 @@
-export const DraftBlurb: React.FC<{ draft: boolean; className?: string }> = ({ draft, className = '' }) =>
+export const DraftBlurb = ({ draft, className = '' }: { draft: boolean; className?: string }) =>
   draft ? (
     <div
       className={`border-4 flex flex-col  border-red-700 text-red-700 mt-8 ${className}

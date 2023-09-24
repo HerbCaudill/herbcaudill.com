@@ -1,16 +1,14 @@
-import { Head } from 'components/Head'
 import { Layout } from 'components/Layout'
 import { Post, PostProps } from 'components/Post'
 import { siteTitle } from 'lib/constants'
 import { getAllPostIdParams, post, relatedPosts } from 'lib/posts'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
-// import hljs styles
-import 'highlight.js/styles/atom-one-dark-reasonable.css'
+import 'highlight.js/styles/rainbow.css'
 
-const PostLayout: React.FC<{
-  postData: PostProps
-}> = ({ postData }) => {
+import Head from 'next/head'
+
+const PostLayout = ({ postData }: { postData: PostProps }) => {
   const { id, title, description, image } = postData
 
   return (

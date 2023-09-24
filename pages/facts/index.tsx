@@ -3,10 +3,7 @@ import { loadMarkdownFile } from 'lib/loadMarkdownFile'
 import { GetStaticProps } from 'next'
 import path from 'path'
 
-const FactsIndex: React.FC<{
-  content: string
-  metadata: Record<string, any>
-}> = ({ content, metadata }) => {
+const FactsIndex = ({ content, metadata }: Props) => {
   return (
     <IndexLayout label="Facts">
       <div
@@ -37,3 +34,8 @@ const factsFilePath = path.join(process.cwd(), '/content/facts.md')
 export const getStaticProps: GetStaticProps = async () => ({
   props: loadMarkdownFile(factsFilePath),
 })
+
+type Props = {
+  content: string
+  metadata: Record<string, any>
+}

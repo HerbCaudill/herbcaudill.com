@@ -1,7 +1,7 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultColors = require('tailwindcss/colors')
 
 const colors = {
-  gray: defaultTheme.colors.gray,
+  gray: defaultColors.gray,
 
   // from https://tailwind.ink/ #5E938A
   green: {

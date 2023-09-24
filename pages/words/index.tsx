@@ -4,7 +4,7 @@ import { posts } from 'lib/posts'
 import { PostData } from 'lib/types'
 import { GetStaticProps } from 'next'
 
-const WordsIndex: React.FC<{ posts: PostData[] }> = ({ posts }) => {
+const WordsIndex = ({ posts }: { posts: PostData[] }) => {
   return (
     <IndexLayout label="Words">
       <Posts posts={posts} includeDrafts={false} />

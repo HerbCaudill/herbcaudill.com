@@ -1,21 +1,9 @@
-import { marked } from 'marked'
-import hljs from 'highlight.js/lib/core'
+import { Marked } from 'marked'
 
-import javascript from 'highlight.js/lib/languages/javascript'
-hljs.registerLanguage('js', javascript)
-hljs.registerLanguage('jsx', javascript)
-hljs.registerLanguage('javascript', javascript)
+import { markedHighlight } from 'marked-highlight'
+import { markedSmartypants } from 'marked-smartypants'
 
-import typescript from 'highlight.js/lib/languages/typescript'
-hljs.registerLanguage('ts', typescript)
-hljs.registerLanguage('tsx', typescript)
-hljs.registerLanguage('typescript', typescript)
-
-import css from 'highlight.js/lib/languages/css'
-hljs.registerLanguage('css', css)
-
-import html from 'highlight.js/lib/languages/xml'
-hljs.registerLanguage('html', html)
+import hljs from 'highlight.js'
 
 const handleDefList = (text: string) => {
   // Label
@@ -32,20 +20,23 @@ const handleDefList = (text: string) => {
   }
 }
 
-marked.setOptions({
-  gfm: true, // GitHub flavored markdownn
-  sanitize: false, // No need since I control the markdown being processed
-  smartLists: true,
-  smartypants: true, // smart quotes
-})
-
-marked.use({
-  renderer: {
-    paragraph: handleDefList,
+const marked = new Marked(
+  {
+    async: false,
+    gfm: true, // GitHub flavored markdown
+    renderer: { paragraph: handleDefList },
   },
-  highlight: function (code) {
-    return hljs.highlightAuto(code).value
-  },
-})
+  markedHighlight({
+    langPrefix: 'hljs language-',
+    highlight: (code, language) => {
+      if (language && hljs.getLanguage(language)) {
+        return hljs.highlight(code, { language }).value
+      } else {
+        return hljs.highlightAuto(code).value
+      }
+    },
+  }),
+  markedSmartypants()
+)
 
-export const markdownToHtml = (input: string) => (input ? marked(input) : '')
+export const markdownToHtml = (input: string) => (input ? marked.parse(input) : '') as string
