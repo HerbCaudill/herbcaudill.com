@@ -8,15 +8,14 @@ import fs from 'fs'
 import 'highlight.js/styles/rainbow.css'
 import { postsDir, siteTitle } from 'lib/constants'
 import { getIdFromFilename } from 'lib/getIdFromFilename'
-import { getPostMetadata } from 'lib/posts'
-import { PostMetadata, RawMetadata } from 'lib/types'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { getPostMetadata } from 'lib/getPostMetadata'
+import { getRelatedPosts } from 'lib/getRelatedPosts'
+import { loadMarkdownFileById } from 'lib/loadMarkdownFile'
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
 import Head from 'next/head'
-import path from 'path'
 
-const PostLayout = ({ metadata, compiledSource, relatedPosts }: PostProps) => {
+const PostLayout = ({ metadata, compiledSource, relatedPosts }: Props) => {
   const { id, image, title, subtitle, description, draft, caption, date, originalPublication, originalUrl, context } =
     metadata
 
@@ -163,20 +162,16 @@ export const getStaticPaths: GetStaticPaths = async () => ({
   fallback: false,
 })
 
-const getRelatedPosts = (id: string) => {
-  return [] as PostMetadata[] // TODO
-}
-
-export const getFileNameFromId = (id: string) => path.join(postsDir, `${id}.mdx`)
-
 const loadPost = async (id: string) => {
-  const fileText = fs.readFileSync(getFileNameFromId(id), 'utf8')
+  const serialized = await loadMarkdownFileById(id)
 
-  const serialized = await serialize(fileText, { parseFrontmatter: true })
-  const data = serialized.frontmatter as RawMetadata
+  const metadata = getPostMetadata(id, serialized)
+  const compiledSource = serialized.compiledSource.replace(/\$\$\//g, `/images/posts/${id}/`)
 
   return {
-    metadata: getPostMetadata({ id, data }),
-    compiledSource: serialized.compiledSource.replace(/\$\$\//g, `/images/posts/${id}/`),
+    metadata,
+    compiledSource,
   }
 }
+
+type Props = InferGetStaticPropsType<typeof getStaticProps>

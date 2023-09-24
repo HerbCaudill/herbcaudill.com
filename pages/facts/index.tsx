@@ -1,11 +1,10 @@
 import { IndexLayout } from 'components/IndexLayout'
-import fs from 'fs'
-import { GetStaticProps } from 'next'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
+import { loadMarkdownFile } from 'lib/loadMarkdownFile'
+import { GetStaticProps, InferGetStaticPropsType } from 'next'
+import { MDXRemote } from 'next-mdx-remote'
 import path from 'path'
 
-const FactsIndex = (props: MDXRemoteSerializeResult) => {
+const FactsIndex = ({ serializedContent }: Props) => {
   return (
     <IndexLayout label="Facts">
       <div
@@ -19,7 +18,7 @@ const FactsIndex = (props: MDXRemoteSerializeResult) => {
               md:col-start-4 md:col-span-9 
               lg:col-start-4 lg:col-span-7`}
           >
-            <MDXRemote {...props} />
+            <MDXRemote {...serializedContent} />
           </article>
         </div>
       </div>
@@ -32,13 +31,10 @@ export default FactsIndex
 const factsFilePath = path.join(process.cwd(), '/content/facts.md')
 
 export const getStaticProps: GetStaticProps = async () => {
+  const serializedContent = await loadMarkdownFile(factsFilePath)
   return {
-    props: await loadMarkdownFile(factsFilePath),
+    props: { serializedContent },
   }
 }
 
-const loadMarkdownFile = async (filePath: string) => {
-  const fileText = fs.readFileSync(filePath, 'utf8')
-  const serialized = await serialize(fileText)
-  return serialized
-}
+type Props = InferGetStaticPropsType<typeof getStaticProps>
