@@ -11,7 +11,7 @@ import { getRelatedPosts } from 'lib/getRelatedPosts'
 import { loadMarkdownFileById } from 'lib/loadMarkdownFile'
 import { PostMetadata } from 'lib/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
+import { MDXRemote } from 'next-mdx-remote'
 import Head from 'next/head'
 
 const PostLayout = ({ metadata, compiledSource, relatedPosts }: Props) => {
@@ -178,6 +178,6 @@ const loadPost = async (id: string) => {
 
 type Props = {
   metadata: PostMetadata
-  compiledSource: MDXRemoteSerializeResult
+  compiledSource: string
   relatedPosts: PostMetadata[]
 }
