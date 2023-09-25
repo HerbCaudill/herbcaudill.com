@@ -1,16 +1,16 @@
-import { markdownToHtml } from './markdownToHtml'
-import { PostMetadata, ParsedFile, RawMetadata } from './types'
-import { getBannerImage, getThumbnailImage } from './getImagePath'
-import { getDateFromId } from './getDateFromId'
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { getFileNameFromId } from './getFileNameFromId'
-import { loadMarkdownFile } from './loadMarkdownFile'
-import { postsDir } from './constants'
 import path from 'path'
+import { postsDir } from './constants'
+import { getDateFromId } from './getDateFromId'
+import { getFileNameFromId } from './getFileNameFromId'
 import { getIdFromFilename } from './getIdFromFilename'
+import { getBannerImage, getThumbnailImage } from './getImagePath'
+import { loadMarkdownFile } from './loadMarkdownFile'
+import { markdownToHtml } from './markdownToHtml'
+import { PostMetadata, RawMetadata } from './types'
 
 /** Takes the raw metadata from a post's frontmatter and fleshes it out */
-export const getPostMetadata = (id: string, serialized: MDXRemoteSerializeResult): PostMetadata => {
+export const getPostMetadata = async (id: string, serialized: MDXRemoteSerializeResult): Promise<PostMetadata> => {
   const rawData = serialized.frontmatter as RawMetadata
   return {
     ...rawData,
@@ -23,9 +23,9 @@ export const getPostMetadata = (id: string, serialized: MDXRemoteSerializeResult
     subtitle: rawData.subtitle.replace('_', '&nbsp;'),
 
     // convert markdown to html
-    description: markdownToHtml(rawData.description),
-    caption: markdownToHtml(rawData.caption),
-    context: markdownToHtml(rawData.context),
+    description: await markdownToHtml(rawData.description),
+    caption: await markdownToHtml(rawData.caption),
+    context: await markdownToHtml(rawData.context),
 
     // find images in this post's corresponding directory in public/images/posts
     image: getBannerImage(id),

@@ -2,7 +2,6 @@ import { Date } from 'components/Date'
 import { DraftBlurb } from 'components/DraftBlurb'
 import { Layout } from 'components/Layout'
 import { Nav } from 'components/Nav'
-import { PostProps } from 'components/Post'
 import { PostLink } from 'components/PostLink'
 import fs from 'fs'
 import { postsDir, siteTitle } from 'lib/constants'
@@ -10,8 +9,9 @@ import { getIdFromFilename } from 'lib/getIdFromFilename'
 import { getPostMetadata } from 'lib/getPostMetadata'
 import { getRelatedPosts } from 'lib/getRelatedPosts'
 import { loadMarkdownFileById } from 'lib/loadMarkdownFile'
-import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { MDXRemote } from 'next-mdx-remote'
+import { PostMetadata } from 'lib/types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import Head from 'next/head'
 
 const PostLayout = ({ metadata, compiledSource, relatedPosts }: Props) => {
@@ -151,7 +151,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       ...postData,
       relatedPosts: await getRelatedPosts(id),
-    } as PostProps,
+    },
   }
 }
 
@@ -167,7 +167,7 @@ export const getStaticPaths: GetStaticPaths = async () => ({
 const loadPost = async (id: string) => {
   const serialized = await loadMarkdownFileById(id)
 
-  const metadata = getPostMetadata(id, serialized)
+  const metadata = await getPostMetadata(id, serialized)
   const compiledSource = serialized.compiledSource.replace(/\$\$\//g, `/images/posts/${id}/`)
 
   return {
@@ -176,4 +176,8 @@ const loadPost = async (id: string) => {
   }
 }
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>
+type Props = {
+  metadata: PostMetadata
+  compiledSource: MDXRemoteSerializeResult
+  relatedPosts: PostMetadata[]
+}

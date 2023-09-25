@@ -15,12 +15,6 @@ export type RawMetadata = {
   originalUrl?: string
 }
 
-export type ParsedFile = {
-  id: string
-  data: RawMetadata
-  content: Markdown
-}
-
 export type PostMetadata = {
   id: string
   date: string
@@ -39,8 +33,4 @@ export type PostMetadata = {
 
   image: string
   thumbnail: string
-}
-
-export type PostContent = PostMetadata & {
-  content: string
 }

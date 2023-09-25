@@ -1,8 +1,8 @@
 import fs from 'fs'
 import { serialize } from 'next-mdx-remote/serialize'
-import highlight from 'rehype-highlight'
-import gfm from 'remark-gfm'
-import smartypants from 'remark-smartypants'
+import rehypeHighlight from 'rehype-highlight'
+import remarkGFM from 'remark-gfm'
+import remarkSmartypants from 'remark-smartypants'
 import { getFileNameFromId } from './getFileNameFromId'
 
 export const loadMarkdownFile = async (filePath: string) => {
@@ -12,12 +12,12 @@ export const loadMarkdownFile = async (filePath: string) => {
     parseFrontmatter: true,
     mdxOptions: {
       remarkPlugins: [
-        gfm, // github-flavored markdown
-        smartypants, // smart quotes
+        remarkGFM, // github-flavored markdown
+        remarkSmartypants, // smart quotes
       ],
       rehypePlugins: [
         // @ts-ignore - types are wrong
-        highlight, // code syntax highlighting
+        rehypeHighlight, // code syntax highlighting
       ],
     },
   })
