@@ -18,6 +18,14 @@ article a,
   background-size: 100% min(5px, 0.25em);
 }
 
+/** Post link */
+.PostLink {
+}
+
+.PostLink:hover a {
+  @apply ink-underline;
+}
+
 article a:nth-child(odd) {
   @apply bg-u-ink-black-1 group-hover:bg-u-ink-red-1 hover:bg-u-ink-red-1;
 }
