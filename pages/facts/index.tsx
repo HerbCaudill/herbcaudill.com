@@ -28,7 +28,7 @@ const FactsIndex = ({ serializedContent }: Props) => {
 
 export default FactsIndex
 
-const factsFilePath = path.join(process.cwd(), '/content/facts.md')
+const factsFilePath = path.join(process.cwd(), '/content/facts.mdx')
 
 export const getStaticProps: GetStaticProps = async () => {
   const serializedContent = await loadMarkdownFile(factsFilePath)

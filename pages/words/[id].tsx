@@ -5,7 +5,6 @@ import { Nav } from 'components/Nav'
 import { PostProps } from 'components/Post'
 import { PostLink } from 'components/PostLink'
 import fs from 'fs'
-import 'highlight.js/styles/rainbow.css'
 import { postsDir, siteTitle } from 'lib/constants'
 import { getIdFromFilename } from 'lib/getIdFromFilename'
 import { getPostMetadata } from 'lib/getPostMetadata'
@@ -28,6 +27,9 @@ const PostLayout = ({ metadata, compiledSource, relatedPosts }: Props) => {
         <meta name="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content={image} />
+
+        {/* hide drafts from search engines */}
+        {draft && <meta name="robots" content="noindex" />}
       </Head>
       <div
         className={`
@@ -148,7 +150,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       ...postData,
-      relatedPosts: getRelatedPosts(id),
+      relatedPosts: await getRelatedPosts(id),
     } as PostProps,
   }
 }

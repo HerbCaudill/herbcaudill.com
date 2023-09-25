@@ -371,7 +371,7 @@ article {
 
   & .figure-lg > :nth-child(1) {
     @apply -mx-G; /* on small screens, image goes from edge to edge */
-    @apply md:w-full md:my-0;
+    @apply md:w-full md:my-0 md:mx-0;
     @apply lg:col-span-10;
   }
 

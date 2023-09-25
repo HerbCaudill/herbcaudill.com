@@ -1,5 +1,6 @@
-import 'theme/index.css'
+import 'highlight.js/styles/rainbow.css'
 import { AppProps } from 'next/app'
+import 'theme/index.css'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
