@@ -1,7 +1,6 @@
 import { MDXRemoteSerializeResult } from 'next-mdx-remote'
 import path from 'path'
 import { postsDir } from './constants'
-import { getDateFromId } from './getDateFromId'
 import { getFileNameFromId } from './getFileNameFromId'
 import { getIdFromFilename } from './getIdFromFilename'
 import { getBannerImage, getThumbnailImage } from './getImagePath'
@@ -16,7 +15,6 @@ export const getPostMetadata = async (id: string, serialized: MDXRemoteSerialize
     ...rawData,
 
     id,
-    date: getDateFromId(id),
 
     // interpret underscores as non-breaking spaces in title and subtitle
     title: rawData.title.replace('_', '&nbsp;'),

@@ -5,6 +5,9 @@ export type RawMetadata = {
   title: string
   subtitle: string
 
+  date: string
+  slug: string
+
   description: Markdown
   caption?: Markdown
   context?: Markdown
@@ -17,6 +20,8 @@ export type RawMetadata = {
 
 export type PostMetadata = {
   id: string
+
+  slug: string
   date: string
 
   title: string
