@@ -146,7 +146,7 @@ UI](https://www.microsoft.com/design/fluent/%23/web), Salesforce has
 Some of these are really internally-facing and seemingly open-sourced just for the hell of it; while
 others are intended for wider adoption and customization.
 
-Google’s “Material Design” system was my introduction to the concept, and it really straddles these
+Google’s "Material Design" system was my introduction to the concept, and it really straddles these
 two modes: Its original intention was to unify Google’s sprawling universe of applications. But
 Material embodies a set of lower-level principles that can be adapted to any graphic identity, and
 it has been used as the foundation of in-house design systems for [many
@@ -271,7 +271,7 @@ naming convention for CSS that does just that. Class names always start with a *
 essentially a namespace at the component level  -- followed by an **element** name, and optionally a
 **modifier**. For example:
 
-```scss
+```css
 .bio__image { ... }
 .bio__name { ... }
 .bio__name--hover { ... }
@@ -894,12 +894,12 @@ like `hover` and `focus`. Since Tailwind is just CSS at the end of the day, it d
 problem. As a bonus, Tailwind's shorthand for pseudo-classes and responsive breakpoints is ergonomic
 and easy to read and write:
 
-```
-<!-- Darker background on hover -->
+```html
+// Darker background on hover
 <button class="bg-primary-500 hover:bg-primary-700 ...">...</button>
 
-<!-- Width of 16, 32 on medium screens, and 48 on large screens -->
-<img class="w-16 md:w-32 lg:w-48" src="..." />
+// Width of 16, 32 on medium screens, and 48 on large screens
+<img class="w-16 md:w-32 lg:w-48" src="..." ></img>
 ```
 
 Implementing your own design in Tailwind is a pleasure. No more tearing your hair out trying to
