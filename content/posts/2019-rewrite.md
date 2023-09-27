@@ -24,7 +24,7 @@ caption: '“As if source code <em>rusted!</em>” <i>— Joel Spolsky</i>'
 tags: software
 ---
 
-<span>A</span>lmost two decades ago, Joel Spolsky excoriated Netscape for rewriting their codebase in his landmark essay
+Almost two decades ago, Joel Spolsky excoriated Netscape for rewriting their codebase in his landmark essay
 [Things You Should Never Do](https://www.joelonsoftware.com/2000/04/06/things-you-should-never-do-part-i/).
 
 He concluded that **a functioning application should never, ever be rewritten from the ground up**. His argument turned on two points:
@@ -55,6 +55,7 @@ _(Bonus: ASCII art summaries of each story!)_
 ## 1\. Netscape
 
 <figure>
+
 <pre>
 Netscape ... 🡒 4.0 🡒 📝5.0 ☠  6.0 🡒 7.0 🡒 ☠
                                      ⤷ Mozilla 1.0 🡒 ☠
@@ -134,8 +135,9 @@ But the rewrite was certainly a contributing factor, and the end result was the 
 
 <figure>
   <pre>
-    Basecamp Classic --------------------------------------------- -> 📝Basecamp 2 -------------------------------------
-    -> 📝Basecamp 3 ------------------------- ->
+    Basecamp Classic --------------------------------------------- -> 
+                📝Basecamp 2 ------------------------------------- -> 
+                            📝Basecamp 3 ------------------------- ->
   </pre>
 </figure>
 

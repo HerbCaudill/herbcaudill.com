@@ -19,6 +19,7 @@ export type RawMetadata = {
 }
 
 export type PostMetadata = {
+  fileName: string
   id: string
 
   slug: string

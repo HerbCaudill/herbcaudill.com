@@ -5,7 +5,7 @@ import remarkGFM from 'remark-gfm'
 import remarkSmartypants from 'remark-smartypants'
 import { getFileNameFromId } from './getFileNameFromId'
 
-export const loadMarkdownFile = async (filePath: string) => {
+export const loadMdxFile = async (filePath: string) => {
   const fileText = fs.readFileSync(filePath, 'utf8')
 
   const serialized = await serialize(fileText, {
@@ -26,5 +26,5 @@ export const loadMarkdownFile = async (filePath: string) => {
 
 export const loadMarkdownFileById = async (id: string) => {
   const fileName = getFileNameFromId(id)
-  return loadMarkdownFile(fileName)
+  return loadMdxFile(fileName)
 }

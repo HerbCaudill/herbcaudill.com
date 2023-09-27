@@ -24,10 +24,9 @@ const WordsIndex = ({ posts }: Props) => {
 export default WordsIndex
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const posts = await getAllPostsMetadata()
   return {
-    props: {
-      posts: await getAllPostsMetadata(),
-    },
+    props: { posts },
   }
 }
 

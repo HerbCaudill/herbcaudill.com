@@ -153,7 +153,7 @@ article {
   }
 
   /* drop cap at beginning of first paragraph */
-  & > p:nth-child(1):first-letter {
+  & div:nth-child(1) > p:nth-child(1):first-letter {
     @apply float-left font-condensed font-bold;
     font-size: 3.5em;
     letter-spacing: 0.1em;
@@ -462,6 +462,11 @@ article {
   & .figure-2up > :nth-child(3) {
     @apply caption; /* inherit all the caption classes */
     @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
+  }
+
+  /* <pre> in figures (e.g. ascii art) */
+  & figure pre {
+    @apply whitespace-pre m-0 text-sm border rounded-md p-3 bg-gray-50;
   }
 
   /***** description lists (used on Facts page)*/

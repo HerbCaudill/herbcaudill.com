@@ -5,7 +5,7 @@ import { useRef } from 'react'
 const env = process.env.NODE_ENV
 const isProd = env === 'production'
 
-export const PostLink = ({ id, date, title, subtitle, description, draft, thumbnail }: PostLinkProps) => {
+export const PostLink = ({ slug, title, subtitle, description, draft, thumbnail }: PostLinkProps) => {
   const link = useRef<HTMLAnchorElement>(null)
   return (
     <div
@@ -30,9 +30,9 @@ export const PostLink = ({ id, date, title, subtitle, description, draft, thumbn
       </div>
       <div className="col-span-3">
         <Link
-          href={`/words/${id}`}
+          href={`/words/${slug}`}
           ref={link}
-          key={id}
+          key={slug}
           className="font-sans font-bold text-lg tracking-tight leading-none md:leading-none "
           dangerouslySetInnerHTML={{ __html: title }}
         />

@@ -3,18 +3,19 @@ import { DraftBlurb } from 'components/DraftBlurb'
 import { Layout } from 'components/Layout'
 import { Nav } from 'components/Nav'
 import { PostLink } from 'components/PostLink'
-import fs from 'fs'
 import { postsDir, siteTitle } from 'lib/constants'
-import { getIdFromFilename } from 'lib/getIdFromFilename'
-import { getPostMetadata } from 'lib/getPostMetadata'
+import { getAllPostsMetadata } from 'lib/getAllPostsMetadata'
+import { getPostMetadataBySlug } from 'lib/getPostMetadataBySlug'
 import { getRelatedPosts } from 'lib/getRelatedPosts'
-import { loadMarkdownFileById } from 'lib/loadMarkdownFile'
+import { loadMdxFile } from 'lib/loadMdxFile'
 import { PostMetadata } from 'lib/types'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import Head from 'next/head'
+import path from 'path'
+import { loadMarkdownFile } from './loadMarkdownFile'
 
-const PostLayout = ({ metadata, compiledSource, relatedPosts }: Props) => {
+const PostLayout = ({ metadata, compiledSource, html, relatedPosts }: Props) => {
   const { id, image, title, subtitle, description, draft, caption, date, originalPublication, originalUrl, context } =
     metadata
 
@@ -95,7 +96,11 @@ const PostLayout = ({ metadata, compiledSource, relatedPosts }: Props) => {
           lg:col-start-4 lg:col-span-7`}
         >
           <article>
-            <MDXRemote frontmatter={metadata} compiledSource={compiledSource} scope={{}} />
+            {html ? (
+              <div dangerouslySetInnerHTML={{ __html: html }} />
+            ) : (
+              <MDXRemote frontmatter={metadata} compiledSource={compiledSource} scope={{}} />
+            )}
           </article>
 
           <DraftBlurb draft={draft} />
@@ -145,8 +150,9 @@ const PostLayout = ({ metadata, compiledSource, relatedPosts }: Props) => {
 export default PostLayout
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const id = params.id as string
-  const postData = await loadPost(id)
+  const slug = params.slug as string
+  const postData = await loadPost(slug)
+  const { id } = postData.metadata
   return {
     props: {
       ...postData,
@@ -155,29 +161,44 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => ({
-  paths: fs.readdirSync(postsDir).map(fileName => ({
-    params: {
-      id: getIdFromFilename(fileName),
-    },
-  })),
-  fallback: false,
-})
-
-const loadPost = async (id: string) => {
-  const serialized = await loadMarkdownFileById(id)
-
-  const metadata = await getPostMetadata(id, serialized)
-  const compiledSource = serialized.compiledSource.replace(/\$\$\//g, `/images/posts/${id}/`)
-
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allPosts = await getAllPostsMetadata()
   return {
-    metadata,
-    compiledSource,
+    paths: allPosts.map(({ slug }) => ({
+      params: { slug },
+    })),
+
+    fallback: false,
   }
+}
+
+const loadPost = async (slug: string) => {
+  const metadata = await getPostMetadataBySlug(slug)
+  const { fileName, id } = metadata
+  const filePath = path.join(postsDir, fileName)
+
+  if (fileName.endsWith('.md')) {
+    const html = await loadMarkdownFile(filePath)
+    return {
+      metadata,
+      html: processImageUrls(id, html),
+    }
+  } else if (fileName.endsWith('.mdx')) {
+    const serialized = await loadMdxFile(filePath)
+    return {
+      metadata,
+      compiledSource: processImageUrls(id, serialized.compiledSource),
+    }
+  } else throw new Error(`Unknown file extension: ${fileName}`)
 }
 
 type Props = {
   metadata: PostMetadata
-  compiledSource: string
   relatedPosts: PostMetadata[]
+  compiledSource?: string // mdx
+  html?: string
+}
+
+const processImageUrls = (id: string, compiledSource: string) => {
+  return compiledSource.replace(/\$\$\//g, `/images/posts/${id}/`)
 }

@@ -1,5 +1,5 @@
 import { IndexLayout } from 'components/IndexLayout'
-import { loadMarkdownFile } from 'lib/loadMarkdownFile'
+import { loadMdxFile } from 'lib/loadMdxFile'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import path from 'path'
@@ -31,7 +31,7 @@ export default FactsIndex
 const factsFilePath = path.join(process.cwd(), '/content/facts.mdx')
 
 export const getStaticProps: GetStaticProps = async () => {
-  const serializedContent = await loadMarkdownFile(factsFilePath)
+  const serializedContent = await loadMdxFile(factsFilePath)
   return {
     props: { serializedContent },
   }
