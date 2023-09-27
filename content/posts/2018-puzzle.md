@@ -20,15 +20,15 @@ And SaaS is how my team is able to collaborate closely even though we’re scatt
 
 <figure className='figure-2up'>
 
-![](/images/posts/puzzle/1.png)
+![]($$/1.png)
 
-![](/images/posts/puzzle/2.png)
+![]($$/2.png)
 
 </figure>
 
 <figure>
 
-![](/images/posts/puzzle/3.png)
+![]($$/3.png)
 
 So this is how we work. Lots of different tools that kind of fit our needs, but not really; and big areas where we just make do.
 
@@ -60,7 +60,7 @@ Sometimes it feels like my team uses a ridiculous number of products with overla
 
 This duplication is a problem: For one thing, we’re paying twice (or three or four times) for these features.
 
-![](/images/posts/puzzle/4.png)
+![]($$/4.png)
 
 It’s not just the expense: Duplicate features add to everyone’s **cognitive burden**. It’s not clear where some things belong. Do software development tasks go in Asana, which is what we use for managing other projects and tasks? Or do they go in GitHub Issues, which is optimized for that purpose? Either way we have to make rules.
 
@@ -74,7 +74,7 @@ There are big areas of unused functionality in every tool that we just ignore. F
 - Asana: Conversations, progress dashboards
 - FreshDesk: Forums
 
-![](/images/posts/puzzle/5.png)
+![]($$/5.png)
 
 These are often great features in their own right, that a bunch of smart people spent a lot of time building. But for whatever reason, we don’t need them: Maybe we don’t have the problem they solve. Maybe we’ve solved those problems some other way. Either way we’re paying for something that we don’t use.
 
@@ -82,7 +82,7 @@ These are often great features in their own right, that a bunch of smart people 
 
 Finally, there are still important gaps — parts of our team model that aren’t represented by any of these tools.
 
-![](/images/posts/puzzle/6.png)
+![]($$/6.png)
 
 So for example we don’t have a definitive list of ongoing projects or teams anywhere.
 
@@ -94,7 +94,7 @@ I could go on. We have a spreadsheet for cash planning and another to keep track
 
 We’ve pieced together a bunch of apps to try and capture all of our work, and it’s simultaneously **too much** and **not enough**.
 
-![](/images/posts/puzzle/7.png)
+![]($$/7.png)
 
 It’s a lot for a new employee to figure out: I recently spent a couple of days just documenting on our wiki how everything fits together. Even people who have been here a long time aren’t always sure where to start a conversation, where to share a document, or where to record an important fact about a customer.
 
@@ -106,7 +106,7 @@ The SaaS ecosystem is amazing — if you think of a problem, you can almost cert
 
 <figure className='figure-md'>
 
-![](/images/posts/puzzle/8.png)
+![]($$/8.png)
 
 iDoneThis does one thing well. But is it worth $1200/year, plus the cognitive and administrative burden of having Yet Another System?
 
@@ -118,7 +118,7 @@ It’s such a simple thing, but makes our weekly meetings a lot shorter because 
 
 ### We’re part of the problem too!
 
-![](/images/posts/puzzle/9.png)
+![]($$/9.png)
 
 Our customers’ experience with our SaaS product gives another perspective on the same set of problems. I see our customers struggling with DevResults in the same ways we struggle with our toolset:
 
@@ -148,7 +148,7 @@ Some systems have built-in integrations. Slack, for example, advertises hundreds
 
 <figure className='figure-md image-b'>
 
-![](/images/posts/puzzle/10.gif)
+![]($$/10.gif)
 
 Slack “integration” with Google Drive: 🙄 Meh.
 
@@ -199,7 +199,7 @@ This is where an app captures its understanding of a domain.
 
 <figure className='figure-lg'>
 
-![](/images/posts/puzzle/11.gif)
+![]($$/11.gif)
 
 FreshSales has a data model that captures a “typical” real-world sales process. A **deal** (shown here) has a name, a dollar amount, an expected close date, and a probability. It lives in one **stage** of several that I can define. It’s associated with one **account**, one **sales rep**, and one or more **contacts**. This model may or may not exactly match the way we work; either way it’s not rocket science.
 
@@ -224,7 +224,7 @@ These are the non-trivial skills that set the app apart.
 
 <figure className='figure-lg'>
 
-![](/images/posts/puzzle/12.gif)
+![]($$/12.gif)
 
 Expensify‘s superpower is called “SmartScan”. Drag and drop an invoice or a receipt, and it magically pulls out the vendor, date, and amount. I don’t know if they do it with people or with machines, but either way it would be pretty hard to reproduce this feature!
 
@@ -242,7 +242,7 @@ These are things that go outside of an app’s core strengths.
 
 <figure className='figure-lg'>
 
-![](/images/posts/puzzle/13.jpeg)
+![]($$/13.jpeg)
 
 Asana’s “Conversations” is a classic me-too feature: In principle it kind of makes sense to have discussions alongside your task lists. In practice, it doesn’t make sense to have lots of different venues for conversation, so we use Slack instead.
 
@@ -258,7 +258,7 @@ Again, some products nail the fundamentals better than others, but these are all
 
 <figure className='image-b'>
 
-![](/images/posts/puzzle/14.png)
+![]($$/14.png)
 
 N apps = N user lists to maintain.
 
@@ -276,7 +276,7 @@ As we’ve already seen, if we get these at all, they’re implemented in a half
 
 This framework gives us a way of thinking about what we’re getting from various apps in our toolset, and what an ideal arrangement would look like.
 
-![](/images/posts/puzzle/15.png)
+![]($$/15.png)
 
 This is what I want. This turns the above model on its head:
 

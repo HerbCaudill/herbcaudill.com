@@ -193,7 +193,7 @@ article {
   & li,
   & p {
     & > code {
-      @apply font-mono text-gray-700 rounded-md;
+      @apply font-mono text-gray-700 rounded-md whitespace-nowrap;
       background: #00000007;
       font-size: 0.85em;
       padding: 0.1em 0.5em;

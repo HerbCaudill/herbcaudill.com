@@ -23,8 +23,7 @@ export const Footer = ({ className }: { className?: string }) => {
         grid grid-cols-4 gap-G
         border-t border-gray-400 
         p-G py-10 md:p-0 md:py-10
-        mt-G -mx-G md:-m-0
-        `}
+        mt-G -mx-G md:-m-0`}
     >
       <>
         <div className="hidden md:block col-span-1 font-mono text-2xs">
