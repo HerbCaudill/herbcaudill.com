@@ -18,6 +18,11 @@ const nextConfig = {
       },
     ]
   },
+  webpack: config => {
+    config.resolve.fallback = { fs: false }
+
+    return config
+  },
 }
 
 const withMDX = require('@next/mdx')({

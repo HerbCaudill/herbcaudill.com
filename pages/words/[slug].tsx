@@ -13,7 +13,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { MDXRemote } from 'next-mdx-remote'
 import Head from 'next/head'
 import path from 'path'
-import { loadMarkdownFile } from './loadMarkdownFile'
+import { loadMarkdownFile } from '../../lib/loadMarkdownFile'
 
 const PostLayout = ({ metadata, compiledSource, html, relatedPosts }: Props) => {
   const { id, image, title, subtitle, description, draft, caption, date, originalPublication, originalUrl, context } =
