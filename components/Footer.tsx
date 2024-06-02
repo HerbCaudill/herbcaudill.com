@@ -5,9 +5,14 @@ const links = [
     label: 'herbcaudill',
   },
   {
-    url: 'https://twitter.com/herbcaudill',
-    icon: 'twitter',
-    label: '@herbcaudill',
+    url: 'https://bsky.app/profile/herbcaudill.com',
+    icon: 'bluesky',
+    label: 'herbcaudill.com',
+  },
+  {
+    url: 'https://discord.com/users/731513783465541692',
+    icon: 'discord',
+    label: 'herbcaudill',
   },
   {
     url: 'mailto:herb@herbcaudill.com',
