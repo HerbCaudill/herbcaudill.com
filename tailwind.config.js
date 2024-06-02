@@ -114,6 +114,6 @@ module.exports = {
     backgroundImage: ({ after }) => after(['group-hover', 'hover', 'group-focus']),
   },
 
-  content: ['./pages/**/*.tsx', './components/**/*.tsx', './theme/index.css'],
+  content: ['./pages/**/*.tsx', './content/**/*.{md,mdx}', './components/**/*.tsx', './theme/index.css'],
   plugins: [],
 }
