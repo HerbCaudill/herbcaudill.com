@@ -596,6 +596,10 @@ article {
 
   & .endmatter {
     @apply text-sm font-sans;
+
+    h2 {
+      @apply text-2xl;
+    }
   }
 }
 
