@@ -65,7 +65,7 @@ article a:nth-child(odd) {
 
 .caption {
   @apply font-mono text-left leading-normal;
-  @apply text-xs lg:text-sm;
+  @apply text-2xs sm:text-xs;
 
   /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
   & i {
@@ -305,8 +305,7 @@ article {
   & img {
     /* on small screens, images go from edge to edge */
     @apply -mx-G md:mx-0;
-    @apply w-screen md:w-full;
-    max-width: 100vw; /* never larger than the visible screen */
+    @apply w-full;
     @apply md:max-w-full; /* on larger screens, never larger than the column */
   }
 
@@ -345,8 +344,29 @@ article {
     @apply inline lg:block;
   }
 
-  article blockquote p + p {
-    @apply mt-4; /* normal margin between paragraphs inside a blockquote */
+  /* 2-up variant: two images side-by-side */
+
+  & .figure-2up {
+    @apply my-G;
+    @apply md:grid md:grid-cols-12 md:gap-x-G;
+    @apply md:-ml-3/9 md:mr-0 md:w-12/9;
+    @apply lg:grid-cols-12;
+    @apply lg:-ml-3/7 lg:w-12/7;
+  }
+
+  & .figure-2up > :nth-child(1),
+  & .figure-2up > :nth-child(2) {
+    @apply md:w-full md:my-0 md:mx-0;
+    @apply md:col-span-6;
+    @apply lg:col-span-5;
+  }
+
+  & .figure-2up > :nth-child(3) {
+    @apply caption; /* inherit all the caption classes */
+    /* on md screens we caption goes under the image */
+    @apply md:col-span-12;
+    /* on lg screens the caption goes in the right sidebar */
+    @apply lg:relative lg:w-full lg:left-0 lg:col-span-2;
   }
 
   /* x-large variant: images that span 12 columns */
@@ -402,11 +422,11 @@ article {
   }
 
   & .figure-md > :nth-child(1) {
-    @apply md:col-span-7 lg:col-span-5;
+    @apply md:col-span-6 lg:col-span-5;
   }
 
   & .figure-md > :nth-child(2) {
-    @apply md:col-span-2;
+    @apply md:col-span-3 lg:col-span-2;
   }
 
   /* extra-small variant*/
@@ -442,26 +462,6 @@ article {
 
   & .figure-b img {
     @apply border border-gray-300 p-2;
-  }
-
-  /* 2-up variant: two images side-by-side */
-
-  & .figure-2up {
-    @apply my-G;
-    @apply md:mx-0 lg:grid lg:grid-cols-12 lg:gap-x-G;
-    @apply md:-ml-3/9 md:w-12/9;
-    @apply lg:-ml-3/7 lg:w-12/7;
-  }
-
-  & .figure-2up > :nth-child(1),
-  & .figure-2up > :nth-child(2) {
-    @apply lg:my-0;
-    @apply lg:col-span-5;
-  }
-
-  & .figure-2up > :nth-child(3) {
-    @apply caption; /* inherit all the caption classes */
-    @apply lg:mt-0 lg:col-span-2; /* on large screens, position in last 2 columns of grid */
   }
 
   /* <pre> in figures (e.g. ascii art) */
