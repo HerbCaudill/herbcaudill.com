@@ -40,7 +40,7 @@ const PostLayout = ({ metadata, compiledSource, html, relatedPosts }: Props) => 
       >
         {/* Cover image */}
         {image ? (
-          <div className="-mx-G md:mx-0 md:col-span-12">
+          <div className="-mx-G md:col-span-12">
             <img src={image} className="w-full " />
           </div>
         ) : (
