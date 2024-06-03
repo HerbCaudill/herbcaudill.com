@@ -65,7 +65,7 @@ article a:nth-child(odd) {
 
 .caption {
   @apply font-mono text-left leading-normal;
-  @apply text-2xs lg:text-xs; /* tiny text on tiny screens */
+  @apply text-xs lg:text-sm;
 
   /* use <i> for attribution in captions, e.g. "-- Joel Spolsky" */
   & i {
@@ -472,7 +472,7 @@ article {
   /***** description lists (used on Facts page)*/
 
   & dl {
-    @apply grid grid-cols-9 text-xs;
+    @apply grid grid-cols-9 text-xs md:text-sm;
   }
 
   & dl:first-child {
